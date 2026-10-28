@@ -84,6 +84,13 @@
       gap: 0.85rem !important;
       padding-top: 0.85rem !important;
     }
+
+    /* Gaya Butang Terapung Boleh Dialih (Draggable Floating Button) */
+    #draggableQuizBtn {
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
   </style>
 </head>
 <body id="appBody" class="font-size-md density-comfort bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
@@ -158,20 +165,20 @@
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3.5 sm:px-6 py-2.5 shadow-xs transition-colors">
       <div class="max-w-4xl mx-auto flex flex-col gap-2">
         
-        <!-- Baris Atas: Tajuk & Kawalan -->
-        <div class="flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2.5 cursor-pointer" onclick="handleTitleClicks()" title="Ketuk 3x untuk Stealth Mode">
-            <div class="w-8 h-8 rounded-xl bg-emerald-800 text-amber-300 flex items-center justify-center font-black text-xs border border-amber-400/40">UMI</div>
-            <div>
-              <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300">
-                NOTA POKET UMI
-              </div>
-              <h1 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-tight">Nikolai Nicholas (c), 2026</h1>
+        <!-- Baris Atas: Tajuk Sebelah Kiri & Kawalan di Kanan -->
+        <div class="flex items-center justify-between min-h-[36px]">
+          
+          <!-- Sebelah Kiri: Satu-satunya Tajuk (Plain Tanpa Background) -->
+          <div class="flex items-center">
+            <div onclick="handleTitleClicks()" title="Ketuk 3x untuk Stealth Mode" class="cursor-pointer py-0.5">
+              <span class="text-xs sm:text-sm font-bold tracking-wide text-slate-900 dark:text-slate-100 uppercase">
+                Nota Poket UMI Nikolai
+              </span>
             </div>
           </div>
 
-          <!-- Butang Menu Kawalan -->
-          <div class="flex items-center gap-1.5">
+          <!-- Sebelah Kanan: Butang Menu Kawalan -->
+          <div class="flex items-center gap-1.5 z-10">
             <!-- Butang Rawak Topik (Random Topic) -->
             <button onclick="jumpRandomTopic()" title="Pilih Topik Rawak (Latih Tubi)" class="inline-flex items-center gap-1 p-1.5 px-2 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 dark:bg-amber-950/60 dark:text-amber-200 dark:hover:bg-amber-900/80 active:scale-95 transition font-semibold text-xs shadow-xs">
               <span>🎲</span>
@@ -192,10 +199,10 @@
 
             <!-- Butang Tukar Tema Cerah/Gelap -->
             <button onclick="toggleTheme()" title="Tukar Tema Gelap/Cerah" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition">
-              <svg id="themeIconDark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="themeIconDark" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
               </svg>
-              <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="themeIconLight" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
               </svg>
             </button>
@@ -237,10 +244,6 @@
 
         <!-- Barisan Tab Navigasi Pantas (Kompak, Mikro & Interaktif) -->
         <div id="tabBar" class="flex gap-1 overflow-x-auto no-scrollbar py-1 text-[11px] font-semibold scroll-smooth">
-          <!-- BUTANG MODAL KUIZ (POP-UP) -->
-          <button type="button" onclick="openQuizModal()" id="btn-open-kuiz" class="shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500 text-white shadow-xs hover:bg-amber-600 active:scale-95 transition-all duration-200">
-            <span>🎯</span><span>Kuiz UMI</span>
-          </button>
           <button type="button" onclick="handleTabClick('sec-sejarah')" id="tab-sec-sejarah" data-default-bg="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🏛️</span><span>Sejarah</span>
           </button>
@@ -852,6 +855,15 @@
       </footer>
 
     </main>
+
+    <!-- ==================== BUTANG KUIZ TERAPUNG BOLEH DIALIH (DRAGGABLE FLOATING ACTION BUTTON) ==================== -->
+    <div id="draggableQuizBtn" class="fixed bottom-5 right-4 z-40 cursor-grab active:cursor-grabbing select-none transition-shadow duration-200">
+      <button type="button" id="innerQuizBtn" class="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-black text-xs shadow-xl ring-2 ring-amber-300/70 dark:ring-amber-500/50 active:scale-95 transition-transform duration-150">
+        <span class="text-base leading-none">🎯</span>
+        <span class="tracking-wide">Kuiz UMI</span>
+      </button>
+    </div>
+
   </div>
 
   <!-- ==================== 3. SKRIP INTERAKSI & SISTEM KUIZ ==================== -->
@@ -1022,10 +1034,10 @@
       }
     }
 
-    // TUKAR TEMA (DEFAULT CERAH / LIGHT)
+    // TUKAR TEMA (DEFAULT GELAP / DARK)
     function initTheme() {
-      document.documentElement.classList.remove('dark');
-      updateThemeIcons(false);
+      document.documentElement.classList.add('dark');
+      updateThemeIcons(true);
     }
     function toggleTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
@@ -1421,10 +1433,95 @@
       showToast("Kuiz dimulakan semula");
     }
 
+    // ==========================================
+    // SISTEM DRAG & DROP UNTUK BUTANG KUIZ TERAPUNG
+    // ==========================================
+    function setupDraggableQuizButton() {
+      const el = document.getElementById('draggableQuizBtn');
+      const innerBtn = document.getElementById('innerQuizBtn');
+      if (!el || !innerBtn) return;
+
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let initialLeft = 0, initialTop = 0;
+      let hasMoved = false;
+
+      function onPointerDown(e) {
+        isDragging = true;
+        hasMoved = false;
+
+        const clientX = e.clientX ?? (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY ?? (e.touches && e.touches[0].clientY);
+
+        startX = clientX;
+        startY = clientY;
+
+        const rect = el.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
+        // Tukar kedudukan daripada bottom/right kepada koordinat pixel mutlak semasa drag
+        el.style.left = initialLeft + 'px';
+        el.style.top = initialTop + 'px';
+        el.style.bottom = 'auto';
+        el.style.right = 'auto';
+
+        window.addEventListener('pointermove', onPointerMove);
+        window.addEventListener('pointerup', onPointerUp);
+        window.addEventListener('touchmove', onPointerMove, { passive: false });
+        window.addEventListener('touchend', onPointerUp);
+      }
+
+      function onPointerMove(e) {
+        if (!isDragging) return;
+
+        const clientX = e.clientX ?? (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY ?? (e.touches && e.touches[0].clientY);
+
+        const deltaX = clientX - startX;
+        const deltaY = clientY - startY;
+
+        if (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4) {
+          hasMoved = true;
+          if (e.cancelable) e.preventDefault();
+        }
+
+        const width = el.offsetWidth;
+        const height = el.offsetHeight;
+        const maxX = window.innerWidth - width - 8;
+        const maxY = window.innerHeight - height - 8;
+
+        let newX = Math.min(Math.max(8, initialLeft + deltaX), maxX);
+        let newY = Math.min(Math.max(8, initialTop + deltaY), maxY);
+
+        el.style.left = newX + 'px';
+        el.style.top = newY + 'px';
+      }
+
+      function onPointerUp(e) {
+        if (!isDragging) return;
+        isDragging = false;
+
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerup', onPointerUp);
+        window.removeEventListener('touchmove', onPointerMove);
+        window.removeEventListener('touchend', onPointerUp);
+
+        // Jika pengguna hanya klik (tidak seret), buka modal kuiz
+        if (!hasMoved) {
+          openQuizModal();
+        }
+      }
+
+      el.addEventListener('pointerdown', onPointerDown);
+      el.addEventListener('touchstart', onPointerDown, { passive: true });
+    }
+
     window.onload = function() {
       initTheme();
       renderQuizQuestion();
       updateScoreDisplay();
+      setupDraggableQuizButton();
     };
   </script>
 </body>
