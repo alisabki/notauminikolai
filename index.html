@@ -12,6 +12,14 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&h=630&q=80">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- PWA Manifest & App Config -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nota UMI">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -90,10 +98,12 @@
       touch-action: none;
       user-select: none;
       -webkit-user-select: none;
+      will-change: transform, left, top;
+      transform: translateZ(0);
     }
   </style>
 </head>
-<body id="appBody" class="font-size-md density-comfort bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
+<body id="appBody" class="font-size-md density-comfort bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-20 transition-colors duration-200">
 
   <!-- ==================== 1. STEALTH MODE (TERSEMBUNYI SECARA LALAI) ==================== -->
   <div id="stealthUI" class="hidden min-h-screen bg-slate-100 dark:bg-slate-900 p-4 font-sans text-xs select-none">
@@ -247,14 +257,26 @@
           <button type="button" onclick="handleTabClick('sec-sejarah')" id="tab-sec-sejarah" data-default-bg="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🏛️</span><span>Sejarah</span>
           </button>
+          <button type="button" onclick="handleTabClick('sec-bri')" id="tab-sec-bri" data-default-bg="bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200 hover:opacity-90 active:scale-95 transition-all duration-200">
+            <span>🏙️</span><span>Dasar BRI</span>
+          </button>
           <button type="button" onclick="handleTabClick('sec-umi')" id="tab-sec-umi" data-default-bg="bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🌟</span><span>Teras UMI</span>
           </button>
           <button type="button" onclick="handleTabClick('sec-harian')" id="tab-sec-harian" data-default-bg="bg-sky-100 dark:bg-sky-950/70 text-sky-900 dark:text-sky-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950/70 text-sky-900 dark:text-sky-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🏢</span><span>Amalan MPKB</span>
           </button>
+          <button type="button" onclick="handleTabClick('sec-integriti')" id="tab-sec-integriti" data-default-bg="bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200 hover:opacity-90 active:scale-95 transition-all duration-200">
+            <span>🛡️</span><span>Integriti & Rezeki</span>
+          </button>
+          <button type="button" onclick="handleTabClick('sec-akidah-tasawuf')" id="tab-sec-akidah-tasawuf" data-default-bg="bg-purple-100 dark:bg-purple-950/70 text-purple-900 dark:text-purple-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950/70 text-purple-900 dark:text-purple-200 hover:opacity-90 active:scale-95 transition-all duration-200">
+            <span>💎</span><span>Rasul & Akhlak</span>
+          </button>
           <button type="button" onclick="handleTabClick('sec-fardhu')" id="tab-sec-fardhu" data-default-bg="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>⚖️</span><span>Ain vs Kifayah</span>
+          </button>
+          <button type="button" onclick="handleTabClick('sec-hafazan')" id="tab-sec-hafazan" data-default-bg="bg-yellow-100 dark:bg-yellow-950/70 text-yellow-900 dark:text-yellow-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-yellow-100 dark:bg-yellow-950/70 text-yellow-900 dark:text-yellow-200 hover:opacity-90 active:scale-95 transition-all duration-200">
+            <span>📜</span><span>Bacaan & Al-Asr</span>
           </button>
           <button type="button" onclick="handleTabClick('sec-fatihah')" id="tab-sec-fatihah" data-default-bg="bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>📖</span><span>Al-Fatihah</span>
@@ -268,11 +290,17 @@
           <button type="button" onclick="handleTabClick('sec-rukun')" id="tab-sec-rukun" data-default-bg="bg-blue-100 dark:bg-blue-950/70 text-blue-900 dark:text-blue-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-900 dark:text-blue-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🤲</span><span>Islam & Iman</span>
           </button>
+          <button type="button" onclick="handleTabClick('sec-air')" id="tab-sec-air" data-default-bg="bg-cyan-100 dark:bg-cyan-950/70 text-cyan-900 dark:text-cyan-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/70 text-cyan-900 dark:text-cyan-200 hover:opacity-90 active:scale-95 transition-all duration-200">
+            <span>🌊</span><span>Bahagian Air</span>
+          </button>
           <button type="button" onclick="handleTabClick('sec-taharah')" id="tab-sec-taharah" data-default-bg="bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>💧</span><span>Wuduk & Mandi</span>
           </button>
           <button type="button" onclick="handleTabClick('sec-solat')" id="tab-sec-solat" data-default-bg="bg-indigo-100 dark:bg-indigo-950/70 text-indigo-900 dark:text-indigo-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950/70 text-indigo-900 dark:text-indigo-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🕌</span><span>Rukun Solat</span>
+          </button>
+          <button type="button" onclick="handleTabClick('sec-solat-lanjutan')" id="tab-sec-solat-lanjutan" data-default-bg="bg-violet-100 dark:bg-violet-950/70 text-violet-900 dark:text-violet-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-100 dark:bg-violet-950/70 text-violet-900 dark:text-violet-200 hover:opacity-90 active:scale-95 transition-all duration-200">
+            <span>⚡</span><span>Sunat & Batal Solat</span>
           </button>
           <button type="button" onclick="handleTabClick('sec-najis')" id="tab-sec-najis" data-default-bg="bg-red-100 dark:bg-red-950/70 text-red-900 dark:text-red-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-100 dark:bg-red-950/70 text-red-900 dark:text-red-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🧼</span><span>Najis</span>
@@ -284,6 +312,53 @@
     <!-- Notifikasi Mini (Toast Feedback) -->
     <div id="toast" class="fixed top-16 left-1/2 -translate-x-1/2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2 rounded-full text-xs shadow-lg transition-opacity opacity-0 pointer-events-none z-50">
       Nota disalin ke papan klip!
+    </div>
+
+    <!-- ==================== POP-UP MODAL CARIAN PANTAS AUDIT (TERSEMBUNYI SECARA LALAI) ==================== -->
+    <div id="searchModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3.5 sm:p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+      <div id="searchModalCard" class="relative w-full max-w-lg bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-sky-300 dark:border-sky-600/50 p-4 space-y-3 transform transition-transform duration-200 scale-95 mt-10 sm:mt-0">
+        
+        <!-- Header Carian -->
+        <div class="flex items-center justify-between border-b border-sky-200/80 dark:border-sky-900/50 pb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-6 bg-sky-500 rounded-full"></span>
+            <div>
+              <h3 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-slate-100 uppercase tracking-wide">Carian Pantas Nota UMI</h3>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Cari kata kunci topik, istilah syarak atau soalan audit</p>
+            </div>
+          </div>
+          <button onclick="closeSearchModal()" title="Tutup Carian" class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 active:scale-95 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Input Carian -->
+        <div class="relative">
+          <input type="text" id="searchInput" oninput="executeLiveSearch(this.value)" placeholder="Cth: tayamum, qunut, bri, rasuah, sujud sahwi..." class="w-full pl-9 pr-8 py-2 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+          <span class="absolute left-3 top-2.5 text-slate-400 text-sm">🔍</span>
+          <button onclick="clearSearchInput()" id="btnClearSearch" class="hidden absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs p-0.5 rounded-full">✕</button>
+        </div>
+
+        <!-- Cadangan Kata Kunci Cepat -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-[10px] text-slate-500 dark:text-slate-400">
+          <span class="shrink-0 font-bold">Pintas:</span>
+          <button onclick="setSearchQuery('Bandar Raya Islam')" class="shrink-0 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-sky-100 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200">BRI</button>
+          <button onclick="setSearchQuery('Sujud Sahwi')" class="shrink-0 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-sky-100 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200">Sujud Sahwi</button>
+          <button onclick="setSearchQuery('Tayamum')" class="shrink-0 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-sky-100 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200">Tayamum</button>
+          <button onclick="setSearchQuery('Fatanah')" class="shrink-0 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-sky-100 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200">Sifat Rasul</button>
+          <button onclick="setSearchQuery('Rezeki')" class="shrink-0 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-sky-100 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200">Integriti</button>
+        </div>
+
+        <!-- Senarai Keputusan Carian -->
+        <div id="searchResultsList" class="max-h-[48vh] overflow-y-auto no-scrollbar space-y-1.5 pt-1">
+          <div class="text-center py-6 text-slate-400 text-xs">
+            Taip kata kunci di atas untuk mencari topik berkaitan.
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <!-- ==================== POP-UP MODAL KUIZ UMI & FARDHU AIN (TERSEMBUNYI SECARA LALAI) ==================== -->
@@ -384,6 +459,62 @@
         </div>
       </section>
 
+      <!-- 0B. FALSAFAH BANDAR RAYA ISLAM (BRI) & BUDAYA KERJA MPKB-BRI -->
+      <section id="sec-bri" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-emerald-200 dark:border-emerald-900/40 scroll-mt-32">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-emerald-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
+              <span>🏙️</span><span>Falsafah Bandar Raya Islam (BRI) & Budaya Kerja</span>
+            </h2>
+          </div>
+          <span class="text-[10px] bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 px-2 py-0.5 rounded-md font-semibold">1 Okt 2005</span>
+        </div>
+        <div class="space-y-2.5 text-xs">
+          <div class="p-2.5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800">
+            <div class="font-bold text-emerald-900 dark:text-emerald-200 mb-1 flex items-center justify-between">
+              <span>📅 Pengisytiharan Bandar Raya Islam:</span>
+              <span class="text-[10px] bg-emerald-200 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100 px-1.5 py-0.2 rounded font-semibold">1 Oktober 2005</span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 leading-snug">
+              Kota Bharu diisytiharkan sebagai <strong>Bandar Raya Islam pada 1 Oktober 2005</strong> di bawah wawasan pentadbiran MBI bagi menterjemahkan syariat Islam dalam tadbir urus fizikal, perbandaran, sosial, dan ekonomi rakyat.
+            </p>
+          </div>
+
+          <!-- 5 Kesejahteraan BRI -->
+          <div>
+            <strong class="text-slate-800 dark:text-slate-200 block mb-1.5 text-[11px] uppercase tracking-wide">🌟 5 Kesejahteraan Bandar Raya Islam (BRI):</strong>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px]">
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                <strong class="text-emerald-700 dark:text-emerald-400">1. Kesejahteraan Akidah:</strong> Penghayatan tauhid, membanteras khurafat, azan berkumandang di premis awam.
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                <strong class="text-emerald-700 dark:text-emerald-400">2. Kesejahteraan Akhlak:</strong> Menutup aurat, adab pergaulan sopan, tiada hiburan melampau/maksiat terbuka.
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                <strong class="text-emerald-700 dark:text-emerald-400">3. Kesihatan & Kebersihan:</strong> Kebersihan separuh drpd iman; pasar & premis perniagaan bersih dan suci.
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                <strong class="text-emerald-700 dark:text-emerald-400">4. Kesejahteraan Ekonomi:</strong> Muamalat bebas riba, timbangan jujur, sokongan perniagaan halal & patuh syariah.
+              </div>
+              <div class="sm:col-span-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                <strong class="text-emerald-700 dark:text-emerald-400">5. Kesejahteraan Sosial & Keselamatan:</strong> Bandar selamat, tiada jenayah, kebajikan fakir miskin terjaga, dan perpaduan ummah.
+              </div>
+            </div>
+          </div>
+
+          <!-- Nilai Kerja: Syura, Hisbah, Ihsan -->
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700">
+            <strong class="text-slate-800 dark:text-slate-200 block mb-1 text-[11px] uppercase tracking-wide">🤝 Budaya Kerja Islamik di MPKB-BRI:</strong>
+            <div class="space-y-1 text-slate-600 dark:text-slate-300 text-[11px] leading-snug">
+              <div>• <strong>Konsep Syura:</strong> Mengutamakan mesyuarat, perbincangan muafakat, dan kesepakatan dalam membuat keputusan dasar atau operasi majlis.</div>
+              <div>• <strong>Konsep Hisbah:</strong> Pengauditan kendiri (*self-accountability*), amar makruf nahi mungkar, dan ketegasan penguatkuasaan undang-undang secara adil tanpa pilih kasih.</div>
+              <div>• <strong>Konsep Ihsan di Kaunter:</strong> Melayani pelanggan dengan senyuman mesra, berlemah-lembut, mempermudahkan urusan orang awam, dan menyempurnakan kerja seolah-olah melihat Allah.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- 1. KONSEP TERAS UMI -->
       <section id="sec-umi" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-emerald-100 dark:border-emerald-900/40 scroll-mt-32">
         <div class="flex items-center gap-2 mb-2.5">
@@ -419,89 +550,152 @@
       </section>
 
       <!-- 1B. PENGHAYATAN UMI DI TEMPAT KERJA (MPKB-BRI) -->
-      <section id="sec-harian" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-sky-100 dark:border-sky-900/40 scroll-mt-32">
+      <!-- 1C. INTEGRITI, KEBERKATAN REZEKI & ETIKA PENJAWAT AWAM -->
+      <section id="sec-integriti" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-amber-200 dark:border-amber-900/40 scroll-mt-32">
         <div class="flex items-center justify-between mb-2.5">
           <div class="flex items-center gap-2">
-            <span class="w-2 h-5 bg-sky-600 rounded-full"></span>
+            <span class="w-2 h-5 bg-amber-600 rounded-full"></span>
             <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
-              <span>🏢</span><span>Penghayatan UMI Di Tempat Kerja (MPKB-BRI)</span>
+              <span>🛡️</span><span>Integriti, Keberkatan Rezeki & Etika Penjawat Awam</span>
             </h2>
           </div>
-          <span class="text-[10px] bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-200 px-2 py-0.5 rounded-full font-semibold">Praktikal</span>
+          <span class="text-[10px] bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-0.5 rounded-md font-semibold">Teras Halal</span>
         </div>
         <div class="space-y-2 text-xs">
-          <div class="p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-950/20">
-            <span class="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-1.5 mb-1">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Ubudiyyah di Majlis:
-            </span>
-            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
-              <li>Niat ikhlas berkhidmat demi maslahat rakyat dan perbandaran Kota Bharu.</li>
-              <li>Menjaga solat pada waktunya serta memelihara adab pergaulan dan syariat.</li>
-              <li>Menghindari sifat riak, hasad dengki, dan perbuatan curi waktu kerja.</li>
-            </ul>
+          <!-- Pembahagian Rezeki -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
+            <div class="p-2 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-950/20">
+              <strong class="text-emerald-900 dark:text-emerald-300 block mb-0.5">🟢 Rezeki Halal:</strong>
+              Gaji hasil kerja yang jujur, amanah masa, mematuhi SOP jabatan, dan tiada penipuan log tugas.
+            </div>
+            <div class="p-2 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/40 dark:bg-amber-950/20">
+              <strong class="text-amber-900 dark:text-amber-300 block mb-0.5">🟡 Syubhah (Samar):</strong>
+              Penggunaan waktu kerja untuk urusan peribadi, menerima hadiah daripada kontraktor/pelesen yang berkepentingan.
+            </div>
+            <div class="p-2 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50/40 dark:bg-rose-950/20">
+              <strong class="text-rose-900 dark:text-rose-300 block mb-0.5">🔴 Haram:</strong>
+              Rasuah/suapan, membuat tuntutan elaun palsu (*false claims*), mencuri wang kaunter atau harta majlis.
+            </div>
           </div>
-          <div class="p-2.5 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/40 dark:bg-sky-950/20">
-            <span class="font-bold text-sky-900 dark:text-sky-200 flex items-center gap-1.5 mb-1">
-              <span class="w-2 h-2 rounded-full bg-sky-500"></span> Mas'uliyyah di Majlis:
-            </span>
-            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
-              <li>Menepati waktu bertugas, kaunter, dan amanah terhadap jadual rasmi.</li>
-              <li>Menjaga kerahsiaan dokumen, fail integriti, dan data rasmi perbandaran.</li>
-              <li>Tidak menyalahgunakan kenderaan, aset, atau kemudahan majlis untuk peribadi.</li>
-            </ul>
+
+          <!-- Etika Pemakaian & Ikhtilat -->
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 text-[11px] leading-snug space-y-1">
+            <strong class="text-slate-800 dark:text-slate-200 block text-xs">👔 Etika Aurat & Batas Ikhtilat di Pejabat Kerajaan:</strong>
+            <div>• <strong>Aurat Lelaki:</strong> Antara pusat hingga lutut. Menepati etika kemas, berlengan sopan, dan berstoking/berkasut.</div>
+            <div>• <strong>Aurat Wanita:</strong> Seluruh tubuh kecuali muka dan dua tapak tangan. Pakaian longgar, bertudung labuh melepasi dada, tidak jarang dan tidak ketat.</div>
+            <div>• <strong>Batas Ikhtilat:</strong> Menjaga pandangan, tiada gurauan melampau/sentuhan fizikal, dan tidak berdua-duaan di bilik tertutup (*khalwat*).</div>
           </div>
-          <div class="p-2.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/40 dark:bg-indigo-950/20">
-            <span class="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-1.5 mb-1">
-              <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Itqan di Majlis:
-            </span>
-            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
-              <li>Menyiapkan semakan dokumen dengan teliti tanpa kesilapan borang perlesenan/fail.</li>
-              <li>Menyusun fail meja, minit mesyuarat, dan rekod digital dengan sistematik.</li>
-              <li>Meningkatkan kecekapan sistem digital dan kemahiran komunikasi berhemah.</li>
-            </ul>
+        </div>
+      </section>
+
+      <!-- 1D. AKIDAH & TASAWUF: SIFAT RASUL & AKHLAK PEJABAT -->
+      <section id="sec-akidah-tasawuf" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-purple-200 dark:border-purple-900/40 scroll-mt-32">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-purple-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
+              <span>💎</span><span>Sifat Para Rasul & Akhlak Penjawat Awam</span>
+            </h2>
+          </div>
+          <span class="text-[10px] bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded-md font-semibold">Tasawuf</span>
+        </div>
+
+        <div class="space-y-2.5 text-xs">
+          <!-- 4 Sifat Wajib & Mustahil Rasul -->
+          <div>
+            <span class="font-bold text-purple-900 dark:text-purple-200 block mb-1 text-[11px]">4 Sifat Wajib & Lawannya (Wajib Diteladani):</span>
+            <div class="overflow-hidden rounded-xl border border-purple-100 dark:border-purple-900/40">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="bg-purple-50 dark:bg-purple-950/40 text-purple-950 dark:text-purple-200 border-b border-purple-100 dark:border-purple-900/40">
+                    <th class="py-1.5 px-2.5 font-semibold">Sifat Wajib</th>
+                    <th class="py-1.5 px-2.5 font-semibold">Sifat Mustahil</th>
+                    <th class="py-1.5 px-2.5 font-semibold">Aplikasi di MPKB-BRI</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-purple-50 dark:divide-purple-900/30 text-slate-700 dark:text-slate-300 text-[11px]">
+                  <tr>
+                    <td class="py-1.5 px-2.5 font-bold text-emerald-700 dark:text-emerald-400">1. Siddiq (Benar)</td>
+                    <td class="py-1.5 px-2.5 text-rose-600">Kazib (Dusta)</td>
+                    <td class="py-1.5 px-2.5">Bercakap benar dalam laporan & dokumen rasmi.</td>
+                  </tr>
+                  <tr class="bg-purple-50/20 dark:bg-purple-950/10">
+                    <td class="py-1.5 px-2.5 font-bold text-emerald-700 dark:text-emerald-400">2. Amanah (Jujur)</td>
+                    <td class="py-1.5 px-2.5 text-rose-600">Khianat (Pecah Amanah)</td>
+                    <td class="py-1.5 px-2.5">Menjaga wang majlis, aset & kerahsiaan data.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 px-2.5 font-bold text-emerald-700 dark:text-emerald-400">3. Tabligh (Menyampaikan)</td>
+                    <td class="py-1.5 px-2.5 text-rose-600">Kitman (Menyembunyikan)</td>
+                    <td class="py-1.5 px-2.5">Menyampaikan maklumat dasar & arahan kerja jelas.</td>
+                  </tr>
+                  <tr class="bg-purple-50/20 dark:bg-purple-950/10">
+                    <td class="py-1.5 px-2.5 font-bold text-emerald-700 dark:text-emerald-400">4. Fatanah (Bijaksana)</td>
+                    <td class="py-1.5 px-2.5 text-rose-600">Baladah (Bodoh/Lembap)</td>
+                    <td class="py-1.5 px-2.5">Cekap menyelesaikan aduan rakyat secara profesional.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Mahmudah vs Mazmumah -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div class="p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/30 dark:bg-emerald-950/20">
+              <strong class="text-emerald-900 dark:text-emerald-200 block mb-0.5">🌿 Sifat Mahmudah (Terpuji) Di Pejabat:</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-snug">
+                <strong>Ikhlas</strong> (bekerja kerana Allah), <strong>Sabar</strong> melayan karenah orang awam, <strong>Syukur</strong> atas rezeki, <strong>Tawaduk</strong> (rendah diri dengan rakan sejawatan).
+              </p>
+            </div>
+            <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/20">
+              <strong class="text-rose-900 dark:text-rose-200 block mb-0.5">⚠️ Sifat Mazmumah (Tercela) Wajib Dihindari:</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-snug">
+                <strong>Riak</strong> (menunjuk-nunjuk amal), <strong>Ujub</strong> (kagum diri sendiri), <strong>Hasad Dengki</strong> melihat kenaikan pangkat rakan, dan <strong>Ghibah</strong> (mengumpat staf lain).
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- 2. FARDHU AIN VS FARDHU KIFAYAH -->
-      <section id="sec-fardhu" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700 scroll-mt-32">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-slate-600 dark:bg-slate-400 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
-            <span>⚖️</span><span>2. Fardhu Ain vs Fardhu Kifayah</span>
-          </h2>
+      <!-- 2B. BACAAN DALAM SOLAT & SURAH AL-ASR -->
+      <section id="sec-hafazan" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-yellow-200 dark:border-yellow-900/40 scroll-mt-32">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-yellow-500 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
+              <span>📜</span><span>Bacaan Harian Solat & Intisari Surah Al-Asr</span>
+            </h2>
+          </div>
+          <span class="text-[10px] bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-0.5 rounded-md font-semibold">Hafazan</span>
         </div>
-        <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
-          <table class="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr class="bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700">
-                <th class="py-2 px-3 font-semibold w-28">Kategori</th>
-                <th class="py-2 px-3 font-semibold">Takrif & Contoh</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-              <tr>
-                <td class="py-2.5 px-3 font-semibold text-slate-700 dark:text-slate-200 align-top">
-                  <span class="inline-block px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-[10px] font-bold mb-1">INDIVIDU</span><br>
-                  Fardhu Ain
-                </td>
-                <td class="py-2.5 px-3 text-slate-600 dark:text-slate-300 leading-snug">
-                  Wajib ke atas <strong class="text-slate-800 dark:text-slate-100">setiap mukallaf</strong>. Berdosa jika ditinggalkan secara peribadi.<br>
-                  <em class="text-slate-500 dark:text-slate-400">Contoh: Solat 5 waktu, puasa Ramadan, menutup aurat, menjaga akidah.</em>
-                </td>
-              </tr>
-              <tr>
-                <td class="py-2.5 px-3 font-semibold text-slate-700 dark:text-slate-200 align-top">
-                  <span class="inline-block px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-[10px] font-bold mb-1">KOMUNITI</span><br>
-                  Fardhu Kifayah
-                </td>
-                <td class="py-2.5 px-3 text-slate-600 dark:text-slate-300 leading-snug">
-                  Wajib ke atas <strong class="text-slate-800 dark:text-slate-100">kumpulan masyarakat</strong>. Gugur kewajipan jika ada sebahagian melaksanakannya.<br>
-                  <em class="text-slate-500 dark:text-slate-400">Contoh: Solat jenazah, urusan pentadbiran perbandaran, kepakaran perubatan.</em>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+        <div class="space-y-2 text-xs">
+          <!-- 8 Permintaan Duduk Antara Dua Sujud -->
+          <div class="p-2.5 rounded-xl bg-yellow-50/40 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800">
+            <strong class="text-yellow-950 dark:text-yellow-200 block mb-1">🤲 8 Permintaan Duduk Antara Dua Sujud:</strong>
+            <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-relaxed font-mono bg-white dark:bg-slate-900 p-1.5 rounded-lg border border-yellow-100 dark:border-yellow-900/50 mb-1">
+              "Rabbighfirli, warhamni, wajburni, warfa'ni, warzuqni, wahdini, wa'afini, wa'fu 'anni"
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1 text-[10px] text-slate-600 dark:text-slate-400">
+              <span>1. Ampunkan aku</span>
+              <span>2. Rahmati aku</span>
+              <span>3. Cukupkan kekuranganku</span>
+              <span>4. Tinggikan darjatku</span>
+              <span>5. Berikan rezeki padaku</span>
+              <span>6. Berikan petunjuk padaku</span>
+              <span>7. Sihatkanlah aku</span>
+              <span>8. Maafkanlah kesalahanku</span>
+            </div>
+          </div>
+
+          <!-- Surah Al-Asr & Kaitannya dgn UMI -->
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+            <strong class="text-slate-800 dark:text-slate-200 block mb-1 text-[11px]">⏳ Surah Al-Asr (3 Ayat) & Pasak Mas'uliyyah:</strong>
+            <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-snug">
+              Surah Al-Asr bersumpah demi masa bahawa <strong>seluruh manusia berada dalam kerugian</strong> kecuali mereka yang beriman, beramal soleh, dan saling berpesan kepada kebenaran serta kesabaran. Di MPKB-BRI, surah ini menjadi asas kepada <strong>integriti masa (Mas'uliyyah)</strong> dan ketelitian kerja (Itqan).
+            </p>
+          </div>
         </div>
       </section>
 
@@ -599,65 +793,65 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
           <!-- Suami -->
-          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50/40 dark:bg-blue-950/20">
-            <strong class="text-blue-900 dark:text-blue-300 block mb-1">👔 Tanggungjawab Suami:</strong>
-            <ul class="list-disc list-inside space-y-0.5 text-[11px] text-slate-600 dark:text-slate-300">
-              <li><strong>Nafkah Zahir:</strong> Menyediakan makanan, pakaian, tempat tinggal selesa, dan perubatan.</li>
-              <li><strong>Nafkah Batin:</strong> Menggauli isteri secara makruf, memberi kasih sayang & perlindungan emosi.</li>
-              <li><strong>Didikan Syarak:</strong> Membimbing isteri/anak mengenai fardhu ain, solat, dan aurat.</li>
-              <li><strong>Mahar:</strong> Menyerahkan mas kahwin yang dipersetujui.</li>
-            </ul>
+      <!-- 6B. KATEGORI AIR & PANDUAN TAYAMUM -->
+      <section id="sec-air" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-cyan-200 dark:border-cyan-900/40 scroll-mt-32">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-cyan-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
+              <span>🌊</span><span>Bahagian Air (4 Kategori) & Tayamum</span>
+            </h2>
           </div>
-          <!-- Isteri -->
-          <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50/40 dark:bg-rose-950/20">
-            <strong class="text-rose-900 dark:text-rose-300 block mb-1">👗 Tanggungjawab Isteri:</strong>
-            <ul class="list-disc list-inside space-y-0.5 text-[11px] text-slate-600 dark:text-slate-300">
-              <li><strong>Taat Suami:</strong> Mematuhi perintah suami selagi tidak bertentangan dengan syarak.</li>
-              <li><strong>Menjaga Maruah:</strong> Menjaga kehormatan diri & keluarga ketika ketiadaan suami.</li>
-              <li><strong>Amanah Harta:</strong> Menguruskan harta rumah tangga dengan cermat.</li>
-              <li><strong>Izin Suami:</strong> Memohon izin sebelum keluar rumah atau berpuasa sunat.</li>
-            </ul>
-          </div>
+          <span class="text-[10px] bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 px-2 py-0.5 rounded-md font-semibold">Fiqh Bersuci</span>
         </div>
-      </section>
 
-      <!-- 6. RUKUN ISLAM & IMAN -->
-      <section id="sec-rukun" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-blue-100 dark:border-blue-900/40 scroll-mt-32">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-blue-600 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
-            <span>🤲</span><span>Rukun Islam (5) & Rukun Iman (6)</span>
-          </h2>
-        </div>
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <!-- Rukun Islam -->
-          <div class="rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50/30 dark:bg-blue-950/20 p-2.5">
-            <div class="font-bold text-blue-900 dark:text-blue-200 mb-1.5 flex items-center justify-between border-b border-blue-200 dark:border-blue-800 pb-1">
-              <span>Rukun Islam</span>
-              <span class="bg-blue-200 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-1.5 py-0.2 rounded text-[10px]">5 Perkara</span>
-            </div>
-            <ol class="space-y-1 text-slate-700 dark:text-slate-300 leading-snug">
-              <li><span class="font-bold text-blue-800 dark:text-blue-400">1.</span> Mengucap 2 Syahadah</li>
-              <li><span class="font-bold text-blue-800 dark:text-blue-400">2.</span> Solat 5 waktu</li>
-              <li><span class="font-bold text-blue-800 dark:text-blue-400">3.</span> Menunaikan Zakat</li>
-              <li><span class="font-bold text-blue-800 dark:text-blue-400">4.</span> Puasa Ramadan</li>
-              <li><span class="font-bold text-blue-800 dark:text-blue-400">5.</span> Mengerjakan Haji</li>
-            </ol>
+        <div class="space-y-2 text-xs">
+          <!-- 4 Jenis Air -->
+          <div class="overflow-hidden rounded-xl border border-cyan-100 dark:border-cyan-900/40">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-cyan-50 dark:bg-cyan-950/40 text-cyan-950 dark:text-cyan-200 border-b border-cyan-100 dark:border-cyan-900/40">
+                  <th class="py-1.5 px-2.5 font-semibold w-28">Kategori Air</th>
+                  <th class="py-1.5 px-2.5 font-semibold">Status Hukum & Contoh</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-cyan-50 dark:divide-cyan-900/30 text-slate-700 dark:text-slate-300 text-[11px]">
+                <tr>
+                  <td class="py-1.5 px-2.5 font-bold text-emerald-700 dark:text-emerald-400 align-top">1. Mutlak</td>
+                  <td class="py-1.5 px-2.5 leading-snug">
+                    <strong>Suci lagi menyucikan.</strong> Boleh minum dan sah buat wuduk/mandi/basuh najis. (7 sumber: air hujan, laut, sungai, perigi, mata air, salji, embun).
+                  </td>
+                </tr>
+                <tr class="bg-cyan-50/20 dark:bg-cyan-950/10">
+                  <td class="py-1.5 px-2.5 font-bold text-blue-700 dark:text-blue-400 align-top">2. Musta'mal</td>
+                  <td class="py-1.5 px-2.5 leading-snug">
+                    <strong>Suci pada dirinya tapi tidak menyucikan yang lain.</strong> Air basuhan wuduk/mandi hadas yang kurang 2 kolah. Tidak sah buat wuduk kali kedua.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 px-2.5 font-bold text-amber-700 dark:text-amber-400 align-top">3. Musyammas</td>
+                  <td class="py-1.5 px-2.5 leading-snug">
+                    <strong>Suci tetapi makruh digunakan pada badan</strong> kerana dikhuatiri penyakit kusta. Air dalam bekas logam yang terdedah kepada panas matahari terik di negeri panas.
+                  </td>
+                </tr>
+                <tr class="bg-rose-50/20 dark:bg-rose-950/10">
+                  <td class="py-1.5 px-2.5 font-bold text-rose-700 dark:text-rose-400 align-top">4. Mutanajjis</td>
+                  <td class="py-1.5 px-2.5 leading-snug">
+                    <strong>Tidak suci dan tidak menyucikan.</strong> Air dimasuki najis (jika kurang 2 kolah jatuh najis automatik mutanajjis; jika lebih 2 kolah berubah warna/bau/rasa).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <!-- Rukun Iman -->
-          <div class="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/30 dark:bg-indigo-950/20 p-2.5">
-            <div class="font-bold text-indigo-900 dark:text-indigo-200 mb-1.5 flex items-center justify-between border-b border-indigo-200 dark:border-indigo-800 pb-1">
-              <span>Rukun Iman</span>
-              <span class="bg-indigo-200 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-1.5 py-0.2 rounded text-[10px]">6 Perkara</span>
+
+          <!-- Ringkasan Tayamum -->
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 text-[11px]">
+            <strong class="text-slate-800 dark:text-slate-200 block mb-1">🏜️ Ringkasan Tayamum (Pengganti Wuduk/Mandi):</strong>
+            <div class="space-y-0.5 text-slate-600 dark:text-slate-300 leading-snug">
+              <div>• <strong>Sebab Tayamum:</strong> Ketiadaan air setelah berusaha mencari, atau keuzuran penyakit yang dilarang doktor terkena air.</div>
+              <div>• <strong>4 Rukun Tayamum:</strong> 1. Niat (membolehkan solat fardhu), 2. Menyapu muka dengan debu tanah bersih, 3. Menyapu dua belah tangan hingga siku, 4. Tertib.</div>
+              <div>• <strong>Anggota Tayamum:</strong> Dua anggota sahaja iaitu <strong>muka dan kedua-dua tangan</strong> (tiada sapuan kepala atau basuhan kaki).</div>
             </div>
-            <ol class="space-y-1 text-slate-700 dark:text-slate-300 leading-snug">
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">1.</span> Percaya pd Allah</li>
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">2.</span> Malaikat</li>
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">3.</span> Kitab-kitab</li>
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">4.</span> Para Rasul</li>
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">5.</span> Hari Kiamat</li>
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">6.</span> Qada' & Qadar</li>
-            </ol>
           </div>
         </div>
       </section>
@@ -724,66 +918,66 @@
         </div>
         <div class="overflow-hidden rounded-xl border border-indigo-100 dark:border-indigo-900/40 mb-3">
           <table class="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-200 border-b border-indigo-100 dark:border-indigo-900/40">
-                <th class="py-2 px-2.5 font-semibold w-24">Bahagian</th>
-                <th class="py-2 px-2.5 font-semibold">Perincian Rukun</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-indigo-50 dark:divide-indigo-900/30 text-slate-700 dark:text-slate-300">
-              <tr>
-                <td class="py-2 px-2.5 font-semibold text-rose-700 dark:text-rose-400 align-top bg-rose-50/20 dark:bg-rose-950/10">
-                  Qalbi<br><span class="text-[10px] text-slate-400 font-normal">(Hati)</span>
-                </td>
-                <td class="py-2 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
-                  <strong>1. Niat</strong> (lintas dalam hati serentak ketika Takbiratul Ihram)
-                </td>
-              </tr>
-              <tr class="bg-blue-50/20 dark:bg-blue-950/10">
-                <td class="py-2 px-2.5 font-semibold text-blue-700 dark:text-blue-400 align-top">
-                  Qauli<br><span class="text-[10px] text-slate-400 font-normal">(Bacaan)</span>
-                </td>
-                <td class="py-2 px-2.5 text-slate-600 dark:text-slate-300 leading-snug space-y-0.5">
-                  <div><strong>2.</strong> Takbiratul Ihram (Allahu Akbar)</div>
-                  <div><strong>3.</strong> Membaca Surah Al-Fatihah</div>
-                  <div><strong>4.</strong> Membaca Tahiyyat Akhir</div>
-                  <div><strong>5.</strong> Selawat ke atas Nabi dlm Tahiyyat Akhir</div>
-                  <div><strong>6.</strong> Memberi salam yang pertama</div>
-                </td>
-              </tr>
-              <tr>
-                <td class="py-2 px-2.5 font-semibold text-emerald-700 dark:text-emerald-400 align-top bg-emerald-50/20 dark:bg-emerald-950/10">
-                  Fi'li<br><span class="text-[10px] text-slate-400 font-normal">(Perbuatan)</span>
-                </td>
-                <td class="py-2 px-2.5 text-slate-600 dark:text-slate-300 leading-snug space-y-0.5">
-                  <div><strong>7.</strong> Berdiri betul bagi yang mampu</div>
-                  <div><strong>8.</strong> Ruku' serta tama'ninah</div>
-                  <div><strong>9.</strong> I'tidal serta tama'ninah</div>
-                  <div><strong>10.</strong> Sujud dua kali serta tama'ninah</div>
-                  <div><strong>11.</strong> Duduk antara dua sujud serta tama'ninah</div>
-                  <div><strong>12.</strong> Duduk bagi Tahiyyat Akhir</div>
-                </td>
-              </tr>
-              <tr class="bg-purple-50/20 dark:bg-purple-950/10">
-                <td class="py-2 px-2.5 font-semibold text-purple-700 dark:text-purple-400 align-top">
-                  Ma'nawi<br><span class="text-[10px] text-slate-400 font-normal">(Aturan)</span>
-                </td>
-                <td class="py-2 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
-                  <strong>13. Tertib</strong> (mengikut aturan susunan dari awal ke akhir)
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- 8B. FIQH SOLAT LANJUTAN: SUNAT AB'ADH, BATAL SOLAT & MASBUQ -->
+      <section id="sec-solat-lanjutan" class="bg-white dark:bg-slate-800 rounded-2xl p-3.5 shadow-xs border border-violet-200 dark:border-violet-900/40 scroll-mt-32">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-violet-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide flex items-center gap-1.5">
+              <span>⚡</span><span>Sunat Ab'adh, Perkara Batal Solat & Masbuq</span>
+            </h2>
+          </div>
+          <span class="text-[10px] bg-violet-100 dark:bg-violet-900 text-violet-800 dark:text-violet-200 px-2 py-0.5 rounded-md font-semibold">Lanjutan</span>
         </div>
-        <!-- 5 Syarat Sah Solat -->
-        <div class="bg-slate-50 dark:bg-slate-700/40 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
-          <span class="font-semibold text-slate-700 dark:text-slate-200 block mb-1">5 Syarat Sah Solat:</span>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-600 dark:text-slate-300 text-[11px]">
-            <span>✔ 1. Suci drpd hadas kecil & besar</span>
-            <span>✔ 2. Suci badan, pakaian & tempat dr najis</span>
-            <span>✔ 3. Menutup aurat sempurna</span>
-            <span>✔ 4. Masuk waktu solat</span>
-            <span>✔ 5. Menghadap kiblat</span>
+
+        <div class="space-y-2.5 text-xs">
+          <!-- Sunat Ab'adh vs Hai'ah & Sujud Sahwi -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div class="p-2.5 rounded-xl border border-violet-200 dark:border-violet-800 bg-violet-50/40 dark:bg-violet-950/20">
+              <strong class="text-violet-900 dark:text-violet-300 block mb-1">⭐ Sunat Ab'adh (Ganti Sujud Sahwi):</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-snug mb-1">Sunat yang sangat dituntut. Jika terlupa, disunatkan melakukan <strong>Sujud Sahwi</strong> (2 sujud sebelum salam):</p>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-700 dark:text-slate-300">
+                <li>Duduk & membaca Tahiyyat Awal</li>
+                <li>Selawat ke atas Nabi dlm Tahiyyat Awal</li>
+                <li>Membaca Doa Qunut waktu Subuh/Witir separuh akhir Ramadan</li>
+                <li>Berdiri ketika membaca Doa Qunut</li>
+              </ul>
+            </div>
+
+            <div class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40">
+              <strong class="text-slate-800 dark:text-slate-200 block mb-1">✨ Sunat Hai'ah (Tiada Sujud Sahwi):</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-snug mb-1">Amalan sunat pelengkap solat. Jika tertinggal, solat tetap sah dan tidak perlu sujud sahwi:</p>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-600 dark:text-slate-300">
+                <li>Mengangkat tangan semasa takbir</li>
+                <li>Membaca Doa Iftitah</li>
+                <li>Membaca tasbih ruku' & sujud</li>
+                <li>Meletakkan tangan kanan atas tangan kiri</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Perkara Membatalkan Solat & Masbuq vs Muwafiq -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/20">
+              <strong class="text-rose-900 dark:text-rose-300 block mb-1">🚫 Perkara Membatalkan Solat:</strong>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-600 dark:text-slate-300">
+                <li>Bergerak 3 kali berturut-turut anggota besar.</li>
+                <li>Berkata-kata dengan sengaja (walau 2 huruf).</li>
+                <li>Makan atau minum dengan sengaja.</li>
+                <li>Terbuka aurat & tidak ditutup serta-merta.</li>
+                <li>Kemasukan najis pada badan/pakaian.</li>
+                <li>Beralih dada membelakangi arah kiblat.</li>
+                <li>Berubah niat atau murtad.</li>
+              </ul>
+            </div>
+
+            <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50/30 dark:bg-blue-950/20">
+              <strong class="text-blue-900 dark:text-blue-300 block mb-1">👥 Makmum Muwafiq vs Masbuq:</strong>
+              <div class="space-y-1 text-slate-600 dark:text-slate-300 leading-snug">
+                <div>• <strong>Muwafiq:</strong> Makmum yang sempat membaca Al-Fatihah dengan sederhana bersama imam sebelum imam ruku'.</div>
+                <div>• <strong>Masbuq:</strong> Makmum yang tidak sempat menghabiskan Al-Fatihah bersama imam (cth: sempat takbir lalu imam terus ruku'). <em>Hukum: Terus ruku' bersama imam dan rakaatnya dikira.</em></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -856,6 +1050,14 @@
 
     </main>
 
+    <!-- ==================== BUTANG CARIAN TERAPUNG (FLOATING ACTION BUTTON KIRI) ==================== -->
+    <div id="floatingSearchBtn" class="fixed bottom-5 left-4 z-40 select-none">
+      <button type="button" onclick="openSearchModal()" title="Carian Pantas Nota UMI" class="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-black text-xs shadow-xl ring-2 ring-sky-300/70 dark:ring-sky-500/50 active:scale-95 transition-transform duration-150">
+        <span class="text-base leading-none">🔍</span>
+        <span class="tracking-wide">Cari</span>
+      </button>
+    </div>
+
     <!-- ==================== BUTANG KUIZ TERAPUNG BOLEH DIALIH (DRAGGABLE FLOATING ACTION BUTTON) ==================== -->
     <div id="draggableQuizBtn" class="fixed bottom-5 right-4 z-40 cursor-grab active:cursor-grabbing select-none transition-shadow duration-200">
       <button type="button" id="innerQuizBtn" class="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-black text-xs shadow-xl ring-2 ring-amber-300/70 dark:ring-amber-500/50 active:scale-95 transition-transform duration-150">
@@ -869,19 +1071,26 @@
   <!-- ==================== 3. SKRIP INTERAKSI & SISTEM KUIZ ==================== -->
   <script>
     let activeTab = null;
+    let isUserClickingTab = false; // Flag halang pertembungan observer ketika klik tab
 
     // SENARAI TOPIK UNTUK CIRI RANDOM TOPIC
     const topicSections = [
       'sec-sejarah',
+      'sec-bri',
       'sec-umi',
       'sec-harian',
+      'sec-integriti',
+      'sec-akidah-tasawuf',
       'sec-fardhu',
+      'sec-hafazan',
       'sec-fatihah',
       'sec-tajwid',
       'sec-keluarga',
       'sec-rukun',
+      'sec-air',
       'sec-taharah',
       'sec-solat',
+      'sec-solat-lanjutan',
       'sec-najis'
     ];
 
@@ -891,6 +1100,125 @@
       const randomId = filtered[Math.floor(Math.random() * filtered.length)];
       handleTabClick(randomId);
       showToast("🎲 Lompat ke topik rawak!");
+    }
+
+    // ==========================================
+    // SISTEM CARIAN PANTAS TERAPUNG (SEARCH MODAL)
+    // ==========================================
+    function openSearchModal() {
+      const modal = document.getElementById('searchModal');
+      const card = document.getElementById('searchModalCard');
+      const input = document.getElementById('searchInput');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+        input.focus();
+      }, 10);
+    }
+
+    function closeSearchModal() {
+      const modal = document.getElementById('searchModal');
+      const card = document.getElementById('searchModalCard');
+      modal.classList.add('opacity-0');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    function clearSearchInput() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      executeLiveSearch('');
+      input.focus();
+    }
+
+    function setSearchQuery(val) {
+      const input = document.getElementById('searchInput');
+      input.value = val;
+      executeLiveSearch(val);
+      input.focus();
+    }
+
+    function executeLiveSearch(query) {
+      const q = query.trim().toLowerCase();
+      const resultsContainer = document.getElementById('searchResultsList');
+      const btnClear = document.getElementById('btnClearSearch');
+
+      if (q.length > 0) {
+        btnClear.classList.remove('hidden');
+      } else {
+        btnClear.classList.add('hidden');
+        resultsContainer.innerHTML = '<div class="text-center py-6 text-slate-400 text-xs">Taip kata kunci di atas untuk mencari topik berkaitan.</div>';
+        return;
+      }
+
+      const matchedSections = [];
+
+      topicSections.forEach(secId => {
+        const secEl = document.getElementById(secId);
+        if (!secEl) return;
+
+        const headerEl = secEl.querySelector('h2');
+        const titleText = headerEl ? headerEl.innerText.trim() : secId;
+        const bodyText = secEl.innerText.toLowerCase();
+
+        if (bodyText.includes(q)) {
+          // Cari cebisan petikan ayat yang mengandungi perkataan yang dicari
+          let snippet = '';
+          const pos = bodyText.indexOf(q);
+          const start = Math.max(0, pos - 40);
+          const end = Math.min(secEl.innerText.length, pos + q.length + 55);
+          snippet = secEl.innerText.substring(start, end).replace(/\s+/g, ' ').trim();
+
+          matchedSections.push({
+            id: secId,
+            title: titleText,
+            snippet: '...' + snippet + '...'
+          });
+        }
+      });
+
+      if (matchedSections.length === 0) {
+        resultsContainer.innerHTML = `<div class="text-center py-6 text-slate-400 text-xs">Tiada padanan ditemui untuk "<strong>${query}</strong>". Cuba kata kunci lain.</div>`;
+        return;
+      }
+
+      let html = '';
+      matchedSections.forEach(item => {
+        // Serlahkan kata kunci dalam snippet
+        const regex = new RegExp(`(${q})`, 'gi');
+        const highlightedSnippet = item.snippet.replace(regex, '<span class="bg-yellow-200 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 px-1 rounded font-bold">$1</span>');
+
+        html += `
+          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="w-full text-left p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 bg-slate-50 dark:bg-slate-900/60 hover:bg-sky-50/50 dark:hover:bg-sky-950/40 transition active:scale-[0.99] group">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-xs text-sky-800 dark:text-sky-300 group-hover:underline">${item.title}</span>
+              <span class="text-[10px] text-slate-400">➔ Pergi</span>
+            </div>
+            <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-snug line-clamp-2">${highlightedSnippet}</p>
+          </button>
+        `;
+      });
+
+      resultsContainer.innerHTML = html;
+    }
+
+    function jumpToSearchResult(sectionId) {
+      closeSearchModal();
+      handleTabClick(sectionId);
+
+      // Beri kesan kilauan visual pada seksyen yang dijumpai
+      const sec = document.getElementById(sectionId);
+      if (sec) {
+        sec.classList.add('ring-2', 'ring-sky-500', 'transition-all');
+        setTimeout(() => {
+          sec.classList.remove('ring-2', 'ring-sky-500');
+        }, 1800);
+      }
     }
 
     // FUNGSI BUKA & TUTUP MODAL KUIZ (POP-UP)
@@ -927,6 +1255,7 @@
         return;
       }
 
+      isUserClickingTab = true; // Kunci sementara auto-observer
       activeTab = id;
       updateTabStyles(id);
 
@@ -934,6 +1263,10 @@
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+
+      setTimeout(() => {
+        isUserClickingTab = false;
+      }, 700);
     }
 
     function updateTabStyles(activeId) {
@@ -968,6 +1301,37 @@
           activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
       }
+    }
+
+    // ========================================================
+    // PENJEJAK SKROL KENDIRI DENGAN INTERSECTION OBSERVER
+    // TAB BERKENAAN AKAN TURUN & IKUT ANIMASI SEMASA SKROL NAIK/TURUN
+    // ========================================================
+    function setupScrollSpy() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-18% 0px -65% 0px', // Aktif apabila bahagian atas seksyen melepasi bar header
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        if (isUserClickingTab) return; // Abaikan jika pengguna sendiri sedang klik butang tab
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.id;
+            if (activeTab !== currentId) {
+              activeTab = currentId;
+              updateTabStyles(currentId);
+            }
+          }
+        });
+      }, observerOptions);
+
+      topicSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
     }
 
     // KAWALAN SAIZ FON (A-, A, A+, A++)
@@ -1079,6 +1443,30 @@
     // ==========================================
     const quizData = [
       {
+        category: "Dasar BRI",
+        question: "Bilakah tarikh rasmi pengisytiharan Kota Bharu sebagai Bandar Raya Islam (BRI)?",
+        options: [
+          "1 Oktober 2005",
+          "1 Januari 2000",
+          "1 Julai 2010",
+          "31 Ogos 1990"
+        ],
+        correct: 0,
+        rationale: "Kota Bharu telah diisytiharkan secara rasmi sebagai Bandar Raya Islam pada 1 Oktober 2005 di bawah dasar pentadbiran Membangun Bersama Islam (MBI)."
+      },
+      {
+        category: "Dasar BRI",
+        question: "Antara berikut, manakah BUKAN dalam senarai Lima Kesejahteraan Bandar Raya Islam (BRI)?",
+        options: [
+          "Kesejahteraan Hiburan Bebas",
+          "Kesejahteraan Akidah",
+          "Kesejahteraan Akhlak",
+          "Kesejahteraan Kesihatan & Kebersihan"
+        ],
+        correct: 0,
+        rationale: "5 Kesejahteraan BRI merangkumi Kesejahteraan Akidah, Akhlak, Kesihatan & Kebersihan, Ekonomi, serta Sosial & Keselamatan."
+      },
+      {
         category: "Dasar UMI",
         question: "Bilakah gagasan dasar Membangun Bersama Islam (MBI) yang melahirkan konsep UMI mula diperkenalkan di Kelantan?",
         options: [
@@ -1113,6 +1501,90 @@
         ],
         correct: 0,
         rationale: "Mas'uliyyah membawa maksud kebertanggungjawaban, akauntabiliti, dan menjaga amanah aset kerajaan kerana sedar akan dihisab."
+      },
+      {
+        category: "Integriti",
+        question: "Apakah status hukum bagi seorang kakitangan yang membuat tuntutan elaun perjalanan palsu (false claims)?",
+        options: [
+          "Haram dan merupakan perbuatan khianat",
+          "Makruh selagi wang digunakan untuk kebajikan",
+          "Syubhah yang dimaafkan majlis",
+          "Mubah jika dipersetujui rakan sekerja"
+        ],
+        correct: 0,
+        rationale: "Tuntutan palsu adalah penipuan harta awam yang haram dan mencemarkan integriti keberkatan rezeki penjawat awam."
+      },
+      {
+        category: "Sifat Rasul",
+        question: "Sifat wajib bagi Rasul yang membawa erti 'Bijaksana' dalam menyelesaikan masalah dan aduan rakyat ialah:",
+        options: [
+          "Fatanah",
+          "Siddiq",
+          "Amanah",
+          "Tabligh"
+        ],
+        correct: 0,
+        rationale: "Fatanah bermaksud bijaksana. Sifat lawannya yang mustahil adalah Baladah (bebal/bodoh)."
+      },
+      {
+        category: "Fiqh Solat Lanjutan",
+        question: "Sekiranya seseorang terlupa membaca Doa Qunut semasa solat Subuh, apakah yang disunatkan untuk menampung kekurangan tersebut?",
+        options: [
+          "Melakukan Sujud Sahwi sebelum salam",
+          "Mengulangi semula solat dari awal",
+          "Membayar fidyah solat",
+          "Melakukan Sujud Tilawah"
+        ],
+        correct: 0,
+        rationale: "Doa Qunut Subuh adalah Sunat Ab'adh. Sekiranya tertinggal, disunatkan melakukan Sujud Sahwi 2 kali sebelum memberi salam."
+      },
+      {
+        category: "Fiqh Solat Lanjutan",
+        question: "Antara berikut, manakah perbuatan yang MEMBATALKAN solat?",
+        options: [
+          "Bergerak 3 kali berturut-turut anggota besar (seperti melangkah kaki)",
+          "Mengelipkan mata beberapa kali kerana pedih",
+          "Mengerakkan jari tangan ketika bertasbih",
+          "Menundukkan pandangan ke tempat sujud"
+        ],
+        correct: 0,
+        rationale: "Pergerakan 3 kali berturut-turut anggota besar (kaki, badan, tangan) membatalkan solat menurut mazhab Syafi'i."
+      },
+      {
+        category: "Bahagian Air",
+        question: "Air yang telah digunakan untuk membasuh wuduk fardhu yang kurang daripada 2 kolah dikategorikan sebagai:",
+        options: [
+          "Air Musta'mal (suci tetapi tidak menyucikan)",
+          "Air Mutlak (suci dan menyucikan)",
+          "Air Mutanajjis (air najis)",
+          "Air Musyammas (air panas matahari)"
+        ],
+        correct: 0,
+        rationale: "Air Musta'mal adalah air yang suci pada zatnya tetapi tidak boleh digunakan lagi untuk mengangkat hadas kali kedua."
+      },
+      {
+        category: "Tayamum",
+        question: "Berapakah bilangan anggota wajib yang disapu semasa bertayamum dengan debu tanah?",
+        options: [
+          "2 anggota sahaja (Muka dan dua tangan hingga siku)",
+          "4 anggota mengikut rukun wuduk",
+          "Seluruh anggota badan termasuk kaki",
+          "Muka dan kepala sahaja"
+        ],
+        correct: 0,
+        rationale: "Anggota tayamum hanyalah dua iaitu menyapu muka dan menyapu kedua-dua belah tangan hingga ke siku."
+      },
+      {
+        category: "Hafazan & Bacaan",
+        question: "Surah Al-Asr menekankan bahawa semua manusia berada dalam kerugian melainkan mereka yang menjaga amanah:",
+        options: [
+          "Masa, beriman, beramal soleh & berpesan dengan kebenaran serta kesabaran",
+          "Mengumpul kekayaan demi keluarga semata-mata",
+          "Membina bangunan perbandaran yang megah",
+          "Berpuasa sunat setiap hari"
+        ],
+        correct: 0,
+        rationale: "Surah Al-Asr menjadi pasak penghayatan masa (Mas'uliyyah) bahawa seluruh insan rugi melainkan yang beriman dan beramal soleh."
       },
       {
         category: "Fardhu Ain vs Kifayah",
@@ -1221,18 +1693,6 @@
         ],
         correct: 0,
         rationale: "Al-Fatihah, Takbiratul Ihram, Tahiyyat Akhir, Selawat atas Nabi, dan Salam Pertama ialah Rukun Qauli."
-      },
-      {
-        category: "Rukun Solat",
-        question: "Rukun Qalbi (hati) dalam 13 rukun solat ialah:",
-        options: [
-          "Niat ketika Takbiratul Ihram",
-          "Tama'ninah dalam ruku'",
-          "Berdiri betul bagi yang mampu",
-          "Duduk antara dua sujud"
-        ],
-        correct: 0,
-        rationale: "Niat merupakan satu-satunya Rukun Qalbi (lintasan niat di dalam hati serentak dengan Takbiratul Ihram)."
       },
       {
         category: "Najis",
@@ -1450,30 +1910,8 @@
         isDragging = true;
         hasMoved = false;
 
-        const clientX = e.clientX ?? (e.touches && e.touches[0].clientX);
-        const clientY = e.clientY ?? (e.touches && e.touches[0].clientY);
-
-        startX = clientX;
-        startY = clientY;
-
-        const rect = el.getBoundingClientRect();
-        initialLeft = rect.left;
-        initialTop = rect.top;
-
-        // Tukar kedudukan daripada bottom/right kepada koordinat pixel mutlak semasa drag
-        el.style.left = initialLeft + 'px';
-        el.style.top = initialTop + 'px';
-        el.style.bottom = 'auto';
-        el.style.right = 'auto';
-
-        window.addEventListener('pointermove', onPointerMove);
-        window.addEventListener('pointerup', onPointerUp);
-        window.addEventListener('touchmove', onPointerMove, { passive: false });
-        window.addEventListener('touchend', onPointerUp);
-      }
-
-      function onPointerMove(e) {
-        if (!isDragging) return;
+        // Sentuhan Haptic Mikro jika disokong telefon
+        if (navigator.vibrate) navigator.vibrate(15);
 
         const clientX = e.clientX ?? (e.touches && e.touches[0].clientX);
         const clientY = e.clientY ?? (e.touches && e.touches[0].clientY);
@@ -1522,6 +1960,12 @@
       renderQuizQuestion();
       updateScoreDisplay();
       setupDraggableQuizButton();
+      setupScrollSpy(); // Aktifkan penjejak skrol automatik
+
+      // Pendaftaran Service Worker untuk Mod Offline 100%
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
     };
   </script>
 </body>
