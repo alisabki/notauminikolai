@@ -61,9 +61,57 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    /* Kawalan Skala Saiz Fon Global */
+    :root {
+      --font-scale: 1rem;
+    }
+    .font-size-sm {
+      font-size: 0.8rem !important;
+    }
+    .font-size-sm table, .font-size-sm p, .font-size-sm li, .font-size-sm td, .font-size-sm th, .font-size-sm span {
+      font-size: 0.75rem !important;
+      line-height: 1.25 !important;
+    }
+    .font-size-sm h2 {
+      font-size: 0.85rem !important;
+    }
+
+    .font-size-md {
+      font-size: 0.875rem !important;
+    }
+    .font-size-md table, .font-size-md p, .font-size-md li, .font-size-md td, .font-size-md th {
+      font-size: 0.825rem !important;
+      line-height: 1.35 !important;
+    }
+    .font-size-md h2 {
+      font-size: 0.95rem !important;
+    }
+
+    .font-size-lg {
+      font-size: 1.05rem !important;
+    }
+    .font-size-lg table, .font-size-lg p, .font-size-lg li, .font-size-lg td, .font-size-lg th {
+      font-size: 0.98rem !important;
+      line-height: 1.45 !important;
+    }
+    .font-size-lg h2 {
+      font-size: 1.15rem !important;
+    }
+
+    .font-size-xl {
+      font-size: 1.2rem !important;
+    }
+    .font-size-xl table, .font-size-xl p, .font-size-xl li, .font-size-xl td, .font-size-xl th {
+      font-size: 1.12rem !important;
+      line-height: 1.55 !important;
+    }
+    .font-size-xl h2 {
+      font-size: 1.35rem !important;
+    }
   </style>
 </head>
-<body id="appBody" class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
+<body id="appBody" class="font-size-md bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
 
   <!-- ==================== 1. MOD PENYAMARAN AUDIT (STEALTH / CAMOUFLAGE MODE) ==================== -->
   <div id="stealthOverlay" class="hidden min-h-screen bg-slate-100 dark:bg-slate-900 p-4 font-sans text-xs select-none">
@@ -653,82 +701,6 @@
       }
     }
 
-    // --- SKROL PANTAS & SALIN NOTA ---
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) {
-        const yOffset = -120; 
-        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }
-
-    function salinSemuaNota() {
-      const textToCopy = `NOTA RINGKAS AUDIT UMI (JAHEIK)
-
-1. KONSEP UMI
-- Ubudiyyah: Pengabdian diri kepada Allah SWT. Bekerja dengan niat ikhlas kerana Allah.
-- Mas'uliyyah: Kebertanggungjawaban dan amanah terhadap tugas kerana akan dihisab di akhirat.
-- Itqan: Ketelitian, kualiti, dan kesempurnaan kerja terbaik.
-
-2. FARDHU AIN VS FARDHU KIFAYAH
-- Fardhu Ain: Wajib ke atas setiap individu mukallaf (solat, puasa, akidah).
-- Fardhu Kifayah: Kewajipan kolektif masyarakat (solat jenazah, urusan pentadbiran).
-
-3. SURAH AL-FATAIHAH (7 Ayat - Ummul Kitab)
-- Maksud: Pembukaan (Rukun Qauli)
-- Intisari: Pujian Allah, hari pembalasan, tauhid (hanya Allah disembah & dipohon pertolongan), dan doa ke jalan yang lurus (Siratal Mustaqim).
-
-4. RUKUN ISLAM (5)
-1. Syahadah
-2. Solat 5 waktu
-3. Zakat
-4. Puasa Ramadan
-5. Haji
-
-5. RUKUN IMAN (6)
-1. Beriman kpd Allah
-2. Malaikat
-3. Kitab
-4. Rasul
-5. Hari Kiamat
-6. Qada' & Qadar
-
-6. RUKUN WUDUK (6)
-1. Niat
-2. Basuh muka
-3. Basuh tangan hingga siku
-4. Sapu sebahagian kepala
-5. Basuh kaki hingga buku lali
-6. Tertib
-
-7. RUKUN SOLAT (13)
-- Qalbi: Niat
-- Qauli: Takbiratul Ihram, Al-Fatihah, Tahiyyat Akhir, Selawat atas Nabi, Salam pertama
-- Fi'li: Berdiri betul, Ruku' (tama'ninah), Iktidal (tama'ninah), Sujud (tama'ninah), Duduk antara 2 sujud (tama'ninah), Duduk Tahiyyat Akhir
-- Ma'nawi: Tertib
-
-8. JENIS NAJIS
-- Mukhaffafah (Ringan): Kencing bayi lelaki <2 tahun susu ibu sahaja -> Percik air mutlak.
-- Mutawassitah (Sederhana): Najis/darah/muntah -> Cuci hingga hilang bau, warna & rasa.
-- Mughallazah (Berat): Anjing & babi -> 7 kali basuhan air mutlak (1 daripadanya air tanah).`;
-
-      const tempTextArea = document.createElement('textarea');
-      tempTextArea.value = textToCopy;
-      document.body.appendChild(tempTextArea);
-      tempTextArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempTextArea);
-
-      const toast = document.getElementById('toast');
-      toast.classList.remove('opacity-0');
-      toast.classList.add('opacity-100');
-      setTimeout(() => {
-        toast.classList.remove('opacity-100');
-        toast.classList.add('opacity-0');
-      }, 2000);
-    }
-
     // --- KAWALAN SAIZ TULISAN & PAPARAN (FONT SIZE & DISPLAY SETTINGS) ---
     function toggleDisplayMenu() {
       const panel = document.getElementById('displaySettingsPanel');
@@ -736,27 +708,29 @@
     }
 
     function setFontSize(size) {
+      const content = document.getElementById('contentContainer');
       const body = document.getElementById('appBody');
-      body.classList.remove('text-xs', 'text-sm', 'text-base', 'text-lg');
+      
+      // Buang kelas font lama
+      body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+      content.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
 
-      // Update button highlights
+      // Masukkan kelas font baru
+      const targetClass = 'font-size-' + size;
+      body.classList.add(targetClass);
+      content.classList.add(targetClass);
+
+      // Kemas kini gaya butang pilihan
       ['sm', 'md', 'lg', 'xl'].forEach(s => {
         const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
         if (btn) {
-          btn.className = 'flex-1 py-1 rounded text-center transition font-semibold ' + 
-            (s === size ? 'bg-teal-600 text-white font-bold' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800');
+          if (s === size) {
+            btn.className = 'flex-1 py-1 rounded text-center text-xs bg-teal-600 text-white font-bold transition shadow-xs';
+          } else {
+            btn.className = 'flex-1 py-1 rounded text-center text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold transition';
+          }
         }
       });
-
-      if (size === 'sm') {
-        body.classList.add('text-xs');
-      } else if (size === 'md') {
-        body.classList.add('text-sm');
-      } else if (size === 'lg') {
-        body.classList.add('text-base');
-      } else if (size === 'xl') {
-        body.classList.add('text-lg');
-      }
     }
 
     function setDisplayDensity(density) {
