@@ -9,7 +9,6 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nota Poket Audit UMI & Fardhu Ain (JAHEIK)">
   <meta property="og:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah, Rukun Solat, Wuduk & Taharah. Disediakan oleh Nikolai Nicholas.">
-  <!-- Gambar banner preview (Unsplash Islamik berkualiti tinggi) -->
   <meta property="og:image" content="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&h=630&q=80">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -53,7 +52,6 @@
       -webkit-tap-highlight-color: transparent;
       font-family: 'Inter', sans-serif;
     }
-    /* Hide scrollbars for neat touch scrolling */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -62,24 +60,15 @@
       scrollbar-width: none;
     }
 
-    /* Kawalan Skala Saiz Fon Global */
-    :root {
-      --font-scale: 1rem;
-    }
-    .font-size-sm {
-      font-size: 0.8rem !important;
-    }
+    /* Kawalan Skala Saiz Fon Dinamik */
     .font-size-sm table, .font-size-sm p, .font-size-sm li, .font-size-sm td, .font-size-sm th, .font-size-sm span {
-      font-size: 0.75rem !important;
+      font-size: 0.72rem !important;
       line-height: 1.25 !important;
     }
     .font-size-sm h2 {
       font-size: 0.85rem !important;
     }
 
-    .font-size-md {
-      font-size: 0.875rem !important;
-    }
     .font-size-md table, .font-size-md p, .font-size-md li, .font-size-md td, .font-size-md th {
       font-size: 0.825rem !important;
       line-height: 1.35 !important;
@@ -88,9 +77,6 @@
       font-size: 0.95rem !important;
     }
 
-    .font-size-lg {
-      font-size: 1.05rem !important;
-    }
     .font-size-lg table, .font-size-lg p, .font-size-lg li, .font-size-lg td, .font-size-lg th {
       font-size: 0.98rem !important;
       line-height: 1.45 !important;
@@ -99,9 +85,6 @@
       font-size: 1.15rem !important;
     }
 
-    .font-size-xl {
-      font-size: 1.2rem !important;
-    }
     .font-size-xl table, .font-size-xl p, .font-size-xl li, .font-size-xl td, .font-size-xl th {
       font-size: 1.12rem !important;
       line-height: 1.55 !important;
@@ -109,9 +92,34 @@
     .font-size-xl h2 {
       font-size: 1.35rem !important;
     }
+
+    /* Mod Jarak Paparan: Rapat (Compact) vs Selesa (Comfortable) */
+    .density-compact section {
+      padding: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .density-compact table td, .density-compact table th {
+      padding: 0.25rem 0.5rem !important;
+    }
+    .density-compact main {
+      gap: 0.5rem !important;
+      padding-top: 0.5rem !important;
+    }
+
+    .density-comfortable section {
+      padding: 0.9rem !important;
+      margin-bottom: 0.85rem !important;
+    }
+    .density-comfortable table td, .density-comfortable table th {
+      padding: 0.5rem 0.75rem !important;
+    }
+    .density-comfortable main {
+      gap: 0.85rem !important;
+      padding-top: 0.85rem !important;
+    }
   </style>
 </head>
-<body id="appBody" class="font-size-md bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
+<body id="appBody" class="font-size-md density-comfortable bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
 
   <!-- ==================== 1. MOD PENYAMARAN AUDIT (STEALTH / CAMOUFLAGE MODE) ==================== -->
   <div id="stealthOverlay" class="hidden min-h-screen bg-slate-100 dark:bg-slate-900 p-4 font-sans text-xs select-none">
@@ -128,7 +136,7 @@
             <div class="text-xs font-bold text-slate-800 dark:text-slate-200">Log Pengurusan Tugasan Harian</div>
           </div>
         </div>
-        <!-- Butang Rahsia Kembali ke Nota (Disamar ikon refresh) -->
+        <!-- Butang Rahsia Kembali ke Nota -->
         <button onclick="toggleStealthMode()" title="Segar Semula Sistem" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
@@ -136,7 +144,7 @@
         </button>
       </div>
 
-      <!-- Kad Status Audit Pejabat Olok-olok -->
+      <!-- Kad Status Audit Olok-olok -->
       <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-lg border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300">
         <div class="flex items-center justify-between mb-1">
           <span class="font-bold uppercase text-[10px] tracking-wider">Status Pemantauan Integriti</span>
@@ -191,7 +199,7 @@
     <!-- Header Ringkas & Kemas -->
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2.5 shadow-xs transition-colors">
       <div class="max-w-md mx-auto flex items-center justify-between gap-2">
-        <div class="flex-1 cursor-pointer" onclick="handleTitleClicks()" title="Tekan 3 kali untuk Stealth Mode">
+        <div class="flex-1 cursor-pointer" onclick="handleTitleClicks()" title="Tekan 3 kali berturut-turut untuk Mod Menyamar (Stealth)">
           <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 mb-0.5">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             Audit JAHEIK
@@ -199,7 +207,7 @@
           <h1 class="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-tight">Nota Poket UMI & Fardhu Ain</h1>
         </div>
 
-        <!-- Butang Kawalan (Tema, Mod Samaran & Salin) -->
+        <!-- Butang Kawalan (Saiz Font, Stealth, Tema & Salin) -->
         <div class="flex items-center gap-1.5">
           <!-- Butang Menu Saiz Tulisan & Paparan -->
           <button onclick="toggleDisplayMenu()" title="Tetapan Saiz & Paparan" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition font-bold text-xs flex items-center gap-0.5">
@@ -215,11 +223,9 @@
 
           <!-- Butang Mod Gelap / Cerah -->
           <button onclick="toggleTheme()" title="Tukar Tema Gelap/Cerah" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition">
-            <!-- Ikon Bulan (Paparan Light Mode) -->
             <svg id="themeIconDark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
             </svg>
-            <!-- Ikon Matahari (Paparan Dark Mode) -->
             <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
             </svg>
@@ -233,7 +239,7 @@
         </div>
       </div>
 
-      <!-- Panel Laci Tetapan Saiz Tulisan & Display (Boleh Buka / Tutup) -->
+      <!-- Panel Laci Tetapan Saiz Tulisan & Display -->
       <div id="displaySettingsPanel" class="hidden max-w-md mx-auto mt-2 pt-2 pb-1 border-t border-slate-200 dark:border-slate-800 text-xs">
         <div class="flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-800/80 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
           <!-- Saiz Tulisan -->
@@ -260,12 +266,14 @@
 
       <!-- Quick Pill Nav -->
       <div class="max-w-md mx-auto mt-2 flex gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs font-medium">
-        <button onclick="scrollToSection('sec-umi')" class="shrink-0 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-200 border border-teal-200 dark:border-teal-800 hover:bg-teal-100 transition">UMI</button>
-        <button onclick="scrollToSection('sec-fatihah')" class="shrink-0 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 transition">Al-Fatihah</button>
-        <button onclick="scrollToSection('sec-rukun')" class="shrink-0 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 transition">Islam & Iman</button>
-        <button onclick="scrollToSection('sec-taharah')" class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition">Wuduk & Mandi</button>
-        <button onclick="scrollToSection('sec-solat')" class="shrink-0 px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">Rukun Solat</button>
-        <button onclick="scrollToSection('sec-najis')" class="shrink-0 px-2.5 py-1 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 border border-rose-200 dark:border-rose-800 hover:bg-rose-100 transition">Najis</button>
+        <button type="button" onclick="scrollToSection('sec-sejarah')" class="shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-200 transition">Sejarah</button>
+        <button type="button" onclick="scrollToSection('sec-umi')" class="shrink-0 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-200 border border-teal-200 dark:border-teal-800 hover:bg-teal-100 transition">Teras UMI</button>
+        <button type="button" onclick="scrollToSection('sec-harian')" class="shrink-0 px-2.5 py-1 rounded-full bg-sky-50 dark:bg-sky-950/50 text-sky-800 dark:text-sky-200 border border-sky-200 dark:border-sky-800 hover:bg-sky-100 transition">Kerja Seharian</button>
+        <button type="button" onclick="scrollToSection('sec-fatihah')" class="shrink-0 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 transition">Al-Fatihah</button>
+        <button type="button" onclick="scrollToSection('sec-rukun')" class="shrink-0 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 transition">Islam & Iman</button>
+        <button type="button" onclick="scrollToSection('sec-taharah')" class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition">Wuduk & Mandi</button>
+        <button type="button" onclick="scrollToSection('sec-solat')" class="shrink-0 px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">Rukun Solat</button>
+        <button type="button" onclick="scrollToSection('sec-najis')" class="shrink-0 px-2.5 py-1 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 border border-rose-200 dark:border-rose-800 hover:bg-rose-100 transition">Najis</button>
       </div>
     </header>
 
@@ -276,8 +284,31 @@
 
     <main id="contentContainer" class="max-w-md mx-auto px-3.5 pt-3 space-y-3.5 transition-all duration-200">
 
+      <!-- 0. SEJARAH & LATAR BELAKANG DASAR UMI KELANTAN -->
+      <section id="sec-sejarah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-28">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-slate-700 dark:bg-slate-300 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">Latar Belakang & Tarikh UMI</h2>
+          </div>
+          <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-2 py-0.5 rounded-md font-semibold">Sejarah Asas</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-snug">
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700">
+            <span class="font-bold text-slate-800 dark:text-slate-100 block mb-0.5">🗓️ Tahun 1990: Gagasan MBI</span>
+            <p>Mula diperkenalkan pada <strong>tahun 1990</strong> di bawah dasar pentadbiran <em>"Membangun Bersama Islam" (MBI)</em> pimpinan Almarhum Tuan Guru Dato' Bentara Setia Haji Nik Abdul Aziz Nik Mat bagi menyerapkan nilai syariah dalam seluruh agensi kerajaan negeri.</p>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-teal-50/60 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-800/60">
+            <span class="font-bold text-teal-900 dark:text-teal-200 block mb-0.5">📘 Tahun 2020: Manual Pelaksanaan & Audit UMI</span>
+            <p>Kerajaan Negeri Kelantan menguatkuasakan <strong>Manual Pelaksanaan Prinsip UMI (Tahun 2020)</strong> sebagai dokumen rujukan standard rasmi bagi latihan, pematuhan, dan pensijilan pengauditan berkala oleh JAHEIK serta panel pemeriksa integriti.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- 1. KONSEP UMI -->
-      <section id="sec-umi" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-teal-100/80 dark:border-teal-900/40">
+      <section id="sec-umi" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-teal-100/80 dark:border-teal-900/40 scroll-mt-28">
         <div class="flex items-center gap-2 mb-2.5">
           <span class="w-2 h-5 bg-teal-600 rounded-full"></span>
           <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">1. Teras UMI JAHEIK</h2>
@@ -294,23 +325,72 @@
             <tbody class="divide-y divide-teal-50 dark:divide-teal-900/30">
               <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-700/30">
                 <td class="py-2 px-3 font-semibold text-teal-800 dark:text-teal-300 align-top">Ubudiyyah</td>
-                <td class="py-2 px-3 text-slate-600 dark:text-slate-300 leading-snug">Pengabdian diri kepada Allah SWT. Bekerja dengan niat ikhlas kerana Allah sebagai ibadah.</td>
+                <td class="py-2 px-3 text-slate-600 dark:text-slate-300 leading-snug">Pengabdian diri kepada Allah SWT. Bekerja dengan niat ikhlas kerana Allah sebagai ibadah semata-mata.</td>
               </tr>
               <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-700/30">
                 <td class="py-2 px-3 font-semibold text-teal-800 dark:text-teal-300 align-top">Mas'uliyyah</td>
-                <td class="py-2 px-3 text-slate-600 dark:text-slate-300 leading-snug">Kebertanggungjawaban dan amanah. Sedar segala tugas akan dipersoal & dihisab di akhirat.</td>
+                <td class="py-2 px-3 text-slate-600 dark:text-slate-300 leading-snug">Kebertanggungjawaban dan amanah. Sedar segala tugas & kuasa akan dipersoal serta dihisab di akhirat kelak.</td>
               </tr>
               <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-700/30">
                 <td class="py-2 px-3 font-semibold text-teal-800 dark:text-teal-300 align-top">Itqan</td>
-                <td class="py-2 px-3 text-slate-600 dark:text-slate-300 leading-snug">Ketelitian, kualiti, dan kesempurnaan. Melakukan kerja dengan cekap, kemas, dan profesional.</td>
+                <td class="py-2 px-3 text-slate-600 dark:text-slate-300 leading-snug">Ketelitian, kualiti, dan kesempurnaan. Melakukan kerja dengan cekap, kemas, berdisiplin, dan berterusan.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <!-- 1B. PENGHAYATAN UMI DALAM KERJA SEHARIAN -->
+      <section id="sec-harian" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-sky-150 dark:border-sky-900/40 scroll-mt-28">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-sky-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">Penghayatan UMI Di Tempat Kerja</h2>
+          </div>
+          <span class="text-[10px] bg-sky-100 dark:bg-sky-900/60 text-sky-800 dark:text-sky-200 px-2 py-0.5 rounded-full font-semibold">Praktikal</span>
+        </div>
+
+        <div class="space-y-2 text-xs">
+          <!-- Ubudiyyah Seharian -->
+          <div class="p-2.5 rounded-xl border border-teal-200 dark:border-teal-800/50 bg-teal-50/40 dark:bg-teal-950/20">
+            <span class="font-bold text-teal-900 dark:text-teal-200 flex items-center gap-1.5 mb-1">
+              <span class="w-2 h-2 rounded-full bg-teal-500"></span> Ubudiyyah di Pejabat:
+            </span>
+            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
+              <li>Mulakan tugas harian dengan niat ikhlas ibadah kerana Allah SWT.</li>
+              <li>Menjaga solat pada waktunya serta menjaga adab pergaulan dan syariat.</li>
+              <li>Menghindari sifat riak, hasad dengki, dan perbuatan curi tulang masa.</li>
+            </ul>
+          </div>
+
+          <!-- Mas'uliyyah Seharian -->
+          <div class="p-2.5 rounded-xl border border-sky-200 dark:border-sky-800/50 bg-sky-50/40 dark:bg-sky-950/20">
+            <span class="font-bold text-sky-900 dark:text-sky-200 flex items-center gap-1.5 mb-1">
+              <span class="w-2 h-2 rounded-full bg-sky-500"></span> Mas'uliyyah di Pejabat:
+            </span>
+            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
+              <li>Menepati waktu masuk, rehat, dan amanah dalam mencatat pergerakan.</li>
+              <li>Menjaga kerahsiaan fail rasmi, dokumen kerajaan, dan hak pelanggan.</li>
+              <li>Tidak menyalahgunakan harta jabatan/kemudahan awam untuk peribadi.</li>
+            </ul>
+          </div>
+
+          <!-- Itqan Seharian -->
+          <div class="p-2.5 rounded-xl border border-indigo-200 dark:border-indigo-800/50 bg-indigo-50/40 dark:bg-indigo-950/20">
+            <span class="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-1.5 mb-1">
+              <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Itqan di Pejabat:
+            </span>
+            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
+              <li>Menyiapkan tugasan dengan teliti, kemas, pantas, dan sifar kesalahan (*zero defect*).</li>
+              <li>Menyusun fail meja, minit mesyuarat, dan rekod dengan teratur.</li>
+              <li>Sentiasa berinisiatif meningkatkan kemahiran teknologi & kecekapan diri.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- 2. FARDHU AIN VS FARDHU KIFAYAH -->
-      <section class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60">
+      <section class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-28">
         <div class="flex items-center gap-2 mb-2.5">
           <span class="w-2 h-5 bg-slate-600 dark:bg-slate-400 rounded-full"></span>
           <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">2. Fardhu Ain vs Fardhu Kifayah</h2>
@@ -351,7 +431,7 @@
       </section>
 
       <!-- 3. MAKSUD SURAH AL-FATAIHAH -->
-      <section id="sec-fatihah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-amber-200/70 dark:border-amber-900/40">
+      <section id="sec-fatihah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-amber-200/70 dark:border-amber-900/40 scroll-mt-28">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-amber-500 rounded-full"></span>
@@ -396,7 +476,7 @@
       </section>
 
       <!-- 4. RUKUN ISLAM & IMAN -->
-      <section id="sec-rukun" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-blue-100 dark:border-blue-900/40">
+      <section id="sec-rukun" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-blue-100 dark:border-blue-900/40 scroll-mt-28">
         <div class="flex items-center gap-2 mb-2.5">
           <span class="w-2 h-5 bg-blue-600 rounded-full"></span>
           <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">4. Rukun Islam & Rukun Iman</h2>
@@ -437,7 +517,7 @@
       </section>
 
       <!-- 5. TAHARAH & WUDUK -->
-      <section id="sec-taharah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-emerald-100 dark:border-emerald-900/40">
+      <section id="sec-taharah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-emerald-100 dark:border-emerald-900/40 scroll-mt-28">
         <div class="flex items-center gap-2 mb-2.5">
           <span class="w-2 h-5 bg-emerald-600 rounded-full"></span>
           <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">5. Taharah (Wuduk & Mandi Wajib)</h2>
@@ -487,7 +567,7 @@
       </section>
 
       <!-- 6. IBADAH SOLAT & 13 RUKUN -->
-      <section id="sec-solat" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-indigo-100 dark:border-indigo-900/40">
+      <section id="sec-solat" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-indigo-100 dark:border-indigo-900/40 scroll-mt-28">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-indigo-600 rounded-full"></span>
@@ -496,7 +576,6 @@
           <span class="text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-0.5 rounded-full font-medium">4 Kategori</span>
         </div>
 
-        <!-- Jadual Pecahan Rukun Solat Mengikut Bahagian -->
         <div class="overflow-hidden rounded-xl border border-indigo-100 dark:border-indigo-900/40 mb-3">
           <table class="w-full text-left text-xs border-collapse">
             <thead>
@@ -552,7 +631,6 @@
           </table>
         </div>
 
-        <!-- Syarat Sah Solat Checklist -->
         <div class="bg-slate-50 dark:bg-slate-700/40 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
           <span class="font-semibold text-slate-700 dark:text-slate-200 block mb-1">5 Syarat Sah Solat:</span>
           <div class="grid grid-cols-1 gap-1 text-slate-600 dark:text-slate-300 text-[11px]">
@@ -566,7 +644,7 @@
       </section>
 
       <!-- 7. JENIS NAJIS & KAEDAH PENYUCIAN -->
-      <section id="sec-najis" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-rose-100 dark:border-rose-900/40">
+      <section id="sec-najis" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-rose-100 dark:border-rose-900/40 scroll-mt-28">
         <div class="flex items-center gap-2 mb-2.5">
           <span class="w-2 h-5 bg-rose-500 rounded-full"></span>
           <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">7. Jenis Najis & Kaedah Menyucikannya</h2>
@@ -587,7 +665,7 @@
                   <strong>Mukhaffafah</strong>
                 </td>
                 <td class="py-2.5 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
-                  <strong>Contoh:</strong> Kencing bayi lelaki <2 tahun yang hanya minum susu ibu.<br>
+                  <strong>Contoh:</strong> Kencing bayi lelaki &lt;2 tahun yang hanya minum susu ibu.<br>
                   <span class="text-emerald-700 dark:text-emerald-400 font-medium">Cara cuci:</span> Lap sisa kencing, kemudian renjis/percik air mutlak ke atas kawasan tersebut hingga rata.
                 </td>
               </tr>
@@ -620,7 +698,7 @@
       <div class="p-3 bg-amber-50/80 dark:bg-amber-950/30 rounded-xl border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 text-xs flex gap-2">
         <span class="text-base">💡</span>
         <p class="leading-snug">
-          <strong>Tip Semasa Audit:</strong> Jika ditanya soalan, kaitkan tugas seharian di pejabat dengan nilai <em>Ubudiyyah</em> (ikhlas berkhidmat) dan <em>Mas'uliyyah</em> (amanah urus fail/dokumen). Tekan ikon kunci di atas jika auditor menghampiri!
+          <strong>Tip Semasa Audit:</strong> Jika ditanya soalan, kaitkan tugas seharian di pejabat dengan nilai <em>Ubudiyyah</em> (ikhlas berkhidmat) dan <em>Mas'uliyyah</em> (amanah urus fail/dokumen). Tekan butang mangga di bar atas jika auditor menghampiri!
         </p>
       </div>
 
@@ -636,17 +714,18 @@
   </div>
 
   <script>
-    // --- PENGURUSAN TEMA GELAP / CERAH (DARK / LIGHT THEME) ---
-    function initTheme() {
-      // Semak pilihan sedia ada di memori session atau fallback ke sistem tema
-      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        updateThemeIcons(true);
-      } else {
-        document.documentElement.classList.remove('dark');
-        updateThemeIcons(false);
+    // --- NAVIGASI TAB PANTAS (SMOOTH SCROLL DENGAN OFFSET TEPAT) ---
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }
+
+    // --- PENGURUSAN TEMA (DEFAULT CERAH / LIGHT MODE) ---
+    function initTheme() {
+      document.documentElement.classList.remove('dark');
+      updateThemeIcons(false);
     }
 
     function toggleTheme() {
@@ -666,7 +745,7 @@
       }
     }
 
-    // --- CIRI KHAS: AUDIT STEALTH / RESTRICTED MODE ---
+    // --- CIRI KHAS: AUDIT STEALTH / CAMOUFLAGE MODE ---
     function toggleStealthMode() {
       const stealthOverlay = document.getElementById('stealthOverlay');
       const mainContent = document.getElementById('mainContent');
@@ -674,18 +753,16 @@
       const isStealthActive = !stealthOverlay.classList.contains('hidden');
       
       if (isStealthActive) {
-        // Balik ke nota biasa
         stealthOverlay.classList.add('hidden');
         mainContent.classList.remove('hidden');
       } else {
-        // Masuk ke mod penyamaran (seakan-akan portal rekod pejabat rasmi)
         stealthOverlay.classList.remove('hidden');
         mainContent.classList.add('hidden');
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     }
 
-    // Gerak Isyarat Rahsia: Ketuk tajuk 3 kali untuk buka Stealth Mode dengan cepat
+    // Gerak Isyarat Rahsia: Ketuk tajuk 3 kali untuk buka Stealth Mode
     let titleClickCount = 0;
     let titleClickTimer = null;
     function handleTitleClicks() {
@@ -701,24 +778,16 @@
       }
     }
 
-    // --- KAWALAN SAIZ TULISAN & PAPARAN (FONT SIZE & DISPLAY SETTINGS) ---
+    // --- KAWALAN SAIZ TULISAN & PAPARAN ---
     function toggleDisplayMenu() {
       const panel = document.getElementById('displaySettingsPanel');
       panel.classList.toggle('hidden');
     }
 
     function setFontSize(size) {
-      const content = document.getElementById('contentContainer');
       const body = document.getElementById('appBody');
-      
-      // Buang kelas font lama
       body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
-      content.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
-
-      // Masukkan kelas font baru
-      const targetClass = 'font-size-' + size;
-      body.classList.add(targetClass);
-      content.classList.add(targetClass);
+      body.classList.add('font-size-' + size);
 
       // Kemas kini gaya butang pilihan
       ['sm', 'md', 'lg', 'xl'].forEach(s => {
@@ -733,26 +802,86 @@
       });
     }
 
+    // Fungsi Pengubah Jarak Paparan (Rapat vs Selesa)
     function setDisplayDensity(density) {
+      const body = document.getElementById('appBody');
       const container = document.getElementById('contentContainer');
       const btnCompact = document.getElementById('btnDensityCompact');
       const btnComfortable = document.getElementById('btnDensityComfortable');
 
       if (density === 'compact') {
+        body.classList.remove('density-comfortable');
+        body.classList.add('density-compact');
+        
         container.classList.remove('space-y-3.5', 'pt-3');
-        container.classList.add('space-y-2', 'pt-1.5');
-        btnCompact.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition';
+        container.classList.add('space-y-1.5', 'pt-1.5');
+        
+        btnCompact.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition shadow-xs';
         btnComfortable.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
       } else {
-        container.classList.remove('space-y-2', 'pt-1.5');
+        body.classList.remove('density-compact');
+        body.classList.add('density-comfortable');
+
+        container.classList.remove('space-y-1.5', 'pt-1.5');
         container.classList.add('space-y-3.5', 'pt-3');
-        btnComfortable.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition';
+        
+        btnComfortable.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition shadow-xs';
         btnCompact.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
       }
     }
 
-    // Jalankan penetapan tema permulaan
-    initTheme();
+    // Fungsi Salin Nota ke Papan Klip
+    function salinSemuaNota() {
+      const teksNota = `NOTA AUDIT UMI & FARDHU AIN (JAHEIK)
+Built & maintained by Nikolai Nicholas
+
+1. SEJARAH & TARIKH UMI:
+- Mula diperkenalkan pada tahun 1990 di bawah dasar Membangun Bersama Islam (MBI) pimpinan Almarhum Tok Guru Nik Aziz.
+- Dikuatkuasakan secara bersistem menerusi Manual Pelaksanaan Prinsip UMI (Tahun 2020) bagi audit dan pensijilan pematuhan jabatan negeri.
+
+2. TERAS UMI:
+- Ubudiyyah: Pengabdian kepada Allah SWT, kerja ikhlas sebagai ibadah semata-mata.
+- Mas'uliyyah: Akauntabiliti, amanah, sedar setiap tugas & masa akan dihisab di akhirat.
+- Itqan: Ketelitian, kesempurnaan, kualiti tinggi dan berdisiplin tanpa kesilapan.
+
+3. PENGHAYATAN DI TEMPAT KERJA:
+- Ubudiyyah: Ikhlas berkhidmat, jaga solat pada waktunya & jaga integriti syariat.
+- Mas'uliyyah: Tepati masa, jaga rahsia rekod kerajaan, tidak guna aset jabatan untuk peribadi.
+- Itqan: Sifar kesilapan (zero defect), susun fail meja dengan teratur, tingkat kecekapan.
+
+4. FARDHU AIN VS KIFAYAH:
+- Fardhu Ain: Wajib ke atas setiap individu mukallaf (Solat 5 waktu, puasa, akidah).
+- Fardhu Kifayah: Wajib secara komuniti (Solat jenazah, urusan pentadbiran awam).
+
+5. INTISARI AL-FATAIHAH:
+- Erti: Pembukaan (7 ayat), Rukun Qauli wajib solat.
+- Tauhid: "Hanya Engkau kami sembah dan memohon pertolongan".
+
+6. RUKUN ISLAM (5) & RUKUN IMAN (6)
+7. TAHARAH: Wuduk (6 Rukun), Mandi Wajib (3 Rukun).
+8. SOLAT: 13 Rukun (Qalbi, Qauli, Fi'li, Ma'nawi).
+9. NAJIS: Mukhaffafah, Mutawassitah, Mughallazah.`;
+
+      const el = document.createElement('textarea');
+      el.value = teksNota;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
+      const toast = document.getElementById('toast');
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2000);
+    }
+
+    // Inisialisasi Aplikasi (Default: Tema Cerah)
+    window.onload = function() {
+      initTheme();
+    };
   </script>
 </body>
 </html>
