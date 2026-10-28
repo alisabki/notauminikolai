@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -8,7 +9,7 @@
   <!-- Open Graph / WhatsApp / Facebook Preview Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nota Poket UMI Nikolai (AUDIT UMI MPKB-BRI)">
-  <meta property="og:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah, Rukun Solat, Wuduk & Taharah MPKB-BRI. Disediakan oleh Nikolai Nicholas.">
+  <meta property="og:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah, Hukum Tajwid, Suami Isteri, Rukun Solat, Wuduk & Taharah MPKB-BRI. Disediakan oleh Nikolai Nicholas.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&h=630&q=80">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -16,7 +17,7 @@
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Nota Poket UMI Nikolai (AUDIT UMI MPKB-BRI)">
-  <meta name="twitter:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah & Fardhu Ain. Disediakan oleh Nikolai Nicholas.">
+  <meta name="twitter:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah, Tajwid & Fardhu Ain. Disediakan oleh Nikolai Nicholas.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&h=630&q=80">
 
   <!-- Tailwind CSS -->
@@ -95,9 +96,9 @@
       padding: 0.25rem 0.5rem !important;
     }
 
-    /* Mod Comfort: Satu Tab = Satu Kad Penuh */
-    .density-comfort .tab-card {
-      display: none;
+    /* Mod Comfort: Kad Bertumpu */
+    .density-comfort .tab-card.comfort-hidden {
+      display: none !important;
     }
     .density-comfort .tab-card.active-comfort-card {
       display: block !important;
@@ -105,7 +106,7 @@
     }
     .density-comfort section {
       padding: 1.15rem !important;
-      min-height: 58vh;
+      min-height: 52vh;
     }
     .density-comfort table td, .density-comfort table th {
       padding: 0.6rem 0.75rem !important;
@@ -262,19 +263,21 @@
       <!-- Kotak Carian Pantas (Instant Search) -->
       <div class="max-w-md mx-auto mt-2">
         <div class="relative flex items-center">
-          <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Cari topik (cth: wuduk, 1990, itqan, rukun, najis)..." class="w-full text-xs pl-8 pr-7 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-teal-600 transition">
+          <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Cari topik (cth: tajwid, suami, wuduk, 1990, itqan, rukun)..." class="w-full text-xs pl-8 pr-7 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-teal-600 transition">
           <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           <button id="searchClearBtn" onclick="clearSearch()" class="hidden absolute right-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold">✕</button>
         </div>
       </div>
 
-      <!-- Quick Pill Nav (Navigasi Tab) -->
+      <!-- Quick Pill Nav (Navigasi Tab: Tekan sekali = fokus, Tekan lagi sekali = tunjuk semua) -->
       <div id="tabNavContainer" class="max-w-md mx-auto mt-2 flex gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs font-medium">
-        <button type="button" onclick="selectTab('sec-sejarah')" id="tabBtn-sec-sejarah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-teal-700 text-white border border-teal-700 transition">Sejarah</button>
+        <button type="button" onclick="selectTab('sec-sejarah')" id="tabBtn-sec-sejarah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Sejarah</button>
         <button type="button" onclick="selectTab('sec-umi')" id="tabBtn-sec-umi" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Teras UMI</button>
         <button type="button" onclick="selectTab('sec-harian')" id="tabBtn-sec-harian" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Kerja MPKB</button>
         <button type="button" onclick="selectTab('sec-fardhu')" id="tabBtn-sec-fardhu" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Ain vs Kifayah</button>
         <button type="button" onclick="selectTab('sec-fatihah')" id="tabBtn-sec-fatihah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Al-Fatihah</button>
+        <button type="button" onclick="selectTab('sec-tajwid')" id="tabBtn-sec-tajwid" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Tajwid</button>
+        <button type="button" onclick="selectTab('sec-keluarga')" id="tabBtn-sec-keluarga" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Suami Isteri</button>
         <button type="button" onclick="selectTab('sec-rukun')" id="tabBtn-sec-rukun" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Islam & Iman</button>
         <button type="button" onclick="selectTab('sec-taharah')" id="tabBtn-sec-taharah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Wuduk & Mandi</button>
         <button type="button" onclick="selectTab('sec-solat')" id="tabBtn-sec-solat" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Rukun Solat</button>
@@ -282,7 +285,7 @@
       </div>
     </header>
 
-    <!-- Notis Terapung Feedback Salin -->
+    <!-- Notis Terapung Feedback Salin / Status Paparan -->
     <div id="toast" class="fixed top-16 left-1/2 transform -translate-x-1/2 bg-slate-900/95 dark:bg-white dark:text-slate-900 text-white text-xs px-4 py-2 rounded-full shadow-lg z-50 transition-opacity duration-300 opacity-0 pointer-events-none">
       Nota disalin ke papan klip!
     </div>
@@ -296,13 +299,13 @@
           <span>📋</span> Kemajuan Ulang Kaji:
         </span>
         <div class="flex items-center gap-2">
-          <span id="progressText" class="font-bold text-teal-700 dark:text-teal-300 text-xs">0 / 8 Kuasai</span>
+          <span id="progressText" class="font-bold text-teal-700 dark:text-teal-300 text-xs">0 / 11 Kuasai</span>
           <button onclick="resetChecklist()" title="Semak Semula Semua" class="text-[10px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">Reset</button>
         </div>
       </div>
 
       <!-- 0. SEJARAH & LATAR BELAKANG DASAR UMI KELANTAN -->
-      <section id="sec-sejarah" class="tab-card active-comfort-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-36">
+      <section id="sec-sejarah" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-36">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-slate-700 dark:bg-slate-300 rounded-full"></span>
@@ -505,6 +508,141 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <!-- 3B. ASAS HUKUM TAJWID AL-QURAN (BARU) -->
+      <section id="sec-tajwid" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-emerald-200/80 dark:border-emerald-900/40 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-emerald-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">3B. Asas Hukum Tajwid Al-Quran</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-emerald-100 dark:bg-emerald-950/60 px-2 py-0.5 rounded-lg text-emerald-800 dark:text-emerald-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-tajwid', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
+        </div>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2.5">Mengetahui ilmu tajwid hukumnya Fardhu Kifayah, namun membaca Al-Quran/Al-Fatihah dengan bertajwid adalah <strong>Fardhu Ain</strong>.</p>
+
+        <!-- A. Nun Sakinah & Tanwin -->
+        <div class="mb-3">
+          <div class="text-[11px] font-bold text-emerald-900 dark:text-emerald-300 mb-1 flex items-center justify-between">
+            <span>A. Hukum Nun Mati (نْ) & Tanwin (ً ٍ ٌ) — 5 Bahagian:</span>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-emerald-100 dark:border-emerald-900/40">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 border-b border-emerald-100 dark:border-emerald-900/40">
+                  <th class="py-1.5 px-2.5 font-semibold w-24">Hukum</th>
+                  <th class="py-1.5 px-2.5 font-semibold">Huruf & Cara Bacaan</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-emerald-50 dark:divide-emerald-900/30 text-slate-700 dark:text-slate-300">
+                <tr>
+                  <td class="py-1.5 px-2.5 font-semibold text-emerald-800 dark:text-emerald-300 align-top">Izhar Halqi</td>
+                  <td class="py-1.5 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
+                    <strong>6 Huruf Halqum:</strong> ء , هـ , ع , ح , غ , خ<br>
+                    <span class="text-emerald-700 dark:text-emerald-400 font-medium">Cara:</span> Dibaca <em>jelas & nyata</em> tanpa dengung (cth: <em>'an'amta</em>).
+                  </td>
+                </tr>
+                <tr class="bg-emerald-50/20 dark:bg-emerald-950/10">
+                  <td class="py-1.5 px-2.5 font-semibold text-emerald-800 dark:text-emerald-300 align-top">Idgham Ma'al Ghunnah</td>
+                  <td class="py-1.5 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
+                    <strong>4 Huruf (Yanmu):</strong> ي , ن , م , و<br>
+                    <span class="text-emerald-700 dark:text-emerald-400 font-medium">Cara:</span> Memasukkan bunyi nun ke dalam huruf selepasnya <em>beserta dengung 2 harakat</em>.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 px-2.5 font-semibold text-emerald-800 dark:text-emerald-300 align-top">Idgham Bila Ghunnah</td>
+                  <td class="py-1.5 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
+                    <strong>2 Huruf:</strong> ل , ر<br>
+                    <span class="text-emerald-700 dark:text-emerald-400 font-medium">Cara:</span> Memasukkan bunyi nun sepenuhnya <em>tanpa dengung</em> (cth: <em>mir-rabbihim</em>).
+                  </td>
+                </tr>
+                <tr class="bg-emerald-50/20 dark:bg-emerald-950/10">
+                  <td class="py-1.5 px-2.5 font-semibold text-emerald-800 dark:text-emerald-300 align-top">Iqlab</td>
+                  <td class="py-1.5 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
+                    <strong>1 Huruf:</strong> ب<br>
+                    <span class="text-emerald-700 dark:text-emerald-400 font-medium">Cara:</span> Menukar bunyi nun/tanwin menjadi bunyi <em>Mim (م) beserta dengung 2 harakat</em> (cth: <em>mim-ba'di</em>).
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 px-2.5 font-semibold text-emerald-800 dark:text-emerald-300 align-top">Ikhfa' Haqiqi</td>
+                  <td class="py-1.5 px-2.5 text-slate-600 dark:text-slate-300 leading-snug">
+                    <strong>15 Huruf:</strong> ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك<br>
+                    <span class="text-emerald-700 dark:text-emerald-400 font-medium">Cara:</span> Membunyikan nun secara <em>samar-samar antara izhar & idgham beserta dengung</em>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- B. Mim Sakinah & Qalqalah Ringkas -->
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/40 dark:bg-emerald-950/20">
+            <span class="font-bold text-emerald-900 dark:text-emerald-200 block mb-1">B. Mim Mati (مْ) (3 Hukum):</span>
+            <ul class="text-[11px] text-slate-600 dark:text-slate-300 space-y-1 leading-snug">
+              <li><strong>1. Ikhfa' Syafawi:</strong> Mim mati bertemu huruf <em>ب</em> (dengung).</li>
+              <li><strong>2. Idgham Mithlain:</strong> Mim mati bertemu huruf <em>م</em> (dengung).</li>
+              <li><strong>3. Izhar Syafawi:</strong> Mim mati bertemu <em>selain م dan ب</em> (jelas tanpa dengung).</li>
+            </ul>
+          </div>
+          <div class="p-2.5 rounded-xl border border-teal-200 dark:border-teal-800/60 bg-teal-50/40 dark:bg-teal-950/20">
+            <span class="font-bold text-teal-900 dark:text-teal-200 block mb-1">C. Qalqalah (Lantunan Bunyi):</span>
+            <p class="text-[11px] text-slate-600 dark:text-slate-300 mb-1">Hurufnya: <strong>ق ط ب ج د</strong> (Baju Di Kotoq / Qatbu Jadin)</p>
+            <ul class="text-[10px] text-slate-600 dark:text-slate-300 space-y-0.5 leading-snug">
+              <li>• <strong>Sughra:</strong> Huruf mati di tengah kalimah (lantunan ringan).</li>
+              <li>• <strong>Kubra:</strong> Huruf di hujung kalimah ketika waqaf (lantunan kuat).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3C. HAK & TANGGUNGJAWAB SUAMI ISTERI (BARU) -->
+      <section id="sec-keluarga" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-rose-200/80 dark:border-rose-900/40 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-rose-500 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">3C. Tanggungjawab Suami Isteri (Munakahat)</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-rose-100 dark:bg-rose-950/60 px-2 py-0.5 rounded-lg text-rose-800 dark:text-rose-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-keluarga', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
+        </div>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2.5">Asas pembentukan keluarga berintegriti berteraskan nilai Syariah & UMI.</p>
+
+        <div class="space-y-2 text-xs">
+          <!-- Peranan Suami -->
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/50 bg-blue-50/40 dark:bg-blue-950/20">
+            <span class="font-bold text-blue-900 dark:text-blue-200 flex items-center gap-1.5 mb-1">
+              <span class="w-2 h-2 rounded-full bg-blue-600"></span> Tanggungjawab & Peranan Suami Terhadap Isteri:
+            </span>
+            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
+              <li><strong>Nafkah Zahir:</strong> Menyediakan makanan, pakaian, tempat tinggal yang selamat, dan perubatan mengikut kemampuan.</li>
+              <li><strong>Nafkah Batin:</strong> Menggauli isteri dengan cara yang ma'ruf (baik), lemah lembut, dan memenuhi keperluan emosi/batin.</li>
+              <li><strong>Bimbingan Agama:</strong> Membimbing isteri dan anak-anak memahami Fardhu Ain, solat, aurat, dan akhlak Islam (Qawwamun).</li>
+              <li><strong>Memberi Mahar:</strong> Menyerahkan mas kahwin yang telah disepakati semasa akad nikah.</li>
+            </ul>
+          </div>
+
+          <!-- Peranan Isteri -->
+          <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-800/50 bg-rose-50/40 dark:bg-rose-950/20">
+            <span class="font-bold text-rose-900 dark:text-rose-200 flex items-center gap-1.5 mb-1">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span> Tanggungjawab & Peranan Isteri Terhadap Suami:
+            </span>
+            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
+              <li><strong>Taat Kepada Suami:</strong> Mematuhi perintah suami selagi tidak bertentangan dengan hukum syarak atau maksiat.</li>
+              <li><strong>Menjaga Kehormatan Diri & Rumah Tangga:</strong> Menjaga maruah, aurat, dan kesucian diri terutamanya semasa ketiadaan suami.</li>
+              <li><strong>Menjaga Harta Suami:</strong> Amanah dalam menguruskan harta dan barangan rumah tangga tanpa pembaziran.</li>
+              <li><strong>Mendapat Keizinan Suami:</strong> Meminta izin sebelum keluar rumah atau berpuasa sunat (apabila suami berada bersama).</li>
+            </ul>
+          </div>
+
+          <!-- Tanggungjawab Bersama -->
+          <div class="p-2 rounded-xl border border-amber-200 dark:border-amber-800/50 bg-amber-50/40 dark:bg-amber-950/20 text-[11px] text-amber-950 dark:text-amber-200 leading-snug">
+            <strong>🤝 Tanggungjawab Bersama:</strong> Saling bertolak ansur, memelihara rahsia rumah tangga, mendidik anak-anak dengan syariat, serta mewujudkan suasana mawaddah wa rahmah.
+          </div>
         </div>
       </section>
 
@@ -806,6 +944,14 @@
         a: "Ubudiyyah: Pengabdian kepada Allah (ikhlas niat ibadah). Mas'uliyyah: Akauntabiliti dan amanah (sedar dihisab di akhirat). Itqan: Ketelitian, kesempurnaan dan disiplin kerja berkualiti tinggi."
       },
       {
+        q: "Apakah hukum Nun Mati/Tanwin bertemu huruf Ba (ب) dan berikan cara bacaannya?",
+        a: "Hukumnya adalah Iqlab. Cara membacanya ialah menukarkan bunyi Nun/Tanwin kepada bunyi Mim (م) berserta dengung selama 2 harakat."
+      },
+      {
+        q: "Apakah peranan utama suami terhadap isteri dari sudut nafkah zahir dan batin?",
+        a: "Nafkah zahir: Menyediakan makan minum, pakaian, tempat tinggal selamat, dan perubatan. Nafkah batin: Menggauli isteri secara baik (ma'ruf), kasih sayang, dan memberi bimbingan agama Fardhu Ain."
+      },
+      {
         q: "Sebutkan 4 pecahan Rukun Solat (13 perkara) berserta contohnya?",
         a: "Qalbi (Niat di hati), Qauli (Bacaan: Takbiratul Ihram, Al-Fatihah, Tahiyyat Akhir, Selawat, Salam), Fi'li (Perbuatan: Berdiri, Ruku', I'tidal, Sujud, Duduk), dan Ma'nawi (Tertib)."
       },
@@ -825,10 +971,29 @@
 
     let currentQuizIndex = 0;
     let currentDensity = 'compact'; // Default: compact
-    let currentActiveTabId = 'sec-sejarah';
+    let currentActiveTabId = null;  // null = Papar Semua (Show All)
 
-    // --- NAVIGASI TAB & MOD COMFORT / COMPACT ---
+    // Notifikasi mini (toast)
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 1600);
+    }
+
+    // --- NAVIGASI TAB & TOGGLE BUKA SEMUA (SHOW ALL) ---
     function selectTab(sectionId) {
+      // Sekiranya butang tab yang sedang aktif ditekan sekali lagi -> Nyahaktif & Papar Semua Kad
+      if (currentActiveTabId === sectionId) {
+        showAllCards();
+        showToast("Memaparkan semua topik");
+        return;
+      }
+
       currentActiveTabId = sectionId;
 
       // Kemas kini gaya butang tab aktif
@@ -843,13 +1008,15 @@
       if (currentDensity === 'comfort') {
         // Mod Comfort: Papar HANYA SATU KAD mengikut tab yang dipilih
         document.querySelectorAll('.tab-card').forEach(card => {
-          card.classList.remove('active-comfort-card');
+          if (card.id === sectionId) {
+            card.classList.add('active-comfort-card');
+            card.classList.remove('comfort-hidden');
+          } else {
+            card.classList.remove('active-comfort-card');
+            card.classList.add('comfort-hidden');
+          }
         });
-        const targetCard = document.getElementById(sectionId);
-        if (targetCard) {
-          targetCard.classList.add('active-comfort-card');
-          window.scrollTo({ top: 90, behavior: 'smooth' });
-        }
+        window.scrollTo({ top: 90, behavior: 'smooth' });
       } else {
         // Mod Compact: Skrol lancar ke seksyen dalam satu halaman
         const target = document.getElementById(sectionId);
@@ -857,6 +1024,22 @@
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
+    }
+
+    // Fungsi Papar Semua Kad (Show All)
+    function showAllCards() {
+      currentActiveTabId = null;
+
+      // Reset semua butang tab kepada warna asas (tidak aktif)
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        btn.className = 'nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition';
+      });
+
+      // Tunjukkan semua kad
+      document.querySelectorAll('.tab-card').forEach(card => {
+        card.classList.remove('comfort-hidden', 'active-comfort-card');
+        card.style.display = '';
+      });
     }
 
     // --- KAWALAN MOD PAPARAN (COMPACT VS COMFORT) ---
@@ -873,8 +1056,12 @@
         btnComfort.className = 'flex-1 py-1 text-[11px] rounded bg-teal-700 text-white font-semibold transition shadow-xs';
         btnCompact.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
 
-        // Aktifkan satu kad tab semasa
-        selectTab(currentActiveTabId);
+        if (currentActiveTabId) {
+          selectTab(currentActiveTabId);
+        } else {
+          // Jika tiada tab aktif, pilih tab pertama
+          selectTab('sec-sejarah');
+        }
       } else {
         body.classList.remove('density-comfort');
         body.classList.add('density-compact');
@@ -883,10 +1070,7 @@
         btnComfort.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
 
         // Tunjukkan semula semua kad
-        document.querySelectorAll('.tab-card').forEach(card => {
-          card.style.display = '';
-        });
-        selectTab(currentActiveTabId);
+        showAllCards();
       }
     }
 
@@ -921,10 +1105,10 @@
 
       if (term.length > 0) {
         clearBtn.classList.remove('hidden');
-        // Semasa carian, tukar sementara ke mod senarai terbuka
         cards.forEach(card => {
           const text = card.textContent.toLowerCase();
           if (text.includes(term)) {
+            card.classList.remove('comfort-hidden');
             card.style.display = 'block';
           } else {
             card.style.display = 'none';
@@ -932,10 +1116,10 @@
         });
       } else {
         clearBtn.classList.add('hidden');
-        if (currentDensity === 'comfort') {
-          setDisplayDensity('comfort');
+        if (currentDensity === 'comfort' && currentActiveTabId) {
+          selectTab(currentActiveTabId);
         } else {
-          cards.forEach(card => card.style.display = '');
+          showAllCards();
         }
       }
     }
@@ -955,13 +1139,13 @@
       } else {
         masteredTopics.delete(topicId);
       }
-      document.getElementById('progressText').textContent = `${masteredTopics.size} / 8 Kuasai`;
+      document.getElementById('progressText').textContent = `${masteredTopics.size} / 11 Kuasai`;
     }
 
     function resetChecklist() {
       masteredTopics.clear();
       document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      document.getElementById('progressText').textContent = '0 / 8 Kuasai';
+      document.getElementById('progressText').textContent = '0 / 11 Kuasai';
     }
 
     // --- STEALTH MODE (MOD MENYAMAR) ---
@@ -1072,10 +1256,19 @@ Built & maintained by Nikolai Nicholas
 - Erti: Pembukaan, Rukun Qauli wajib solat.
 - Tauhid: "Hanya Engkau yang kami sembah dan hanya kepada Engkau kami memohon pertolongan".
 
-6. RUKUN ISLAM (5 Perkara) & RUKUN IMAN (6 Perkara)
-7. TAHARAH: Rukun Wuduk (6 Perkara), Rukun Mandi Wajib (3 Perkara).
-8. SOLAT: 13 Rukun (Qalbi, Qauli, Fi'li, Ma'nawi) & 5 Syarat Sah Solat.
-9. NAJIS: Mukhaffafah, Mutawassitah, Mughallazah (7 kali basuhan air mutlak + 1 kali air tanah).`;
+6. HUKUM TAJWID ASAS:
+- Nun Sakinah & Tanwin: Izhar Halqi (ء هـ ع ح غ خ), Idgham Ma'al Ghunnah (ي ن م و), Idgham Bila Ghunnah (ل ر), Iqlab (ب), Ikhfa' Haqiqi (15 huruf).
+- Mim Sakinah: Ikhfa' Syafawi (ب), Idgham Mithlain (م), Izhar Syafawi (huruf lain).
+- Qalqalah: ق ط ب ج د (Sughra & Kubra).
+
+7. TANGGUNGJAWAB SUAMI ISTERI (MUNAKAHAT):
+- Suami: Nafkah zahir (makan, pakaian, tempat tinggal, rawatan), nafkah batin (ma'ruf), bimbingan agama & Fardhu Ain.
+- Isteri: Taat kepada suami selagi patuh syarak, menjaga maruah diri & rumah tangga, menjaga harta suami, mohon izin keluar rumah.
+
+8. RUKUN ISLAM (5 Perkara) & RUKUN IMAN (6 Perkara)
+9. TAHARAH: Rukun Wuduk (6 Perkara), Rukun Mandi Wajib (3 Perkara).
+10. SOLAT: 13 Rukun (Qalbi, Qauli, Fi'li, Ma'nawi) & 5 Syarat Sah Solat.
+11. NAJIS: Mukhaffafah, Mutawassitah, Mughallazah (7 kali basuhan air mutlak + 1 kali air tanah).`;
 
       const el = document.createElement('textarea');
       el.value = teksNota;
@@ -1083,14 +1276,7 @@ Built & maintained by Nikolai Nicholas
       el.select();
       document.execCommand('copy');
       document.body.removeChild(el);
-
-      const toast = document.getElementById('toast');
-      toast.classList.remove('opacity-0');
-      toast.classList.add('opacity-100');
-      setTimeout(() => {
-        toast.classList.remove('opacity-100');
-        toast.classList.add('opacity-0');
-      }, 2000);
+      showToast("Nota disalin ke papan klip!");
     }
 
     window.onload = function() {
@@ -1099,3 +1285,4 @@ Built & maintained by Nikolai Nicholas
   </script>
 </body>
 </html>
+```
