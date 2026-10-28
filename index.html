@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Nota Poket Audit UMI JAHEIK - Nikolai Nicholas</title>
+  <title>Nota Poket UMI Nikolai - AUDIT UMI MPKB-BRI</title>
 
   <!-- Open Graph / WhatsApp / Facebook Preview Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Nota Poket Audit UMI & Fardhu Ain (JAHEIK)">
-  <meta property="og:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah, Rukun Solat, Wuduk & Taharah. Disediakan oleh Nikolai Nicholas.">
+  <meta property="og:title" content="Nota Poket UMI Nikolai (AUDIT UMI MPKB-BRI)">
+  <meta property="og:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah, Rukun Solat, Wuduk & Taharah MPKB-BRI. Disediakan oleh Nikolai Nicholas.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&h=630&q=80">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nota Poket Audit UMI & Fardhu Ain (JAHEIK)">
+  <meta name="twitter:title" content="Nota Poket UMI Nikolai (AUDIT UMI MPKB-BRI)">
   <meta name="twitter:description" content="Panduan pantas Ubudiyyah, Mas'uliyyah, Itqan, Al-Fatihah & Fardhu Ain. Disediakan oleh Nikolai Nicholas.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&h=630&q=80">
 
@@ -30,17 +30,10 @@
             sans: ['Inter', 'sans-serif'],
           },
           colors: {
-            brand: {
-              teal: '#2A7F85',
-              softTeal: '#EBF5F5',
-              sage: '#588157',
-              softSage: '#F0F5F1',
-              sand: '#E9D8A6',
-              softSand: '#FDFBF7',
-              slate: '#3D5A80',
-              softSlate: '#EEF4F8',
-              rose: '#D4737B',
-              softRose: '#FDF2F3'
+            mpkb: {
+              primary: '#0d5c46',
+              light: '#e8f5f0',
+              accent: '#d4af37'
             }
           }
         }
@@ -93,51 +86,56 @@
       font-size: 1.35rem !important;
     }
 
-    /* Mod Jarak Paparan: Rapat (Compact) vs Selesa (Comfortable) */
+    /* Mod Paparan Jarak: Compact vs Comfort */
     .density-compact section {
-      padding: 0.5rem !important;
-      margin-bottom: 0.5rem !important;
+      padding: 0.6rem !important;
+      margin-bottom: 0.65rem !important;
     }
     .density-compact table td, .density-compact table th {
       padding: 0.25rem 0.5rem !important;
     }
-    .density-compact main {
-      gap: 0.5rem !important;
-      padding-top: 0.5rem !important;
+
+    /* Mod Comfort: Satu Tab = Satu Kad Penuh */
+    .density-comfort .tab-card {
+      display: none;
+    }
+    .density-comfort .tab-card.active-comfort-card {
+      display: block !important;
+      animation: fadeInCard 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .density-comfort section {
+      padding: 1.15rem !important;
+      min-height: 58vh;
+    }
+    .density-comfort table td, .density-comfort table th {
+      padding: 0.6rem 0.75rem !important;
     }
 
-    .density-comfortable section {
-      padding: 0.9rem !important;
-      margin-bottom: 0.85rem !important;
-    }
-    .density-comfortable table td, .density-comfortable table th {
-      padding: 0.5rem 0.75rem !important;
-    }
-    .density-comfortable main {
-      gap: 0.85rem !important;
-      padding-top: 0.85rem !important;
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body id="appBody" class="font-size-md density-comfortable bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
+<body id="appBody" class="font-size-md density-compact bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen pb-16 transition-colors duration-200">
 
-  <!-- ==================== 1. MOD PENYAMARAN AUDIT (STEALTH / CAMOUFLAGE MODE) ==================== -->
-  <div id="stealthOverlay" class="hidden min-h-screen bg-slate-100 dark:bg-slate-900 p-4 font-sans text-xs select-none">
-    <div class="max-w-md mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-xs border border-slate-200 dark:border-slate-700 p-4 space-y-4">
+  <!-- ==================== 1. STEALTH MODE (PENYAMARAN PORTAL RASMI MPKB-BRI) ==================== -->
+  <div id="stealthOverlay" class="hidden min-h-screen bg-slate-100 dark:bg-slate-900 p-3.5 font-sans text-xs select-none">
+    <div class="max-w-md mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700 p-4 space-y-3.5">
       
-      <!-- Bar Header Dokumen Rasmi -->
+      <!-- Bar Header Dokumen Rasmi MPKB-BRI -->
       <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-slate-800 dark:bg-slate-700 text-white flex items-center justify-center font-bold text-xs tracking-wider">
-            GOV
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-emerald-800 dark:bg-emerald-900 text-amber-300 flex items-center justify-center font-black text-xs tracking-wider border border-amber-400/40">
+            BRI
           </div>
           <div>
-            <div class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Sistem Intranet Perkhidmatan</div>
-            <div class="text-xs font-bold text-slate-800 dark:text-slate-200">Log Pengurusan Tugasan Harian</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-widest font-bold">Portal Pentadbiran Majlis</div>
+            <div class="text-xs font-bold text-slate-800 dark:text-slate-200">Log Dokumen Jabatan MPKB-BRI</div>
           </div>
         </div>
         <!-- Butang Rahsia Kembali ke Nota -->
-        <button onclick="toggleStealthMode()" title="Segar Semula Sistem" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300">
+        <button onclick="toggleStealthMode()" title="Segar Semula Paparan" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-600 dark:text-slate-300">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
           </svg>
@@ -145,50 +143,42 @@
       </div>
 
       <!-- Kad Status Audit Olok-olok -->
-      <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-lg border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300">
+      <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800/80 text-emerald-900 dark:text-emerald-200">
         <div class="flex items-center justify-between mb-1">
-          <span class="font-bold uppercase text-[10px] tracking-wider">Status Pemantauan Integriti</span>
-          <span class="inline-flex items-center gap-1 text-[10px] bg-emerald-200 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 px-1.5 py-0.5 rounded">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> AKTIF
+          <span class="font-bold uppercase text-[10px] tracking-wider">Status Pemantauan Pematuhan</span>
+          <span class="inline-flex items-center gap-1 text-[10px] bg-emerald-200 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 px-1.5 py-0.5 rounded-full font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> TERATUR
           </span>
         </div>
-        <p class="text-[11px] leading-snug text-emerald-800 dark:text-emerald-200">Semua fail meja dan fail rekod dokumen fizikal berada dalam keadaan teratur dan mematuhi garis panduan piawaian.</p>
+        <p class="text-[11px] leading-snug text-emerald-800 dark:text-emerald-200">Semua fail meja, rekod kehadiran bertugas dan dokumen sokongan piawaian UMI telah dikemas kini.</p>
       </div>
 
-      <!-- Jadual Dummy Tugasan Kakitangan -->
+      <!-- Jadual Dummy Tugasan Kakitangan MPKB-BRI -->
       <div>
-        <div class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-2">Senarai Fail Rekod Harian</div>
+        <div class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Fail & Urusan Harian MPKB-BRI</div>
         <div class="space-y-1.5">
-          <div class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/70">
+          <div class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/70">
             <div>
-              <div class="font-semibold text-slate-800 dark:text-slate-200">JAHEIK/AUDIT/2026-04</div>
-              <div class="text-[10px] text-slate-500">Semakan Pematuhan Standard Nilai</div>
+              <div class="font-semibold text-slate-800 dark:text-slate-200">MPKB/AUDIT-UMI/2026-X</div>
+              <div class="text-[10px] text-slate-500">Buku Panduan & Garis Panduan MPKB</div>
             </div>
-            <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 text-[10px] font-medium">Selesai</span>
+            <span class="px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 text-[10px] font-semibold">Disemak</span>
           </div>
 
-          <div class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/70">
+          <div class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/70">
             <div>
-              <div class="font-semibold text-slate-800 dark:text-slate-200">DOK-PENTADBIRAN-01</div>
-              <div class="text-[10px] text-slate-500">Buku Rekod Kehadiran & Taklimat</div>
+              <div class="font-semibold text-slate-800 dark:text-slate-200">MEJA-TADBIR-04</div>
+              <div class="text-[10px] text-slate-500">Minit Mesyuarat Pematuhan Integriti</div>
             </div>
-            <span class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 text-[10px] font-medium">Disemak</span>
-          </div>
-
-          <div class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/70">
-            <div>
-              <div class="font-semibold text-slate-800 dark:text-slate-200">LAPORAN-INTEGRITI-V3</div>
-              <div class="text-[10px] text-slate-500">Fail Dokumen Induk Tindakan</div>
-            </div>
-            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-medium">Patuh</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-[10px] font-semibold">Patuh</span>
           </div>
         </div>
       </div>
 
       <!-- Kaki Mod Menyamar -->
       <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-[10px] text-slate-500">
-        <span>Pengguna: Nikolai Nicholas</span>
-        <button onclick="toggleStealthMode()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">Tutup Paparan</button>
+        <span>Pengguna: <strong>Nikolai Nicholas</strong></span>
+        <button onclick="toggleStealthMode()" class="text-teal-600 dark:text-teal-400 font-semibold hover:underline">Kembali Ke Nota</button>
       </div>
     </div>
   </div>
@@ -196,33 +186,38 @@
   <!-- ==================== 2. PAPARAN UTAMA NOTA AUDIT ==================== -->
   <div id="mainContent">
 
-    <!-- Header Ringkas & Kemas -->
-    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2.5 shadow-xs transition-colors">
+    <!-- Header Atas Melekat (Sticky) -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3.5 py-2 shadow-xs transition-colors">
       <div class="max-w-md mx-auto flex items-center justify-between gap-2">
-        <div class="flex-1 cursor-pointer" onclick="handleTitleClicks()" title="Tekan 3 kali berturut-turut untuk Mod Menyamar (Stealth)">
-          <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 mb-0.5">
+        <div class="flex-1 cursor-pointer select-none" onclick="handleTitleClicks()" title="Tekan 3 kali berturut-turut untuk Stealth Mode">
+          <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300 mb-0.5 border border-emerald-200/60 dark:border-emerald-800">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            Audit JAHEIK
+            AUDIT UMI MPKB-BRI
           </div>
-          <h1 class="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-tight">Nota Poket UMI & Fardhu Ain</h1>
+          <h1 class="text-sm font-black text-slate-900 dark:text-slate-100 tracking-tight leading-tight">Nota Poket UMI Nikolai</h1>
         </div>
 
-        <!-- Butang Kawalan (Saiz Font, Stealth, Tema & Salin) -->
+        <!-- Butang Kawalan Header -->
         <div class="flex items-center gap-1.5">
-          <!-- Butang Menu Saiz Tulisan & Paparan -->
-          <button onclick="toggleDisplayMenu()" title="Tetapan Saiz & Paparan" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition font-bold text-xs flex items-center gap-0.5">
+          <!-- Butang Kuiz Uji Diri -->
+          <button onclick="openQuizModal()" title="Kuiz Spontan Audit" class="p-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 active:scale-95 transition font-bold text-xs flex items-center justify-center">
+            <span>🎯</span>
+          </button>
+
+          <!-- Butang Menu Saiz Tulisan & Display -->
+          <button onclick="toggleDisplayMenu()" title="Tetapan Saiz & Paparan" class="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 active:scale-95 transition font-bold text-xs flex items-center gap-0.5">
             <span>A</span><span class="text-[9px]">A</span>
           </button>
 
-          <!-- Butang Mod Samaran / Stealth Mode -->
-          <button onclick="toggleStealthMode()" title="Mod Menyamar (Audit)" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition">
+          <!-- Butang Stealth Mode -->
+          <button onclick="toggleStealthMode()" title="Stealth Mode" class="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 active:scale-95 transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
             </svg>
           </button>
 
-          <!-- Butang Mod Gelap / Cerah -->
-          <button onclick="toggleTheme()" title="Tukar Tema Gelap/Cerah" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition">
+          <!-- Butang Tema (Gelap/Cerah) -->
+          <button onclick="toggleTheme()" title="Tukar Tema Gelap/Cerah" class="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 active:scale-95 transition">
             <svg id="themeIconDark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
             </svg>
@@ -232,14 +227,14 @@
           </button>
 
           <!-- Butang Salin Nota -->
-          <button onclick="salinSemuaNota()" class="inline-flex items-center text-xs font-medium bg-teal-600 hover:bg-teal-700 text-white px-2.5 py-1.5 rounded-lg active:scale-95 transition shadow-xs">
+          <button onclick="salinSemuaNota()" class="inline-flex items-center text-xs font-semibold bg-teal-700 hover:bg-teal-800 text-white px-2.5 py-1.5 rounded-xl active:scale-95 transition shadow-xs">
             <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
             Salin
           </button>
         </div>
       </div>
 
-      <!-- Panel Laci Tetapan Saiz Tulisan & Display -->
+      <!-- Panel Laci Tetapan (Font & Display Compact/Comfort) -->
       <div id="displaySettingsPanel" class="hidden max-w-md mx-auto mt-2 pt-2 pb-1 border-t border-slate-200 dark:border-slate-800 text-xs">
         <div class="flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-800/80 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
           <!-- Saiz Tulisan -->
@@ -247,33 +242,43 @@
             <span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 block mb-1">Saiz Tulisan:</span>
             <div class="flex items-center gap-1 bg-white dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
               <button onclick="setFontSize('sm')" id="btnFontSm" class="flex-1 py-1 rounded text-center text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition">A-</button>
-              <button onclick="setFontSize('md')" id="btnFontMd" class="flex-1 py-1 rounded text-center text-xs bg-teal-600 text-white font-bold transition">A</button>
+              <button onclick="setFontSize('md')" id="btnFontMd" class="flex-1 py-1 rounded text-center text-xs bg-teal-700 text-white font-bold transition">A</button>
               <button onclick="setFontSize('lg')" id="btnFontLg" class="flex-1 py-1 rounded text-center text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition">A+</button>
               <button onclick="setFontSize('xl')" id="btnFontXl" class="flex-1 py-1 rounded text-center text-base text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-black transition">A++</button>
             </div>
           </div>
 
-          <!-- Mod Paparan (Kompak / Selesa) -->
-          <div class="w-32">
-            <span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 block mb-1">Jarak Paparan:</span>
+          <!-- Mod Paparan (Compact / Comfort) -->
+          <div class="w-36">
+            <span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 block mb-1">Mod Paparan:</span>
             <div class="flex items-center gap-1 bg-white dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
-              <button onclick="setDisplayDensity('compact')" id="btnDensityCompact" class="flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition">Rapat</button>
-              <button onclick="setDisplayDensity('comfortable')" id="btnDensityComfortable" class="flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition">Selesa</button>
+              <button onclick="setDisplayDensity('compact')" id="btnDensityCompact" class="flex-1 py-1 text-[11px] rounded bg-teal-700 text-white font-semibold transition">Compact</button>
+              <button onclick="setDisplayDensity('comfort')" id="btnDensityComfort" class="flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition">Comfort</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Quick Pill Nav -->
-      <div class="max-w-md mx-auto mt-2 flex gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs font-medium">
-        <button type="button" onclick="scrollToSection('sec-sejarah')" class="shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-200 transition">Sejarah</button>
-        <button type="button" onclick="scrollToSection('sec-umi')" class="shrink-0 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-200 border border-teal-200 dark:border-teal-800 hover:bg-teal-100 transition">Teras UMI</button>
-        <button type="button" onclick="scrollToSection('sec-harian')" class="shrink-0 px-2.5 py-1 rounded-full bg-sky-50 dark:bg-sky-950/50 text-sky-800 dark:text-sky-200 border border-sky-200 dark:border-sky-800 hover:bg-sky-100 transition">Kerja Seharian</button>
-        <button type="button" onclick="scrollToSection('sec-fatihah')" class="shrink-0 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 transition">Al-Fatihah</button>
-        <button type="button" onclick="scrollToSection('sec-rukun')" class="shrink-0 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 transition">Islam & Iman</button>
-        <button type="button" onclick="scrollToSection('sec-taharah')" class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition">Wuduk & Mandi</button>
-        <button type="button" onclick="scrollToSection('sec-solat')" class="shrink-0 px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 transition">Rukun Solat</button>
-        <button type="button" onclick="scrollToSection('sec-najis')" class="shrink-0 px-2.5 py-1 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 border border-rose-200 dark:border-rose-800 hover:bg-rose-100 transition">Najis</button>
+      <!-- Kotak Carian Pantas (Instant Search) -->
+      <div class="max-w-md mx-auto mt-2">
+        <div class="relative flex items-center">
+          <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Cari topik (cth: wuduk, 1990, itqan, rukun, najis)..." class="w-full text-xs pl-8 pr-7 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-teal-600 transition">
+          <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <button id="searchClearBtn" onclick="clearSearch()" class="hidden absolute right-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold">✕</button>
+        </div>
+      </div>
+
+      <!-- Quick Pill Nav (Navigasi Tab) -->
+      <div id="tabNavContainer" class="max-w-md mx-auto mt-2 flex gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs font-medium">
+        <button type="button" onclick="selectTab('sec-sejarah')" id="tabBtn-sec-sejarah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-teal-700 text-white border border-teal-700 transition">Sejarah</button>
+        <button type="button" onclick="selectTab('sec-umi')" id="tabBtn-sec-umi" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Teras UMI</button>
+        <button type="button" onclick="selectTab('sec-harian')" id="tabBtn-sec-harian" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Kerja MPKB</button>
+        <button type="button" onclick="selectTab('sec-fardhu')" id="tabBtn-sec-fardhu" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Ain vs Kifayah</button>
+        <button type="button" onclick="selectTab('sec-fatihah')" id="tabBtn-sec-fatihah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Al-Fatihah</button>
+        <button type="button" onclick="selectTab('sec-rukun')" id="tabBtn-sec-rukun" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Islam & Iman</button>
+        <button type="button" onclick="selectTab('sec-taharah')" id="tabBtn-sec-taharah" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Wuduk & Mandi</button>
+        <button type="button" onclick="selectTab('sec-solat')" id="tabBtn-sec-solat" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Rukun Solat</button>
+        <button type="button" onclick="selectTab('sec-najis')" id="tabBtn-sec-najis" class="nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition">Najis</button>
       </div>
     </header>
 
@@ -282,16 +287,30 @@
       Nota disalin ke papan klip!
     </div>
 
+    <!-- KANDUNGAN UTAMA NOTA -->
     <main id="contentContainer" class="max-w-md mx-auto px-3.5 pt-3 space-y-3.5 transition-all duration-200">
 
+      <!-- Bar Penunjuk Kemajuan Ulang Kaji (Checklist Progress) -->
+      <div class="bg-white dark:bg-slate-800/90 rounded-xl p-2 px-3 border border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs">
+        <span class="font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+          <span>📋</span> Kemajuan Ulang Kaji:
+        </span>
+        <div class="flex items-center gap-2">
+          <span id="progressText" class="font-bold text-teal-700 dark:text-teal-300 text-xs">0 / 8 Kuasai</span>
+          <button onclick="resetChecklist()" title="Semak Semula Semua" class="text-[10px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">Reset</button>
+        </div>
+      </div>
+
       <!-- 0. SEJARAH & LATAR BELAKANG DASAR UMI KELANTAN -->
-      <section id="sec-sejarah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-28">
+      <section id="sec-sejarah" class="tab-card active-comfort-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-36">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-slate-700 dark:bg-slate-300 rounded-full"></span>
             <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">Latar Belakang & Tarikh UMI</h2>
           </div>
-          <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-2 py-0.5 rounded-md font-semibold">Sejarah Asas</span>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-sejarah', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-snug">
@@ -302,16 +321,21 @@
 
           <div class="p-2.5 rounded-xl bg-teal-50/60 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-800/60">
             <span class="font-bold text-teal-900 dark:text-teal-200 block mb-0.5">📘 Tahun 2020: Manual Pelaksanaan & Audit UMI</span>
-            <p>Kerajaan Negeri Kelantan menguatkuasakan <strong>Manual Pelaksanaan Prinsip UMI (Tahun 2020)</strong> sebagai dokumen rujukan standard rasmi bagi latihan, pematuhan, dan pensijilan pengauditan berkala oleh JAHEIK serta panel pemeriksa integriti.</p>
+            <p>Kerajaan Negeri Kelantan menguatkuasakan <strong>Manual Pelaksanaan Prinsip UMI (Tahun 2020)</strong> sebagai dokumen rujukan standard rasmi bagi latihan, pematuhan, dan pensijilan pengauditan berkala oleh JAHEIK serta panel audit MPKB-BRI.</p>
           </div>
         </div>
       </section>
 
       <!-- 1. KONSEP UMI -->
-      <section id="sec-umi" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-teal-100/80 dark:border-teal-900/40 scroll-mt-28">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-teal-600 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">1. Teras UMI JAHEIK</h2>
+      <section id="sec-umi" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-teal-100/80 dark:border-teal-900/40 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-teal-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">1. Teras UMI MPKB-BRI</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-teal-50 dark:bg-teal-950/60 px-2 py-0.5 rounded-lg text-teal-800 dark:text-teal-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-umi', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="overflow-hidden rounded-xl border border-teal-100 dark:border-teal-900/40">
@@ -340,60 +364,67 @@
         </div>
       </section>
 
-      <!-- 1B. PENGHAYATAN UMI DALAM KERJA SEHARIAN -->
-      <section id="sec-harian" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-sky-150 dark:border-sky-900/40 scroll-mt-28">
+      <!-- 1B. PENGHAYATAN UMI DALAM KERJA SEHARIAN (MPKB-BRI) -->
+      <section id="sec-harian" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-sky-150 dark:border-sky-900/40 scroll-mt-36">
         <div class="flex items-center justify-between mb-2.5">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-sky-600 rounded-full"></span>
-            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">Penghayatan UMI Di Tempat Kerja</h2>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">Penghayatan UMI Di MPKB-BRI</h2>
           </div>
-          <span class="text-[10px] bg-sky-100 dark:bg-sky-900/60 text-sky-800 dark:text-sky-200 px-2 py-0.5 rounded-full font-semibold">Praktikal</span>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-sky-50 dark:bg-sky-950/60 px-2 py-0.5 rounded-lg text-sky-800 dark:text-sky-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-harian', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="space-y-2 text-xs">
           <!-- Ubudiyyah Seharian -->
           <div class="p-2.5 rounded-xl border border-teal-200 dark:border-teal-800/50 bg-teal-50/40 dark:bg-teal-950/20">
             <span class="font-bold text-teal-900 dark:text-teal-200 flex items-center gap-1.5 mb-1">
-              <span class="w-2 h-2 rounded-full bg-teal-500"></span> Ubudiyyah di Pejabat:
+              <span class="w-2 h-2 rounded-full bg-teal-500"></span> Ubudiyyah di Pejabat Majlis:
             </span>
             <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
-              <li>Mulakan tugas harian dengan niat ikhlas ibadah kerana Allah SWT.</li>
-              <li>Menjaga solat pada waktunya serta menjaga adab pergaulan dan syariat.</li>
-              <li>Menghindari sifat riak, hasad dengki, dan perbuatan curi tulang masa.</li>
+              <li>Mulakan khidmat perbandaran dengan niat ikhlas ibadah kepada Allah SWT.</li>
+              <li>Menjaga solat fardhu tepat pada waktunya serta menjaga adab pergaulan syariah.</li>
+              <li>Mengelak sifat riak, hasad dengki, dan tabiat culas waktu berkhidmat.</li>
             </ul>
           </div>
 
           <!-- Mas'uliyyah Seharian -->
           <div class="p-2.5 rounded-xl border border-sky-200 dark:border-sky-800/50 bg-sky-50/40 dark:bg-sky-950/20">
             <span class="font-bold text-sky-900 dark:text-sky-200 flex items-center gap-1.5 mb-1">
-              <span class="w-2 h-2 rounded-full bg-sky-500"></span> Mas'uliyyah di Pejabat:
+              <span class="w-2 h-2 rounded-full bg-sky-500"></span> Mas'uliyyah di Pejabat Majlis:
             </span>
             <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
-              <li>Menepati waktu masuk, rehat, dan amanah dalam mencatat pergerakan.</li>
-              <li>Menjaga kerahsiaan fail rasmi, dokumen kerajaan, dan hak pelanggan.</li>
-              <li>Tidak menyalahgunakan harta jabatan/kemudahan awam untuk peribadi.</li>
+              <li>Menepati jadual bertugas, amanah dalam mencatat keluar masuk kaunter/pejabat.</li>
+              <li>Menjaga kerahsiaan dokumen majlis, hak maklumat warga perbandaran.</li>
+              <li>Tidak sesekali menggunakan kenderaan, peralatan, atau aset MPKB untuk kepentingan peribadi.</li>
             </ul>
           </div>
 
           <!-- Itqan Seharian -->
           <div class="p-2.5 rounded-xl border border-indigo-200 dark:border-indigo-800/50 bg-indigo-50/40 dark:bg-indigo-950/20">
             <span class="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-1.5 mb-1">
-              <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Itqan di Pejabat:
+              <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Itqan di Pejabat Majlis:
             </span>
             <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-0.5 text-[11px] leading-snug">
-              <li>Menyiapkan tugasan dengan teliti, kemas, pantas, dan sifar kesalahan (*zero defect*).</li>
-              <li>Menyusun fail meja, minit mesyuarat, dan rekod dengan teratur.</li>
-              <li>Sentiasa berinisiatif meningkatkan kemahiran teknologi & kecekapan diri.</li>
+              <li>Melaksanakan setiap tugasan dengan teliti, pantas, kemas, dan sasaran sifar ralat (*zero defect*).</li>
+              <li>Menyusun fail meja, minit mesyuarat, dan borang permohonan dengan teratur.</li>
+              <li>Sentiasa mempertingkatkan kemahiran sistem digital dan kecekapan operasi harian.</li>
             </ul>
           </div>
         </div>
       </section>
 
       <!-- 2. FARDHU AIN VS FARDHU KIFAYAH -->
-      <section class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-28">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-slate-600 dark:bg-slate-400 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">2. Fardhu Ain vs Fardhu Kifayah</h2>
+      <section id="sec-fardhu" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-slate-200 dark:border-slate-700/60 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-slate-600 dark:bg-slate-400 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">2. Fardhu Ain vs Fardhu Kifayah</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-fardhu', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
@@ -412,7 +443,7 @@
                 </td>
                 <td class="py-2.5 px-3 text-slate-600 dark:text-slate-300 leading-snug">
                   Wajib atas <strong class="text-slate-800 dark:text-slate-100">setiap mukallaf</strong>. Berdosa jika ditinggalkan.<br>
-                  <em class="text-slate-500 dark:text-slate-400">Contoh: Solat 5 waktu, puasa, akidah, tutup aurat.</em>
+                  <em class="text-slate-500 dark:text-slate-400">Contoh: Solat 5 waktu, puasa, akidah, menutup aurat.</em>
                 </td>
               </tr>
               <tr>
@@ -422,7 +453,7 @@
                 </td>
                 <td class="py-2.5 px-3 text-slate-600 dark:text-slate-300 leading-snug">
                   Wajib ke atas <strong class="text-slate-800 dark:text-slate-100">kumpulan</strong>. Gugur jika sebahagian melaksanakannya.<br>
-                  <em class="text-slate-500 dark:text-slate-400">Contoh: Solat jenazah, urusan pentadbiran awam, kepakaran perubatan.</em>
+                  <em class="text-slate-500 dark:text-slate-400">Contoh: Solat jenazah, urusan pentadbiran perbandaran awam, kepakaran perubatan.</em>
                 </td>
               </tr>
             </tbody>
@@ -431,13 +462,15 @@
       </section>
 
       <!-- 3. MAKSUD SURAH AL-FATAIHAH -->
-      <section id="sec-fatihah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-amber-200/70 dark:border-amber-900/40 scroll-mt-28">
+      <section id="sec-fatihah" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-amber-200/70 dark:border-amber-900/40 scroll-mt-36">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-amber-500 rounded-full"></span>
             <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">3. Surah Al-Fatihah (7 Ayat)</h2>
           </div>
-          <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-200 font-medium">Ummul Kitab</span>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-amber-100 dark:bg-amber-950/60 px-2 py-0.5 rounded-lg text-amber-800 dark:text-amber-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-fatihah', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
         <p class="text-xs text-slate-500 dark:text-slate-400 mb-2.5">Erti: "Pembukaan". Rukun Qauli yang wajib dibaca dalam setiap rakaat solat.</p>
 
@@ -476,10 +509,15 @@
       </section>
 
       <!-- 4. RUKUN ISLAM & IMAN -->
-      <section id="sec-rukun" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-blue-100 dark:border-blue-900/40 scroll-mt-28">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-blue-600 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">4. Rukun Islam & Rukun Iman</h2>
+      <section id="sec-rukun" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-blue-100 dark:border-blue-900/40 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-blue-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">4. Rukun Islam & Rukun Iman</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded-lg text-blue-800 dark:text-blue-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-rukun', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="grid grid-cols-2 gap-2 text-xs">
@@ -505,7 +543,7 @@
               <span class="bg-indigo-200 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-1.5 py-0.2 rounded text-[10px]">6 Perkara</span>
             </div>
             <ol class="space-y-1 text-slate-700 dark:text-slate-300 leading-snug">
-              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">1.</span> Beriman pd Allah</li>
+              <li><span class="font-bold text-indigo-800 dark:text-indigo-400">1.</span> Percaya Allah</li>
               <li><span class="font-bold text-indigo-800 dark:text-indigo-400">2.</span> Malaikat</li>
               <li><span class="font-bold text-indigo-800 dark:text-indigo-400">3.</span> Kitab-kitab</li>
               <li><span class="font-bold text-indigo-800 dark:text-indigo-400">4.</span> Para Rasul</li>
@@ -517,10 +555,15 @@
       </section>
 
       <!-- 5. TAHARAH & WUDUK -->
-      <section id="sec-taharah" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-emerald-100 dark:border-emerald-900/40 scroll-mt-28">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-emerald-600 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">5. Taharah (Wuduk & Mandi Wajib)</h2>
+      <section id="sec-taharah" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-emerald-100 dark:border-emerald-900/40 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-emerald-600 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">5. Taharah (Wuduk & Mandi Wajib)</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-lg text-emerald-800 dark:text-emerald-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-taharah', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <!-- Jadual Rukun Wuduk -->
@@ -548,7 +591,7 @@
           <div class="p-2.5 bg-rose-50/60 dark:bg-rose-950/20 rounded-xl border border-rose-100 dark:border-rose-900/40">
             <div class="font-bold text-rose-800 dark:text-rose-300 mb-1 border-b border-rose-200 dark:border-rose-800/50 pb-0.5">Batal Wuduk</div>
             <ul class="list-disc list-inside space-y-0.5 text-slate-600 dark:text-slate-300 text-[11px] leading-tight">
-              <li>Keluar apa jua dari kubul/dubur.</li>
+              <li>Keluar sesuatu dari kubul/dubur.</li>
               <li>Hilang akal (tidur lena/mabuk).</li>
               <li>Sentuh kulit ajnabi (bukan mahram).</li>
               <li>Sentuh kemaluan tanpa lapik.</li>
@@ -567,13 +610,15 @@
       </section>
 
       <!-- 6. IBADAH SOLAT & 13 RUKUN -->
-      <section id="sec-solat" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-indigo-100 dark:border-indigo-900/40 scroll-mt-28">
+      <section id="sec-solat" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-indigo-100 dark:border-indigo-900/40 scroll-mt-36">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-5 bg-indigo-600 rounded-full"></span>
             <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">6. Rukun Solat (13 Perkara)</h2>
           </div>
-          <span class="text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-0.5 rounded-full font-medium">4 Kategori</span>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-lg text-indigo-800 dark:text-indigo-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-solat', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="overflow-hidden rounded-xl border border-indigo-100 dark:border-indigo-900/40 mb-3">
@@ -644,10 +689,15 @@
       </section>
 
       <!-- 7. JENIS NAJIS & KAEDAH PENYUCIAN -->
-      <section id="sec-najis" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-rose-100 dark:border-rose-900/40 scroll-mt-28">
-        <div class="flex items-center gap-2 mb-2.5">
-          <span class="w-2 h-5 bg-rose-500 rounded-full"></span>
-          <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">7. Jenis Najis & Kaedah Menyucikannya</h2>
+      <section id="sec-najis" class="tab-card bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-rose-100 dark:border-rose-900/40 scroll-mt-36">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-5 bg-rose-500 rounded-full"></span>
+            <h2 class="text-sm font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide">7. Jenis Najis & Kaedah Menyucikannya</h2>
+          </div>
+          <label class="flex items-center gap-1.5 cursor-pointer text-[11px] bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 rounded-lg text-rose-800 dark:text-rose-300 font-medium">
+            <input type="checkbox" onchange="toggleDoneTopic('sec-najis', this.checked)" class="rounded text-teal-600 focus:ring-0"> Kuasai
+          </label>
         </div>
 
         <div class="overflow-hidden rounded-xl border border-rose-100 dark:border-rose-900/40">
@@ -694,18 +744,18 @@
         </div>
       </section>
 
-      <!-- Nota Kaki & Peringatan Audit -->
+      <!-- Tip Audit MPKB-BRI -->
       <div class="p-3 bg-amber-50/80 dark:bg-amber-950/30 rounded-xl border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 text-xs flex gap-2">
         <span class="text-base">💡</span>
         <p class="leading-snug">
-          <strong>Tip Semasa Audit:</strong> Jika ditanya soalan, kaitkan tugas seharian di pejabat dengan nilai <em>Ubudiyyah</em> (ikhlas berkhidmat) dan <em>Mas'uliyyah</em> (amanah urus fail/dokumen). Tekan butang mangga di bar atas jika auditor menghampiri!
+          <strong>Tip Semasa Audit MPKB-BRI:</strong> Kaitkan tugas harian di majlis dengan konsep <em>Ubudiyyah</em> (ikhlas berkhidmat kpd rakyat) dan <em>Mas'uliyyah</em> (amanah urus aset majlis). Tekan butang mangga di bar atas jika auditor menghampiri!
         </p>
       </div>
 
       <!-- Footer Kredit Nikolai Nicholas -->
       <footer class="pt-2 pb-4 text-center">
         <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-white/80 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-          <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
           <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Built & maintained by <strong class="text-slate-700 dark:text-slate-200 font-semibold">Nikolai Nicholas</strong></span>
         </div>
       </footer>
@@ -713,26 +763,276 @@
     </main>
   </div>
 
+  <!-- ==================== 3. MODAL KUIZ SPONTAN AUDIT (FLASHCARD POP-UP) ==================== -->
+  <div id="quizModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-4 space-y-3.5">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+        <div class="flex items-center gap-1.5 font-bold text-sm text-slate-800 dark:text-slate-100">
+          <span>🎯</span> Kuiz Kilat Audit UMI
+        </div>
+        <button onclick="closeQuizModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-bold text-sm">✕</button>
+      </div>
+
+      <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+        <span class="text-[10px] uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Soalan Spontan:</span>
+        <p id="quizQuestion" class="text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">Apakah beza Fardhu Ain dan Fardhu Kifayah?</p>
+      </div>
+
+      <div id="quizAnswerBox" class="hidden p-3 bg-teal-50/70 dark:bg-teal-950/40 rounded-xl border border-teal-200 dark:border-teal-800 text-xs text-teal-950 dark:text-teal-200 leading-snug">
+        <span class="font-bold block mb-1">Jawapan Padat:</span>
+        <span id="quizAnswer">Fardhu Ain wajib atas setiap individu mukallaf (cth: solat 5 waktu). Fardhu Kifayah wajib secara komuniti, jika sebahagian buat maka gugur kewajipan ke atas yang lain (cth: solat jenazah, urusan pentadbiran).</span>
+      </div>
+
+      <div class="flex items-center gap-2 pt-1">
+        <button onclick="toggleQuizAnswer()" id="btnRevealAnswer" class="flex-1 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-semibold text-xs transition">
+          Buka Jawapan
+        </button>
+        <button onclick="nextQuizQuestion()" class="flex-1 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs transition">
+          Soalan Lain ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // --- NAVIGASI TAB PANTAS (SMOOTH SCROLL DENGAN OFFSET TEPAT) ---
-    function scrollToSection(id) {
-      const target = document.getElementById(id);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // --- DATA KUIZ SPONTAN AUDIT ---
+    const quizList = [
+      {
+        q: "Tahun bila UMI mula diperkenalkan dan bila Manual Pelaksanaannya dikuatkuasakan?",
+        a: "Mula diperkenalkan pada tahun 1990 di bawah dasar Membangun Bersama Islam (MBI). Manual Pelaksanaan Prinsip UMI dikuatkuasakan pada tahun 2020 sebagai standard audit rasmi."
+      },
+      {
+        q: "Apakah maksud ringkas bagi Ubudiyyah, Mas'uliyyah, dan Itqan?",
+        a: "Ubudiyyah: Pengabdian kepada Allah (ikhlas niat ibadah). Mas'uliyyah: Akauntabiliti dan amanah (sedar dihisab di akhirat). Itqan: Ketelitian, kesempurnaan dan disiplin kerja berkualiti tinggi."
+      },
+      {
+        q: "Sebutkan 4 pecahan Rukun Solat (13 perkara) berserta contohnya?",
+        a: "Qalbi (Niat di hati), Qauli (Bacaan: Takbiratul Ihram, Al-Fatihah, Tahiyyat Akhir, Selawat, Salam), Fi'li (Perbuatan: Berdiri, Ruku', I'tidal, Sujud, Duduk), dan Ma'nawi (Tertib)."
+      },
+      {
+        q: "Bagaimanakah kaedah menyucikan Najis Mughallazah mengikut syarak?",
+        a: "Buang zat najis terlebih dahulu. Kemudian basuh sebanyak 7 kali basuhan dengan air mutlak, di mana salah satu basuhannya hendaklah dicampur dengan tanah bersih."
+      },
+      {
+        q: "Apakah ayat dalam Surah Al-Fatihah yang menjadi teras Tauhid Ubudiyyah?",
+        a: "Ayat ke-5: 'Iyyaka na'budu wa-iyyaka nasta'in' (Hanya Engkau yang kami sembah dan hanya kepada Engkau kami memohon pertolongan)."
+      },
+      {
+        q: "Nyatakan 3 Rukun Mandi Wajib?",
+        a: "1. Niat mengangkat hadas besar ketika air sampai ke tubuh. 2. Membersihkan najis 'aini pada badan. 3. Meratakan air mutlak ke seluruh badan dan rambut."
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let currentDensity = 'compact'; // Default: compact
+    let currentActiveTabId = 'sec-sejarah';
+
+    // --- NAVIGASI TAB & MOD COMFORT / COMPACT ---
+    function selectTab(sectionId) {
+      currentActiveTabId = sectionId;
+
+      // Kemas kini gaya butang tab aktif
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        btn.className = 'nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition';
+      });
+      const activeBtn = document.getElementById('tabBtn-' + sectionId);
+      if (activeBtn) {
+        activeBtn.className = 'nav-tab-btn shrink-0 px-2.5 py-1 rounded-full bg-teal-700 text-white border border-teal-700 font-semibold shadow-2xs transition';
+      }
+
+      if (currentDensity === 'comfort') {
+        // Mod Comfort: Papar HANYA SATU KAD mengikut tab yang dipilih
+        document.querySelectorAll('.tab-card').forEach(card => {
+          card.classList.remove('active-comfort-card');
+        });
+        const targetCard = document.getElementById(sectionId);
+        if (targetCard) {
+          targetCard.classList.add('active-comfort-card');
+          window.scrollTo({ top: 90, behavior: 'smooth' });
+        }
+      } else {
+        // Mod Compact: Skrol lancar ke seksyen dalam satu halaman
+        const target = document.getElementById(sectionId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }
 
-    // --- PENGURUSAN TEMA (DEFAULT CERAH / LIGHT MODE) ---
+    // --- KAWALAN MOD PAPARAN (COMPACT VS COMFORT) ---
+    function setDisplayDensity(density) {
+      currentDensity = density;
+      const body = document.getElementById('appBody');
+      const btnCompact = document.getElementById('btnDensityCompact');
+      const btnComfort = document.getElementById('btnDensityComfort');
+
+      if (density === 'comfort') {
+        body.classList.remove('density-compact');
+        body.classList.add('density-comfort');
+
+        btnComfort.className = 'flex-1 py-1 text-[11px] rounded bg-teal-700 text-white font-semibold transition shadow-xs';
+        btnCompact.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
+
+        // Aktifkan satu kad tab semasa
+        selectTab(currentActiveTabId);
+      } else {
+        body.classList.remove('density-comfort');
+        body.classList.add('density-compact');
+
+        btnCompact.className = 'flex-1 py-1 text-[11px] rounded bg-teal-700 text-white font-semibold transition shadow-xs';
+        btnComfort.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
+
+        // Tunjukkan semula semua kad
+        document.querySelectorAll('.tab-card').forEach(card => {
+          card.style.display = '';
+        });
+        selectTab(currentActiveTabId);
+      }
+    }
+
+    // --- KAWALAN SAIZ TULISAN ---
+    function toggleDisplayMenu() {
+      const panel = document.getElementById('displaySettingsPanel');
+      panel.classList.toggle('hidden');
+    }
+
+    function setFontSize(size) {
+      const body = document.getElementById('appBody');
+      body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+      body.classList.add('font-size-' + size);
+
+      ['sm', 'md', 'lg', 'xl'].forEach(s => {
+        const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
+        if (btn) {
+          if (s === size) {
+            btn.className = 'flex-1 py-1 rounded text-center text-xs bg-teal-700 text-white font-bold transition shadow-xs';
+          } else {
+            btn.className = 'flex-1 py-1 rounded text-center text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold transition';
+          }
+        }
+      });
+    }
+
+    // --- FUNGSI CARIAN PANTAS (INSTANT SEARCH) ---
+    function handleSearch(keyword) {
+      const term = keyword.trim().toLowerCase();
+      const clearBtn = document.getElementById('searchClearBtn');
+      const cards = document.querySelectorAll('.tab-card');
+
+      if (term.length > 0) {
+        clearBtn.classList.remove('hidden');
+        // Semasa carian, tukar sementara ke mod senarai terbuka
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (text.includes(term)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      } else {
+        clearBtn.classList.add('hidden');
+        if (currentDensity === 'comfort') {
+          setDisplayDensity('comfort');
+        } else {
+          cards.forEach(card => card.style.display = '');
+        }
+      }
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      handleSearch('');
+      input.focus();
+    }
+
+    // --- PENJEJAK ULANG KAJI (CHECKLIST) ---
+    const masteredTopics = new Set();
+    function toggleDoneTopic(topicId, isChecked) {
+      if (isChecked) {
+        masteredTopics.add(topicId);
+      } else {
+        masteredTopics.delete(topicId);
+      }
+      document.getElementById('progressText').textContent = `${masteredTopics.size} / 8 Kuasai`;
+    }
+
+    function resetChecklist() {
+      masteredTopics.clear();
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.getElementById('progressText').textContent = '0 / 8 Kuasai';
+    }
+
+    // --- STEALTH MODE (MOD MENYAMAR) ---
+    function toggleStealthMode() {
+      const stealthOverlay = document.getElementById('stealthOverlay');
+      const mainContent = document.getElementById('mainContent');
+      const isStealth = !stealthOverlay.classList.contains('hidden');
+      
+      if (isStealth) {
+        stealthOverlay.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+      } else {
+        stealthOverlay.classList.remove('hidden');
+        mainContent.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    }
+
+    let titleClicks = 0;
+    let titleTimer = null;
+    function handleTitleClicks() {
+      titleClicks++;
+      clearTimeout(titleTimer);
+      titleTimer = setTimeout(() => { titleClicks = 0; }, 700);
+      if (titleClicks >= 3) {
+        toggleStealthMode();
+        titleClicks = 0;
+      }
+    }
+
+    // --- MODAL KUIZ SPONTAN ---
+    function openQuizModal() {
+      document.getElementById('quizModal').classList.remove('hidden');
+      showQuiz(currentQuizIndex);
+    }
+    function closeQuizModal() {
+      document.getElementById('quizModal').classList.add('hidden');
+    }
+    function showQuiz(index) {
+      const item = quizList[index];
+      document.getElementById('quizQuestion').textContent = item.q;
+      document.getElementById('quizAnswer').textContent = item.a;
+      document.getElementById('quizAnswerBox').classList.add('hidden');
+      document.getElementById('btnRevealAnswer').textContent = 'Buka Jawapan';
+    }
+    function toggleQuizAnswer() {
+      const ansBox = document.getElementById('quizAnswerBox');
+      const btn = document.getElementById('btnRevealAnswer');
+      const isHidden = ansBox.classList.contains('hidden');
+      if (isHidden) {
+        ansBox.classList.remove('hidden');
+        btn.textContent = 'Tutup Jawapan';
+      } else {
+        ansBox.classList.add('hidden');
+        btn.textContent = 'Buka Jawapan';
+      }
+    }
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizList.length;
+      showQuiz(currentQuizIndex);
+    }
+
+    // --- PENGURUSAN TEMA (DEFAULT CERAH) ---
     function initTheme() {
       document.documentElement.classList.remove('dark');
       updateThemeIcons(false);
     }
-
     function toggleTheme() {
-      const isDarkNow = document.documentElement.classList.toggle('dark');
-      updateThemeIcons(isDarkNow);
+      const isDark = document.documentElement.classList.toggle('dark');
+      updateThemeIcons(isDark);
     }
-
     function updateThemeIcons(isDark) {
       const iconDark = document.getElementById('themeIconDark');
       const iconLight = document.getElementById('themeIconLight');
@@ -745,122 +1045,37 @@
       }
     }
 
-    // --- CIRI KHAS: AUDIT STEALTH / CAMOUFLAGE MODE ---
-    function toggleStealthMode() {
-      const stealthOverlay = document.getElementById('stealthOverlay');
-      const mainContent = document.getElementById('mainContent');
-      
-      const isStealthActive = !stealthOverlay.classList.contains('hidden');
-      
-      if (isStealthActive) {
-        stealthOverlay.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-      } else {
-        stealthOverlay.classList.remove('hidden');
-        mainContent.classList.add('hidden');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      }
-    }
-
-    // Gerak Isyarat Rahsia: Ketuk tajuk 3 kali untuk buka Stealth Mode
-    let titleClickCount = 0;
-    let titleClickTimer = null;
-    function handleTitleClicks() {
-      titleClickCount++;
-      clearTimeout(titleClickTimer);
-      titleClickTimer = setTimeout(() => {
-        titleClickCount = 0;
-      }, 700);
-
-      if (titleClickCount >= 3) {
-        toggleStealthMode();
-        titleClickCount = 0;
-      }
-    }
-
-    // --- KAWALAN SAIZ TULISAN & PAPARAN ---
-    function toggleDisplayMenu() {
-      const panel = document.getElementById('displaySettingsPanel');
-      panel.classList.toggle('hidden');
-    }
-
-    function setFontSize(size) {
-      const body = document.getElementById('appBody');
-      body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
-      body.classList.add('font-size-' + size);
-
-      // Kemas kini gaya butang pilihan
-      ['sm', 'md', 'lg', 'xl'].forEach(s => {
-        const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
-        if (btn) {
-          if (s === size) {
-            btn.className = 'flex-1 py-1 rounded text-center text-xs bg-teal-600 text-white font-bold transition shadow-xs';
-          } else {
-            btn.className = 'flex-1 py-1 rounded text-center text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold transition';
-          }
-        }
-      });
-    }
-
-    // Fungsi Pengubah Jarak Paparan (Rapat vs Selesa)
-    function setDisplayDensity(density) {
-      const body = document.getElementById('appBody');
-      const container = document.getElementById('contentContainer');
-      const btnCompact = document.getElementById('btnDensityCompact');
-      const btnComfortable = document.getElementById('btnDensityComfortable');
-
-      if (density === 'compact') {
-        body.classList.remove('density-comfortable');
-        body.classList.add('density-compact');
-        
-        container.classList.remove('space-y-3.5', 'pt-3');
-        container.classList.add('space-y-1.5', 'pt-1.5');
-        
-        btnCompact.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition shadow-xs';
-        btnComfortable.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
-      } else {
-        body.classList.remove('density-compact');
-        body.classList.add('density-comfortable');
-
-        container.classList.remove('space-y-1.5', 'pt-1.5');
-        container.classList.add('space-y-3.5', 'pt-3');
-        
-        btnComfortable.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition shadow-xs';
-        btnCompact.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
-      }
-    }
-
-    // Fungsi Salin Nota ke Papan Klip
+    // --- SALIN NOTA KE PAPAN KLIP ---
     function salinSemuaNota() {
-      const teksNota = `NOTA AUDIT UMI & FARDHU AIN (JAHEIK)
+      const teksNota = `NOTA POKET UMI NIKOLAI (AUDIT UMI MPKB-BRI)
 Built & maintained by Nikolai Nicholas
 
 1. SEJARAH & TARIKH UMI:
-- Mula diperkenalkan pada tahun 1990 di bawah dasar Membangun Bersama Islam (MBI) pimpinan Almarhum Tok Guru Nik Aziz.
-- Dikuatkuasakan secara bersistem menerusi Manual Pelaksanaan Prinsip UMI (Tahun 2020) bagi audit dan pensijilan pematuhan jabatan negeri.
+- Mula diperkenalkan pada tahun 1990 di bawah dasar Membangun Bersama Islam (MBI) pimpinan Almarhum Tuan Guru Nik Abdul Aziz Nik Mat.
+- Manual Pelaksanaan Prinsip UMI (Tahun 2020) berkuat kuasa bagi pengauditan & pensijilan pematuhan jabatan negeri & MPKB-BRI.
 
-2. TERAS UMI:
+2. TERAS UMI MPKB-BRI:
 - Ubudiyyah: Pengabdian kepada Allah SWT, kerja ikhlas sebagai ibadah semata-mata.
-- Mas'uliyyah: Akauntabiliti, amanah, sedar setiap tugas & masa akan dihisab di akhirat.
-- Itqan: Ketelitian, kesempurnaan, kualiti tinggi dan berdisiplin tanpa kesilapan.
+- Mas'uliyyah: Akauntabiliti, amanah, sedar setiap kuasa, tugas & masa dihisab di akhirat.
+- Itqan: Ketelitian, kesempurnaan, kualiti tinggi dan sifar kesilapan (zero defect).
 
-3. PENGHAYATAN DI TEMPAT KERJA:
-- Ubudiyyah: Ikhlas berkhidmat, jaga solat pada waktunya & jaga integriti syariat.
-- Mas'uliyyah: Tepati masa, jaga rahsia rekod kerajaan, tidak guna aset jabatan untuk peribadi.
-- Itqan: Sifar kesilapan (zero defect), susun fail meja dengan teratur, tingkat kecekapan.
+3. PENGHAYATAN DI TEMPAT KERJA MPKB-BRI:
+- Ubudiyyah: Niat ikhlas khidmat perbandaran, jaga solat fardhu tepat waktu, jaga syariat.
+- Mas'uliyyah: Tepati masa kaunter/pejabat, jaga rahsia rekod majlis, tidak salah guna aset perbandaran.
+- Itqan: Sifar kesilapan dokumen, susun fail meja teratur, tingkat kecekapan digital.
 
-4. FARDHU AIN VS KIFAYAH:
-- Fardhu Ain: Wajib ke atas setiap individu mukallaf (Solat 5 waktu, puasa, akidah).
-- Fardhu Kifayah: Wajib secara komuniti (Solat jenazah, urusan pentadbiran awam).
+4. FARDHU AIN VS FARDHU KIFAYAH:
+- Fardhu Ain: Wajib atas setiap individu mukallaf (Solat 5 waktu, puasa, akidah).
+- Fardhu Kifayah: Wajib secara komuniti (Solat jenazah, pentadbiran perbandaran awam).
 
-5. INTISARI AL-FATAIHAH:
-- Erti: Pembukaan (7 ayat), Rukun Qauli wajib solat.
-- Tauhid: "Hanya Engkau kami sembah dan memohon pertolongan".
+5. INTISARI AL-FATAIHAH (7 Ayat):
+- Erti: Pembukaan, Rukun Qauli wajib solat.
+- Tauhid: "Hanya Engkau yang kami sembah dan hanya kepada Engkau kami memohon pertolongan".
 
-6. RUKUN ISLAM (5) & RUKUN IMAN (6)
-7. TAHARAH: Wuduk (6 Rukun), Mandi Wajib (3 Rukun).
-8. SOLAT: 13 Rukun (Qalbi, Qauli, Fi'li, Ma'nawi).
-9. NAJIS: Mukhaffafah, Mutawassitah, Mughallazah.`;
+6. RUKUN ISLAM (5 Perkara) & RUKUN IMAN (6 Perkara)
+7. TAHARAH: Rukun Wuduk (6 Perkara), Rukun Mandi Wajib (3 Perkara).
+8. SOLAT: 13 Rukun (Qalbi, Qauli, Fi'li, Ma'nawi) & 5 Syarat Sah Solat.
+9. NAJIS: Mukhaffafah, Mutawassitah, Mughallazah (7 kali basuhan air mutlak + 1 kali air tanah).`;
 
       const el = document.createElement('textarea');
       el.value = teksNota;
@@ -878,7 +1093,6 @@ Built & maintained by Nikolai Nicholas
       }, 2000);
     }
 
-    // Inisialisasi Aplikasi (Default: Tema Cerah)
     window.onload = function() {
       initTheme();
     };
