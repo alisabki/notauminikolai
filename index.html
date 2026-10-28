@@ -153,6 +153,11 @@
 
         <!-- Butang Kawalan (Tema, Mod Samaran & Salin) -->
         <div class="flex items-center gap-1.5">
+          <!-- Butang Menu Saiz Tulisan & Paparan -->
+          <button onclick="toggleDisplayMenu()" title="Tetapan Saiz & Paparan" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition font-bold text-xs flex items-center gap-0.5">
+            <span>A</span><span class="text-[9px]">A</span>
+          </button>
+
           <!-- Butang Mod Samaran / Stealth Mode -->
           <button onclick="toggleStealthMode()" title="Mod Menyamar (Audit)" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,6 +185,31 @@
         </div>
       </div>
 
+      <!-- Panel Laci Tetapan Saiz Tulisan & Display (Boleh Buka / Tutup) -->
+      <div id="displaySettingsPanel" class="hidden max-w-md mx-auto mt-2 pt-2 pb-1 border-t border-slate-200 dark:border-slate-800 text-xs">
+        <div class="flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-800/80 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
+          <!-- Saiz Tulisan -->
+          <div class="flex-1">
+            <span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 block mb-1">Saiz Tulisan:</span>
+            <div class="flex items-center gap-1 bg-white dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
+              <button onclick="setFontSize('sm')" id="btnFontSm" class="flex-1 py-1 rounded text-center text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition">A-</button>
+              <button onclick="setFontSize('md')" id="btnFontMd" class="flex-1 py-1 rounded text-center text-xs bg-teal-600 text-white font-bold transition">A</button>
+              <button onclick="setFontSize('lg')" id="btnFontLg" class="flex-1 py-1 rounded text-center text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition">A+</button>
+              <button onclick="setFontSize('xl')" id="btnFontXl" class="flex-1 py-1 rounded text-center text-base text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-black transition">A++</button>
+            </div>
+          </div>
+
+          <!-- Mod Paparan (Kompak / Selesa) -->
+          <div class="w-32">
+            <span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 block mb-1">Jarak Paparan:</span>
+            <div class="flex items-center gap-1 bg-white dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
+              <button onclick="setDisplayDensity('compact')" id="btnDensityCompact" class="flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition">Rapat</button>
+              <button onclick="setDisplayDensity('comfortable')" id="btnDensityComfortable" class="flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition">Selesa</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Quick Pill Nav -->
       <div class="max-w-md mx-auto mt-2 flex gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs font-medium">
         <button onclick="scrollToSection('sec-umi')" class="shrink-0 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-200 border border-teal-200 dark:border-teal-800 hover:bg-teal-100 transition">UMI</button>
@@ -196,7 +226,7 @@
       Nota disalin ke papan klip!
     </div>
 
-    <main class="max-w-md mx-auto px-3.5 pt-3 space-y-3.5">
+    <main id="contentContainer" class="max-w-md mx-auto px-3.5 pt-3 space-y-3.5 transition-all duration-200">
 
       <!-- 1. KONSEP UMI -->
       <section id="sec-umi" class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 shadow-xs border border-teal-100/80 dark:border-teal-900/40">
@@ -697,6 +727,54 @@
         toast.classList.remove('opacity-100');
         toast.classList.add('opacity-0');
       }, 2000);
+    }
+
+    // --- KAWALAN SAIZ TULISAN & PAPARAN (FONT SIZE & DISPLAY SETTINGS) ---
+    function toggleDisplayMenu() {
+      const panel = document.getElementById('displaySettingsPanel');
+      panel.classList.toggle('hidden');
+    }
+
+    function setFontSize(size) {
+      const body = document.getElementById('appBody');
+      body.classList.remove('text-xs', 'text-sm', 'text-base', 'text-lg');
+
+      // Update button highlights
+      ['sm', 'md', 'lg', 'xl'].forEach(s => {
+        const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
+        if (btn) {
+          btn.className = 'flex-1 py-1 rounded text-center transition font-semibold ' + 
+            (s === size ? 'bg-teal-600 text-white font-bold' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800');
+        }
+      });
+
+      if (size === 'sm') {
+        body.classList.add('text-xs');
+      } else if (size === 'md') {
+        body.classList.add('text-sm');
+      } else if (size === 'lg') {
+        body.classList.add('text-base');
+      } else if (size === 'xl') {
+        body.classList.add('text-lg');
+      }
+    }
+
+    function setDisplayDensity(density) {
+      const container = document.getElementById('contentContainer');
+      const btnCompact = document.getElementById('btnDensityCompact');
+      const btnComfortable = document.getElementById('btnDensityComfortable');
+
+      if (density === 'compact') {
+        container.classList.remove('space-y-3.5', 'pt-3');
+        container.classList.add('space-y-2', 'pt-1.5');
+        btnCompact.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition';
+        btnComfortable.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
+      } else {
+        container.classList.remove('space-y-2', 'pt-1.5');
+        container.classList.add('space-y-3.5', 'pt-3');
+        btnComfortable.className = 'flex-1 py-1 text-[11px] rounded bg-teal-600 text-white font-semibold transition';
+        btnCompact.className = 'flex-1 py-1 text-[11px] rounded text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition';
+      }
     }
 
     // Jalankan penetapan tema permulaan
