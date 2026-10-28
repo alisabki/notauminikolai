@@ -35,26 +35,26 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Penguat Skala Saiz Fon (Memastikan saiz bertukar serta-merta tanpa disekat) */
-    .font-size-sm, .font-size-sm p, .font-size-sm span, .font-size-sm li, .font-size-sm td, .font-size-sm th, .font-size-sm div {
+    /* Penguat Skala Saiz Fon */
+    .font-size-sm, .font-size-sm p, .font-size-sm span, .font-size-sm li, .font-size-sm td, .font-size-sm th, .font-size-sm div, .font-size-sm button {
       font-size: 0.72rem !important;
       line-height: 1.25 !important;
     }
     .font-size-sm h2 { font-size: 0.85rem !important; }
 
-    .font-size-md, .font-size-md p, .font-size-md span, .font-size-md li, .font-size-md td, .font-size-md th, .font-size-md div {
+    .font-size-md, .font-size-md p, .font-size-md span, .font-size-md li, .font-size-md td, .font-size-md th, .font-size-md div, .font-size-md button {
       font-size: 0.82rem !important;
       line-height: 1.35 !important;
     }
     .font-size-md h2 { font-size: 0.95rem !important; }
 
-    .font-size-lg, .font-size-lg p, .font-size-lg span, .font-size-lg li, .font-size-lg td, .font-size-lg th, .font-size-lg div {
+    .font-size-lg, .font-size-lg p, .font-size-lg span, .font-size-lg li, .font-size-lg td, .font-size-lg th, .font-size-lg div, .font-size-lg button {
       font-size: 0.95rem !important;
       line-height: 1.48 !important;
     }
     .font-size-lg h2 { font-size: 1.12rem !important; }
 
-    .font-size-xl, .font-size-xl p, .font-size-xl span, .font-size-xl li, .font-size-xl td, .font-size-xl th, .font-size-xl div {
+    .font-size-xl, .font-size-xl p, .font-size-xl span, .font-size-xl li, .font-size-xl td, .font-size-xl th, .font-size-xl div, .font-size-xl button {
       font-size: 1.08rem !important;
       line-height: 1.58 !important;
     }
@@ -173,7 +173,13 @@
 
           <!-- Butang Menu Kawalan -->
           <div class="flex items-center gap-1.5">
-            <!-- Butang Buka Drawer Tetapan Saiz / Paparan -->
+            <!-- Butang Rawak Topik (Random Topic) -->
+            <button onclick="jumpRandomTopic()" title="Pilih Topik Rawak (Latih Tubi)" class="inline-flex items-center gap-1 p-1.5 px-2 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 dark:bg-amber-950/60 dark:text-amber-200 dark:hover:bg-amber-900/80 active:scale-95 transition font-semibold text-xs shadow-xs">
+              <span>🎲</span>
+              <span class="hidden sm:inline">Rawak</span>
+            </button>
+
+            <!-- Butang Pelaras Saiz & Paparan -->
             <button onclick="toggleSettingsDrawer()" title="Tetapan Saiz & Paparan" class="p-1.5 px-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition font-bold text-xs flex items-center gap-0.5">
               <span>A</span><span class="text-[9px]">A</span>
             </button>
@@ -230,39 +236,43 @@
           </div>
         </div>
 
-        <!-- Barisan Tab Navigasi Pantas (Kompak & Interaktif) -->
+        <!-- Barisan Tab Navigasi Pantas (Kompak, Mikro & Interaktif) -->
         <div id="tabBar" class="flex gap-1 overflow-x-auto no-scrollbar py-1 text-[11px] font-semibold scroll-smooth">
-          <button type="button" onclick="handleTabClick('sec-sejarah')" id="tab-sec-sejarah" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition-all">
+          <!-- BUTANG MODAL KUIZ (POP-UP) -->
+          <button type="button" onclick="openQuizModal()" id="btn-open-kuiz" class="shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500 text-white shadow-xs hover:bg-amber-600 active:scale-95 transition-all duration-200">
+            <span>🎯</span><span>Kuiz UMI</span>
+          </button>
+          <button type="button" onclick="handleTabClick('sec-sejarah')" id="tab-sec-sejarah" data-default-bg="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🏛️</span><span>Sejarah</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-umi')" id="tab-sec-umi" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-umi')" id="tab-sec-umi" data-default-bg="bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🌟</span><span>Teras UMI</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-harian')" id="tab-sec-harian" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/50 text-sky-800 dark:text-sky-200 border border-sky-200 dark:border-sky-800 hover:bg-sky-100 dark:hover:bg-sky-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-harian')" id="tab-sec-harian" data-default-bg="bg-sky-100 dark:bg-sky-950/70 text-sky-900 dark:text-sky-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950/70 text-sky-900 dark:text-sky-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🏢</span><span>Amalan MPKB</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-fardhu')" id="tab-sec-fardhu" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-fardhu')" id="tab-sec-fardhu" data-default-bg="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>⚖️</span><span>Ain vs Kifayah</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-fatihah')" id="tab-sec-fatihah" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-fatihah')" id="tab-sec-fatihah" data-default-bg="bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>📖</span><span>Al-Fatihah</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-tajwid')" id="tab-sec-tajwid" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-200 border border-teal-200 dark:border-teal-800 hover:bg-teal-100 dark:hover:bg-teal-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-tajwid')" id="tab-sec-tajwid" data-default-bg="bg-teal-100 dark:bg-teal-950/70 text-teal-900 dark:text-teal-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-950/70 text-teal-900 dark:text-teal-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🎙️</span><span>Tajwid</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-keluarga')" id="tab-sec-keluarga" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 border border-rose-200 dark:border-rose-800 hover:bg-rose-100 dark:hover:bg-rose-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-keluarga')" id="tab-sec-keluarga" data-default-bg="bg-rose-100 dark:bg-rose-950/70 text-rose-900 dark:text-rose-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/70 text-rose-900 dark:text-rose-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>💍</span><span>Suami Isteri</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-rukun')" id="tab-sec-rukun" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-rukun')" id="tab-sec-rukun" data-default-bg="bg-blue-100 dark:bg-blue-950/70 text-blue-900 dark:text-blue-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-900 dark:text-blue-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🤲</span><span>Islam & Iman</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-taharah')" id="tab-sec-taharah" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-taharah')" id="tab-sec-taharah" data-default-bg="bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>💧</span><span>Wuduk & Mandi</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-solat')" id="tab-sec-solat" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-solat')" id="tab-sec-solat" data-default-bg="bg-indigo-100 dark:bg-indigo-950/70 text-indigo-900 dark:text-indigo-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950/70 text-indigo-900 dark:text-indigo-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🕌</span><span>Rukun Solat</span>
           </button>
-          <button type="button" onclick="handleTabClick('sec-najis')" id="tab-sec-najis" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/50 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 hover:bg-red-100 dark:hover:bg-red-900/60 active:scale-95 transition-all">
+          <button type="button" onclick="handleTabClick('sec-najis')" id="tab-sec-najis" data-default-bg="bg-red-100 dark:bg-red-950/70 text-red-900 dark:text-red-200" class="nav-tab shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-100 dark:bg-red-950/70 text-red-900 dark:text-red-200 hover:opacity-90 active:scale-95 transition-all duration-200">
             <span>🧼</span><span>Najis</span>
           </button>
         </div>
@@ -272,6 +282,78 @@
     <!-- Notifikasi Mini (Toast Feedback) -->
     <div id="toast" class="fixed top-16 left-1/2 -translate-x-1/2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2 rounded-full text-xs shadow-lg transition-opacity opacity-0 pointer-events-none z-50">
       Nota disalin ke papan klip!
+    </div>
+
+    <!-- ==================== POP-UP MODAL KUIZ UMI & FARDHU AIN (TERSEMBUNYI SECARA LALAI) ==================== -->
+    <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+      <div id="quizModalCard" class="relative w-full max-w-lg bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-amber-300 dark:border-amber-600/50 p-4 sm:p-5 space-y-3.5 transform transition-transform duration-200 scale-95 overflow-hidden">
+        
+        <!-- Baris Atas Modal: Header Kuiz & Butang Tutup -->
+        <div class="flex items-center justify-between border-b border-amber-200/80 dark:border-amber-900/50 pb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-6 bg-amber-500 rounded-full"></span>
+            <div>
+              <h3 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-slate-100 uppercase tracking-wide">Kuiz Latih Tubi Audit UMI</h3>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Uji kefahaman pantas sebelum auditor bertanya</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <!-- Skor Langsung -->
+            <div class="text-right pr-1">
+              <span class="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">Skor</span>
+              <span id="quizScoreDisplay" class="text-xs sm:text-sm font-black text-amber-600 dark:text-amber-400">0 / 0</span>
+            </div>
+            <!-- Butang Tutup (X) -->
+            <button onclick="closeQuizModal()" title="Tutup Kuiz" class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 active:scale-95 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bahagian Kandungan Soalan Kuiz -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+            <span id="quizCategoryBadge" class="px-2 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-200 text-[10px] uppercase font-bold tracking-wider">Kategori</span>
+            <span id="quizIndexBadge">Soalan 1 / 15</span>
+          </div>
+
+          <!-- Teks Soalan -->
+          <div id="quizQuestionText" class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 leading-snug min-h-[38px]">
+            Memuatkan soalan kuiz...
+          </div>
+
+          <!-- Pilihan Jawapan A, B, C, D -->
+          <div id="quizOptionsContainer" class="space-y-1.5 max-h-[42vh] overflow-y-auto no-scrollbar pr-0.5">
+            <!-- Pilihan dimuatkan secara dinamik -->
+          </div>
+
+          <!-- Kotak Maklum Balas Jawapan -->
+          <div id="quizFeedbackBox" class="hidden p-2.5 rounded-xl text-xs leading-snug border transition-all"></div>
+        </div>
+
+        <!-- Barisan Butang Kawalan Kuiz di Bawah Modal -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-700/80">
+          <div class="flex items-center gap-1.5">
+            <button onclick="checkQuizAnswer()" id="btnCheckAnswer" class="inline-flex items-center gap-1 text-[11px] font-bold px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white shadow-xs transition active:scale-95 disabled:opacity-40 disabled:pointer-events-none">
+              <span>✔</span><span>Semak Jawapan</span>
+            </button>
+            <button onclick="revealQuizAnswer()" id="btnRevealAnswer" class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 dark:bg-amber-950/70 dark:text-amber-200 dark:hover:bg-amber-900/80 transition active:scale-95">
+              <span>💡</span><span>Tunjuk</span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-1.5">
+            <button onclick="pickRandomQuizQuestion()" title="Pilih soalan rawak" class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 transition active:scale-95">
+              <span>🎲</span><span class="hidden sm:inline">Rawak</span>
+            </button>
+            <button onclick="nextQuizQuestion()" id="btnNextQuiz" class="inline-flex items-center gap-1 text-[11px] font-bold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-900 dark:bg-slate-200 dark:hover:bg-white text-white dark:text-slate-900 shadow-xs transition active:scale-95">
+              <span>Seterusnya</span><span>➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- KANDUNGAN NOTA AUDIT -->
@@ -751,11 +833,58 @@
     </main>
   </div>
 
-  <!-- ==================== 3. SKRIP INTERAKSI ==================== -->
+  <!-- ==================== 3. SKRIP INTERAKSI & SISTEM KUIZ ==================== -->
   <script>
     let activeTab = null;
 
-    // FUNGSI NAVIGASI TAB (KLIK SEKALI = SKROL KE TOPIK, KLIK DUA KALI = BALIK KE ATAS)
+    // SENARAI TOPIK UNTUK CIRI RANDOM TOPIC
+    const topicSections = [
+      'sec-sejarah',
+      'sec-umi',
+      'sec-harian',
+      'sec-fardhu',
+      'sec-fatihah',
+      'sec-tajwid',
+      'sec-keluarga',
+      'sec-rukun',
+      'sec-taharah',
+      'sec-solat',
+      'sec-najis'
+    ];
+
+    // FUNGSI BUTANG RAWAK TOPIK (RANDOM TOPIC)
+    function jumpRandomTopic() {
+      const filtered = topicSections.filter(id => id !== activeTab);
+      const randomId = filtered[Math.floor(Math.random() * filtered.length)];
+      handleTabClick(randomId);
+      showToast("🎲 Lompat ke topik rawak!");
+    }
+
+    // FUNGSI BUKA & TUTUP MODAL KUIZ (POP-UP)
+    function openQuizModal() {
+      const modal = document.getElementById('quizModal');
+      const card = document.getElementById('quizModalCard');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+      }, 10);
+      renderQuizQuestion();
+    }
+
+    function closeQuizModal() {
+      const modal = document.getElementById('quizModal');
+      const card = document.getElementById('quizModalCard');
+      modal.classList.add('opacity-0');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    // FUNGSI NAVIGASI TAB (KLIK SEKALI = SKROL, KLIK DUA KALI = BALIK ATAS)
     function handleTabClick(id) {
       if (activeTab === id) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -775,14 +904,34 @@
     }
 
     function updateTabStyles(activeId) {
+      // Kelas aktif: Hijau pekat, tulisan putih tebal berkontras tinggi, berserta bayang & animasi saiz
+      const activeClasses = ['bg-emerald-700', 'text-white', 'shadow-md', 'scale-105', 'font-black', 'ring-2', 'ring-emerald-400/80'];
+
       document.querySelectorAll('.nav-tab').forEach(btn => {
-        btn.classList.remove('ring-2', 'ring-emerald-600', 'bg-emerald-700', 'text-white', 'shadow-xs', 'scale-105', 'font-black');
+        // Buang kelas aktif
+        btn.classList.remove(...activeClasses);
+
+        // Pulihkan warna fill asal mengikut data-default-bg
+        const defaultBg = btn.getAttribute('data-default-bg');
+        if (defaultBg) {
+          defaultBg.split(' ').forEach(cls => {
+            if (cls.trim()) btn.classList.add(cls);
+          });
+        }
       });
+
       if (activeId) {
         const activeBtn = document.getElementById('tab-' + activeId);
         if (activeBtn) {
-          activeBtn.classList.add('ring-2', 'ring-emerald-600', 'bg-emerald-700', 'text-white', 'shadow-xs', 'scale-105', 'font-black');
-          // Automasikan penatalan bar tab supaya tab aktif sentiasa di tengah pandangan
+          // Buang warna default sebelum memasukkan warna aktif penuh
+          const defaultBg = activeBtn.getAttribute('data-default-bg');
+          if (defaultBg) {
+            defaultBg.split(' ').forEach(cls => {
+              if (cls.trim()) activeBtn.classList.remove(cls);
+            });
+          }
+          // Masukkan kelas aktif penuh yang sentiasa jelas & berkontras
+          activeBtn.classList.add(...activeClasses);
           activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
       }
@@ -892,8 +1041,369 @@
       setTimeout(() => t.classList.add('opacity-0'), 1800);
     }
 
+    // ==========================================
+    // DATA & SISTEM KUIZ LATIH TUBI AUDIT
+    // ==========================================
+    const quizData = [
+      {
+        category: "Dasar UMI",
+        question: "Bilakah gagasan dasar Membangun Bersama Islam (MBI) yang melahirkan konsep UMI mula diperkenalkan di Kelantan?",
+        options: [
+          "Tahun 1990 di bawah pimpinan Tok Guru Nik Abdul Aziz",
+          "Tahun 2000 sempena deklarasi Bandar Raya Islam",
+          "Tahun 2020 melalui penerbitan Manual Pelaksanaan",
+          "Tahun 1985 sebagai modul latihan perkhidmatan awam"
+        ],
+        correct: 0,
+        rationale: "Dasar MBI diasaskan pada tahun 1990 oleh Almarhum Tok Guru Nik Aziz, manakala Manual Pelaksanaan Prinsip UMI dikuatkuasakan pada tahun 2020."
+      },
+      {
+        category: "Teras UMI",
+        question: "Seorang pegawai majlis sentiasa memastikan dokumen lesen disemak tanpa ralat (zero defect) dan fail disusun teratur. Apakah prinsip UMI yang diamalkan?",
+        options: [
+          "Ubudiyyah",
+          "Mas'uliyyah",
+          "Itqan",
+          "Syura"
+        ],
+        correct: 2,
+        rationale: "Itqan bermaksud ketelitian, kekemasan, kualiti tinggi, dan sifar ralat dalam melakukan setiap pekerjaan."
+      },
+      {
+        category: "Teras UMI",
+        question: "Menjaga amanah kenderaan jabatan dan tidak menggunakannya untuk urusan peribadi mencerminkan penghayatan teras:",
+        options: [
+          "Mas'uliyyah",
+          "Ubudiyyah",
+          "Itqan",
+          "Tawaduk"
+        ],
+        correct: 0,
+        rationale: "Mas'uliyyah membawa maksud kebertanggungjawaban, akauntabiliti, dan menjaga amanah aset kerajaan kerana sedar akan dihisab."
+      },
+      {
+        category: "Fardhu Ain vs Kifayah",
+        question: "Antara berikut, amalan manakah yang tergolong dalam kategori Fardhu Kifayah?",
+        options: [
+          "Menunaikan solat lima waktu setiap hari",
+          "Menguruskan pengkebumian dan solat jenazah",
+          "Berpuasa penuh pada bulan Ramadan",
+          "Menutup aurat ketika berada di tempat awam"
+        ],
+        correct: 1,
+        rationale: "Solat jenazah ialah Fardhu Kifayah; kewajipan gugur ke atas orang lain sekiranya ada sebahagian masyarakat yang melaksanakannya."
+      },
+      {
+        category: "Surah Al-Fatihah",
+        question: "Ayat ke-5 Surah Al-Fatihah iaitu 'Iyyaka na'budu wa-iyyaka nasta'in' membawa pengajaran utama tentang:",
+        options: [
+          "Hari pembalasan dan kebangkitan semula",
+          "Kisah orang terdahulu yang dimurkai",
+          "Teras Ubudiyyah dan pergantungan mutlak kepada Allah",
+          "Pemberian rezeki dan nikmat duniawi"
+        ],
+        correct: 2,
+        rationale: "Ayat ini bermaksud 'Hanya Engkau yang kami sembah dan hanya kepada Engkau kami mohon pertolongan' yang merupakan pasak tauhid dan Ubudiyyah."
+      },
+      {
+        category: "Tajwid",
+        question: "Pertemuan huruf Nun Mati (نْ) dengan huruf Ba (ب) dalam bacaan Al-Quran menghasilkan hukum:",
+        options: [
+          "Iqlab (menukar bunyi nun kepada mim serta dengung)",
+          "Izhar Halqi (membaca dengan jelas tanpa dengung)",
+          "Idgham Bila Ghunnah (memasukkan bunyi tanpa dengung)",
+          "Ikhfa' Syafawi (menyembunyikan bunyi bibir)"
+        ],
+        correct: 0,
+        rationale: "Iqlab berlaku apabila nun mati atau tanwin bertemu huruf Ba (ب), di mana bunyi nun ditukar kepada mim berserta dengung 2 harakat."
+      },
+      {
+        category: "Tajwid",
+        question: "Huruf-huruf Qalqalah (lantunan bunyi) terkumpul dalam kalimah:",
+        options: [
+          "ق ط ب ج د (Baju Di Kotoq)",
+          "ي ن م و (Yanmu)",
+          "ء هـ ع ح غ خ (Huruf Halqi)",
+          "ل ر (Huruf Idgham Bila Ghunnah)"
+        ],
+        correct: 0,
+        rationale: "Huruf Qalqalah ada 5 iaitu Qaf (ق), Tha (ط), Ba (ب), Jim (ج), dan Dal (د)."
+      },
+      {
+        category: "Munakahat",
+        question: "Antara berikut, yang manakah merupakan tanggungjawab nafkah zahir bagi seorang suami?",
+        options: [
+          "Menyediakan keperluan makan minum, pakaian dan tempat tinggal selesa",
+          "Mentaati perintah isteri dalam hal urusan rumah tangga",
+          "Memohon izin daripada isteri sebelum keluar bekerja",
+          "Membayar puasa ganti bagi pihak isteri"
+        ],
+        correct: 0,
+        rationale: "Nafkah zahir yang wajib disediakan oleh suami merangkumi makanan, pakaian, tempat tinggal yang selamat, dan perubatan."
+      },
+      {
+        category: "Rukun Islam & Iman",
+        question: "Percaya kepada Qada' dan Qadar merupakan rukun ke berapa dalam Rukun Iman?",
+        options: [
+          "Rukun Iman ke-6",
+          "Rukun Iman ke-5",
+          "Rukun Islam ke-4",
+          "Rukun Iman ke-4"
+        ],
+        correct: 0,
+        rationale: "Rukun Iman ada 6 perkara, dan yang ke-6 ialah percaya kepada ketentuan Qada' dan Qadar Allah SWT."
+      },
+      {
+        category: "Taharah (Wuduk)",
+        question: "Manakah antara berikut BUKAN daripada 6 rukun wuduk?",
+        options: [
+          "Membasuh telinga",
+          "Niat ketika membasuh muka",
+          "Membasuh kedua-dua tangan hingga siku",
+          "Tertib mengikut susunan"
+        ],
+        correct: 0,
+        rationale: "Membasuh telinga adalah amalan SUNAT wuduk, bukan rukun wajib wuduk yang terdiri daripada 6 perkara."
+      },
+      {
+        category: "Taharah (Mandi Wajib)",
+        question: "Berapakah bilangan rukun mandi wajib menurut mazhab Syafi'i?",
+        options: [
+          "3 rukun (Niat, buang najis 'aini, ratakan air ke seluruh badan & bulu)",
+          "6 rukun mengikut urutan tertib wuduk",
+          "5 rukun termasuk berkumur-kumur",
+          "2 rukun sahaja iaitu niat dan basuh kepala"
+        ],
+        correct: 0,
+        rationale: "Rukun mandi wajib ada 3 perkara utama: Niat mengangkat hadas besar, menghilangkan najis 'aini, dan meratakan air ke seluruh badan serta bulu-bulu."
+      },
+      {
+        category: "Rukun Solat",
+        question: "Membaca Surah Al-Fatihah dalam solat diklasifikasikan di bawah kategori rukun:",
+        options: [
+          "Rukun Qauli (Bacaan yang wajib didengar sendiri)",
+          "Rukun Fi'li (Perbuatan anggota badan)",
+          "Rukun Qalbi (Lintasan dalam hati)",
+          "Rukun Ma'nawi (Peraturan susunan)"
+        ],
+        correct: 0,
+        rationale: "Al-Fatihah, Takbiratul Ihram, Tahiyyat Akhir, Selawat atas Nabi, dan Salam Pertama ialah Rukun Qauli."
+      },
+      {
+        category: "Rukun Solat",
+        question: "Rukun Qalbi (hati) dalam 13 rukun solat ialah:",
+        options: [
+          "Niat ketika Takbiratul Ihram",
+          "Tama'ninah dalam ruku'",
+          "Berdiri betul bagi yang mampu",
+          "Duduk antara dua sujud"
+        ],
+        correct: 0,
+        rationale: "Niat merupakan satu-satunya Rukun Qalbi (lintasan niat di dalam hati serentak dengan Takbiratul Ihram)."
+      },
+      {
+        category: "Najis",
+        question: "Bagaimanakah kaedah menyucikan Najis Mukhaffafah (kencing bayi lelaki < 2 tahun yang hanya minum susu ibu)?",
+        options: [
+          "Lap sisa kencing, kemudian renjis/percik air mutlak hingga rata",
+          "Membasuh 7 kali dengan salah satunya air tanah",
+          "Mengalirkan air sabun hingga hilang bau dan rasa",
+          "Cukup dengan membiarkannya kering ditiup angin"
+        ],
+        correct: 0,
+        rationale: "Najis Mukhaffafah disucikan dengan membuang sisa cairan, kemudian merenjiskan atau memercikkan air mutlak ke seluruh tempat tersebut."
+      },
+      {
+        category: "Najis",
+        question: "Najis Mughallazah (anjing dan babi) wajib disucikan dengan cara:",
+        options: [
+          "7 kali basuhan air mutlak dan salah satu daripadanya air bercampur tanah bersih",
+          "3 kali basuhan air sabun dan dibilas air mutlak",
+          "1 kali basuhan asalkan hilang bau, warna dan rasa",
+          "Menyembur minyak wangi ke atas tempat najis"
+        ],
+        correct: 0,
+        rationale: "Najis Mughallazah wajib dibersihkan fizikal najisnya, kemudian dibasuh 7 kali basuhan air mutlak dengan satu daripadanya air campuran tanah suci (sertu)."
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+    let answeredQuestions = {};
+    let tempSelectedOption = null; // Menyimpan pilihan sebelum butang semak ditekan
+
+    function renderQuizQuestion() {
+      const q = quizData[currentQuizIndex];
+      const categoryBadge = document.getElementById('quizCategoryBadge');
+      const indexBadge = document.getElementById('quizIndexBadge');
+      const questionText = document.getElementById('quizQuestionText');
+      const optionsContainer = document.getElementById('quizOptionsContainer');
+      const feedbackBox = document.getElementById('quizFeedbackBox');
+      const btnCheck = document.getElementById('btnCheckAnswer');
+
+      categoryBadge.textContent = q.category;
+      indexBadge.textContent = `Soalan ${currentQuizIndex + 1} / ${quizData.length}`;
+      questionText.textContent = q.question;
+
+      optionsContainer.innerHTML = '';
+      feedbackBox.className = 'hidden p-2.5 rounded-lg text-xs leading-snug border transition-all';
+      feedbackBox.innerHTML = '';
+
+      const isAnswered = answeredQuestions[currentQuizIndex] !== undefined;
+
+      // Reset pilihan sementara jika soalan belum dijawab
+      if (!isAnswered) {
+        tempSelectedOption = null;
+        if (btnCheck) btnCheck.disabled = true;
+      } else {
+        if (btnCheck) btnCheck.disabled = true;
+      }
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'quiz-opt-' + idx;
+
+        let styleClass = 'w-full text-left p-2.5 rounded-xl border text-xs font-medium transition flex items-start gap-2 ';
+
+        if (isAnswered) {
+          if (idx === q.correct) {
+            styleClass += 'bg-emerald-100 border-emerald-500 text-emerald-950 dark:bg-emerald-950/80 dark:border-emerald-600 dark:text-emerald-200 font-bold';
+          } else if (idx === answeredQuestions[currentQuizIndex].chosen) {
+            styleClass += 'bg-rose-100 border-rose-400 text-rose-900 dark:bg-rose-950/80 dark:border-rose-700 dark:text-rose-200';
+          } else {
+            styleClass += 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-400 opacity-60';
+          }
+        } else {
+          styleClass += 'bg-slate-50 hover:bg-emerald-50 dark:bg-slate-800/80 dark:hover:bg-emerald-950/40 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 active:scale-[0.99]';
+        }
+
+        btn.className = styleClass;
+
+        const letter = String.fromCharCode(65 + idx);
+        btn.innerHTML = `<span id="badge-opt-${idx}" class="inline-block w-5 h-5 rounded-full text-center text-[10px] font-bold shrink-0 ${
+          isAnswered && idx === q.correct
+            ? 'bg-emerald-700 text-white'
+            : (isAnswered && idx === answeredQuestions[currentQuizIndex].chosen ? 'bg-rose-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300')
+        }">${letter}</span><span>${opt}</span>`;
+
+        if (!isAnswered) {
+          btn.onclick = () => selectTempOption(idx);
+        }
+        optionsContainer.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        showQuizFeedback(answeredQuestions[currentQuizIndex].isCorrect, q.rationale);
+      }
+    }
+
+    // Memilih jawapan terlebih dahulu sebelum disahkan oleh butang "Semak Jawapan"
+    function selectTempOption(idx) {
+      if (answeredQuestions[currentQuizIndex] !== undefined) return;
+
+      tempSelectedOption = idx;
+      const q = quizData[currentQuizIndex];
+
+      // Kemas kini gaya visual bagi pilihan yang sedang dipilih
+      q.options.forEach((_, i) => {
+        const btn = document.getElementById('quiz-opt-' + i);
+        const badge = document.getElementById('badge-opt-' + i);
+        if (i === idx) {
+          btn.className = 'w-full text-left p-2.5 rounded-xl border-2 border-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 dark:border-emerald-500 text-emerald-950 dark:text-emerald-100 font-bold transition flex items-start gap-2 shadow-xs';
+          badge.className = 'inline-block w-5 h-5 rounded-full text-center text-[10px] font-bold shrink-0 bg-emerald-700 text-white';
+        } else {
+          btn.className = 'w-full text-left p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 hover:bg-emerald-50/50 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition flex items-start gap-2';
+          badge.className = 'inline-block w-5 h-5 rounded-full text-center text-[10px] font-bold shrink-0 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+        }
+      });
+
+      const btnCheck = document.getElementById('btnCheckAnswer');
+      if (btnCheck) btnCheck.disabled = false;
+    }
+
+    // Pengesahan jawapan apabila butang "Semak Jawapan" ditekan
+    function checkQuizAnswer() {
+      if (tempSelectedOption === null || answeredQuestions[currentQuizIndex] !== undefined) return;
+
+      const q = quizData[currentQuizIndex];
+      const isCorrect = tempSelectedOption === q.correct;
+
+      if (isCorrect) {
+        quizScore++;
+      }
+
+      answeredQuestions[currentQuizIndex] = {
+        chosen: tempSelectedOption,
+        isCorrect: isCorrect
+      };
+
+      updateScoreDisplay();
+      renderQuizQuestion();
+    }
+
+    // Butang "Tunjuk Jawapan" untuk melihat penerangan terus
+    function revealQuizAnswer() {
+      if (answeredQuestions[currentQuizIndex] !== undefined) return;
+
+      const q = quizData[currentQuizIndex];
+      answeredQuestions[currentQuizIndex] = {
+        chosen: -1, // Menandakan jawapan ditunjukkan secara terus
+        isCorrect: false
+      };
+
+      updateScoreDisplay();
+      renderQuizQuestion();
+      showToast("💡 Jawapan didedahkan");
+    }
+
+    function showQuizFeedback(isCorrect, rationale) {
+      const feedbackBox = document.getElementById('quizFeedbackBox');
+      feedbackBox.classList.remove('hidden');
+      if (isCorrect) {
+        feedbackBox.className = 'p-2.5 rounded-lg text-xs leading-snug border bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200';
+        feedbackBox.innerHTML = `<strong>Tepat! ✅</strong> ${rationale}`;
+      } else {
+        feedbackBox.className = 'p-2.5 rounded-lg text-xs leading-snug border bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200';
+        feedbackBox.innerHTML = `<strong>Jawapan Sebenar:</strong> ${rationale}`;
+      }
+    }
+
+    function updateScoreDisplay() {
+      const display = document.getElementById('quizScoreDisplay');
+      const answeredCount = Object.keys(answeredQuestions).length;
+      display.textContent = `${quizScore} / ${answeredCount}`;
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuizQuestion();
+    }
+
+    function pickRandomQuizQuestion() {
+      let nextIndex = Math.floor(Math.random() * quizData.length);
+      if (nextIndex === currentQuizIndex && quizData.length > 1) {
+        nextIndex = (nextIndex + 1) % quizData.length;
+      }
+      currentQuizIndex = nextIndex;
+      renderQuizQuestion();
+      showToast("🎲 Soalan kuiz ditukar secara rawak");
+    }
+
+    function restartQuiz() {
+      currentQuizIndex = 0;
+      quizScore = 0;
+      answeredQuestions = {};
+      tempSelectedOption = null;
+      updateScoreDisplay();
+      renderQuizQuestion();
+      showToast("Kuiz dimulakan semula");
+    }
+
     window.onload = function() {
       initTheme();
+      renderQuizQuestion();
+      updateScoreDisplay();
     };
   </script>
 </body>
