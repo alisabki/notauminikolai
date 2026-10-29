@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ms" class="dark">
+<html lang="ms">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nota Poket UMI">
   <meta property="og:description" content="Aplikasi Rujukan Audit UMI, Fardhu Ain, Tajwid, Munakahat & Dasar Syarak MPKB-BRI.">
-  <meta name="theme-color" content="#121D19">
+  <meta name="theme-color" content="#F7F5EE">
 
-  <!-- Fon Google Moden: Plus Jakarta Sans (Gaya Editorial Mobile App) & JetBrains Mono -->
+  <!-- Fon Google Moden: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -29,7 +29,6 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            // Palet Inspirasi Botanical Mindful App (Gambar 1 & 3)
             botanic: {
               50: '#F4F7F4',
               100: '#E6EDE7',
@@ -67,25 +66,33 @@
 
   <style>
     /* ==================== AESTHETIC STYLING (WARM MINDFUL APP) ==================== */
+    :root {
+      --app-base-size: 1rem;       /* 16px asas (lebih besar & selesa) */
+      --app-content-size: 0.9375rem; /* 15px */
+      --app-sub-size: 0.84375rem;    /* 13.5px */
+      --app-title-size: 1.15rem;   /* Tajuk */
+      --app-heading-size: 1.05rem;
+    }
+
     body {
       -webkit-tap-highlight-color: transparent;
       font-family: 'Plus Jakarta Sans', sans-serif;
       text-rendering: optimizeLegibility;
       letter-spacing: -0.012em;
+      font-size: var(--app-base-size);
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Gaya Card & Bayang Mewah (Soft Clay Diffusion) */
-    /* MOD CERAH (Warm Linen & Soft White Card) */
+    /* MOD CERAH SEBAGAI LALAI (Warm Linen & Soft White Card) */
     html:not(.dark) body {
       background-color: #F7F5EE;
       color: #1F2923;
     }
     html:not(.dark) .app-card {
       background-color: #FFFFFF;
-      border: 1px solid rgba(220, 226, 218, 0.7);
+      border: 1px solid rgba(220, 226, 218, 0.75);
       box-shadow: 0 4px 20px -2px rgba(28, 48, 35, 0.05), 0 1px 3px 0 rgba(28, 48, 35, 0.03);
     }
     html:not(.dark) .app-card-nested {
@@ -97,16 +104,16 @@
       border: 1px solid #D2E2D4;
     }
     html:not(.dark) .header-blur {
-      background-color: rgba(247, 245, 238, 0.88);
+      background-color: rgba(247, 245, 238, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(220, 226, 218, 0.7);
     }
     html:not(.dark) .bottom-nav-surface {
-      background-color: rgba(255, 255, 255, 0.92);
+      background-color: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(220, 226, 218, 0.8);
+      border: 1px solid rgba(220, 226, 218, 0.85);
       box-shadow: 0 10px 30px -5px rgba(26, 46, 33, 0.12);
     }
 
@@ -129,91 +136,174 @@
       border: 1px solid rgba(108, 155, 114, 0.25);
     }
     html.dark .header-blur {
-      background-color: rgba(14, 22, 19, 0.88);
+      background-color: rgba(14, 22, 19, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     html.dark .bottom-nav-surface {
-      background-color: rgba(21, 34, 29, 0.92);
+      background-color: rgba(21, 34, 29, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6);
     }
 
-    /* Tipografi Kemas Terkawal */
+    /* Tipografi Kemas & Teratur */
     .editorial-body {
-      line-height: 1.62;
+      line-height: 1.65;
       text-align: left;
+      font-size: var(--app-content-size) !important;
+    }
+    .editorial-body p, 
+    .editorial-body span, 
+    .editorial-body div, 
+    .editorial-body td, 
+    .editorial-body th,
+    .editorial-body li {
+      font-size: inherit;
     }
     .editorial-list {
-      margin-left: 1.15rem;
+      margin-left: 1.25rem;
       text-align: left;
     }
     .editorial-list li {
-      margin-bottom: 0.35rem;
-      line-height: 1.5;
+      margin-bottom: 0.4rem;
+      line-height: 1.55;
     }
 
-    /* Kawalan Skala Saiz Tulisan */
-    .font-size-sm { font-size: 0.8125rem !important; }
-    .font-size-sm h2 { font-size: 0.9375rem !important; }
-    .font-size-md { font-size: 0.875rem !important; }
-    .font-size-md h2 { font-size: 1.05rem !important; }
-    .font-size-lg { font-size: 0.975rem !important; }
-    .font-size-lg h2 { font-size: 1.15rem !important; }
-    .font-size-xl { font-size: 1.075rem !important; }
-    .font-size-xl h2 { font-size: 1.25rem !important; }
+    /* Skala Saiz Tulisan Menyeluruh (Tajuk, Teks, Jadual, Senarai) */
+    body.font-size-sm {
+      --app-base-size: 0.875rem;
+      --app-content-size: 0.8125rem;
+      --app-sub-size: 0.75rem;
+      --app-title-size: 1rem;
+      --app-heading-size: 0.9375rem;
+    }
+    body.font-size-md {
+      --app-base-size: 1rem;
+      --app-content-size: 0.9375rem;
+      --app-sub-size: 0.84375rem;
+      --app-title-size: 1.15rem;
+      --app-heading-size: 1.05rem;
+    }
+    body.font-size-lg {
+      --app-base-size: 1.125rem;
+      --app-content-size: 1.0625rem;
+      --app-sub-size: 0.9375rem;
+      --app-title-size: 1.3rem;
+      --app-heading-size: 1.1875rem;
+    }
+    body.font-size-xl {
+      --app-base-size: 1.25rem;
+      --app-content-size: 1.1875rem;
+      --app-sub-size: 1.0625rem;
+      --app-title-size: 1.45rem;
+      --app-heading-size: 1.3125rem;
+    }
+
+    .app-note-title {
+      font-size: var(--app-title-size) !important;
+    }
+    .app-note-heading {
+      font-size: var(--app-heading-size) !important;
+    }
+    .app-sub-text {
+      font-size: var(--app-sub-size) !important;
+    }
   </style>
 </head>
 <body id="appBody" class="font-size-md antialiased min-h-screen pb-32 transition-colors duration-300">
 
-  <!-- ==================== 1. MOD PENYAMARAN (STEALTH PORTAL) ==================== -->
-  <div id="stealthUI" class="hidden min-h-screen p-5 select-none">
-    <div class="max-w-md mx-auto app-card rounded-[26px] p-6 space-y-4 mt-6">
-      <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-4">
+  <!-- ==================== 1. MOD PENYAMARAN (STEALTH PORTAL MPKB-BRI LANJUTAN) ==================== -->
+  <div id="stealthUI" class="hidden min-h-screen p-4 sm:p-6 select-none bg-slate-100 dark:bg-slate-950">
+    <div class="max-w-lg mx-auto app-card rounded-[28px] p-5 sm:p-6 space-y-4">
+      
+      <!-- Bar Pengepala Portal -->
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-widest shadow-md">
-            UMI
+            BRI
           </div>
           <div>
-            <div class="text-[10px] text-slate-400 dark:text-emerald-400/80 uppercase tracking-widest font-bold">Portal Rasmi MPKB-BRI</div>
-            <div class="text-sm font-bold text-slate-800 dark:text-slate-100">Sistem Semakan & Log Tugasan</div>
+            <div class="text-[10px] text-slate-400 dark:text-emerald-400/80 uppercase tracking-widest font-bold">Portal Intranet MPKB-BRI</div>
+            <div class="text-sm font-bold text-slate-800 dark:text-slate-100">Log Pengurusan & Kaunter Khidmat</div>
           </div>
         </div>
-        <button onclick="toggleStealth()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:scale-105 flex items-center justify-center transition">
+        <button onclick="toggleStealth()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:scale-105 flex items-center justify-center transition" title="Tutup Mod Penyamaran">
           <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <div class="p-4 bg-botanic-500/10 dark:bg-botanic-500/20 rounded-2xl border border-botanic-500/20 text-botanic-800 dark:text-botanic-200">
-        <div class="flex items-center justify-between mb-1.5">
-          <span class="font-bold uppercase text-[10px] tracking-wider">Pematuhan Prinsip UMI</span>
-          <span class="text-[10px] bg-botanic-600 text-white px-2.5 py-0.5 rounded-full font-semibold">PATUH</span>
-        </div>
-        <p class="text-xs leading-relaxed opacity-90">Semua rekod dokumen dan fail tindakan perkhidmatan kaunter telah mematuhi piawaian audit UMI.</p>
+      <!-- Tab Penyamaran: Log Meja vs Kalkulator Kompaun -->
+      <div class="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-black/30 rounded-2xl text-xs font-semibold">
+        <button onclick="switchStealthTab('log')" id="btnTabLog" class="flex-1 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition">Buku Log Meja</button>
+        <button onclick="switchStealthTab('calc')" id="btnTabCalc" class="flex-1 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 transition">Kalkulator Lesen/Denda</button>
       </div>
 
+      <!-- Kandungan 1: Buku Log Meja Harian -->
+      <div id="stealthTabLogContent" class="space-y-3">
+        <div class="p-3.5 bg-botanic-500/10 dark:bg-botanic-500/20 rounded-2xl border border-botanic-500/20 text-botanic-800 dark:text-botanic-200">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold uppercase text-[10px] tracking-wider">Status Integriti Staf</span>
+            <span class="text-[10px] bg-botanic-600 text-white px-2.5 py-0.5 rounded-full font-semibold">DISEMAK</span>
+          </div>
+          <p class="text-xs leading-relaxed opacity-90">Kehadiran direkod jam 07:54 AM. Rekod tindakan kaunter dan senarai fail aduan awam telah dikemas kini mengikut Garis Panduan UMI 2020.</p>
+        </div>
+
+        <div class="space-y-2 text-xs">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">Status Tindakan Semasa</span>
+          <div class="p-3 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
+            <div>
+              <div class="font-bold text-slate-800 dark:text-slate-200">FAIL/LESEN/2026-B81</div>
+              <div class="text-[11px] text-slate-400">Permohonan Permit Perniagaan Sementara</div>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 font-semibold">Lulus</span>
+          </div>
+          <div class="p-3 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
+            <div>
+              <div class="font-bold text-slate-800 dark:text-slate-200">AUDIT/UMI/Q4-2026</div>
+              <div class="text-[11px] text-slate-400">Verifikasi Dokumen Pematuhan Syariah</div>
+            </div>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 font-semibold">Tindakan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kandungan 2: Kalkulator Kompaun / Anggaran PBT Olok-Olok -->
+      <div id="stealthTabCalcContent" class="hidden space-y-3 text-xs">
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 space-y-2">
+          <span class="font-bold text-slate-700 dark:text-slate-300 block">Kiraan Anggaran Kompaun Kebersihan Premis:</span>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="number" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
+            <input type="number" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
+          </div>
+          <button onclick="calculateStealthTotal()" class="w-full py-2 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 rounded-xl font-bold">Kira Jumlah Pengeluaran</button>
+          <div class="pt-2 text-center text-xs font-bold text-botanic-600 dark:text-emerald-400" id="stealthCalcResult">Jumlah: RM 300.00</div>
+        </div>
+      </div>
+
+      <!-- Footer Stealth -->
       <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-400">
         <span>Pengguna: <strong>Nikolai Nicholas</strong></span>
-        <button onclick="toggleStealth()" class="text-botanic-600 dark:text-emerald-400 font-semibold underline">Kembali Ke Nota</button>
+        <button onclick="toggleStealth()" class="text-botanic-600 dark:text-emerald-400 font-semibold underline">Keluar & Sambung Nota</button>
       </div>
+
     </div>
   </div>
 
   <!-- ==================== 2. HAMBURGER NAVIGATION DRAWER ==================== -->
-  <div id="navDrawerOverlay" onclick="closeNavDrawer()" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+  <div id="navDrawerOverlay" onclick="closeNavDrawer()" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
   <aside id="navDrawer" class="fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[85vw] app-card !rounded-r-[32px] !border-l-0 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
     <!-- Header Drawer -->
-    <div class="p-6 border-b border-emerald-900/10 dark:border-white/10 flex items-center justify-between">
+    <div class="p-5 border-b border-emerald-900/10 dark:border-white/10 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">
           UMI
         </div>
         <div>
-          <h2 class="text-sm font-bold text-slate-900 dark:text-slate-100">Daftar Topik</h2>
+          <h2 class="text-sm font-bold text-slate-900 dark:text-slate-100">Daftar 17 Topik</h2>
           <p class="text-[11px] text-botanic-600 dark:text-botanic-300 font-medium">Navigasi Pantas Audit</p>
         </div>
       </div>
@@ -259,14 +349,14 @@
               <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
             </button>
 
-            <!-- Butang Saiz Teks -->
-            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan" class="h-8 px-2.5 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 active:scale-95 transition">
+            <!-- Butang Saiz Teks Menyeluruh -->
+            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" class="h-8 px-2.5 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 active:scale-95 transition">
               <span>A</span><span class="text-[10px]">A</span>
             </button>
 
             <!-- Suis Tema Cerah / Gelap -->
             <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema" class="w-8 h-8 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
-              <i id="themeIcon" data-lucide="sun" class="w-4 h-4 text-amberwarm-500"></i>
+              <i id="themeIcon" data-lucide="moon" class="w-4 h-4 text-slate-700"></i>
             </button>
 
             <!-- Butang Rahsia Stealth -->
@@ -283,14 +373,17 @@
 
         </div>
 
-        <!-- Panel Tetapan Saiz Teks (Dropdown Cantik) -->
-        <div id="settingsPanel" class="hidden mt-3 p-3 rounded-2xl app-card flex items-center justify-between text-xs">
-          <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Skala Saiz Tulisan:</span>
-          <div class="flex items-center gap-1 bg-slate-100 dark:bg-black/30 p-1 rounded-xl w-44">
+        <!-- Panel Tetapan Saiz Teks (Skala Menyeluruh) -->
+        <div id="settingsPanel" class="hidden mt-3 p-3.5 rounded-2xl app-card flex items-center justify-between text-xs">
+          <div>
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-200 block">Saiz Tulisan Keseluruhan:</span>
+            <span class="text-[10px] text-slate-400">Melaraskan tajuk, jadual, senarai & soalan</span>
+          </div>
+          <div class="flex items-center gap-1 bg-slate-100 dark:bg-black/30 p-1 rounded-xl w-48">
             <button onclick="setFontSize('sm')" id="btnFontSm" class="flex-1 py-1 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition">A-</button>
             <button onclick="setFontSize('md')" id="btnFontMd" class="flex-1 py-1 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition">A</button>
-            <button onclick="setFontSize('lg')" id="btnFontLg" class="flex-1 py-1 rounded-lg text-center text-sm font-medium text-slate-500 dark:text-slate-400 transition">A+</button>
-            <button onclick="setFontSize('xl')" id="btnFontXl" class="flex-1 py-1 rounded-lg text-center text-base font-medium text-slate-500 dark:text-slate-400 transition">A++</button>
+            <button onclick="setFontSize('lg')" id="btnFontLg" class="flex-1 py-1 rounded-lg text-center text-sm font-semibold text-slate-600 dark:text-slate-300 transition">A+</button>
+            <button onclick="setFontSize('xl')" id="btnFontXl" class="flex-1 py-1 rounded-lg text-center text-base font-black text-slate-700 dark:text-slate-200 transition">A++</button>
           </div>
         </div>
 
@@ -311,7 +404,7 @@
       <span id="toastMessage">Berjaya</span>
     </div>
 
-    <!-- ==================== 4. HERO DASHBOARD WIDGET (INSPIRASI GAMBAR 1 & 3) ==================== -->
+    <!-- ==================== 4. HERO DASHBOARD WIDGET DENGAN ANALISIS KEMAJUAN ==================== -->
     <div class="max-w-2xl mx-auto px-4 pt-3">
       <div class="app-card rounded-[26px] p-4 sm:p-5 relative overflow-hidden">
         <div class="flex items-center justify-between gap-3 relative z-10">
@@ -331,16 +424,97 @@
             </p>
           </div>
 
-          <!-- Lencana Cepat Latih Tubi -->
-          <button onclick="openQuizModal()" class="shrink-0 text-center p-2.5 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 hover:scale-105 active:scale-95 transition">
-            <div class="text-base font-extrabold text-botanic-600 dark:text-emerald-400" id="heroQuizCount">23</div>
-            <div class="text-[9px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">Soalan</div>
+          <!-- Butang Pantas: Kini membuka Analisis & Graf Kemajuan -->
+          <button onclick="openAnalyticsModal()" title="Buka Graf Kemajuan & Analisis Prestasi" class="shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 hover:scale-105 active:scale-95 transition shadow-xs flex flex-col items-center justify-center min-w-[76px]">
+            <i data-lucide="bar-chart-3" class="w-4 h-4 text-botanic-600 dark:text-emerald-400 mb-0.5"></i>
+            <div class="text-sm font-extrabold text-botanic-700 dark:text-emerald-300" id="heroProgressPercent">0%</div>
+            <div class="text-[9px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">Prestasi</div>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ==================== 5. MODAL CARIAN PANTAS (FUSE.JS) ==================== -->
+    <!-- ==================== 5. MODAL ANALISIS & GRAF KEMAJUAN (BAHARU) ==================== -->
+    <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+      <div id="analyticsModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 transform transition-transform duration-200 scale-95 max-h-[88vh] overflow-y-auto no-scrollbar">
+        
+        <!-- Header Modal -->
+        <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
+              <i data-lucide="pie-chart" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Analisis Kemajuan Audit</h3>
+              <p class="text-[11px] text-slate-400">Prestasi Pembacaan Nota & Penguasaan Kuiz</p>
+            </div>
+          </div>
+          <button onclick="closeAnalyticsModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- 1. GRAF KEMAJUAN BACAAN NOTA (PROGRESS BAR & PERCENT) -->
+        <div class="p-4 rounded-2xl app-card-nested space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="book-marked" class="w-3.5 h-3.5 text-botanic-600"></i>
+              Kemajuan Bacaan Nota (17 Topik)
+            </span>
+            <span id="analyticsReadingScoreText" class="text-xs font-extrabold text-botanic-600 dark:text-emerald-400">0 / 17 (0%)</span>
+          </div>
+
+          <!-- Bar Visual Progress -->
+          <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden p-0.5">
+            <div id="analyticsReadingProgressBar" class="h-full rounded-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
+          </div>
+
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+            Tandakan butang tanda selesai bacaan di setiap kad topik untuk mengira peratusan persediaan sebelum dinilai auditor.
+          </p>
+        </div>
+
+        <!-- 2. GRAF KEPUTUSAN KUIZ (ACCURACY METRICS) -->
+        <div class="p-4 rounded-2xl app-card-nested space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="award" class="w-3.5 h-3.5 text-amberwarm-500"></i>
+              Prestasi Latih Tubi Kuiz (23 Soalan)
+            </span>
+            <span id="analyticsQuizGradeBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amberwarm-500/10 text-amberwarm-500 border border-amberwarm-500/20">BELUM SELESAI</span>
+          </div>
+
+          <!-- Graf Segmen Bar Ketepatan Kuiz -->
+          <div class="space-y-1.5">
+            <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden flex">
+              <div id="barCorrect" class="h-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%" title="Betul"></div>
+              <div id="barWrong" class="h-full bg-rose-500 transition-all duration-500" style="width: 0%" title="Salah"></div>
+              <div id="barUnanswered" class="h-full bg-slate-300 dark:bg-slate-700 transition-all duration-500" style="width: 100%" title="Belum Dijawab"></div>
+            </div>
+            
+            <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-botanic-600"></span> Betul: <strong id="lblCorrectCount">0</strong></span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Salah: <strong id="lblWrongCount">0</strong></span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-400"></span> Baki: <strong id="lblUnansweredCount">23</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Butang Tindakan Bawah Modal -->
+        <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
+          <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold">
+            Tetapkan Semula (Reset)
+          </button>
+          <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i>
+            <span>Buka Latih Tubi Kuiz</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== 6. MODAL CARIAN PANTAS (FUSE.JS) ==================== -->
     <div id="searchModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
       <div id="searchModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95 mt-8 sm:mt-0">
         <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
@@ -366,7 +540,7 @@
       </div>
     </div>
 
-    <!-- ==================== 6. MODAL KUIZ AUDIT ==================== -->
+    <!-- ==================== 7. MODAL KUIZ AUDIT ==================== -->
     <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
       <div id="quizModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95">
         
@@ -393,7 +567,7 @@
             <span id="quizIndexBadge">Soalan 1 / 23</span>
           </div>
 
-          <div id="quizQuestionText" class="text-xs sm:text-sm font-bold leading-relaxed min-h-[42px] text-slate-900 dark:text-slate-100 text-left"></div>
+          <div id="quizQuestionText" class="app-note-heading font-bold leading-relaxed min-h-[42px] text-slate-900 dark:text-slate-100 text-left"></div>
           <div id="quizOptionsContainer" class="space-y-2 max-h-[42vh] overflow-y-auto no-scrollbar"></div>
           <div id="quizFeedbackBox" class="hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left"></div>
         </div>
@@ -423,7 +597,7 @@
       </div>
     </div>
 
-    <!-- ==================== 7. KANDUNGAN KAD NOTA ==================== -->
+    <!-- ==================== 8. KANDUNGAN KAD NOTA ==================== -->
     <main id="contentContainer" class="max-w-2xl mx-auto px-4 pt-3 space-y-3.5"></main>
 
     <!-- Footer Rasmi -->
@@ -431,7 +605,7 @@
       <p>Built & maintained by Nikolai Nicholas</p>
     </footer>
 
-    <!-- ==================== 8. BOTTOM NAVIGATION BAR (FLOATING CAPSULE GAYA GAMBAR 1 & 3) ==================== -->
+    <!-- ==================== 9. BOTTOM NAVIGATION BAR (FLOATING CAPSULE) ==================== -->
     <div class="fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none">
       <nav class="bottom-nav-surface rounded-full px-5 py-2.5 flex items-center gap-5 sm:gap-8 pointer-events-auto">
         
@@ -470,9 +644,9 @@
 
   </div>
 
-  <!-- ==================== 9. ENJIN SKRIP & STRUKTUR DATA ==================== -->
+  <!-- ==================== 10. ENJIN SKRIP & LOGIK APLIKASI ==================== -->
   <script>
-    // ==================== [A] TATASUSUNAN DATA LENGKAP NOTA AUDIT ====================
+    // ==================== [A] TATASUSUNAN DATA 17 TOPIK ====================
     const auditTopicsData = [
       {
         id: "sec-sejarah",
@@ -481,7 +655,7 @@
         icon: "landmark",
         badge: "Sejarah Asas",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs leading-relaxed editorial-body">
+          <div class="space-y-2.5 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-nested">
               <span class="font-bold text-slate-900 dark:text-slate-100 block mb-1">🗓️ Tahun 1990: Gagasan MBI</span>
               <p class="text-slate-600 dark:text-slate-300">Mula diperkenalkan pada <strong>tahun 1990</strong> di bawah dasar pentadbiran <em>"Membangun Bersama Islam" (MBI)</em> pimpinan Almarhum Tuan Guru Dato' Nik Abdul Aziz Nik Mat bagi menyerapkan nilai syariah dalam seluruh agensi kerajaan negeri.</p>
@@ -500,18 +674,18 @@
         icon: "building-2",
         badge: "1 Okt 2005",
         bodyHtml: `
-          <div class="space-y-3 text-xs editorial-body">
+          <div class="space-y-3 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-highlight">
               <div class="font-bold text-botanic-700 dark:text-emerald-300 mb-1 flex items-center justify-between">
                 <span>📅 Pengisytiharan Bandar Raya Islam:</span>
-                <span class="text-[10px] bg-botanic-600 text-white px-2.5 py-0.5 rounded-full font-semibold">1 Oktober 2005</span>
+                <span class="app-sub-text bg-botanic-600 text-white px-2.5 py-0.5 rounded-full font-semibold">1 Oktober 2005</span>
               </div>
               <p class="text-botanic-900 dark:text-botanic-200">Kota Bharu diisytiharkan sebagai <strong>Bandar Raya Islam pada 1 Oktober 2005</strong> di bawah wawasan pentadbiran MBI bagi menterjemahkan syariat Islam dalam tadbir urus fizikal, perbandaran, sosial, dan ekonomi rakyat.</p>
             </div>
             
             <div class="p-3.5 rounded-2xl app-card-nested">
-              <strong class="block mb-2 text-slate-900 dark:text-slate-100 uppercase text-[11px] tracking-wide">🌟 5 Kesejahteraan Bandar Raya Islam (BRI):</strong>
-              <ol class="list-decimal editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1.5">
+              <strong class="block mb-2 text-slate-900 dark:text-slate-100 uppercase app-sub-text tracking-wide">🌟 5 Kesejahteraan Bandar Raya Islam (BRI):</strong>
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
                 <li><strong>Kesejahteraan Akidah:</strong> Penghayatan tauhid, membanteras khurafat, azan berkumandang di premis awam.</li>
                 <li><strong>Kesejahteraan Akhlak:</strong> Menutup aurat, adab sopan, tiada hiburan melampau dan maksiat terbuka.</li>
                 <li><strong>Kesihatan & Kebersihan:</strong> Kebersihan sebahagian iman; pasar dan premis perniagaan bersih dan suci.</li>
@@ -520,8 +694,8 @@
               </ol>
             </div>
 
-            <div class="p-3.5 rounded-2xl app-card-nested text-[11px] space-y-1.5">
-              <strong class="block text-slate-900 dark:text-slate-100 uppercase text-[11px] mb-1">🤝 Budaya Kerja Islamik di MPKB-BRI:</strong>
+            <div class="p-3.5 rounded-2xl app-card-nested space-y-1.5">
+              <strong class="block text-slate-900 dark:text-slate-100 uppercase app-sub-text mb-1">🤝 Budaya Kerja Islamik di MPKB-BRI:</strong>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li><strong>Konsep Syura:</strong> Mengutamakan perbincangan muafakat dalam membuat keputusan dasar perbandaran.</li>
                 <li><strong>Konsep Hisbah:</strong> Pengauditan kendiri (*self-accountability*), amar makruf nahi mungkar, dan ketegasan penguatkuasaan adil.</li>
@@ -539,7 +713,7 @@
         badge: "Teras Utama",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left text-xs border-collapse">
+            <table class="w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2.5 px-3.5 font-semibold w-1/3">Prinsip</th>
@@ -571,12 +745,12 @@
         icon: "briefcase",
         badge: "Praktikal",
         bodyHtml: `
-          <div class="space-y-2 text-xs">
+          <div class="space-y-2 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-botanic-500">
               <span class="font-bold text-botanic-700 dark:text-emerald-300 flex items-center gap-1.5 mb-1">
                 Ubudiyyah di Pejabat:
               </span>
-              <ul class="list-disc editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Mulakan tugas harian dengan niat ikhlas ibadah kerana Allah SWT.</li>
                 <li>Menjaga solat pada waktunya serta memelihara adab syariat.</li>
                 <li>Menghindari sifat riak dan perbuatan curi tulang masa.</li>
@@ -586,7 +760,7 @@
               <span class="font-bold text-amberwarm-500 flex items-center gap-1.5 mb-1">
                 Mas'uliyyah di Pejabat:
               </span>
-              <ul class="list-disc editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Menepati waktu masuk, rehat, dan amanah dalam mencatat pergerakan.</li>
                 <li>Menjaga kerahsiaan fail kerajaan dan tidak menyalahgunakan aset rasmi.</li>
               </ul>
@@ -595,7 +769,7 @@
               <span class="font-bold text-terracotta-500 flex items-center gap-1.5 mb-1">
                 Itqan di Pejabat:
               </span>
-              <ul class="list-disc editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Menyiapkan tugasan dengan teliti, kemas, dan sifar ralat.</li>
                 <li>Menyusun fail meja, minit mesyuarat, dan rekod perbandaran dengan teratur.</li>
               </ul>
@@ -610,8 +784,8 @@
         icon: "shield-check",
         badge: "Teras Halal",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
+          <div class="space-y-2.5 editorial-body">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <div class="p-3 rounded-2xl app-card-nested">
                 <strong class="text-botanic-600 dark:text-emerald-400 block mb-1">🟢 Rezeki Halal:</strong>
                 <p class="text-slate-600 dark:text-slate-300">Gaji hasil kerja jujur, amanah masa, mematuhi SOP majlis, dan tiada penipuan log tugas.</p>
@@ -625,7 +799,7 @@
                 <p class="text-slate-600 dark:text-slate-300">Rasuah, membuat tuntutan elaun palsu (*false claims*), atau mencuri harta majlis.</p>
               </div>
             </div>
-            <div class="p-3.5 rounded-2xl app-card-nested text-[11px] leading-relaxed">
+            <div class="p-3.5 rounded-2xl app-card-nested leading-relaxed">
               <strong class="block text-slate-900 dark:text-slate-100 uppercase mb-1.5">👔 Etika Aurat & Batas Ikhtilat di Pejabat:</strong>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li><strong>Aurat Lelaki:</strong> Antara pusat hingga lutut. Pakaian kemas, bersopan dan berkasut.</li>
@@ -643,9 +817,9 @@
         icon: "gem",
         badge: "Tasawuf",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs">
+          <div class="space-y-2.5 editorial-body">
             <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-              <table class="w-full text-left text-xs border-collapse">
+              <table class="w-full text-left border-collapse">
                 <thead>
                   <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                     <th class="py-2 px-3 font-semibold">Sifat Wajib</th>
@@ -653,7 +827,7 @@
                     <th class="py-2 px-3 font-semibold">Aplikasi di MPKB-BRI</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-[11px] text-slate-600 dark:text-slate-300">
+                <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
                   <tr>
                     <td class="py-2 px-3 font-bold text-botanic-600 dark:text-emerald-400">1. Siddiq (Benar)</td>
                     <td class="py-2 px-3 text-rose-500">Kazib (Dusta)</td>
@@ -677,7 +851,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div class="p-3 rounded-2xl app-card-nested">
                 <strong class="text-botanic-600 dark:text-emerald-400 block mb-1">🌿 Mahmudah (Terpuji):</strong>
                 <p class="text-slate-600 dark:text-slate-300">Ikhlas, Sabar melayan aduan, Syukur, dan Tawaduk sesama rakan sekerja.</p>
@@ -698,7 +872,7 @@
         badge: "Hukum",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left text-xs border-collapse">
+            <table class="w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-3 font-semibold w-28">Kategori</th>
@@ -732,13 +906,13 @@
         icon: "scroll",
         badge: "Hafazan",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs editorial-body">
+          <div class="space-y-2.5 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-nested">
               <strong class="text-amberwarm-500 block mb-1">🤲 8 Permintaan Duduk Antara Dua Sujud:</strong>
-              <p class="text-[11px] font-mono bg-botanic-50 dark:bg-black/40 p-2.5 rounded-xl mb-2 text-center text-botanic-800 dark:text-botanic-200">
+              <p class="font-mono bg-botanic-50 dark:bg-black/40 p-2.5 rounded-xl mb-2 text-center text-botanic-800 dark:text-botanic-200">
                 "Rabbighfirli, warhamni, wajburni, warfa'ni, warzuqni, wahdini, wa'afini, wa'fu 'anni"
               </p>
-              <ol class="list-decimal editorial-list grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] text-slate-600 dark:text-slate-300">
+              <ol class="list-decimal editorial-list grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-600 dark:text-slate-300">
                 <li>Ampunkan dosaku</li>
                 <li>Rahmati daku</li>
                 <li>Cukupkan kekuranganku</li>
@@ -764,7 +938,7 @@
         badge: "Ummul Kitab",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left text-xs border-collapse">
+            <table class="w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-2.5 font-semibold w-12 text-center">Ayat</th>
@@ -789,10 +963,10 @@
         icon: "mic",
         badge: "Tajwid",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs">
+          <div class="space-y-2.5 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-nested">
               <strong class="text-botanic-600 dark:text-emerald-400 block mb-1.5">A. Hukum Nun Mati (نْ) & Tanwin (5 Bahagian):</strong>
-              <ul class="list-disc editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li><strong>Izhar Halqi (ء هـ ع ح غ خ):</strong> Bunyi jelas tanpa dengung.</li>
                 <li><strong>Idgham Ma'al Ghunnah (ي ن م و):</strong> Masuk bunyi ke huruf berserta dengung 2 harakat.</li>
                 <li><strong>Idgham Bila Ghunnah (ل ر):</strong> Masuk ke huruf tanpa dengung.</li>
@@ -800,7 +974,7 @@
                 <li><strong>Ikhfa' Haqiqi (15 huruf):</strong> Bunyi samar antara izhar dan idgham berserta dengung.</li>
               </ul>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div class="p-3 rounded-2xl app-card-nested">
                 <strong class="block mb-1 text-slate-900 dark:text-slate-100">B. Mim Mati (مْ):</strong>
                 <p class="text-slate-600 dark:text-slate-300">1. Ikhfa' Syafawi (ب)<br>2. Idgham Mithlain (م)<br>3. Izhar Syafawi (selain م & ب)</p>
@@ -820,18 +994,18 @@
         icon: "heart-handshake",
         badge: "Keluarga",
         bodyHtml: `
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 editorial-body">
             <div class="p-3.5 app-card-nested rounded-2xl">
-              <strong class="text-botanic-600 dark:text-emerald-400 block mb-2 text-xs">👨 Tanggungjawab Suami:</strong>
-              <ul class="list-disc editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1.5">
+              <strong class="text-botanic-600 dark:text-emerald-400 block mb-2">👨 Tanggungjawab Suami:</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
                 <li><strong>Nafkah Zahir:</strong> Tempat tinggal selamat, pakaian, makanan minuman, dan perubatan.</li>
                 <li><strong>Nafkah Batin:</strong> Menggauli isteri secara ma'ruf dan berkasih sayang.</li>
                 <li><strong>Bimbingan Agama:</strong> Membimbing solat, aurat, dan fardhu ain asas.</li>
               </ul>
             </div>
             <div class="p-3.5 app-card-nested rounded-2xl">
-              <strong class="text-terracotta-500 block mb-2 text-xs">🧕 Tanggungjawab Isteri:</strong>
-              <ul class="list-disc editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1.5">
+              <strong class="text-terracotta-500 block mb-2">🧕 Tanggungjawab Isteri:</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
                 <li><strong>Taat kepada Suami:</strong> Selagi tidak bertentangan dengan syarak.</li>
                 <li><strong>Menjaga Kehormatan:</strong> Memelihara maruah diri, harta suami, dan rahsia rumah tangga.</li>
                 <li><strong>Izin Suami:</strong> Meminta izin sebelum keluar rumah atau berpuasa sunat.</li>
@@ -847,10 +1021,10 @@
         icon: "shield",
         badge: "Akidah Asas",
         bodyHtml: `
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 editorial-body">
             <div class="rounded-2xl app-card-nested p-3.5">
               <span class="font-bold text-botanic-700 dark:text-emerald-300 block mb-2 border-b border-slate-200 dark:border-white/10 pb-1">Rukun Islam (5 Perkara)</span>
-              <ol class="list-decimal editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li>Mengucap Dua Kalimah Syahadah</li>
                 <li>Solat 5 waktu sehari semalam</li>
                 <li>Mengeluarkan Zakat yang wajib</li>
@@ -860,7 +1034,7 @@
             </div>
             <div class="rounded-2xl app-card-nested p-3.5">
               <span class="font-bold text-amberwarm-500 block mb-2 border-b border-slate-200 dark:border-white/10 pb-1">Rukun Iman (6 Perkara)</span>
-              <ol class="list-decimal editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li>Beriman kepada Allah SWT</li>
                 <li>Beriman kepada para Malaikat</li>
                 <li>Beriman kepada Kitab-kitab suci</li>
@@ -879,16 +1053,16 @@
         icon: "waves",
         badge: "Taharah",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs">
+          <div class="space-y-2.5 editorial-body">
             <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-              <table class="w-full text-left text-xs border-collapse">
+              <table class="w-full text-left border-collapse">
                 <thead>
                   <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                     <th class="py-2 px-2.5 font-semibold w-24">Air</th>
                     <th class="py-2 px-2.5 font-semibold">Status Hukum</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-[11px] text-slate-600 dark:text-slate-300">
+                <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
                   <tr><td class="py-2 px-2.5 font-bold text-botanic-600 dark:text-emerald-400">1. Mutlak</td><td class="py-2 px-2.5">Suci lagi menyucikan (wuduk, mandi hadas, basuh najis).</td></tr>
                   <tr><td class="py-2 px-2.5 font-bold text-sky-500">2. Musta'mal</td><td class="py-2 px-2.5">Suci pada zatnya tapi tidak menyucikan hadas kali kedua.</td></tr>
                   <tr><td class="py-2 px-2.5 font-bold text-amberwarm-500">3. Musyammas</td><td class="py-2 px-2.5">Suci tetapi makruh guna pada badan (bekas logam panas matahari).</td></tr>
@@ -896,7 +1070,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="p-3 rounded-2xl app-card-nested text-[11px]">
+            <div class="p-3 rounded-2xl app-card-nested">
               <strong class="block text-slate-900 dark:text-slate-100 mb-1">🏜️ Ringkasan Tayamum:</strong>
               <p class="text-slate-600 dark:text-slate-300">• <strong>Anggota Tayamum:</strong> Dua anggota sahaja iaitu <strong>muka dan kedua-dua belah tangan hingga siku</strong> menggunakan debu tanah suci.</p>
             </div>
@@ -910,10 +1084,10 @@
         icon: "droplet",
         badge: "Wajib",
         bodyHtml: `
-          <div class="space-y-3 text-xs">
+          <div class="space-y-3 editorial-body">
             <div>
               <span class="font-bold text-botanic-600 dark:text-emerald-400 block mb-1.5">A. 6 Rukun Wuduk (Urutan Wajib):</span>
-              <ol class="list-decimal editorial-list text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li>Niat ketika air sampai ke muka</li>
                 <li>Membasuh seluruh muka</li>
                 <li>Membasuh kedua-dua tangan hingga siku</li>
@@ -922,7 +1096,7 @@
                 <li>Tertib mengikut susunan</li>
               </ol>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div class="p-3 app-card-nested rounded-2xl">
                 <span class="font-bold text-rose-500 block mb-1">Batal Wuduk:</span>
                 <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
@@ -952,14 +1126,14 @@
         badge: "4 Kategori",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left text-xs border-collapse">
+            <table class="w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-2.5 font-semibold w-20">Bahagian</th>
                   <th class="py-2 px-2.5 font-semibold">Perincian 13 Rukun</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-[11px] text-slate-600 dark:text-slate-300">
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
                 <tr>
                   <td class="py-2 px-2.5 font-semibold text-rose-500 align-top">Qalbi</td>
                   <td class="py-2 px-2.5"><strong>1. Niat</strong> (lintas dalam hati semasa Takbiratul Ihram).</td>
@@ -992,8 +1166,8 @@
         icon: "zap",
         badge: "Lanjutan",
         bodyHtml: `
-          <div class="space-y-2.5 text-xs">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+          <div class="space-y-2.5 editorial-body">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div class="p-3 rounded-2xl app-card-nested">
                 <strong class="text-amberwarm-500 block mb-1">⭐ Sunat Ab'adh (Ganti Sujud Sahwi):</strong>
                 <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
@@ -1024,7 +1198,7 @@
         icon: "sparkle",
         badge: "Najis",
         bodyHtml: `
-          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 text-xs">
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 editorial-body">
             <table class="w-full text-left border-collapse">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
@@ -1032,7 +1206,7 @@
                   <th class="py-2 px-2.5 font-semibold">Contoh & Cara Bersuci</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-[11px] text-slate-600 dark:text-slate-300">
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
                 <tr>
                   <td class="py-2.5 px-2.5 font-bold text-botanic-600 dark:text-emerald-400 align-top">Mukhaffafah (Ringan)</td>
                   <td class="py-2.5 px-2.5">Kencing bayi lelaki &lt; 2 tahun susu ibu sahaja. Cara: Lap sisa air kencing, renjis air mutlak hingga rata.</td>
@@ -1052,7 +1226,7 @@
       }
     ];
 
-    // ==================== [B] DATA KUIZ (23 SOALAN LENGKAP) ====================
+    // ==================== [B] DATA KUIZ (23 SOALAN) ====================
     const quizData = [
       {
         category: "Dasar BRI",
@@ -1217,7 +1391,104 @@
       }
     ];
 
-    // ==================== [C] RENDERING DINAMIK ====================
+    // ==================== [C] PENGURUSAN STATUS KEMAJUAN (LOCAL STORAGE) ====================
+    let readProgressState = JSON.parse(localStorage.getItem('umi_read_progress') || '{}');
+    let quizProgressState = JSON.parse(localStorage.getItem('umi_quiz_progress') || '{}');
+
+    function toggleTopicCompleted(id) {
+      readProgressState[id] = !readProgressState[id];
+      localStorage.setItem('umi_read_progress', JSON.stringify(readProgressState));
+      updateReadingUI();
+      updateAnalyticsData();
+    }
+
+    function updateReadingUI() {
+      auditTopicsData.forEach(topic => {
+        const isDone = !!readProgressState[topic.id];
+        const btn = document.getElementById('btnDone-' + topic.id);
+        const card = document.getElementById(topic.id);
+        if (btn) {
+          if (isDone) {
+            btn.className = "px-3 py-1 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1 shadow-xs";
+            btn.innerHTML = `<i data-lucide="check-check" class="w-3.5 h-3.5"></i> Selesai`;
+          } else {
+            btn.className = "px-3 py-1 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1";
+            btn.innerHTML = `<i data-lucide="circle" class="w-3.5 h-3.5"></i> Tandai Selesai`;
+          }
+        }
+      });
+      lucide.createIcons();
+    }
+
+    function updateAnalyticsData() {
+      const totalTopics = auditTopicsData.length;
+      const readCount = Object.values(readProgressState).filter(Boolean).length;
+      const readPercent = Math.round((readCount / totalTopics) * 100);
+
+      // Hero Widget Progress
+      document.getElementById('heroProgressPercent').textContent = `${readPercent}%`;
+
+      // Reading Analytics
+      document.getElementById('analyticsReadingScoreText').textContent = `${readCount} / ${totalTopics} (${readPercent}%)`;
+      document.getElementById('analyticsReadingProgressBar').style.width = `${readPercent}%`;
+
+      // Quiz Analytics
+      const totalQuiz = quizData.length;
+      const answeredKeys = Object.keys(quizProgressState);
+      let correctCount = 0;
+      let wrongCount = 0;
+
+      answeredKeys.forEach(k => {
+        if (quizProgressState[k].isCorrect) correctCount++;
+        else wrongCount++;
+      });
+
+      const unansweredCount = totalQuiz - answeredKeys.length;
+      const pctCorrect = (correctCount / totalQuiz) * 100;
+      const pctWrong = (wrongCount / totalQuiz) * 100;
+      const pctUnanswered = (unansweredCount / totalQuiz) * 100;
+
+      document.getElementById('barCorrect').style.width = `${pctCorrect}%`;
+      document.getElementById('barWrong').style.width = `${pctWrong}%`;
+      document.getElementById('barUnanswered').style.width = `${pctUnanswered}%`;
+
+      document.getElementById('lblCorrectCount').textContent = correctCount;
+      document.getElementById('lblWrongCount').textContent = wrongCount;
+      document.getElementById('lblUnansweredCount').textContent = unansweredCount;
+
+      const badge = document.getElementById('analyticsQuizGradeBadge');
+      if (answeredKeys.length === 0) {
+        badge.textContent = "BELUM MULA";
+        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500";
+      } else if (correctCount >= 18) {
+        badge.textContent = "CEMERLANG (ITQAN)";
+        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-botanic-500/20 text-botanic-600 dark:text-emerald-300 border border-botanic-500/30";
+      } else if (correctCount >= 12) {
+        badge.textContent = "LULUS (MEMUASKAN)";
+        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-amberwarm-500/20 text-amberwarm-500 border border-amberwarm-500/30";
+      } else {
+        badge.textContent = "ULANG KAJI DIPERLUKAN";
+        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-500 border border-rose-500/30";
+      }
+    }
+
+    function resetAllProgress() {
+      if (confirm("Adakah anda pasti mahu menetapkan semula (reset) semua rekod pembacaan dan skor kuiz?")) {
+        readProgressState = {};
+        quizProgressState = {};
+        answeredQuestions = {};
+        quizScore = 0;
+        localStorage.removeItem('umi_read_progress');
+        localStorage.removeItem('umi_quiz_progress');
+        updateReadingUI();
+        updateAnalyticsData();
+        updateScoreDisplay();
+        renderQuizQuestion();
+        showToast("Rekod kemajuan telah di-reset");
+      }
+    }
+
+    // ==================== [D] RENDERING DINAMIK NOTA ====================
     let currentFilterCluster = 'all';
     let fuseSearchEngine = null;
 
@@ -1229,20 +1500,20 @@
       let drawerHtml = '';
 
       auditTopicsData.forEach(topic => {
-        // Drawer Menu Button
+        // Drawer Button
         drawerHtml += `
           <button type="button" onclick="handleDrawerClick('${topic.id}')" class="w-full text-left p-3 rounded-2xl flex items-center justify-between hover:bg-slate-100 dark:hover:bg-white/5 transition">
             <div class="flex items-center gap-3">
               <div class="w-7 h-7 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
                 <i data-lucide="${topic.icon}" class="w-3.5 h-3.5"></i>
               </div>
-              <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">${topic.title.split('(')[0].trim()}</span>
+              <span class="app-note-heading font-semibold text-slate-800 dark:text-slate-200">${topic.title.split('(')[0].trim()}</span>
             </div>
-            <span class="text-[9px] px-2 py-0.5 rounded-full app-card-nested text-slate-500">${topic.badge}</span>
+            <span class="app-sub-text px-2 py-0.5 rounded-full app-card-nested text-slate-500">${topic.badge}</span>
           </button>
         `;
 
-        // Card Section (Gaya Squircle Card Rujukan)
+        // Card Section dengan butang penanda bacaan
         const isHidden = (currentFilterCluster !== 'all' && topic.cluster !== currentFilterCluster) ? 'hidden' : '';
         contentHtml += `
           <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all ${isHidden}">
@@ -1251,11 +1522,20 @@
                 <div class="w-8 h-8 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
                   <i data-lucide="${topic.icon}" class="w-4 h-4"></i>
                 </div>
-                <h2 class="text-sm font-bold tracking-tight text-slate-900 dark:text-slate-100 uppercase">${topic.title}</h2>
+                <h2 class="app-note-title font-bold tracking-tight text-slate-900 dark:text-slate-100 uppercase">${topic.title}</h2>
               </div>
-              <span class="text-[10px] px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
+              <span class="app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
             </div>
+            
             <div>${topic.bodyHtml}</div>
+
+            <!-- Bar Penanda Selesai Bacaan -->
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+              <span class="app-sub-text text-slate-400">Status Semakan Topik:</span>
+              <button onclick="toggleTopicCompleted('${topic.id}')" id="btnDone-${topic.id}" class="px-3 py-1 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1 transition">
+                <i data-lucide="circle" class="w-3.5 h-3.5"></i> Tandai Selesai
+              </button>
+            </div>
           </section>
         `;
       });
@@ -1265,9 +1545,11 @@
 
       lucide.createIcons();
       initFuzzySearch();
+      updateReadingUI();
+      updateAnalyticsData();
     }
 
-    // ==================== [D] MENU HAMBURGER & FILTER ====================
+    // ==================== [E] MENU HAMBURGER & FILTER ====================
     function openNavDrawer() {
       const drawer = document.getElementById('navDrawer');
       const overlay = document.getElementById('navDrawerOverlay');
@@ -1317,7 +1599,27 @@
       showToast(`Paparan: ${clusterKey.toUpperCase()}`);
     }
 
-    // ==================== [E] CARIAN FUSE.JS ====================
+    // ==================== [F] MODAL ANALISIS ====================
+    function openAnalyticsModal() {
+      updateAnalyticsData();
+      const modal = document.getElementById('analyticsModal');
+      const card = document.getElementById('analyticsModalCard');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        card.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeAnalyticsModal() {
+      const modal = document.getElementById('analyticsModal');
+      const card = document.getElementById('analyticsModalCard');
+      modal.classList.add('opacity-0');
+      card.classList.add('scale-95');
+      setTimeout(() => { modal.classList.add('hidden'); }, 200);
+    }
+
+    // ==================== [G] CARIAN FUSE.JS ====================
     function initFuzzySearch() {
       const searchableItems = auditTopicsData.map(topic => {
         const tempDiv = document.createElement('div');
@@ -1377,8 +1679,8 @@
         const item = res.item;
         html += `
           <button type="button" onclick="jumpToSearchResult('${item.id}')" class="w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] transition">
-            <span class="font-bold text-xs text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
-            <span class="text-[11px] text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
+            <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
+            <span class="app-sub-text text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
           </button>
         `;
       });
@@ -1394,11 +1696,16 @@
       }, 200);
     }
 
-    // ==================== [F] MODUL KUIZ ====================
+    // ==================== [H] MODUL KUIZ ====================
     let currentQuizIndex = 0;
     let quizScore = 0;
-    let answeredQuestions = {};
+    let answeredQuestions = quizProgressState || {};
     let tempSelectedOption = null;
+
+    // Kira skor sedia ada dari storage
+    Object.values(answeredQuestions).forEach(ans => {
+      if (ans.isCorrect) quizScore++;
+    });
 
     function openQuizModal() {
       const modal = document.getElementById('quizModal');
@@ -1442,7 +1749,7 @@
         btn.type = 'button';
         btn.id = 'quiz-opt-' + idx;
 
-        let style = 'w-full text-left p-3 rounded-2xl border text-xs font-medium transition flex items-start gap-2.5 ';
+        let style = 'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-medium transition flex items-start gap-2.5 ';
 
         if (isAnswered) {
           if (idx === q.correct) {
@@ -1469,6 +1776,7 @@
       if (isAnswered) {
         showQuizFeedback(answeredQuestions[currentQuizIndex].isCorrect, q.rationale);
       }
+      updateScoreDisplay();
     }
 
     function selectTempOption(idx) {
@@ -1478,9 +1786,9 @@
       quizData[currentQuizIndex].options.forEach((_, i) => {
         const btn = document.getElementById('quiz-opt-' + i);
         if (i === idx) {
-          btn.className = 'w-full text-left p-3 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs flex items-start gap-2.5';
+          btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs sm:text-sm flex items-start gap-2.5';
         } else {
-          btn.className = 'w-full text-left p-3 rounded-2xl app-card-nested text-xs flex items-start gap-2.5';
+          btn.className = 'w-full text-left p-3.5 rounded-2xl app-card-nested text-xs sm:text-sm flex items-start gap-2.5';
         }
       });
 
@@ -1498,7 +1806,10 @@
       }
 
       answeredQuestions[currentQuizIndex] = { chosen: tempSelectedOption, isCorrect };
+      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+      
       updateScoreDisplay();
+      updateAnalyticsData();
       renderQuizQuestion();
     }
 
@@ -1506,7 +1817,10 @@
       if (answeredQuestions[currentQuizIndex] !== undefined) return;
       const q = quizData[currentQuizIndex];
       answeredQuestions[currentQuizIndex] = { chosen: -1, isCorrect: false };
+      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+      
       updateScoreDisplay();
+      updateAnalyticsData();
       renderQuizQuestion();
     }
 
@@ -1514,10 +1828,10 @@
       const box = document.getElementById('quizFeedbackBox');
       box.classList.remove('hidden');
       if (isCorrect) {
-        box.className = 'p-3 rounded-2xl text-xs leading-relaxed border bg-botanic-500/10 border-botanic-500/30 text-botanic-800 dark:text-emerald-300 text-left';
+        box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-botanic-500/10 border-botanic-500/30 text-botanic-800 dark:text-emerald-300 text-left';
         box.innerHTML = `<strong>Tepat! ✅</strong> ${rationale}`;
       } else {
-        box.className = 'p-3 rounded-2xl text-xs leading-relaxed border bg-rose-500/10 border-rose-500/30 text-rose-500 text-left';
+        box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-rose-500/10 border-rose-500/30 text-rose-500 text-left';
         box.innerHTML = `<strong>Jawapan Sebenar:</strong> ${rationale}`;
       }
     }
@@ -1545,11 +1859,12 @@
       showToast(`Rawak: ${rand.title.split('(')[0].trim()}`);
     }
 
-    // ==================== [G] TETAPAN FON & TEMA ====================
+    // ==================== [I] KAWALAN SAIZ FON MENYELURUH ====================
     function setFontSize(sizeKey) {
       const body = document.getElementById('appBody');
       body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
       body.classList.add('font-size-' + sizeKey);
+      localStorage.setItem('umi_font_scale', sizeKey);
 
       ['sm', 'md', 'lg', 'xl'].forEach(s => {
         const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
@@ -1561,32 +1876,80 @@
           }
         }
       });
-      showToast("Saiz teks dikemas kini");
+      showToast(`Saiz fon: ${sizeKey.toUpperCase()}`);
     }
 
     function toggleSettingsDrawer() {
       document.getElementById('settingsPanel').classList.toggle('hidden');
     }
 
+    // ==================== [J] PENGURUSAN TEMA (DEFAULT CERAH / LIGHT) ====================
+    function initTheme() {
+      const savedTheme = localStorage.getItem('umi_theme');
+      // Default: Mod Cerah (Light Mode)
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeUI(false);
+      }
+
+      // Muat semula saiz fon pilihan
+      const savedFont = localStorage.getItem('umi_font_scale') || 'md';
+      setFontSize(savedFont);
+    }
+
     function toggleTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('umi_theme', isDark ? 'dark' : 'light');
+      updateThemeUI(isDark);
+      showToast(isDark ? "🌙 Tema Forest Night" : "☀️ Tema Warm Linen");
+    }
+
+    function updateThemeUI(isDark) {
       const icon = document.getElementById('themeIcon');
       if (isDark) {
         icon.setAttribute('data-lucide', 'sun');
         icon.className = 'w-4 h-4 text-amberwarm-500';
-        showToast("🌙 Tema Forest Night");
       } else {
         icon.setAttribute('data-lucide', 'moon');
         icon.className = 'w-4 h-4 text-slate-700';
-        showToast("☀️ Tema Warm Linen");
       }
       lucide.createIcons();
     }
 
+    // ==================== [K] MOD STEALTH & CIRI TAMBAHAN ====================
     function toggleStealth() {
       document.getElementById('stealthUI').classList.toggle('hidden');
       document.getElementById('mainUI').classList.toggle('hidden');
       window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function switchStealthTab(tabKey) {
+      const tabLog = document.getElementById('stealthTabLogContent');
+      const tabCalc = document.getElementById('stealthTabCalcContent');
+      const btnLog = document.getElementById('btnTabLog');
+      const btnCalc = document.getElementById('btnTabCalc');
+
+      if (tabKey === 'log') {
+        tabLog.classList.remove('hidden');
+        tabCalc.classList.add('hidden');
+        btnLog.className = 'flex-1 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
+        btnCalc.className = 'flex-1 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 transition';
+      } else {
+        tabLog.classList.add('hidden');
+        tabCalc.classList.remove('hidden');
+        btnCalc.className = 'flex-1 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
+        btnLog.className = 'flex-1 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 transition';
+      }
+    }
+
+    function calculateStealthTotal() {
+      const a = parseFloat(document.getElementById('stealthInputA').value) || 0;
+      const b = parseFloat(document.getElementById('stealthInputB').value) || 0;
+      const res = (a * b).toFixed(2);
+      document.getElementById('stealthCalcResult').textContent = `Jumlah: RM ${res}`;
     }
 
     let titleClicks = 0, titleTimer = null;
@@ -1626,6 +1989,7 @@
 
     // ==================== INISIALISASI ====================
     window.onload = function() {
+      initTheme();
       renderDynamicApp();
     };
   </script>
