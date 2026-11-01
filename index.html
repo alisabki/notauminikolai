@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -67,7 +66,7 @@
   <style>
     /* ==================== AESTHETIC STYLING (WARM MINDFUL APP) ==================== */
     :root {
-      --app-base-size: 1rem;       /* 16px asas (lebih besar & selesa) */
+      --app-base-size: 1rem;       /* 16px asas */
       --app-content-size: 0.9375rem; /* 15px */
       --app-sub-size: 0.84375rem;    /* 13.5px */
       --app-title-size: 1.15rem;   /* Tajuk */
@@ -85,7 +84,18 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* MOD CERAH SEBAGAI LALAI (Warm Linen & Soft White Card) */
+    /* Custom Scrollbar yang Kemas */
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { 
+      background: rgba(100, 116, 139, 0.25); 
+      border-radius: 10px; 
+    }
+    html.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* MOD CERAH SEBAGAI LALAI */
     html:not(.dark) body {
       background-color: #F7F5EE;
       color: #1F2923;
@@ -117,7 +127,7 @@
       box-shadow: 0 10px 30px -5px rgba(26, 46, 33, 0.12);
     }
 
-    /* MOD GELAP (Deep Forest Night & Charcoal Pine) */
+    /* MOD GELAP */
     html.dark body {
       background-color: #0E1613;
       color: #EDF3EE;
@@ -149,6 +159,65 @@
       box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6);
     }
 
+    /* ==================== 5 PERATURAN RESPONTIF MUDAH ALIH (VIDEO 375px FIXES) ==================== */
+    
+    /* FIX 1: Jadual bertukar menjadi kad di skrin < 640px */
+    @media (max-width: 639px) {
+      .responsive-table, 
+      .responsive-table tbody, 
+      .responsive-table tr, 
+      .responsive-table td {
+        display: block;
+        width: 100% !important;
+      }
+      .responsive-table thead {
+        display: none;
+      }
+      .responsive-table tr {
+        margin-bottom: 0.65rem;
+        padding: 0.75rem;
+        border-radius: 1rem;
+        background-color: rgba(0,0,0,0.02);
+        border: 1px solid rgba(100, 116, 139, 0.12);
+      }
+      .responsive-table td {
+        padding: 0.25rem 0 !important;
+      }
+      .responsive-table td:first-child {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    /* FIX 2: Angka besar / skor tidak patah baris */
+    .kpi-value {
+      white-space: nowrap !important;
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+      line-height: 1.1;
+    }
+
+    /* FIX 3: Input kekal minimum 16px di telefon untuk elak auto-zoom iOS */
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+
+    /* FIX 4: Sasaran sentuhan minimum 44px untuk ibu jari */
+    @media (pointer: coarse) {
+      .touch-target {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+      .touch-target-h {
+        min-height: 44px !important;
+      }
+    }
+
+    /* FIX 5: Ruang penampan selamat bawah untuk bar terapung */
+    .bottom-bar-safe {
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
+
     /* Tipografi Kemas & Teratur */
     .editorial-body {
       line-height: 1.65;
@@ -172,7 +241,7 @@
       line-height: 1.55;
     }
 
-    /* Skala Saiz Tulisan Menyeluruh (Tajuk, Teks, Jadual, Senarai) */
+    /* Skala Saiz Tulisan Menyeluruh */
     body.font-size-sm {
       --app-base-size: 0.875rem;
       --app-content-size: 0.8125rem;
@@ -213,9 +282,9 @@
     }
   </style>
 </head>
-<body id="appBody" class="font-size-md antialiased min-h-screen pb-32 transition-colors duration-300">
+<body id="appBody" class="font-size-md antialiased min-h-screen transition-colors duration-300">
 
-  <!-- ==================== 1. MOD PENYAMARAN (STEALTH PORTAL MPKB-BRI LANJUTAN) ==================== -->
+  <!-- ==================== 1. MOD PENYAMARAN (STEALTH PORTAL MPKB-BRI) ==================== -->
   <div id="stealthUI" class="hidden min-h-screen p-4 sm:p-6 select-none bg-slate-100 dark:bg-slate-950">
     <div class="max-w-lg mx-auto app-card rounded-[28px] p-5 sm:p-6 space-y-4">
       
@@ -230,15 +299,15 @@
             <div class="text-sm font-bold text-slate-800 dark:text-slate-100">Log Pengurusan & Kaunter Khidmat</div>
           </div>
         </div>
-        <button onclick="toggleStealth()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:scale-105 flex items-center justify-center transition" title="Tutup Mod Penyamaran">
+        <button onclick="toggleStealth()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:scale-105 flex items-center justify-center transition" title="Tutup Mod Penyamaran">
           <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
         </button>
       </div>
 
       <!-- Tab Penyamaran: Log Meja vs Kalkulator Kompaun -->
       <div class="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-black/30 rounded-2xl text-xs font-semibold">
-        <button onclick="switchStealthTab('log')" id="btnTabLog" class="flex-1 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition">Buku Log Meja</button>
-        <button onclick="switchStealthTab('calc')" id="btnTabCalc" class="flex-1 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 transition">Kalkulator Lesen/Denda</button>
+        <button onclick="switchStealthTab('log')" id="btnTabLog" class="touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition">Buku Log Meja</button>
+        <button onclick="switchStealthTab('calc')" id="btnTabCalc" class="touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition">Kalkulator Lesen/Denda</button>
       </div>
 
       <!-- Kandungan 1: Buku Log Meja Harian -->
@@ -260,13 +329,6 @@
             </div>
             <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 font-semibold">Lulus</span>
           </div>
-          <div class="p-3 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
-            <div>
-              <div class="font-bold text-slate-800 dark:text-slate-200">AUDIT/UMI/Q4-2026</div>
-              <div class="text-[11px] text-slate-400">Verifikasi Dokumen Pematuhan Syariah</div>
-            </div>
-            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 font-semibold">Tindakan</span>
-          </div>
         </div>
       </div>
 
@@ -275,10 +337,10 @@
         <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 space-y-2">
           <span class="font-bold text-slate-700 dark:text-slate-300 block">Kiraan Anggaran Kompaun Kebersihan Premis:</span>
           <div class="grid grid-cols-2 gap-2">
-            <input type="number" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
-            <input type="number" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
+            <input type="number" inputmode="numeric" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
+            <input type="number" inputmode="numeric" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
           </div>
-          <button onclick="calculateStealthTotal()" class="w-full py-2 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 rounded-xl font-bold">Kira Jumlah Pengeluaran</button>
+          <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 rounded-xl font-bold">Kira Jumlah Pengeluaran</button>
           <div class="pt-2 text-center text-xs font-bold text-botanic-600 dark:text-emerald-400" id="stealthCalcResult">Jumlah: RM 300.00</div>
         </div>
       </div>
@@ -286,7 +348,7 @@
       <!-- Footer Stealth -->
       <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-400">
         <span>Pengguna: <strong>Nikolai Nicholas</strong></span>
-        <button onclick="toggleStealth()" class="text-botanic-600 dark:text-emerald-400 font-semibold underline">Keluar & Sambung Nota</button>
+        <button onclick="toggleStealth()" class="text-botanic-600 dark:text-emerald-400 font-semibold underline p-2">Keluar & Sambung Nota</button>
       </div>
 
     </div>
@@ -307,13 +369,13 @@
           <p class="text-[11px] text-botanic-600 dark:text-botanic-300 font-medium">Navigasi Pantas Audit</p>
         </div>
       </div>
-      <button onclick="closeNavDrawer()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center">
+      <button onclick="closeNavDrawer()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
     </div>
 
-    <!-- Senarai Item Drawer -->
-    <div id="drawerItemsList" class="flex-1 overflow-y-auto no-scrollbar p-3 space-y-1"></div>
+    <!-- Senarai Item Drawer dengan scrollbar lancar -->
+    <div id="drawerItemsList" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1"></div>
 
     <!-- Footer Drawer -->
     <div class="p-4 border-t border-emerald-900/10 dark:border-white/10 text-center">
@@ -322,16 +384,17 @@
   </aside>
 
   <!-- ==================== 3. PAPARAN UTAMA APLIKASI ==================== -->
-  <div id="mainUI">
+  <!-- FIX 5: pb-40 memberi ruang selamat agar kandungan terakhir tidak terlindung bar -->
+  <div id="mainUI" class="pb-40">
 
     <!-- Header Bersih (Warm Botanical) -->
     <header class="sticky top-0 z-40 header-blur px-4 pt-3 pb-2.5 transition-colors">
       <div class="max-w-2xl mx-auto">
-        <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center justify-between gap-2">
           
           <!-- Butang Drawer & Tajuk Utama -->
-          <div class="flex items-center gap-2.5">
-            <button onclick="openNavDrawer()" title="Menu Topik" class="w-9 h-9 rounded-2xl app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
+          <div class="flex items-center gap-2">
+            <button onclick="openNavDrawer()" title="Menu Topik" class="touch-target w-11 h-11 rounded-2xl app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
               <i data-lucide="align-left" class="w-4 h-4 text-botanic-600 dark:text-botanic-300"></i>
             </button>
             
@@ -342,30 +405,25 @@
             </div>
           </div>
 
-          <!-- Kumpulan Butang Tindakan Header -->
-          <div class="flex items-center gap-1.5">
-            <!-- Butang Topik Rawak -->
-            <button onclick="jumpRandomTopic()" title="Topik Rawak" class="w-8 h-8 rounded-full app-card flex items-center justify-center text-amberwarm-500 active:scale-95 transition">
-              <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+          <!-- Kumpulan Butang Tindakan Header (FIX 4: Minimum 44px touch-target) -->
+          <div class="flex items-center gap-1">
+            <button onclick="jumpRandomTopic()" title="Topik Rawak" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-amberwarm-500 active:scale-95 transition">
+              <i data-lucide="shuffle" class="w-4 h-4"></i>
             </button>
 
-            <!-- Butang Saiz Teks Menyeluruh -->
-            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" class="h-8 px-2.5 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 active:scale-95 transition">
+            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" class="touch-target h-11 px-3 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 active:scale-95 transition">
               <span>A</span><span class="text-[10px]">A</span>
             </button>
 
-            <!-- Suis Tema Cerah / Gelap -->
-            <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema" class="w-8 h-8 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
+            <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
               <i id="themeIcon" data-lucide="moon" class="w-4 h-4 text-slate-700"></i>
             </button>
 
-            <!-- Butang Rahsia Stealth -->
-            <button onclick="toggleStealth()" title="Mod Rahsia Pejabat" class="w-8 h-8 rounded-full app-card flex items-center justify-center text-slate-500 dark:text-slate-400 active:scale-95 transition">
-              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+            <button onclick="toggleStealth()" title="Mod Rahsia Pejabat" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-500 dark:text-slate-400 active:scale-95 transition">
+              <i data-lucide="lock" class="w-4 h-4"></i>
             </button>
 
-            <!-- Butang Salin -->
-            <button onclick="salinSemuaNota()" title="Salin Semua Nota" class="h-8 px-3 rounded-full bg-botanic-600 hover:bg-botanic-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm active:scale-95 transition">
+            <button onclick="salinSemuaNota()" title="Salin Semua Nota" class="touch-target h-11 px-3.5 rounded-full bg-botanic-600 hover:bg-botanic-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm active:scale-95 transition">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span class="hidden sm:inline">Salin</span>
             </button>
@@ -380,35 +438,35 @@
             <span class="text-[10px] text-slate-400">Melaraskan tajuk, jadual, senarai & soalan</span>
           </div>
           <div class="flex items-center gap-1 bg-slate-100 dark:bg-black/30 p-1 rounded-xl w-48">
-            <button onclick="setFontSize('sm')" id="btnFontSm" class="flex-1 py-1 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition">A-</button>
-            <button onclick="setFontSize('md')" id="btnFontMd" class="flex-1 py-1 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition">A</button>
-            <button onclick="setFontSize('lg')" id="btnFontLg" class="flex-1 py-1 rounded-lg text-center text-sm font-semibold text-slate-600 dark:text-slate-300 transition">A+</button>
-            <button onclick="setFontSize('xl')" id="btnFontXl" class="flex-1 py-1 rounded-lg text-center text-base font-black text-slate-700 dark:text-slate-200 transition">A++</button>
+            <button onclick="setFontSize('sm')" id="btnFontSm" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition">A-</button>
+            <button onclick="setFontSize('md')" id="btnFontMd" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition">A</button>
+            <button onclick="setFontSize('lg')" id="btnFontLg" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-sm font-semibold text-slate-600 dark:text-slate-300 transition">A+</button>
+            <button onclick="setFontSize('xl')" id="btnFontXl" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-base font-black text-slate-700 dark:text-slate-200 transition">A++</button>
           </div>
         </div>
 
-        <!-- Filter Chips (Gaya Pill Seimbang & Lembut) -->
+        <!-- Filter Chips (Touch Friendly) -->
         <div class="mt-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs">
-          <button onclick="filterByCluster('all')" id="chip-all" class="cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition">Semua</button>
-          <button onclick="filterByCluster('dasar')" id="chip-dasar" class="cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Dasar MPKB & UMI</button>
-          <button onclick="filterByCluster('akidah')" id="chip-akidah" class="cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Akidah & Hafazan</button>
-          <button onclick="filterByCluster('fiqh')" id="chip-fiqh" class="cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Fiqh Ibadah</button>
-          <button onclick="filterByCluster('munakahat')" id="chip-munakahat" class="cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Munakahat</button>
+          <button onclick="filterByCluster('all')" id="chip-all" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition">Semua</button>
+          <button onclick="filterByCluster('dasar')" id="chip-dasar" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Dasar MPKB & UMI</button>
+          <button onclick="filterByCluster('akidah')" id="chip-akidah" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Akidah & Hafazan</button>
+          <button onclick="filterByCluster('fiqh')" id="chip-fiqh" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Fiqh Ibadah</button>
+          <button onclick="filterByCluster('munakahat')" id="chip-munakahat" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Munakahat</button>
         </div>
       </div>
     </header>
 
     <!-- Notifikasi Toast -->
-    <div id="toast" class="fixed top-14 left-1/2 -translate-x-1/2 app-card text-slate-800 dark:text-slate-100 px-4 py-2 rounded-full text-xs shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2">
+    <div id="toast" class="fixed top-14 left-1/2 -translate-x-1/2 app-card text-slate-800 dark:text-slate-100 px-4 py-2.5 rounded-full text-xs shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 border border-slate-200 dark:border-white/10">
       <i data-lucide="check-circle-2" class="w-4 h-4 text-botanic-500"></i>
       <span id="toastMessage">Berjaya</span>
     </div>
 
-    <!-- ==================== 4. HERO DASHBOARD WIDGET DENGAN ANALISIS KEMAJUAN ==================== -->
+    <!-- ==================== 4. HERO DASHBOARD WIDGET (FIX 2: Angka KPI Sebaris) ==================== -->
     <div class="max-w-2xl mx-auto px-4 pt-3">
       <div class="app-card rounded-[26px] p-4 sm:p-5 relative overflow-hidden">
         <div class="flex items-center justify-between gap-3 relative z-10">
-          <div>
+          <div class="min-w-0 pr-2">
             <div class="flex items-center gap-2 mb-1">
               <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-botanic-500/10 text-botanic-600 dark:text-botanic-300 border border-botanic-500/20">
                 <span class="w-1.5 h-1.5 rounded-full bg-botanic-500 animate-pulse"></span>
@@ -419,26 +477,25 @@
             <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-snug">
               Semakan Standard & Fardhu Ain
             </h1>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">
               17 modul teras syariah & dasar tadbir urus berteraskan Islam.
             </p>
           </div>
 
-          <!-- Butang Pantas: Kini membuka Analisis & Graf Kemajuan -->
-          <button onclick="openAnalyticsModal()" title="Buka Graf Kemajuan & Analisis Prestasi" class="shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 hover:scale-105 active:scale-95 transition shadow-xs flex flex-col items-center justify-center min-w-[76px]">
+          <!-- Butang Pantas: FIX 2 & FIX 4 -->
+          <button onclick="openAnalyticsModal()" title="Buka Graf Kemajuan & Analisis Prestasi" class="touch-target shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 hover:scale-105 active:scale-95 transition shadow-xs flex flex-col items-center justify-center min-w-[78px]">
             <i data-lucide="bar-chart-3" class="w-4 h-4 text-botanic-600 dark:text-emerald-400 mb-0.5"></i>
-            <div class="text-sm font-extrabold text-botanic-700 dark:text-emerald-300" id="heroProgressPercent">0%</div>
+            <div class="kpi-value font-extrabold text-botanic-700 dark:text-emerald-300" id="heroProgressPercent">0%</div>
             <div class="text-[9px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">Prestasi</div>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ==================== 5. MODAL ANALISIS & GRAF KEMAJUAN (BAHARU) ==================== -->
+    <!-- ==================== 5. MODAL ANALISIS & GRAF KEMAJUAN ==================== -->
     <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
-      <div id="analyticsModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 transform transition-transform duration-200 scale-95 max-h-[88vh] overflow-y-auto no-scrollbar">
+      <div id="analyticsModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 transform transition-transform duration-200 scale-95 max-h-[88vh] overflow-y-auto custom-scrollbar">
         
-        <!-- Header Modal -->
         <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
           <div class="flex items-center gap-2">
             <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
@@ -449,12 +506,12 @@
               <p class="text-[11px] text-slate-400">Prestasi Pembacaan Nota & Penguasaan Kuiz</p>
             </div>
           </div>
-          <button onclick="closeAnalyticsModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+          <button onclick="closeAnalyticsModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
 
-        <!-- 1. GRAF KEMAJUAN BACAAN NOTA (PROGRESS BAR & PERCENT) -->
+        <!-- 1. GRAF KEMAJUAN BACAAN NOTA -->
         <div class="p-4 rounded-2xl app-card-nested space-y-2.5">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
@@ -464,7 +521,6 @@
             <span id="analyticsReadingScoreText" class="text-xs font-extrabold text-botanic-600 dark:text-emerald-400">0 / 17 (0%)</span>
           </div>
 
-          <!-- Bar Visual Progress -->
           <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden p-0.5">
             <div id="analyticsReadingProgressBar" class="h-full rounded-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
           </div>
@@ -474,7 +530,7 @@
           </p>
         </div>
 
-        <!-- 2. GRAF KEPUTUSAN KUIZ (ACCURACY METRICS) -->
+        <!-- 2. GRAF KEPUTUSAN KUIZ -->
         <div class="p-4 rounded-2xl app-card-nested space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
@@ -484,7 +540,6 @@
             <span id="analyticsQuizGradeBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amberwarm-500/10 text-amberwarm-500 border border-amberwarm-500/20">BELUM SELESAI</span>
           </div>
 
-          <!-- Graf Segmen Bar Ketepatan Kuiz -->
           <div class="space-y-1.5">
             <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden flex">
               <div id="barCorrect" class="h-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%" title="Betul"></div>
@@ -500,12 +555,11 @@
           </div>
         </div>
 
-        <!-- Butang Tindakan Bawah Modal -->
         <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
-          <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold">
+          <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold p-1">
             Tetapkan Semula (Reset)
           </button>
-          <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs">
+          <button onclick="closeAnalyticsModal(); openQuizModal();" class="touch-target-h px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs">
             <i data-lucide="play" class="w-3.5 h-3.5"></i>
             <span>Buka Latih Tubi Kuiz</span>
           </button>
@@ -514,7 +568,7 @@
       </div>
     </div>
 
-    <!-- ==================== 6. MODAL CARIAN PANTAS (FUSE.JS) ==================== -->
+    <!-- ==================== 6. MODAL CARIAN PANTAS (FIX 3: Input 16px) ==================== -->
     <div id="searchModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
       <div id="searchModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95 mt-8 sm:mt-0">
         <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
@@ -524,17 +578,17 @@
             </div>
             <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Carian Nota UMI</h3>
           </div>
-          <button onclick="closeSearchModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+          <button onclick="closeSearchModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
 
         <div class="relative">
-          <input type="text" id="searchInput" oninput="executeFuzzySearch(this.value)" placeholder="Cth: qunut, tayamum, sujud sahwi, nafkah, bri..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl text-xs sm:text-sm bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-botanic-500/30">
-          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-slate-400"></i>
+          <input type="text" id="searchInput" oninput="executeFuzzySearch(this.value)" placeholder="Cth: qunut, tayamum, sujud sahwi, nafkah, bri..." class="w-full pl-10 pr-4 py-3 rounded-2xl text-base bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-botanic-500/30">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
         </div>
 
-        <div id="searchResultsList" class="max-h-[50vh] overflow-y-auto no-scrollbar space-y-2 pt-1 text-xs">
+        <div id="searchResultsList" class="max-h-[50vh] overflow-y-auto custom-scrollbar space-y-2 pt-1 text-xs">
           <div class="text-center py-8 text-slate-400">Taip kata kunci untuk memulakan carian pintar.</div>
         </div>
       </div>
@@ -544,7 +598,6 @@
     <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
       <div id="quizModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95">
         
-        <!-- Header Kuiz -->
         <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
           <div class="flex items-center gap-2">
             <div class="w-7 h-7 rounded-full bg-amberwarm-500/10 text-amberwarm-500 flex items-center justify-center">
@@ -554,13 +607,12 @@
           </div>
           <div class="flex items-center gap-2">
             <span id="quizScoreDisplay" class="text-xs font-bold text-amberwarm-500 bg-amberwarm-500/10 px-2.5 py-1 rounded-full border border-amberwarm-500/20">0 / 0</span>
-            <button onclick="closeQuizModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+            <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
               <i data-lucide="x" class="w-4 h-4"></i>
             </button>
           </div>
         </div>
 
-        <!-- Soalan & Pilihan -->
         <div class="space-y-3">
           <div class="flex items-center justify-between text-[11px] text-slate-400">
             <span id="quizCategoryBadge" class="font-bold text-botanic-600 dark:text-botanic-300">Kategori</span>
@@ -568,26 +620,25 @@
           </div>
 
           <div id="quizQuestionText" class="app-note-heading font-bold leading-relaxed min-h-[42px] text-slate-900 dark:text-slate-100 text-left"></div>
-          <div id="quizOptionsContainer" class="space-y-2 max-h-[42vh] overflow-y-auto no-scrollbar"></div>
+          <div id="quizOptionsContainer" class="space-y-2 max-h-[42vh] overflow-y-auto custom-scrollbar"></div>
           <div id="quizFeedbackBox" class="hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left"></div>
         </div>
 
-        <!-- Kawalan Bawah Kuiz -->
         <div class="flex items-center justify-between gap-2 pt-3 border-t border-emerald-900/10 dark:border-white/10">
           <div class="flex items-center gap-2">
-            <button onclick="checkQuizAnswer()" id="btnCheckAnswer" class="text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs">
+            <button onclick="checkQuizAnswer()" id="btnCheckAnswer" class="touch-target-h text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs">
               Semak
             </button>
-            <button onclick="revealQuizAnswer()" id="btnRevealAnswer" class="text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition">
+            <button onclick="revealQuizAnswer()" id="btnRevealAnswer" class="touch-target-h text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition">
               Jawapan
             </button>
           </div>
 
           <div class="flex items-center gap-2">
-            <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500">
-              <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+            <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="touch-target w-11 h-11 rounded-xl app-card flex items-center justify-center text-slate-500">
+              <i data-lucide="shuffle" class="w-4 h-4"></i>
             </button>
-            <button onclick="nextQuizQuestion()" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs">
+            <button onclick="nextQuizQuestion()" class="touch-target-h text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs">
               <span>Seterusnya</span>
               <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -605,37 +656,32 @@
       <p>Built & maintained by Nikolai Nicholas</p>
     </footer>
 
-    <!-- ==================== 9. BOTTOM NAVIGATION BAR (FLOATING CAPSULE) ==================== -->
-    <div class="fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none">
-      <nav class="bottom-nav-surface rounded-full px-5 py-2.5 flex items-center gap-5 sm:gap-8 pointer-events-auto">
+    <!-- ==================== 9. BOTTOM NAVIGATION BAR (FIX 4 & FIX 5) ==================== -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 flex justify-center px-4 bottom-bar-safe pointer-events-none pb-4">
+      <nav class="bottom-nav-surface rounded-full px-4 py-2 flex items-center gap-3 sm:gap-6 pointer-events-auto shadow-2xl">
         
-        <!-- Butang Topik -->
-        <button onclick="openNavDrawer()" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
-          <i data-lucide="grid" class="w-5 h-5"></i>
+        <button onclick="openNavDrawer()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+          <i data-lucide="grid" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Topik</span>
         </button>
 
-        <!-- Butang Carian Pintar -->
-        <button onclick="openSearchModal()" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
-          <i data-lucide="search" class="w-5 h-5"></i>
+        <button onclick="openSearchModal()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+          <i data-lucide="search" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Cari</span>
         </button>
 
-        <!-- Butang Kuiz Terapung Cembung (Aksen Utama) -->
-        <button onclick="openQuizModal()" class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-botanic-600 text-white shadow-md hover:bg-botanic-500 transition active:scale-95 -my-1">
+        <button onclick="openQuizModal()" class="touch-target-h flex items-center gap-1.5 px-4 h-11 rounded-full bg-botanic-600 text-white shadow-md hover:bg-botanic-500 transition active:scale-95">
           <i data-lucide="sparkles" class="w-4 h-4"></i>
           <span class="text-xs font-bold tracking-tight">Kuiz UMI</span>
         </button>
 
-        <!-- Butang Rawak -->
-        <button onclick="jumpRandomTopic()" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
-          <i data-lucide="shuffle" class="w-5 h-5"></i>
+        <button onclick="jumpRandomTopic()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+          <i data-lucide="shuffle" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Rawak</span>
         </button>
 
-        <!-- Butang Ke Atas -->
-        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
-          <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+          <i data-lucide="arrow-up" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Atas</span>
         </button>
 
@@ -646,7 +692,7 @@
 
   <!-- ==================== 10. ENJIN SKRIP & LOGIK APLIKASI ==================== -->
   <script>
-    // ==================== [A] TATASUSUNAN DATA 17 TOPIK ====================
+    // ==================== [A] TATASUSUNAN DATA 17 TOPIK (FIX 1: responsive-table) ====================
     const auditTopicsData = [
       {
         id: "sec-sejarah",
@@ -713,7 +759,7 @@
         badge: "Teras Utama",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left border-collapse editorial-body">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2.5 px-3.5 font-semibold w-1/3">Prinsip</th>
@@ -819,7 +865,7 @@
         bodyHtml: `
           <div class="space-y-2.5 editorial-body">
             <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-              <table class="w-full text-left border-collapse">
+              <table class="responsive-table w-full text-left border-collapse">
                 <thead>
                   <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                     <th class="py-2 px-3 font-semibold">Sifat Wajib</th>
@@ -872,7 +918,7 @@
         badge: "Hukum",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left border-collapse editorial-body">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-3 font-semibold w-28">Kategori</th>
@@ -938,7 +984,7 @@
         badge: "Ummul Kitab",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left border-collapse editorial-body">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-2.5 font-semibold w-12 text-center">Ayat</th>
@@ -1055,7 +1101,7 @@
         bodyHtml: `
           <div class="space-y-2.5 editorial-body">
             <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-              <table class="w-full text-left border-collapse">
+              <table class="responsive-table w-full text-left border-collapse">
                 <thead>
                   <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                     <th class="py-2 px-2.5 font-semibold w-24">Air</th>
@@ -1126,7 +1172,7 @@
         badge: "4 Kategori",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <table class="w-full text-left border-collapse editorial-body">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-2.5 font-semibold w-20">Bahagian</th>
@@ -1199,7 +1245,7 @@
         badge: "Najis",
         bodyHtml: `
           <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 editorial-body">
-            <table class="w-full text-left border-collapse">
+            <table class="responsive-table w-full text-left border-collapse">
               <thead>
                 <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
                   <th class="py-2 px-2.5 font-semibold w-24">Tahap Najis</th>
@@ -1406,14 +1452,13 @@
       auditTopicsData.forEach(topic => {
         const isDone = !!readProgressState[topic.id];
         const btn = document.getElementById('btnDone-' + topic.id);
-        const card = document.getElementById(topic.id);
         if (btn) {
           if (isDone) {
-            btn.className = "px-3 py-1 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1 shadow-xs";
-            btn.innerHTML = `<i data-lucide="check-check" class="w-3.5 h-3.5"></i> Selesai`;
+            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1.5 shadow-xs transition";
+            btn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> Selesai`;
           } else {
-            btn.className = "px-3 py-1 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1";
-            btn.innerHTML = `<i data-lucide="circle" class="w-3.5 h-3.5"></i> Tandai Selesai`;
+            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition";
+            btn.innerHTML = `<i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai`;
           }
         }
       });
@@ -1502,29 +1547,29 @@
       auditTopicsData.forEach(topic => {
         // Drawer Button
         drawerHtml += `
-          <button type="button" onclick="handleDrawerClick('${topic.id}')" class="w-full text-left p-3 rounded-2xl flex items-center justify-between hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <button type="button" onclick="handleDrawerClick('${topic.id}')" class="touch-target-h w-full text-left p-3 rounded-2xl flex items-center justify-between hover:bg-slate-100 dark:hover:bg-white/5 transition">
             <div class="flex items-center gap-3">
-              <div class="w-7 h-7 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
-                <i data-lucide="${topic.icon}" class="w-3.5 h-3.5"></i>
+              <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
+                <i data-lucide="${topic.icon}" class="w-4 h-4"></i>
               </div>
               <span class="app-note-heading font-semibold text-slate-800 dark:text-slate-200">${topic.title.split('(')[0].trim()}</span>
             </div>
-            <span class="app-sub-text px-2 py-0.5 rounded-full app-card-nested text-slate-500">${topic.badge}</span>
+            <span class="app-sub-text px-2.5 py-0.5 rounded-full app-card-nested text-slate-500">${topic.badge}</span>
           </button>
         `;
 
-        // Card Section dengan butang penanda bacaan
+        // Card Section dengan butang penanda bacaan (FIX 4: Touch Target 44px)
         const isHidden = (currentFilterCluster !== 'all' && topic.cluster !== currentFilterCluster) ? 'hidden' : '';
         contentHtml += `
           <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all ${isHidden}">
             <div class="flex items-center justify-between mb-3.5 border-b border-emerald-900/10 dark:border-white/10 pb-3">
               <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
+                <div class="w-9 h-9 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
                   <i data-lucide="${topic.icon}" class="w-4 h-4"></i>
                 </div>
-                <h2 class="app-note-title font-bold tracking-tight text-slate-900 dark:text-slate-100 uppercase">${topic.title}</h2>
+                <h2 class="app-note-title font-bold tracking-tight text-slate-900 dark:text-slate-100 uppercase pr-2">${topic.title}</h2>
               </div>
-              <span class="app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
+              <span class="shrink-0 app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
             </div>
             
             <div>${topic.bodyHtml}</div>
@@ -1532,8 +1577,8 @@
             <!-- Bar Penanda Selesai Bacaan -->
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
               <span class="app-sub-text text-slate-400">Status Semakan Topik:</span>
-              <button onclick="toggleTopicCompleted('${topic.id}')" id="btnDone-${topic.id}" class="px-3 py-1 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1 transition">
-                <i data-lucide="circle" class="w-3.5 h-3.5"></i> Tandai Selesai
+              <button onclick="toggleTopicCompleted('${topic.id}')" id="btnDone-${topic.id}" class="touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition">
+                <i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai
               </button>
             </div>
           </section>
@@ -1580,12 +1625,12 @@
     function filterByCluster(clusterKey) {
       currentFilterCluster = clusterKey;
       document.querySelectorAll('.cluster-chip').forEach(btn => {
-        btn.className = 'cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition';
+        btn.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition';
       });
 
       const activeChip = document.getElementById('chip-' + clusterKey);
       if (activeChip) {
-        activeChip.className = 'cluster-chip shrink-0 px-3.5 py-1.5 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition';
+        activeChip.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition';
       }
 
       document.querySelectorAll('.note-section').forEach(sec => {
@@ -1678,7 +1723,7 @@
       results.slice(0, 6).forEach(res => {
         const item = res.item;
         html += `
-          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] transition">
+          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] transition">
             <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
             <span class="app-sub-text text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
           </button>
@@ -1702,7 +1747,6 @@
     let answeredQuestions = quizProgressState || {};
     let tempSelectedOption = null;
 
-    // Kira skor sedia ada dari storage
     Object.values(answeredQuestions).forEach(ans => {
       if (ans.isCorrect) quizScore++;
     });
@@ -1870,9 +1914,9 @@
         const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
         if (btn) {
           if (s === sizeKey) {
-            btn.className = 'flex-1 py-1 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition';
+            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition';
           } else {
-            btn.className = 'flex-1 py-1 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition';
+            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition';
           }
         }
       });
@@ -1886,7 +1930,6 @@
     // ==================== [J] PENGURUSAN TEMA (DEFAULT CERAH / LIGHT) ====================
     function initTheme() {
       const savedTheme = localStorage.getItem('umi_theme');
-      // Default: Mod Cerah (Light Mode)
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
         updateThemeUI(true);
@@ -1895,7 +1938,6 @@
         updateThemeUI(false);
       }
 
-      // Muat semula saiz fon pilihan
       const savedFont = localStorage.getItem('umi_font_scale') || 'md';
       setFontSize(savedFont);
     }
@@ -1935,13 +1977,13 @@
       if (tabKey === 'log') {
         tabLog.classList.remove('hidden');
         tabCalc.classList.add('hidden');
-        btnLog.className = 'flex-1 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
-        btnCalc.className = 'flex-1 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 transition';
+        btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
+        btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
       } else {
         tabLog.classList.add('hidden');
         tabCalc.classList.remove('hidden');
-        btnCalc.className = 'flex-1 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
-        btnLog.className = 'flex-1 py-1.5 rounded-xl text-slate-500 dark:text-slate-400 transition';
+        btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
+        btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
       }
     }
 
