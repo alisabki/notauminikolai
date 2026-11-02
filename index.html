@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -29,48 +29,37 @@
           },
           colors: {
             botanic: {
-              50: '#F4F7F4',
-              100: '#E6EDE7',
-              200: '#C7D9C9',
-              300: '#9DBDA1',
-              400: '#6C9B72',
-              500: '#43764A',
-              600: '#2F5936',
-              700: '#23442A',
-              800: '#1B3521',
-              900: '#132819',
-              950: '#0B170E',
+              50: '#F4F7F4', 100: '#E6EDE7', 200: '#C7D9C9', 300: '#9DBDA1',
+              400: '#6C9B72', 500: '#43764A', 600: '#2F5936', 700: '#23442A',
+              800: '#1B3521', 900: '#132819', 950: '#0B170E',
             },
-            terracotta: {
-              50: '#FDF6F2',
-              100: '#FAECE4',
-              500: '#D97757',
-              600: '#C05E3E',
-            },
-            amberwarm: {
-              50: '#FDF9EF',
-              100: '#FBF2D8',
-              500: '#E09F3E',
-            }
+            terracotta: { 50: '#FDF6F2', 100: '#FAECE4', 500: '#D97757', 600: '#C05E3E' },
+            amberwarm: { 50: '#FDF9EF', 100: '#FBF2D8', 500: '#E09F3E' }
           }
         }
       }
     }
   </script>
 
-  <!-- Pustaka Moden: Lucide Icons, Fuse.js, Canvas-Confetti -->
+  <!-- Pustaka Luaran CDN (Ikon, Fuzzy Search & Confetti) -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <style>
-    /* ==================== AESTHETIC STYLING (WARM MINDFUL APP) ==================== */
+    /* ==================== AESTHETIC STYLING & MOTION TOKENS ==================== */
     :root {
-      --app-base-size: 1rem;       /* 16px asas */
+      --app-base-size: 1rem;       /* 16px */
       --app-content-size: 0.9375rem; /* 15px */
       --app-sub-size: 0.84375rem;    /* 13.5px */
-      --app-title-size: 1.15rem;   /* Tajuk */
+      --app-title-size: 1.15rem;   
       --app-heading-size: 1.05rem;
+
+      /* Motion Design Tokens: Spring Dynamics & Semantic Easing */
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-spring-soft: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body {
@@ -84,7 +73,6 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Custom Scrollbar yang Kemas */
     .custom-scrollbar::-webkit-scrollbar { width: 5px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
     .custom-scrollbar::-webkit-scrollbar-thumb { 
@@ -95,7 +83,7 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* MOD CERAH SEBAGAI LALAI */
+    /* Mod Cerah (Warm Linen & Soft White Card) */
     html:not(.dark) body {
       background-color: #F7F5EE;
       color: #1F2923;
@@ -127,7 +115,7 @@
       box-shadow: 0 10px 30px -5px rgba(26, 46, 33, 0.12);
     }
 
-    /* MOD GELAP */
+    /* Mod Gelap (Deep Forest Night & Charcoal Pine) */
     html.dark body {
       background-color: #0E1613;
       color: #EDF3EE;
@@ -159,9 +147,79 @@
       box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6);
     }
 
-    /* ==================== 5 PERATURAN RESPONTIF MUDAH ALIH (VIDEO 375px FIXES) ==================== */
-    
-    /* FIX 1: Jadual bertukar menjadi kad di skrin < 640px */
+    /* ==================== 6 STANDARD EMAS MOTION PRINCIPLES ==================== */
+    /* PRINCIPLE 1: Natural Physics & Spring Dynamics */
+    .spring-interactive {
+      transition: transform 0.24s var(--ease-spring), background-color 0.2s ease, box-shadow 0.2s ease;
+      will-change: transform;
+    }
+    .spring-interactive:active {
+      transform: scale(0.92);
+    }
+
+    /* PRINCIPLE 2: Immediate Tactile Feedback */
+    @keyframes tactilePop {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.18); }
+      75% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+    .btn-tactile-pop {
+      animation: tactilePop 0.28s var(--ease-spring);
+    }
+
+    /* PRINCIPLE 3: Spatial Continuity & Contextual Expansion */
+    .modal-contextual-card {
+      transition: transform 0.26s var(--ease-out-expo), opacity 0.22s ease;
+      will-change: transform, opacity;
+    }
+
+    /* PRINCIPLE 4: Semantic Motion for Validation */
+    @keyframes horizontalShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .error-shake {
+      animation: horizontalShake 0.32s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    /* PRINCIPLE 5: Sliding Continuity (Active Sliding Pill) */
+    .chip-container-track {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .chip-sliding-pill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: 9999px;
+      background-color: #2F5936;
+      box-shadow: 0 2px 10px rgba(47, 89, 54, 0.28);
+      pointer-events: none;
+      transition: transform 0.26s var(--ease-spring), width 0.26s var(--ease-spring);
+      z-index: 1;
+    }
+    html.dark .chip-sliding-pill {
+      background-color: #7CE0B3;
+      box-shadow: 0 2px 12px rgba(124, 224, 179, 0.2);
+    }
+    .cluster-chip {
+      position: relative;
+      z-index: 2;
+      transition: color 0.2s ease;
+    }
+
+    /* PRINCIPLE 6: Smooth Layout Transitions (Deletions) */
+    .deleting-card-collapse {
+      transition: transform 0.22s ease-in, opacity 0.2s ease-in, max-height 0.28s var(--ease-in-out-smooth), margin 0.28s var(--ease-in-out-smooth), padding 0.28s var(--ease-in-out-smooth) !important;
+      overflow: hidden !important;
+      pointer-events: none;
+    }
+
+    /* ==================== 5 PERATURAN RESPONSIF MUDAH ALIH (375px FIXES) ==================== */
     @media (max-width: 639px) {
       .responsive-table, 
       .responsive-table tbody, 
@@ -189,7 +247,6 @@
       }
     }
 
-    /* FIX 2: Angka besar / skor tidak patah baris */
     .kpi-value {
       white-space: nowrap !important;
       font-variant-numeric: tabular-nums;
@@ -197,12 +254,10 @@
       line-height: 1.1;
     }
 
-    /* FIX 3: Input kekal minimum 16px di telefon untuk elak auto-zoom iOS */
     input, select, textarea {
       font-size: 16px !important;
     }
 
-    /* FIX 4: Sasaran sentuhan minimum 44px untuk ibu jari */
     @media (pointer: coarse) {
       .touch-target {
         min-height: 44px !important;
@@ -213,12 +268,11 @@
       }
     }
 
-    /* FIX 5: Ruang penampan selamat bawah untuk bar terapung */
     .bottom-bar-safe {
       padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
     }
 
-    /* Tipografi Kemas & Teratur */
+    /* Tipografi Kandungan */
     .editorial-body {
       line-height: 1.65;
       text-align: left;
@@ -228,7 +282,7 @@
     .editorial-body span, 
     .editorial-body div, 
     .editorial-body td, 
-    .editorial-body th,
+    .editorial-body th, 
     .editorial-body li {
       font-size: inherit;
     }
@@ -271,53 +325,41 @@
       --app-heading-size: 1.3125rem;
     }
 
-    .app-note-title {
-      font-size: var(--app-title-size) !important;
-    }
-    .app-note-heading {
-      font-size: var(--app-heading-size) !important;
-    }
-    .app-sub-text {
-      font-size: var(--app-sub-size) !important;
-    }
+    .app-note-title { font-size: var(--app-title-size) !important; }
+    .app-note-heading { font-size: var(--app-heading-size) !important; }
+    .app-sub-text { font-size: var(--app-sub-size) !important; }
   </style>
 </head>
 <body id="appBody" class="font-size-md antialiased min-h-screen transition-colors duration-300">
 
-  <!-- ==================== 1. MOD PENYAMARAN (STEALTH PORTAL MPKB-BRI) ==================== -->
+  <!-- ==================== 1. MOD PENYAMARAN (STEALTH PORTAL) ==================== -->
   <div id="stealthUI" class="hidden min-h-screen p-4 sm:p-6 select-none bg-slate-100 dark:bg-slate-950">
     <div class="max-w-lg mx-auto app-card rounded-[28px] p-5 sm:p-6 space-y-4">
-      
-      <!-- Bar Pengepala Portal -->
       <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-widest shadow-md">
-            BRI
-          </div>
+          <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-widest shadow-md">BRI</div>
           <div>
             <div class="text-[10px] text-slate-400 dark:text-emerald-400/80 uppercase tracking-widest font-bold">Portal Intranet MPKB-BRI</div>
             <div class="text-sm font-bold text-slate-800 dark:text-slate-100">Log Pengurusan & Kaunter Khidmat</div>
           </div>
         </div>
-        <button onclick="toggleStealth()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:scale-105 flex items-center justify-center transition" title="Tutup Mod Penyamaran">
+        <button onclick="toggleStealth()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 spring-interactive flex items-center justify-center">
           <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <!-- Tab Penyamaran: Log Meja vs Kalkulator Kompaun -->
       <div class="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-black/30 rounded-2xl text-xs font-semibold">
-        <button onclick="switchStealthTab('log')" id="btnTabLog" class="touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition">Buku Log Meja</button>
-        <button onclick="switchStealthTab('calc')" id="btnTabCalc" class="touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition">Kalkulator Lesen/Denda</button>
+        <button onclick="switchStealthTab('log')" id="btnTabLog" class="touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs spring-interactive">Buku Log Meja</button>
+        <button onclick="switchStealthTab('calc')" id="btnTabCalc" class="touch-target-h flex-1 py-2 rounded-xl text-slate-500 spring-interactive">Kalkulator Lesen/Denda</button>
       </div>
 
-      <!-- Kandungan 1: Buku Log Meja Harian -->
       <div id="stealthTabLogContent" class="space-y-3">
         <div class="p-3.5 bg-botanic-500/10 dark:bg-botanic-500/20 rounded-2xl border border-botanic-500/20 text-botanic-800 dark:text-botanic-200">
           <div class="flex items-center justify-between mb-1.5">
             <span class="font-bold uppercase text-[10px] tracking-wider">Status Integriti Staf</span>
             <span class="text-[10px] bg-botanic-600 text-white px-2.5 py-0.5 rounded-full font-semibold">DISEMAK</span>
           </div>
-          <p class="text-xs leading-relaxed opacity-90">Kehadiran direkod jam 07:54 AM. Rekod tindakan kaunter dan senarai fail aduan awam telah dikemas kini mengikut Garis Panduan UMI 2020.</p>
+          <p class="text-xs leading-relaxed opacity-90">Kehadiran direkod jam 07:54 AM. Rekod tindakan kaunter dikemas kini mengikut Garis Panduan UMI 2020.</p>
         </div>
 
         <div class="space-y-2 text-xs">
@@ -332,25 +374,22 @@
         </div>
       </div>
 
-      <!-- Kandungan 2: Kalkulator Kompaun / Anggaran PBT Olok-Olok -->
       <div id="stealthTabCalcContent" class="hidden space-y-3 text-xs">
         <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 space-y-2">
-          <span class="font-bold text-slate-700 dark:text-slate-300 block">Kiraan Anggaran Kompaun Kebersihan Premis:</span>
+          <span class="font-bold text-slate-700 dark:text-slate-300 block">Kiraan Anggaran Kompaun Kebersihan:</span>
           <div class="grid grid-cols-2 gap-2">
             <input type="number" inputmode="numeric" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
             <input type="number" inputmode="numeric" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
           </div>
-          <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 rounded-xl font-bold">Kira Jumlah Pengeluaran</button>
+          <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 text-white rounded-xl font-bold spring-interactive">Kira Jumlah Pengeluaran</button>
           <div class="pt-2 text-center text-xs font-bold text-botanic-600 dark:text-emerald-400" id="stealthCalcResult">Jumlah: RM 300.00</div>
         </div>
       </div>
 
-      <!-- Footer Stealth -->
       <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-400">
         <span>Pengguna: <strong>Nikolai Nicholas</strong></span>
-        <button onclick="toggleStealth()" class="text-botanic-600 dark:text-emerald-400 font-semibold underline p-2">Keluar & Sambung Nota</button>
+        <button onclick="toggleStealth()" class="text-botanic-600 dark:text-emerald-400 font-semibold underline p-2 spring-interactive">Keluar & Sambung Nota</button>
       </div>
-
     </div>
   </div>
 
@@ -358,100 +397,86 @@
   <div id="navDrawerOverlay" onclick="closeNavDrawer()" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
   <aside id="navDrawer" class="fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[85vw] app-card !rounded-r-[32px] !border-l-0 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
-    <!-- Header Drawer -->
     <div class="p-5 border-b border-emerald-900/10 dark:border-white/10 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">
-          UMI
-        </div>
+        <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">UMI</div>
         <div>
           <h2 class="text-sm font-bold text-slate-900 dark:text-slate-100">Daftar 17 Topik</h2>
           <p class="text-[11px] text-botanic-600 dark:text-botanic-300 font-medium">Navigasi Pantas Audit</p>
         </div>
       </div>
-      <button onclick="closeNavDrawer()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center">
+      <button onclick="closeNavDrawer()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center spring-interactive">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
     </div>
 
-    <!-- Senarai Item Drawer dengan scrollbar lancar -->
     <div id="drawerItemsList" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1"></div>
 
-    <!-- Footer Drawer -->
     <div class="p-4 border-t border-emerald-900/10 dark:border-white/10 text-center">
-      <div class="text-[11px] text-slate-400 dark:text-slate-400 font-medium tracking-wide">Built & maintained by Nikolai Nicholas</div>
+      <div class="text-[11px] text-slate-400 font-medium tracking-wide">Built & maintained by Nikolai Nicholas</div>
     </div>
   </aside>
 
-  <!-- ==================== 3. PAPARAN UTAMA APLIKASI ==================== -->
-  <!-- FIX 5: pb-40 memberi ruang selamat agar kandungan terakhir tidak terlindung bar -->
+  <!-- ==================== 3. PAPARAN UTAMA NOTA ==================== -->
   <div id="mainUI" class="pb-40">
-
-    <!-- Header Bersih (Warm Botanical) -->
+    <!-- Header -->
     <header class="sticky top-0 z-40 header-blur px-4 pt-3 pb-2.5 transition-colors">
       <div class="max-w-2xl mx-auto">
         <div class="flex items-center justify-between gap-2">
-          
-          <!-- Butang Drawer & Tajuk Utama -->
           <div class="flex items-center gap-2">
-            <button onclick="openNavDrawer()" title="Menu Topik" class="touch-target w-11 h-11 rounded-2xl app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
+            <button onclick="openNavDrawer(event)" title="Menu Topik" class="touch-target w-11 h-11 rounded-2xl app-card flex items-center justify-center text-slate-700 dark:text-slate-200 spring-interactive">
               <i data-lucide="align-left" class="w-4 h-4 text-botanic-600 dark:text-botanic-300"></i>
             </button>
-            
             <div onclick="handleTitleClicks()" class="cursor-pointer select-none">
-              <span class="text-sm font-extrabold tracking-tight text-slate-900 dark:text-slate-100 uppercase">
-                Nota Poket UMI
-              </span>
+              <span class="text-sm font-extrabold tracking-tight text-slate-900 dark:text-slate-100 uppercase">Nota Poket UMI</span>
             </div>
           </div>
 
-          <!-- Kumpulan Butang Tindakan Header (FIX 4: Minimum 44px touch-target) -->
+          <!-- Kumpulan Butang Tindakan Pantas -->
           <div class="flex items-center gap-1">
-            <button onclick="jumpRandomTopic()" title="Topik Rawak" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-amberwarm-500 active:scale-95 transition">
+            <button onclick="jumpRandomTopic()" title="Topik Rawak" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-amberwarm-500 spring-interactive">
               <i data-lucide="shuffle" class="w-4 h-4"></i>
             </button>
-
-            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" class="touch-target h-11 px-3 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 active:scale-95 transition">
+            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" class="touch-target h-11 px-3 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 spring-interactive">
               <span>A</span><span class="text-[10px]">A</span>
             </button>
-
-            <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 active:scale-95 transition">
+            <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 spring-interactive">
               <i id="themeIcon" data-lucide="moon" class="w-4 h-4 text-slate-700"></i>
             </button>
-
-            <button onclick="toggleStealth()" title="Mod Rahsia Pejabat" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-500 dark:text-slate-400 active:scale-95 transition">
-              <i data-lucide="lock" class="w-4 h-4"></i>
+            <button onclick="toggleStealth()" title="Mod Rahsia Pejabat" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-500 dark:text-slate-400 spring-interactive">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
             </button>
-
-            <button onclick="salinSemuaNota()" title="Salin Semua Nota" class="touch-target h-11 px-3.5 rounded-full bg-botanic-600 hover:bg-botanic-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm active:scale-95 transition">
+            <button onclick="salinSemuaNota(this)" title="Salin Semua Nota" class="touch-target h-11 px-3.5 rounded-full bg-botanic-600 hover:bg-botanic-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm spring-interactive">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span class="hidden sm:inline">Salin</span>
             </button>
           </div>
-
         </div>
 
-        <!-- Panel Tetapan Saiz Teks (Skala Menyeluruh) -->
+        <!-- Panel Tetapan Saiz Teks Menyeluruh -->
         <div id="settingsPanel" class="hidden mt-3 p-3.5 rounded-2xl app-card flex items-center justify-between text-xs">
           <div>
             <span class="text-xs font-bold text-slate-700 dark:text-slate-200 block">Saiz Tulisan Keseluruhan:</span>
             <span class="text-[10px] text-slate-400">Melaraskan tajuk, jadual, senarai & soalan</span>
           </div>
           <div class="flex items-center gap-1 bg-slate-100 dark:bg-black/30 p-1 rounded-xl w-48">
-            <button onclick="setFontSize('sm')" id="btnFontSm" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition">A-</button>
-            <button onclick="setFontSize('md')" id="btnFontMd" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition">A</button>
-            <button onclick="setFontSize('lg')" id="btnFontLg" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-sm font-semibold text-slate-600 dark:text-slate-300 transition">A+</button>
-            <button onclick="setFontSize('xl')" id="btnFontXl" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-base font-black text-slate-700 dark:text-slate-200 transition">A++</button>
+            <button onclick="setFontSize('sm')" id="btnFontSm" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 spring-interactive">A-</button>
+            <button onclick="setFontSize('md')" id="btnFontMd" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs spring-interactive">A</button>
+            <button onclick="setFontSize('lg')" id="btnFontLg" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-sm font-semibold text-slate-600 spring-interactive">A+</button>
+            <button onclick="setFontSize('xl')" id="btnFontXl" class="touch-target-h flex-1 py-1.5 rounded-lg text-center text-base font-black text-slate-700 spring-interactive">A++</button>
           </div>
         </div>
 
-        <!-- Filter Chips (Touch Friendly) -->
-        <div class="mt-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-xs">
-          <button onclick="filterByCluster('all')" id="chip-all" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition">Semua</button>
-          <button onclick="filterByCluster('dasar')" id="chip-dasar" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Dasar MPKB & UMI</button>
-          <button onclick="filterByCluster('akidah')" id="chip-akidah" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Akidah & Hafazan</button>
-          <button onclick="filterByCluster('fiqh')" id="chip-fiqh" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Fiqh Ibadah</button>
-          <button onclick="filterByCluster('munakahat')" id="chip-munakahat" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition">Munakahat</button>
+        <!-- PRINCIPLE 5: Sliding Continuity (Active Sliding Pill Container) -->
+        <div class="mt-2.5 overflow-x-auto no-scrollbar py-0.5 text-xs">
+          <div class="chip-container-track gap-1.5" id="chipTrack">
+            <div id="pillSlider" class="chip-sliding-pill opacity-0"></div>
+            <button onclick="filterByCluster('all', this)" id="chip-all" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-bold text-white transition">Semua</button>
+            <button onclick="filterByCluster('dasar', this)" id="chip-dasar" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Dasar MPKB & UMI</button>
+            <button onclick="filterByCluster('akidah', this)" id="chip-akidah" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Akidah & Hafazan</button>
+            <button onclick="filterByCluster('fiqh', this)" id="chip-fiqh" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Fiqh Ibadah</button>
+            <button onclick="filterByCluster('munakahat', this)" id="chip-munakahat" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Munakahat</button>
+          </div>
         </div>
       </div>
     </header>
@@ -462,237 +487,179 @@
       <span id="toastMessage">Berjaya</span>
     </div>
 
-    <!-- ==================== 4. HERO DASHBOARD WIDGET (FIX 2: Angka KPI Sebaris) ==================== -->
+    <!-- Hero Card Dashboard -->
     <div class="max-w-2xl mx-auto px-4 pt-3">
       <div class="app-card rounded-[26px] p-4 sm:p-5 relative overflow-hidden">
         <div class="flex items-center justify-between gap-3 relative z-10">
           <div class="min-w-0 pr-2">
             <div class="flex items-center gap-2 mb-1">
               <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-botanic-500/10 text-botanic-600 dark:text-botanic-300 border border-botanic-500/20">
-                <span class="w-1.5 h-1.5 rounded-full bg-botanic-500 animate-pulse"></span>
-                AUDIT UMI 2026
+                <span class="w-1.5 h-1.5 rounded-full bg-botanic-500 animate-pulse"></span> AUDIT UMI 2026
               </span>
               <span class="text-[11px] text-slate-400">MPKB-BRI</span>
             </div>
-            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-snug">
-              Semakan Standard & Fardhu Ain
-            </h1>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">
-              17 modul teras syariah & dasar tadbir urus berteraskan Islam.
-            </p>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-snug">Semakan Standard & Fardhu Ain</h1>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">17 modul teras syariah & dasar tadbir urus berteraskan Islam.</p>
           </div>
-
-          <!-- Butang Pantas: FIX 2 & FIX 4 -->
-          <button onclick="openAnalyticsModal()" title="Buka Graf Kemajuan & Analisis Prestasi" class="touch-target shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 hover:scale-105 active:scale-95 transition shadow-xs flex flex-col items-center justify-center min-w-[78px]">
+          <button onclick="openAnalyticsModal(event)" title="Buka Graf Kemajuan" class="touch-target shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 spring-interactive shadow-xs flex flex-col items-center justify-center min-w-[78px]">
             <i data-lucide="bar-chart-3" class="w-4 h-4 text-botanic-600 dark:text-emerald-400 mb-0.5"></i>
             <div class="kpi-value font-extrabold text-botanic-700 dark:text-emerald-300" id="heroProgressPercent">0%</div>
-            <div class="text-[9px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">Prestasi</div>
+            <div class="text-[9px] uppercase tracking-wider font-bold text-slate-500">Prestasi</div>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ==================== 5. MODAL ANALISIS & GRAF KEMAJUAN ==================== -->
-    <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
-      <div id="analyticsModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 transform transition-transform duration-200 scale-95 max-h-[88vh] overflow-y-auto custom-scrollbar">
-        
-        <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
-              <i data-lucide="pie-chart" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Analisis Kemajuan Audit</h3>
-              <p class="text-[11px] text-slate-400">Prestasi Pembacaan Nota & Penguasaan Kuiz</p>
-            </div>
-          </div>
-          <button onclick="closeAnalyticsModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-
-        <!-- 1. GRAF KEMAJUAN BACAAN NOTA -->
-        <div class="p-4 rounded-2xl app-card-nested space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="book-marked" class="w-3.5 h-3.5 text-botanic-600"></i>
-              Kemajuan Bacaan Nota (17 Topik)
-            </span>
-            <span id="analyticsReadingScoreText" class="text-xs font-extrabold text-botanic-600 dark:text-emerald-400">0 / 17 (0%)</span>
-          </div>
-
-          <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden p-0.5">
-            <div id="analyticsReadingProgressBar" class="h-full rounded-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
-          </div>
-
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-            Tandakan butang tanda selesai bacaan di setiap kad topik untuk mengira peratusan persediaan sebelum dinilai auditor.
-          </p>
-        </div>
-
-        <!-- 2. GRAF KEPUTUSAN KUIZ -->
-        <div class="p-4 rounded-2xl app-card-nested space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="award" class="w-3.5 h-3.5 text-amberwarm-500"></i>
-              Prestasi Latih Tubi Kuiz (23 Soalan)
-            </span>
-            <span id="analyticsQuizGradeBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amberwarm-500/10 text-amberwarm-500 border border-amberwarm-500/20">BELUM SELESAI</span>
-          </div>
-
-          <div class="space-y-1.5">
-            <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden flex">
-              <div id="barCorrect" class="h-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%" title="Betul"></div>
-              <div id="barWrong" class="h-full bg-rose-500 transition-all duration-500" style="width: 0%" title="Salah"></div>
-              <div id="barUnanswered" class="h-full bg-slate-300 dark:bg-slate-700 transition-all duration-500" style="width: 100%" title="Belum Dijawab"></div>
-            </div>
-            
-            <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
-              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-botanic-600"></span> Betul: <strong id="lblCorrectCount">0</strong></span>
-              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Salah: <strong id="lblWrongCount">0</strong></span>
-              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-400"></span> Baki: <strong id="lblUnansweredCount">23</strong></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
-          <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold p-1">
-            Tetapkan Semula (Reset)
-          </button>
-          <button onclick="closeAnalyticsModal(); openQuizModal();" class="touch-target-h px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs">
-            <i data-lucide="play" class="w-3.5 h-3.5"></i>
-            <span>Buka Latih Tubi Kuiz</span>
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ==================== 6. MODAL CARIAN PANTAS (FIX 3: Input 16px) ==================== -->
-    <div id="searchModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
-      <div id="searchModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95 mt-8 sm:mt-0">
-        <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
-              <i data-lucide="search" class="w-4 h-4"></i>
-            </div>
-            <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Carian Nota UMI</h3>
-          </div>
-          <button onclick="closeSearchModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-
-        <div class="relative">
-          <input type="text" id="searchInput" oninput="executeFuzzySearch(this.value)" placeholder="Cth: qunut, tayamum, sujud sahwi, nafkah, bri..." class="w-full pl-10 pr-4 py-3 rounded-2xl text-base bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-botanic-500/30">
-          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
-        </div>
-
-        <div id="searchResultsList" class="max-h-[50vh] overflow-y-auto custom-scrollbar space-y-2 pt-1 text-xs">
-          <div class="text-center py-8 text-slate-400">Taip kata kunci untuk memulakan carian pintar.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== 7. MODAL KUIZ AUDIT ==================== -->
-    <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
-      <div id="quizModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95">
-        
-        <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full bg-amberwarm-500/10 text-amberwarm-500 flex items-center justify-center">
-              <i data-lucide="help-circle" class="w-4 h-4"></i>
-            </div>
-            <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Kuiz Latih Tubi UMI</h3>
-          </div>
-          <div class="flex items-center gap-2">
-            <span id="quizScoreDisplay" class="text-xs font-bold text-amberwarm-500 bg-amberwarm-500/10 px-2.5 py-1 rounded-full border border-amberwarm-500/20">0 / 0</span>
-            <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
-              <i data-lucide="x" class="w-4 h-4"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="space-y-3">
-          <div class="flex items-center justify-between text-[11px] text-slate-400">
-            <span id="quizCategoryBadge" class="font-bold text-botanic-600 dark:text-botanic-300">Kategori</span>
-            <span id="quizIndexBadge">Soalan 1 / 23</span>
-          </div>
-
-          <div id="quizQuestionText" class="app-note-heading font-bold leading-relaxed min-h-[42px] text-slate-900 dark:text-slate-100 text-left"></div>
-          <div id="quizOptionsContainer" class="space-y-2 max-h-[42vh] overflow-y-auto custom-scrollbar"></div>
-          <div id="quizFeedbackBox" class="hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left"></div>
-        </div>
-
-        <div class="flex items-center justify-between gap-2 pt-3 border-t border-emerald-900/10 dark:border-white/10">
-          <div class="flex items-center gap-2">
-            <button onclick="checkQuizAnswer()" id="btnCheckAnswer" class="touch-target-h text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs">
-              Semak
-            </button>
-            <button onclick="revealQuizAnswer()" id="btnRevealAnswer" class="touch-target-h text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition">
-              Jawapan
-            </button>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="touch-target w-11 h-11 rounded-xl app-card flex items-center justify-center text-slate-500">
-              <i data-lucide="shuffle" class="w-4 h-4"></i>
-            </button>
-            <button onclick="nextQuizQuestion()" class="touch-target-h text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs">
-              <span>Seterusnya</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ==================== 8. KANDUNGAN KAD NOTA ==================== -->
+    <!-- Kontena Kad Nota Utama -->
     <main id="contentContainer" class="max-w-2xl mx-auto px-4 pt-3 space-y-3.5"></main>
 
-    <!-- Footer Rasmi -->
     <footer class="pt-8 pb-4 text-center text-xs text-slate-400">
       <p>Built & maintained by Nikolai Nicholas</p>
     </footer>
 
-    <!-- ==================== 9. BOTTOM NAVIGATION BAR (FIX 4 & FIX 5) ==================== -->
+    <!-- Bar Navigasi Kapsul Terapung (FIX 5: Safe Area & 44px Buttons) -->
     <div class="fixed bottom-0 left-0 right-0 z-40 flex justify-center px-4 bottom-bar-safe pointer-events-none pb-4">
       <nav class="bottom-nav-surface rounded-full px-4 py-2 flex items-center gap-3 sm:gap-6 pointer-events-auto shadow-2xl">
-        
-        <button onclick="openNavDrawer()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+        <button onclick="openNavDrawer(event)" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
           <i data-lucide="grid" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Topik</span>
         </button>
-
-        <button onclick="openSearchModal()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+        <button onclick="openSearchModal(event)" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
           <i data-lucide="search" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Cari</span>
         </button>
-
-        <button onclick="openQuizModal()" class="touch-target-h flex items-center gap-1.5 px-4 h-11 rounded-full bg-botanic-600 text-white shadow-md hover:bg-botanic-500 transition active:scale-95">
+        <button onclick="openQuizModal(event)" class="touch-target-h flex items-center gap-1.5 px-4 h-11 rounded-full bg-botanic-600 text-white shadow-md hover:bg-botanic-500 spring-interactive">
           <i data-lucide="sparkles" class="w-4 h-4"></i>
           <span class="text-xs font-bold tracking-tight">Kuiz UMI</span>
         </button>
-
-        <button onclick="jumpRandomTopic()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+        <button onclick="jumpRandomTopic()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
           <i data-lucide="shuffle" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Rawak</span>
         </button>
-
-        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 dark:text-slate-400 hover:text-botanic-600 dark:hover:text-emerald-300 transition active:scale-90">
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
           <i data-lucide="arrow-up" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Atas</span>
         </button>
-
       </nav>
     </div>
-
   </div>
 
-  <!-- ==================== 10. ENJIN SKRIP & LOGIK APLIKASI ==================== -->
+  <!-- ==================== 4. MODALS (SPATIAL CONTINUITY EXPANSION) ==================== -->
+  <!-- Modal Analisis & Prestasi -->
+  <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+    <div id="analyticsModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 max-h-[88vh] overflow-y-auto custom-scrollbar">
+      <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center"><i data-lucide="pie-chart" class="w-4 h-4"></i></div>
+          <div>
+            <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Analisis Kemajuan Audit</h3>
+            <p class="text-[11px] text-slate-400">Prestasi Pembacaan Nota & Penguasaan Kuiz</p>
+          </div>
+        </div>
+        <button onclick="closeAnalyticsModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+
+      <div class="p-4 rounded-2xl app-card-nested space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="book-marked" class="w-3.5 h-3.5 text-botanic-600"></i> Kemajuan Bacaan Nota (17 Topik)</span>
+          <span id="analyticsReadingScoreText" class="text-xs font-extrabold text-botanic-600 dark:text-emerald-400">0 / 17 (0%)</span>
+        </div>
+        <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden p-0.5">
+          <div id="analyticsReadingProgressBar" class="h-full rounded-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl app-card-nested space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-amberwarm-500"></i> Prestasi Kuiz (23 Soalan)</span>
+          <span id="analyticsQuizGradeBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amberwarm-500/10 text-amberwarm-500 border border-amberwarm-500/20">BELUM SELESAI</span>
+        </div>
+        <div class="space-y-1.5">
+          <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden flex">
+            <div id="barCorrect" class="h-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
+            <div id="barWrong" class="h-full bg-rose-500 transition-all duration-500" style="width: 0%"></div>
+            <div id="barUnanswered" class="h-full bg-slate-300 dark:bg-slate-700 transition-all duration-500" style="width: 100%"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-botanic-600"></span> Betul: <strong id="lblCorrectCount">0</strong></span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Salah: <strong id="lblWrongCount">0</strong></span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-400"></span> Baki: <strong id="lblUnansweredCount">23</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
+        <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold spring-interactive">Tetapkan Semula (Reset)</button>
+        <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs spring-interactive">
+          <i data-lucide="play" class="w-3.5 h-3.5"></i> Buka Kuiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Carian Pintar -->
+  <div id="searchModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+    <div id="searchModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 mt-8 sm:mt-0">
+      <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center"><i data-lucide="search" class="w-4 h-4"></i></div>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Carian Nota UMI</h3>
+        </div>
+        <button onclick="closeSearchModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="relative">
+        <input type="text" id="searchInput" oninput="executeFuzzySearch(this.value)" placeholder="Cth: qunut, tayamum, sujud sahwi, nafkah..." class="w-full pl-10 pr-4 py-3 rounded-2xl text-base bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-botanic-500/30">
+        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+      </div>
+      <div id="searchResultsList" class="max-h-[50vh] overflow-y-auto custom-scrollbar space-y-2 pt-1 text-xs">
+        <div class="text-center py-8 text-slate-400">Taip kata kunci untuk memulakan carian pintar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Kuiz Interaktif Penuh (23 Soalan) -->
+  <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+    <div id="quizModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5">
+      <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-amberwarm-500/10 text-amberwarm-500 flex items-center justify-center"><i data-lucide="help-circle" class="w-4 h-4"></i></div>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Kuiz Latih Tubi UMI</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="quizScoreDisplay" class="text-xs font-bold text-amberwarm-500 bg-amberwarm-500/10 px-2.5 py-1 rounded-full border border-amberwarm-500/20">0 / 0</span>
+          <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-[11px] text-slate-400">
+          <span id="quizCategoryBadge" class="font-bold text-botanic-600 dark:text-botanic-300">Kategori</span>
+          <span id="quizIndexBadge">Soalan 1 / 23</span>
+        </div>
+
+        <div id="quizQuestionText" class="app-note-heading font-bold leading-relaxed min-h-[42px] text-slate-900 dark:text-slate-100 text-left"></div>
+        <div id="quizOptionsContainer" class="space-y-2 max-h-[42vh] overflow-y-auto no-scrollbar"></div>
+        <div id="quizFeedbackBox" class="hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left"></div>
+      </div>
+
+      <div class="flex items-center justify-between gap-2 pt-3 border-t border-emerald-900/10 dark:border-white/10">
+        <div class="flex items-center gap-2">
+          <button onclick="checkQuizAnswer(this)" id="btnCheckAnswer" class="text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs spring-interactive">Semak</button>
+          <button onclick="revealQuizAnswer(this)" id="btnRevealAnswer" class="text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition spring-interactive">Jawapan</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
+          <button onclick="nextQuizQuestion()" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs spring-interactive">
+            <span>Seterusnya</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. ENJIN SKRIP & DATA TEMPATAN ==================== -->
   <script>
-    // ==================== [A] TATASUSUNAN DATA 17 TOPIK (FIX 1: responsive-table) ====================
+    // ==================== [A] DATA 17 TOPIK NOTA LENGKAP ====================
     const auditTopicsData = [
       {
         id: "sec-sejarah",
@@ -897,7 +864,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
               <div class="p-3 rounded-2xl app-card-nested">
                 <strong class="text-botanic-600 dark:text-emerald-400 block mb-1">🌿 Mahmudah (Terpuji):</strong>
                 <p class="text-slate-600 dark:text-slate-300">Ikhlas, Sabar melayan aduan, Syukur, dan Tawaduk sesama rakan sekerja.</p>
@@ -1272,7 +1239,7 @@
       }
     ];
 
-    // ==================== [B] DATA KUIZ (23 SOALAN) ====================
+    // ==================== [B] DATA 23 SOALAN KUIZ ====================
     const quizData = [
       {
         category: "Dasar BRI",
@@ -1437,13 +1404,39 @@
       }
     ];
 
-    // ==================== [C] PENGURUSAN STATUS KEMAJUAN (LOCAL STORAGE) ====================
+    // ==================== [C] FIZIK ANIMASI, HAPTIK & PENANDA BACAAN ====================
     let readProgressState = JSON.parse(localStorage.getItem('umi_read_progress') || '{}');
     let quizProgressState = JSON.parse(localStorage.getItem('umi_quiz_progress') || '{}');
 
-    function toggleTopicCompleted(id) {
+    function triggerHaptic(duration = 15) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        try { navigator.vibrate(duration); } catch (_) {}
+      }
+    }
+
+    function triggerTactilePop(element) {
+      if (!element) return;
+      element.classList.remove('btn-tactile-pop');
+      void element.offsetWidth;
+      element.classList.add('btn-tactile-pop');
+      triggerHaptic(18);
+    }
+
+    function toggleTopicCompleted(id, btnElement) {
       readProgressState[id] = !readProgressState[id];
       localStorage.setItem('umi_read_progress', JSON.stringify(readProgressState));
+
+      if (btnElement) triggerTactilePop(btnElement);
+
+      if (readProgressState[id] && window.confetti) {
+        confetti({
+          particleCount: 28,
+          spread: 45,
+          origin: { y: 0.8 },
+          colors: ['#2F5936', '#7CE0B3', '#D97757']
+        });
+      }
+
       updateReadingUI();
       updateAnalyticsData();
     }
@@ -1454,30 +1447,30 @@
         const btn = document.getElementById('btnDone-' + topic.id);
         if (btn) {
           if (isDone) {
-            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1.5 shadow-xs transition";
+            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1.5 shadow-xs spring-interactive";
             btn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> Selesai`;
           } else {
-            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition";
+            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 spring-interactive";
             btn.innerHTML = `<i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai`;
           }
         }
       });
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
     function updateAnalyticsData() {
       const totalTopics = auditTopicsData.length;
       const readCount = Object.values(readProgressState).filter(Boolean).length;
-      const readPercent = Math.round((readCount / totalTopics) * 100);
+      const readPercent = totalTopics > 0 ? Math.round((readCount / totalTopics) * 100) : 0;
 
-      // Hero Widget Progress
-      document.getElementById('heroProgressPercent').textContent = `${readPercent}%`;
+      const heroProg = document.getElementById('heroProgressPercent');
+      if (heroProg) heroProg.textContent = `${readPercent}%`;
 
-      // Reading Analytics
-      document.getElementById('analyticsReadingScoreText').textContent = `${readCount} / ${totalTopics} (${readPercent}%)`;
-      document.getElementById('analyticsReadingProgressBar').style.width = `${readPercent}%`;
+      const scoreText = document.getElementById('analyticsReadingScoreText');
+      const progBar = document.getElementById('analyticsReadingProgressBar');
+      if (scoreText) scoreText.textContent = `${readCount} / ${totalTopics} (${readPercent}%)`;
+      if (progBar) progBar.style.width = `${readPercent}%`;
 
-      // Quiz Analytics
       const totalQuiz = quizData.length;
       const answeredKeys = Object.keys(quizProgressState);
       let correctCount = 0;
@@ -1489,31 +1482,39 @@
       });
 
       const unansweredCount = totalQuiz - answeredKeys.length;
-      const pctCorrect = (correctCount / totalQuiz) * 100;
-      const pctWrong = (wrongCount / totalQuiz) * 100;
-      const pctUnanswered = (unansweredCount / totalQuiz) * 100;
+      const pctCorrect = totalQuiz > 0 ? (correctCount / totalQuiz) * 100 : 0;
+      const pctWrong = totalQuiz > 0 ? (wrongCount / totalQuiz) * 100 : 0;
+      const pctUnanswered = totalQuiz > 0 ? (unansweredCount / totalQuiz) * 100 : 100;
 
-      document.getElementById('barCorrect').style.width = `${pctCorrect}%`;
-      document.getElementById('barWrong').style.width = `${pctWrong}%`;
-      document.getElementById('barUnanswered').style.width = `${pctUnanswered}%`;
+      const bCorrect = document.getElementById('barCorrect');
+      const bWrong = document.getElementById('barWrong');
+      const bUnans = document.getElementById('barUnanswered');
+      if (bCorrect) bCorrect.style.width = `${pctCorrect}%`;
+      if (bWrong) bWrong.style.width = `${pctWrong}%`;
+      if (bUnans) bUnans.style.width = `${pctUnanswered}%`;
 
-      document.getElementById('lblCorrectCount').textContent = correctCount;
-      document.getElementById('lblWrongCount').textContent = wrongCount;
-      document.getElementById('lblUnansweredCount').textContent = unansweredCount;
+      const lblCor = document.getElementById('lblCorrectCount');
+      const lblWr = document.getElementById('lblWrongCount');
+      const lblUn = document.getElementById('lblUnansweredCount');
+      if (lblCor) lblCor.textContent = correctCount;
+      if (lblWr) lblWr.textContent = wrongCount;
+      if (lblUn) lblUn.textContent = unansweredCount;
 
       const badge = document.getElementById('analyticsQuizGradeBadge');
-      if (answeredKeys.length === 0) {
-        badge.textContent = "BELUM MULA";
-        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500";
-      } else if (correctCount >= 18) {
-        badge.textContent = "CEMERLANG (ITQAN)";
-        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-botanic-500/20 text-botanic-600 dark:text-emerald-300 border border-botanic-500/30";
-      } else if (correctCount >= 12) {
-        badge.textContent = "LULUS (MEMUASKAN)";
-        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-amberwarm-500/20 text-amberwarm-500 border border-amberwarm-500/30";
-      } else {
-        badge.textContent = "ULANG KAJI DIPERLUKAN";
-        badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-500 border border-rose-500/30";
+      if (badge) {
+        if (answeredKeys.length === 0) {
+          badge.textContent = "BELUM MULA";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500";
+        } else if (correctCount >= 18) {
+          badge.textContent = "CEMERLANG (ITQAN)";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-botanic-500/20 text-botanic-600 dark:text-emerald-300 border border-botanic-500/30";
+        } else if (correctCount >= 12) {
+          badge.textContent = "LULUS (MEMUASKAN)";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-amberwarm-500/20 text-amberwarm-500 border border-amberwarm-500/30";
+        } else {
+          badge.textContent = "ULANG KAJI DIPERLUKAN";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-500 border border-rose-500/30";
+        }
       }
     }
 
@@ -1529,7 +1530,6 @@
         updateAnalyticsData();
         updateScoreDisplay();
         renderQuizQuestion();
-        showToast("Rekod kemajuan telah di-reset");
       }
     }
 
@@ -1545,9 +1545,8 @@
       let drawerHtml = '';
 
       auditTopicsData.forEach(topic => {
-        // Drawer Button
         drawerHtml += `
-          <button type="button" onclick="handleDrawerClick('${topic.id}')" class="touch-target-h w-full text-left p-3 rounded-2xl flex items-center justify-between hover:bg-slate-100 dark:hover:bg-white/5 transition">
+          <button type="button" onclick="handleDrawerClick('${topic.id}')" class="touch-target-h w-full text-left p-3 rounded-2xl flex items-center justify-between hover:bg-slate-100 dark:hover:bg-white/5 spring-interactive">
             <div class="flex items-center gap-3">
               <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
                 <i data-lucide="${topic.icon}" class="w-4 h-4"></i>
@@ -1558,10 +1557,9 @@
           </button>
         `;
 
-        // Card Section dengan butang penanda bacaan (FIX 4: Touch Target 44px)
         const isHidden = (currentFilterCluster !== 'all' && topic.cluster !== currentFilterCluster) ? 'hidden' : '';
         contentHtml += `
-          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all ${isHidden}">
+          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all duration-300 ${isHidden}">
             <div class="flex items-center justify-between mb-3.5 border-b border-emerald-900/10 dark:border-white/10 pb-3">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
@@ -1574,10 +1572,9 @@
             
             <div>${topic.bodyHtml}</div>
 
-            <!-- Bar Penanda Selesai Bacaan -->
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
               <span class="app-sub-text text-slate-400">Status Semakan Topik:</span>
-              <button onclick="toggleTopicCompleted('${topic.id}')" id="btnDone-${topic.id}" class="touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition">
+              <button onclick="toggleTopicCompleted('${topic.id}', this)" id="btnDone-${topic.id}" class="touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 spring-interactive">
                 <i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai
               </button>
             </div>
@@ -1585,28 +1582,124 @@
         `;
       });
 
-      drawerList.innerHTML = drawerHtml;
-      contentContainer.innerHTML = contentHtml;
+      if (drawerList) drawerList.innerHTML = drawerHtml;
+      if (contentContainer) contentContainer.innerHTML = contentHtml;
 
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
       initFuzzySearch();
       updateReadingUI();
       updateAnalyticsData();
+      
+      setTimeout(() => {
+        const activeChip = document.getElementById('chip-all');
+        if (activeChip) moveSlidingPill(activeChip);
+      }, 100);
     }
 
-    // ==================== [E] MENU HAMBURGER & FILTER ====================
+    // ==================== [E] SLIDING PILL & CONTEXTUAL EXPANSION ====================
+    function moveSlidingPill(targetElement) {
+      const slider = document.getElementById('pillSlider');
+      const track = document.getElementById('chipTrack');
+      if (!slider || !track || !targetElement) return;
+
+      const trackRect = track.getBoundingClientRect();
+      const targetRect = targetElement.getBoundingClientRect();
+
+      const leftOffset = targetRect.left - trackRect.left;
+      const width = targetRect.width;
+
+      slider.style.transform = `translateX(${leftOffset}px)`;
+      slider.style.width = `${width}px`;
+      slider.classList.remove('opacity-0');
+    }
+
+    function filterByCluster(clusterKey, triggerBtn) {
+      currentFilterCluster = clusterKey;
+      triggerHaptic(12);
+
+      const chips = document.querySelectorAll('.cluster-chip');
+      chips.forEach(btn => {
+        btn.classList.remove('text-white', 'dark:text-slate-900', 'font-bold');
+        btn.classList.add('text-slate-600', 'dark:text-slate-300', 'font-medium');
+      });
+
+      const activeBtn = triggerBtn || document.getElementById('chip-' + clusterKey);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-600', 'dark:text-slate-300', 'font-medium');
+        activeBtn.classList.add('text-white', 'dark:text-slate-900', 'font-bold');
+        moveSlidingPill(activeBtn);
+      }
+
+      document.querySelectorAll('.note-section').forEach(sec => {
+        const secCluster = sec.getAttribute('data-cluster');
+        if (clusterKey === 'all' || secCluster === clusterKey) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+    }
+
+    function openModalContextual(modalId, cardId, triggerEvent) {
+      const modal = document.getElementById(modalId);
+      const card = document.getElementById(cardId);
+      if (!modal || !card) return;
+
+      let originX = '50%';
+      let originY = '50%';
+
+      if (triggerEvent && triggerEvent.clientX && triggerEvent.clientY) {
+        originX = `${triggerEvent.clientX}px`;
+        originY = `${triggerEvent.clientY}px`;
+      } else if (triggerEvent && triggerEvent.currentTarget) {
+        const rect = triggerEvent.currentTarget.getBoundingClientRect();
+        originX = `${rect.left + rect.width / 2}px`;
+        originY = `${rect.top + rect.height / 2}px`;
+      }
+
+      card.style.transformOrigin = `${originX} ${originY}`;
+      card.style.transform = 'scale(0.85)';
+      card.style.opacity = '0';
+
+      modal.classList.remove('hidden');
+      triggerHaptic(14);
+
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        card.style.transform = 'scale(1)';
+        card.style.opacity = '1';
+      });
+    }
+
+    function closeModalContextual(modalId, cardId) {
+      const modal = document.getElementById(modalId);
+      const card = document.getElementById(cardId);
+      if (!modal || !card) return;
+
+      triggerHaptic(10);
+      card.style.transform = 'scale(0.92)';
+      card.style.opacity = '0';
+      modal.classList.add('opacity-0');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        card.style.transformOrigin = '50% 50%';
+      }, 220);
+    }
+
     function openNavDrawer() {
       const drawer = document.getElementById('navDrawer');
       const overlay = document.getElementById('navDrawerOverlay');
-      overlay.classList.remove('opacity-0', 'pointer-events-none');
-      drawer.classList.remove('-translate-x-full');
+      if (overlay) overlay.classList.remove('opacity-0', 'pointer-events-none');
+      if (drawer) drawer.classList.remove('-translate-x-full');
+      triggerHaptic(14);
     }
 
     function closeNavDrawer() {
       const drawer = document.getElementById('navDrawer');
       const overlay = document.getElementById('navDrawerOverlay');
-      overlay.classList.add('opacity-0', 'pointer-events-none');
-      drawer.classList.add('-translate-x-full');
+      if (overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
+      if (drawer) drawer.classList.add('-translate-x-full');
     }
 
     function handleDrawerClick(id) {
@@ -1619,52 +1712,53 @@
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 200);
+      }, 220);
     }
 
-    function filterByCluster(clusterKey) {
-      currentFilterCluster = clusterKey;
-      document.querySelectorAll('.cluster-chip').forEach(btn => {
-        btn.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition';
-      });
-
-      const activeChip = document.getElementById('chip-' + clusterKey);
-      if (activeChip) {
-        activeChip.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition';
-      }
-
-      document.querySelectorAll('.note-section').forEach(sec => {
-        const secCluster = sec.getAttribute('data-cluster');
-        if (clusterKey === 'all' || secCluster === clusterKey) {
-          sec.classList.remove('hidden');
-        } else {
-          sec.classList.add('hidden');
-        }
-      });
-      showToast(`Paparan: ${clusterKey.toUpperCase()}`);
-    }
-
-    // ==================== [F] MODAL ANALISIS ====================
-    function openAnalyticsModal() {
+    function openAnalyticsModal(e) {
       updateAnalyticsData();
-      const modal = document.getElementById('analyticsModal');
-      const card = document.getElementById('analyticsModalCard');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        card.classList.remove('scale-95');
-      }, 10);
+      openModalContextual('analyticsModal', 'analyticsModalCard', e);
     }
 
     function closeAnalyticsModal() {
-      const modal = document.getElementById('analyticsModal');
-      const card = document.getElementById('analyticsModalCard');
-      modal.classList.add('opacity-0');
-      card.classList.add('scale-95');
-      setTimeout(() => { modal.classList.add('hidden'); }, 200);
+      closeModalContextual('analyticsModal', 'analyticsModalCard');
     }
 
-    // ==================== [G] CARIAN FUSE.JS ====================
+    function openSearchModal(e) {
+      openModalContextual('searchModal', 'searchModalCard', e);
+      const input = document.getElementById('searchInput');
+      if (input) setTimeout(() => input.focus(), 250);
+    }
+
+    function closeSearchModal() {
+      closeModalContextual('searchModal', 'searchModalCard');
+    }
+
+    function openQuizModal(e) {
+      openModalContextual('quizModal', 'quizModalCard', e);
+      renderQuizQuestion();
+    }
+
+    function closeQuizModal() {
+      closeModalContextual('quizModal', 'quizModalCard');
+    }
+
+    // ==================== [F] VALIDASI SEMANTIK (HORIZONTAL SHAKE) ====================
+    function triggerSemanticError(elementId) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+
+      triggerHaptic([40, 60, 40]);
+      element.classList.remove('error-shake');
+      void element.offsetWidth;
+      element.classList.add('error-shake');
+
+      setTimeout(() => {
+        element.classList.remove('error-shake');
+      }, 350);
+    }
+
+    // ==================== [G] CARIAN PINTAR FUSE.JS ====================
     function initFuzzySearch() {
       const searchableItems = auditTopicsData.map(topic => {
         const tempDiv = document.createElement('div');
@@ -1677,36 +1771,19 @@
         };
       });
 
-      fuseSearchEngine = new Fuse(searchableItems, {
-        keys: ['title', 'text'],
-        threshold: 0.35,
-        ignoreLocation: true
-      });
-    }
-
-    function openSearchModal() {
-      const modal = document.getElementById('searchModal');
-      const card = document.getElementById('searchModalCard');
-      const input = document.getElementById('searchInput');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        card.classList.remove('scale-95');
-        input.focus();
-      }, 10);
-    }
-
-    function closeSearchModal() {
-      const modal = document.getElementById('searchModal');
-      const card = document.getElementById('searchModalCard');
-      modal.classList.add('opacity-0');
-      card.classList.add('scale-95');
-      setTimeout(() => { modal.classList.add('hidden'); }, 200);
+      if (typeof Fuse !== 'undefined') {
+        fuseSearchEngine = new Fuse(searchableItems, {
+          keys: ['title', 'text'],
+          threshold: 0.35,
+          ignoreLocation: true
+        });
+      }
     }
 
     function executeFuzzySearch(query) {
       const q = query.trim();
       const resultsContainer = document.getElementById('searchResultsList');
+      if (!resultsContainer) return;
 
       if (!q) {
         resultsContainer.innerHTML = '<div class="text-center py-8 text-slate-400">Taip kata kunci untuk memulakan carian pintar.</div>';
@@ -1716,6 +1793,7 @@
       const results = fuseSearchEngine ? fuseSearchEngine.search(q) : [];
       if (results.length === 0) {
         resultsContainer.innerHTML = `<div class="text-center py-8 text-slate-400">Tiada padanan untuk "${query}".</div>`;
+        triggerSemanticError('searchInput');
         return;
       }
 
@@ -1723,7 +1801,7 @@
       results.slice(0, 6).forEach(res => {
         const item = res.item;
         html += `
-          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] transition">
+          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] spring-interactive">
             <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
             <span class="app-sub-text text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
           </button>
@@ -1741,7 +1819,7 @@
       }, 200);
     }
 
-    // ==================== [H] MODUL KUIZ ====================
+    // ==================== [H] ENJIN KUIZ AUDIT ====================
     let currentQuizIndex = 0;
     let quizScore = 0;
     let answeredQuestions = quizProgressState || {};
@@ -1751,71 +1829,59 @@
       if (ans.isCorrect) quizScore++;
     });
 
-    function openQuizModal() {
-      const modal = document.getElementById('quizModal');
-      const card = document.getElementById('quizModalCard');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        card.classList.remove('scale-95');
-      }, 10);
-      renderQuizQuestion();
-    }
-
-    function closeQuizModal() {
-      const modal = document.getElementById('quizModal');
-      const card = document.getElementById('quizModalCard');
-      modal.classList.add('opacity-0');
-      card.classList.add('scale-95');
-      setTimeout(() => { modal.classList.add('hidden'); }, 200);
-    }
-
     function renderQuizQuestion() {
       const q = quizData[currentQuizIndex];
-      document.getElementById('quizCategoryBadge').textContent = q.category;
-      document.getElementById('quizIndexBadge').textContent = `Soalan ${currentQuizIndex + 1} / ${quizData.length}`;
-      document.getElementById('quizQuestionText').textContent = q.question;
+      const catBadge = document.getElementById('quizCategoryBadge');
+      const idxBadge = document.getElementById('quizIndexBadge');
+      const qText = document.getElementById('quizQuestionText');
+      if (catBadge) catBadge.textContent = q.category;
+      if (idxBadge) idxBadge.textContent = `Soalan ${currentQuizIndex + 1} / ${quizData.length}`;
+      if (qText) qText.textContent = q.question;
 
       const optionsContainer = document.getElementById('quizOptionsContainer');
       const feedbackBox = document.getElementById('quizFeedbackBox');
       const btnCheck = document.getElementById('btnCheckAnswer');
 
-      optionsContainer.innerHTML = '';
-      feedbackBox.className = 'hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left';
-      feedbackBox.innerHTML = '';
+      if (optionsContainer) optionsContainer.innerHTML = '';
+      if (feedbackBox) {
+        feedbackBox.className = 'hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left';
+        feedbackBox.innerHTML = '';
+      }
 
       const isAnswered = answeredQuestions[currentQuizIndex] !== undefined;
-      btnCheck.disabled = !isAnswered ? true : true;
+      if (btnCheck) btnCheck.disabled = true;
       if (!isAnswered) tempSelectedOption = null;
 
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.id = 'quiz-opt-' + idx;
+      if (optionsContainer) {
+        q.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.id = 'quiz-opt-' + idx;
 
-        let style = 'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-medium transition flex items-start gap-2.5 ';
+          let style = 'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-medium spring-interactive flex items-start gap-2.5 ';
 
-        if (isAnswered) {
-          if (idx === q.correct) {
-            style += 'bg-botanic-500/20 border-botanic-500 text-botanic-800 dark:text-emerald-300 font-bold';
-          } else if (idx === answeredQuestions[currentQuizIndex].chosen) {
-            style += 'bg-rose-500/20 border-rose-500 text-rose-500';
+          if (isAnswered) {
+            if (idx === q.correct) {
+              style += 'bg-botanic-500/20 border-botanic-500 text-botanic-800 dark:text-emerald-300 font-bold';
+            } else if (idx === answeredQuestions[currentQuizIndex].chosen) {
+              style += 'bg-rose-500/20 border-rose-500 text-rose-500';
+            } else {
+              style += 'border-transparent text-slate-400 opacity-50';
+            }
           } else {
-            style += 'border-transparent text-slate-400 opacity-50';
+            style += 'app-card-nested hover:scale-[1.01]';
           }
-        } else {
-          style += 'app-card-nested hover:scale-[1.01]';
-        }
 
-        btn.className = style;
-        const letter = String.fromCharCode(65 + idx);
-        btn.innerHTML = `<span class="font-bold text-slate-400">${letter}.</span> <span>${opt}</span>`;
+          btn.className = style;
+          const letter = String.fromCharCode(65 + idx);
+          btn.innerHTML = `<span class="font-bold text-slate-400">${letter}.</span> <span>${opt}</span>`;
 
-        if (!isAnswered) {
-          btn.onclick = () => selectTempOption(idx);
-        }
-        optionsContainer.appendChild(btn);
-      });
+          if (!isAnswered) {
+            btn.onclick = () => selectTempOption(idx, btn);
+          }
+          optionsContainer.appendChild(btn);
+        });
+      }
 
       if (isAnswered) {
         showQuizFeedback(answeredQuestions[currentQuizIndex].isCorrect, q.rationale);
@@ -1823,30 +1889,41 @@
       updateScoreDisplay();
     }
 
-    function selectTempOption(idx) {
+    function selectTempOption(idx, btnElement) {
       if (answeredQuestions[currentQuizIndex] !== undefined) return;
       tempSelectedOption = idx;
 
+      if (btnElement) triggerTactilePop(btnElement);
+
       quizData[currentQuizIndex].options.forEach((_, i) => {
         const btn = document.getElementById('quiz-opt-' + i);
-        if (i === idx) {
-          btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs sm:text-sm flex items-start gap-2.5';
-        } else {
-          btn.className = 'w-full text-left p-3.5 rounded-2xl app-card-nested text-xs sm:text-sm flex items-start gap-2.5';
+        if (btn) {
+          if (i === idx) {
+            btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs sm:text-sm flex items-start gap-2.5 spring-interactive';
+          } else {
+            btn.className = 'w-full text-left p-3.5 rounded-2xl app-card-nested text-xs sm:text-sm flex items-start gap-2.5 spring-interactive';
+          }
         }
       });
 
-      document.getElementById('btnCheckAnswer').disabled = false;
+      const btnCheck = document.getElementById('btnCheckAnswer');
+      if (btnCheck) btnCheck.disabled = false;
     }
 
-    function checkQuizAnswer() {
+    function checkQuizAnswer(btnElement) {
       if (tempSelectedOption === null || answeredQuestions[currentQuizIndex] !== undefined) return;
       const q = quizData[currentQuizIndex];
       const isCorrect = tempSelectedOption === q.correct;
 
+      if (btnElement) triggerTactilePop(btnElement);
+
       if (isCorrect) {
         quizScore++;
-        confetti({ particleCount: 35, spread: 55, origin: { y: 0.7 } });
+        if (window.confetti) {
+          confetti({ particleCount: 35, spread: 55, origin: { y: 0.7 } });
+        }
+      } else {
+        triggerSemanticError('quizOptionsContainer');
       }
 
       answeredQuestions[currentQuizIndex] = { chosen: tempSelectedOption, isCorrect };
@@ -1857,9 +1934,11 @@
       renderQuizQuestion();
     }
 
-    function revealQuizAnswer() {
+    function revealQuizAnswer(btnElement) {
       if (answeredQuestions[currentQuizIndex] !== undefined) return;
       const q = quizData[currentQuizIndex];
+      if (btnElement) triggerTactilePop(btnElement);
+
       answeredQuestions[currentQuizIndex] = { chosen: -1, isCorrect: false };
       localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
       
@@ -1870,6 +1949,7 @@
 
     function showQuizFeedback(isCorrect, rationale) {
       const box = document.getElementById('quizFeedbackBox');
+      if (!box) return;
       box.classList.remove('hidden');
       if (isCorrect) {
         box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-botanic-500/10 border-botanic-500/30 text-botanic-800 dark:text-emerald-300 text-left';
@@ -1882,16 +1962,19 @@
 
     function updateScoreDisplay() {
       const answeredCount = Object.keys(answeredQuestions).length;
-      document.getElementById('quizScoreDisplay').textContent = `${quizScore} / ${answeredCount}`;
+      const scoreDisp = document.getElementById('quizScoreDisplay');
+      if (scoreDisp) scoreDisp.textContent = `${quizScore} / ${answeredCount}`;
     }
 
     function nextQuizQuestion() {
       currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      triggerHaptic(12);
       renderQuizQuestion();
     }
 
     function pickRandomQuizQuestion() {
       currentQuizIndex = Math.floor(Math.random() * quizData.length);
+      triggerHaptic(15);
       renderQuizQuestion();
     }
 
@@ -1899,35 +1982,40 @@
       if (currentFilterCluster !== 'all') filterByCluster('all');
       const rand = auditTopicsData[Math.floor(Math.random() * auditTopicsData.length)];
       const target = document.getElementById(rand.id);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target) {
+        triggerHaptic(20);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        triggerTactilePop(target);
+      }
       showToast(`Rawak: ${rand.title.split('(')[0].trim()}`);
     }
 
-    // ==================== [I] KAWALAN SAIZ FON MENYELURUH ====================
+    // ==================== [I] TETAPAN FON & TEMA LALAI ====================
     function setFontSize(sizeKey) {
       const body = document.getElementById('appBody');
-      body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
-      body.classList.add('font-size-' + sizeKey);
+      if (body) {
+        body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+        body.classList.add('font-size-' + sizeKey);
+      }
       localStorage.setItem('umi_font_scale', sizeKey);
 
       ['sm', 'md', 'lg', 'xl'].forEach(s => {
         const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
         if (btn) {
           if (s === sizeKey) {
-            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition';
+            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs spring-interactive';
           } else {
-            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition';
+            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 spring-interactive';
           }
         }
       });
-      showToast(`Saiz fon: ${sizeKey.toUpperCase()}`);
     }
 
     function toggleSettingsDrawer() {
-      document.getElementById('settingsPanel').classList.toggle('hidden');
+      const panel = document.getElementById('settingsPanel');
+      if (panel) panel.classList.toggle('hidden');
     }
 
-    // ==================== [J] PENGURUSAN TEMA (DEFAULT CERAH / LIGHT) ====================
     function initTheme() {
       const savedTheme = localStorage.getItem('umi_theme');
       if (savedTheme === 'dark') {
@@ -1937,7 +2025,6 @@
         document.documentElement.classList.remove('dark');
         updateThemeUI(false);
       }
-
       const savedFont = localStorage.getItem('umi_font_scale') || 'md';
       setFontSize(savedFont);
     }
@@ -1946,26 +2033,29 @@
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('umi_theme', isDark ? 'dark' : 'light');
       updateThemeUI(isDark);
+      triggerHaptic(15);
       showToast(isDark ? "🌙 Tema Forest Night" : "☀️ Tema Warm Linen");
     }
 
     function updateThemeUI(isDark) {
       const icon = document.getElementById('themeIcon');
-      if (isDark) {
-        icon.setAttribute('data-lucide', 'sun');
-        icon.className = 'w-4 h-4 text-amberwarm-500';
-      } else {
-        icon.setAttribute('data-lucide', 'moon');
-        icon.className = 'w-4 h-4 text-slate-700';
+      if (icon) {
+        icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+        icon.className = isDark ? 'w-4 h-4 text-amberwarm-500' : 'w-4 h-4 text-slate-700';
+        if (window.lucide) lucide.createIcons();
       }
-      lucide.createIcons();
     }
 
-    // ==================== [K] MOD STEALTH & CIRI TAMBAHAN ====================
+    // ==================== [J] MOD STEALTH & UTILITI SALIN ====================
     function toggleStealth() {
-      document.getElementById('stealthUI').classList.toggle('hidden');
-      document.getElementById('mainUI').classList.toggle('hidden');
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      const sUI = document.getElementById('stealthUI');
+      const mUI = document.getElementById('mainUI');
+      if (sUI && mUI) {
+        sUI.classList.toggle('hidden');
+        mUI.classList.toggle('hidden');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        triggerHaptic(20);
+      }
     }
 
     function switchStealthTab(tabKey) {
@@ -1974,16 +2064,18 @@
       const btnLog = document.getElementById('btnTabLog');
       const btnCalc = document.getElementById('btnTabCalc');
 
+      triggerHaptic(12);
+
       if (tabKey === 'log') {
-        tabLog.classList.remove('hidden');
-        tabCalc.classList.add('hidden');
-        btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
-        btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
+        if (tabLog) tabLog.classList.remove('hidden');
+        if (tabCalc) tabCalc.classList.add('hidden');
+        if (btnLog) btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs spring-interactive';
+        if (btnCalc) btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 spring-interactive';
       } else {
-        tabLog.classList.add('hidden');
-        tabCalc.classList.remove('hidden');
-        btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
-        btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
+        if (tabLog) tabLog.classList.add('hidden');
+        if (tabCalc) tabCalc.classList.remove('hidden');
+        if (btnCalc) btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs spring-interactive';
+        if (btnLog) btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 spring-interactive';
       }
     }
 
@@ -1991,10 +2083,13 @@
       const a = parseFloat(document.getElementById('stealthInputA').value) || 0;
       const b = parseFloat(document.getElementById('stealthInputB').value) || 0;
       const res = (a * b).toFixed(2);
-      document.getElementById('stealthCalcResult').textContent = `Jumlah: RM ${res}`;
+      const resElem = document.getElementById('stealthCalcResult');
+      if (resElem) resElem.textContent = `Jumlah: RM ${res}`;
+      triggerHaptic(15);
     }
 
-    let titleClicks = 0, titleTimer = null;
+    let titleClicks = 0;
+    let titleTimer = null;
     function handleTitleClicks() {
       titleClicks++;
       clearTimeout(titleTimer);
@@ -2005,7 +2100,9 @@
       }
     }
 
-    function salinSemuaNota() {
+    function salinSemuaNota(triggerBtn) {
+      if (triggerBtn) triggerTactilePop(triggerBtn);
+
       const text = auditTopicsData.map(d => {
         const temp = document.createElement('div');
         temp.innerHTML = d.bodyHtml;
@@ -2024,9 +2121,19 @@
 
     function showToast(msg) {
       const t = document.getElementById('toast');
-      document.getElementById('toastMessage').textContent = msg;
-      t.classList.remove('opacity-0', 'pointer-events-none');
-      setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 1600);
+      const msgElem = document.getElementById('toastMessage');
+      if (t && msgElem) {
+        msgElem.textContent = msg;
+        t.classList.remove('opacity-0', 'pointer-events-none');
+        t.style.transform = 'translate(-50%, 6px) scale(1.02)';
+        setTimeout(() => {
+          t.style.transform = 'translate(-50%, 0) scale(1)';
+        }, 150);
+
+        setTimeout(() => {
+          t.classList.add('opacity-0', 'pointer-events-none');
+        }, 1600);
+      }
     }
 
     // ==================== INISIALISASI ====================
