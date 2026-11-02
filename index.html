@@ -2,7 +2,8 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <!-- Kebolehaksesan: Mengeluarkan user-scalable=no bagi mematuhi WCAG 2.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Nota Poket UMI</title>
 
   <!-- Open Graph / Meta -->
@@ -41,7 +42,7 @@
     }
   </script>
 
-  <!-- Pustaka Luaran CDN (Ikon, Fuzzy Search & Confetti) -->
+  <!-- Pustaka Luaran CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -49,15 +50,13 @@
   <style>
     /* ==================== AESTHETIC STYLING & MOTION TOKENS ==================== */
     :root {
-      --app-base-size: 1rem;       /* 16px */
-      --app-content-size: 0.9375rem; /* 15px */
-      --app-sub-size: 0.84375rem;    /* 13.5px */
+      --app-base-size: 1rem;
+      --app-content-size: 0.9375rem;
+      --app-sub-size: 0.84375rem;
       --app-title-size: 1.15rem;   
       --app-heading-size: 1.05rem;
 
-      /* Motion Design Tokens: Spring Dynamics & Semantic Easing */
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --ease-spring-soft: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -83,7 +82,7 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Mod Cerah (Warm Linen & Soft White Card) */
+    /* Mod Cerah */
     html:not(.dark) body {
       background-color: #F7F5EE;
       color: #1F2923;
@@ -115,7 +114,7 @@
       box-shadow: 0 10px 30px -5px rgba(26, 46, 33, 0.12);
     }
 
-    /* Mod Gelap (Deep Forest Night & Charcoal Pine) */
+    /* Mod Gelap */
     html.dark body {
       background-color: #0E1613;
       color: #EDF3EE;
@@ -147,8 +146,7 @@
       box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6);
     }
 
-    /* ==================== 6 STANDARD EMAS MOTION PRINCIPLES ==================== */
-    /* PRINCIPLE 1: Natural Physics & Spring Dynamics */
+    /* Gerakan Dinamik (Physics & Tactile) */
     .spring-interactive {
       transition: transform 0.24s var(--ease-spring), background-color 0.2s ease, box-shadow 0.2s ease;
       will-change: transform;
@@ -157,7 +155,6 @@
       transform: scale(0.92);
     }
 
-    /* PRINCIPLE 2: Immediate Tactile Feedback */
     @keyframes tactilePop {
       0% { transform: scale(1); }
       45% { transform: scale(1.18); }
@@ -168,13 +165,11 @@
       animation: tactilePop 0.28s var(--ease-spring);
     }
 
-    /* PRINCIPLE 3: Spatial Continuity & Contextual Expansion */
     .modal-contextual-card {
       transition: transform 0.26s var(--ease-out-expo), opacity 0.22s ease;
       will-change: transform, opacity;
     }
 
-    /* PRINCIPLE 4: Semantic Motion for Validation */
     @keyframes horizontalShake {
       0%, 100% { transform: translateX(0); }
       20%, 60% { transform: translateX(-8px); }
@@ -184,7 +179,7 @@
       animation: horizontalShake 0.32s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     }
 
-    /* PRINCIPLE 5: Sliding Continuity (Active Sliding Pill) */
+    /* Sliding Pill Slider */
     .chip-container-track {
       position: relative;
       display: flex;
@@ -203,8 +198,8 @@
       z-index: 1;
     }
     html.dark .chip-sliding-pill {
-      background-color: #7CE0B3;
-      box-shadow: 0 2px 12px rgba(124, 224, 179, 0.2);
+      background-color: #43764A;
+      box-shadow: 0 2px 12px rgba(67, 118, 74, 0.35);
     }
     .cluster-chip {
       position: relative;
@@ -212,14 +207,7 @@
       transition: color 0.2s ease;
     }
 
-    /* PRINCIPLE 6: Smooth Layout Transitions (Deletions) */
-    .deleting-card-collapse {
-      transition: transform 0.22s ease-in, opacity 0.2s ease-in, max-height 0.28s var(--ease-in-out-smooth), margin 0.28s var(--ease-in-out-smooth), padding 0.28s var(--ease-in-out-smooth) !important;
-      overflow: hidden !important;
-      pointer-events: none;
-    }
-
-    /* ==================== 5 PERATURAN RESPONSIF MUDAH ALIH (375px FIXES) ==================== */
+    /* Responsif Jadual Mudah Alih */
     @media (max-width: 639px) {
       .responsive-table, 
       .responsive-table tbody, 
@@ -272,7 +260,6 @@
       padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
     }
 
-    /* Tipografi Kandungan */
     .editorial-body {
       line-height: 1.65;
       text-align: left;
@@ -295,7 +282,7 @@
       line-height: 1.55;
     }
 
-    /* Skala Saiz Tulisan Menyeluruh */
+    /* Skala Saiz Teks */
     body.font-size-sm {
       --app-base-size: 0.875rem;
       --app-content-size: 0.8125rem;
@@ -328,6 +315,18 @@
     .app-note-title { font-size: var(--app-title-size) !important; }
     .app-note-heading { font-size: var(--app-heading-size) !important; }
     .app-sub-text { font-size: var(--app-sub-size) !important; }
+
+    /* Sorotan Kata Kunci Carian */
+    mark.search-highlight {
+      background-color: #FDE047;
+      color: #1E293B;
+      padding: 0 2px;
+      border-radius: 4px;
+    }
+    html.dark mark.search-highlight {
+      background-color: #CA8A04;
+      color: #FFFFFF;
+    }
   </style>
 </head>
 <body id="appBody" class="font-size-md antialiased min-h-screen transition-colors duration-300">
@@ -343,7 +342,7 @@
             <div class="text-sm font-bold text-slate-800 dark:text-slate-100">Log Pengurusan & Kaunter Khidmat</div>
           </div>
         </div>
-        <button onclick="toggleStealth()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 spring-interactive flex items-center justify-center">
+        <button onclick="toggleStealth()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 spring-interactive flex items-center justify-center" aria-label="Keluar Mod Samaran">
           <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
         </button>
       </div>
@@ -396,7 +395,7 @@
   <!-- ==================== 2. HAMBURGER NAVIGATION DRAWER ==================== -->
   <div id="navDrawerOverlay" onclick="closeNavDrawer()" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-  <aside id="navDrawer" class="fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[85vw] app-card !rounded-r-[32px] !border-l-0 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
+  <aside id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu Topik Nota" class="fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[85vw] app-card !rounded-r-[32px] !border-l-0 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
     <div class="p-5 border-b border-emerald-900/10 dark:border-white/10 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-2xl bg-botanic-600 text-white flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">UMI</div>
@@ -405,7 +404,7 @@
           <p class="text-[11px] text-botanic-600 dark:text-botanic-300 font-medium">Navigasi Pantas Audit</p>
         </div>
       </div>
-      <button onclick="closeNavDrawer()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center spring-interactive">
+      <button onclick="closeNavDrawer()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center spring-interactive" aria-label="Tutup Drawer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
     </div>
@@ -419,34 +418,34 @@
 
   <!-- ==================== 3. PAPARAN UTAMA NOTA ==================== -->
   <div id="mainUI" class="pb-40">
-    <!-- Header -->
     <header class="sticky top-0 z-40 header-blur px-4 pt-3 pb-2.5 transition-colors">
       <div class="max-w-2xl mx-auto">
         <div class="flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <button onclick="openNavDrawer(event)" title="Menu Topik" class="touch-target w-11 h-11 rounded-2xl app-card flex items-center justify-center text-slate-700 dark:text-slate-200 spring-interactive">
+            <button onclick="openNavDrawer(event)" title="Menu Topik" aria-label="Buka Menu Topik" class="touch-target w-11 h-11 rounded-2xl app-card flex items-center justify-center text-slate-700 dark:text-slate-200 spring-interactive">
               <i data-lucide="align-left" class="w-4 h-4 text-botanic-600 dark:text-botanic-300"></i>
             </button>
-            <div onclick="handleTitleClicks()" class="cursor-pointer select-none">
+            <div onclick="handleTitleClicks()" class="cursor-pointer select-none" title="Ketik 3 kali untuk mod rahsia">
               <span class="text-sm font-extrabold tracking-tight text-slate-900 dark:text-slate-100 uppercase">Nota Poket UMI</span>
             </div>
           </div>
 
           <!-- Kumpulan Butang Tindakan Pantas -->
           <div class="flex items-center gap-1">
-            <button onclick="jumpRandomTopic()" title="Topik Rawak" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-amberwarm-500 spring-interactive">
+            <button onclick="jumpRandomTopic()" title="Topik Rawak" aria-label="Pilih Topik Rawak" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-amberwarm-500 spring-interactive">
               <i data-lucide="shuffle" class="w-4 h-4"></i>
             </button>
-            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" class="touch-target h-11 px-3 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 spring-interactive">
+            <button onclick="toggleSettingsDrawer()" title="Ubah Saiz Tulisan Keseluruhan" aria-label="Ubah Saiz Tulisan" class="touch-target h-11 px-3 rounded-full app-card text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-0.5 spring-interactive">
               <span>A</span><span class="text-[10px]">A</span>
             </button>
-            <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 spring-interactive">
-              <i id="themeIcon" data-lucide="moon" class="w-4 h-4 text-slate-700"></i>
+            <!-- Diperbaiki: Wrapper Ikon Tema -->
+            <button onclick="toggleTheme()" id="btnThemeToggle" title="Tukar Tema Cerah/Gelap" aria-label="Tukar Tema" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-700 dark:text-slate-200 spring-interactive">
+              <i data-lucide="moon" class="w-4 h-4 text-slate-700"></i>
             </button>
-            <button onclick="toggleStealth()" title="Mod Rahsia Pejabat" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-500 dark:text-slate-400 spring-interactive">
+            <button onclick="toggleStealth()" title="Mod Rahsia Pejabat" aria-label="Mod Rahsia" class="touch-target w-11 h-11 rounded-full app-card flex items-center justify-center text-slate-500 dark:text-slate-400 spring-interactive">
               <i data-lucide="lock" class="w-3.5 h-3.5"></i>
             </button>
-            <button onclick="salinSemuaNota(this)" title="Salin Semua Nota" class="touch-target h-11 px-3.5 rounded-full bg-botanic-600 hover:bg-botanic-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm spring-interactive">
+            <button onclick="salinSemuaNota(this)" title="Salin Semua Nota ke Papan Keratan" aria-label="Salin Semua Nota" class="touch-target h-11 px-3.5 rounded-full bg-botanic-600 hover:bg-botanic-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm spring-interactive">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span class="hidden sm:inline">Salin</span>
             </button>
@@ -467,11 +466,12 @@
           </div>
         </div>
 
-        <!-- PRINCIPLE 5: Sliding Continuity (Active Sliding Pill Container) -->
+        <!-- Slider Kategori Chip (Termasuk Tab Tumpuan/Bookmark) -->
         <div class="mt-2.5 overflow-x-auto no-scrollbar py-0.5 text-xs">
           <div class="chip-container-track gap-1.5" id="chipTrack">
             <div id="pillSlider" class="chip-sliding-pill opacity-0"></div>
             <button onclick="filterByCluster('all', this)" id="chip-all" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-bold text-white transition">Semua</button>
+            <button onclick="filterByCluster('starred', this)" id="chip-starred" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-amberwarm-500 transition flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> Tumpuan</button>
             <button onclick="filterByCluster('dasar', this)" id="chip-dasar" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Dasar MPKB & UMI</button>
             <button onclick="filterByCluster('akidah', this)" id="chip-akidah" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Akidah & Hafazan</button>
             <button onclick="filterByCluster('fiqh', this)" id="chip-fiqh" class="cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium text-slate-600 dark:text-slate-300 transition">Fiqh Ibadah</button>
@@ -482,7 +482,7 @@
     </header>
 
     <!-- Notifikasi Toast -->
-    <div id="toast" class="fixed top-14 left-1/2 -translate-x-1/2 app-card text-slate-800 dark:text-slate-100 px-4 py-2.5 rounded-full text-xs shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 border border-slate-200 dark:border-white/10">
+    <div id="toast" role="status" aria-live="polite" class="fixed top-14 left-1/2 -translate-x-1/2 app-card text-slate-800 dark:text-slate-100 px-4 py-2.5 rounded-full text-xs shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2 border border-slate-200 dark:border-white/10">
       <i data-lucide="check-circle-2" class="w-4 h-4 text-botanic-500"></i>
       <span id="toastMessage">Berjaya</span>
     </div>
@@ -501,7 +501,7 @@
             <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-snug">Semakan Standard & Fardhu Ain</h1>
             <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">17 modul teras syariah & dasar tadbir urus berteraskan Islam.</p>
           </div>
-          <button onclick="openAnalyticsModal(event)" title="Buka Graf Kemajuan" class="touch-target shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 spring-interactive shadow-xs flex flex-col items-center justify-center min-w-[78px]">
+          <button onclick="openAnalyticsModal(event)" title="Buka Graf Kemajuan & Analisis" aria-label="Buka Graf Kemajuan" class="touch-target shrink-0 text-center p-3 rounded-2xl bg-botanic-50 dark:bg-botanic-900/40 border border-botanic-200 dark:border-botanic-800/60 spring-interactive shadow-xs flex flex-col items-center justify-center min-w-[78px]">
             <i data-lucide="bar-chart-3" class="w-4 h-4 text-botanic-600 dark:text-emerald-400 mb-0.5"></i>
             <div class="kpi-value font-extrabold text-botanic-700 dark:text-emerald-300" id="heroProgressPercent">0%</div>
             <div class="text-[9px] uppercase tracking-wider font-bold text-slate-500">Prestasi</div>
@@ -517,26 +517,26 @@
       <p>Built & maintained by Nikolai Nicholas</p>
     </footer>
 
-    <!-- Bar Navigasi Kapsul Terapung (FIX 5: Safe Area & 44px Buttons) -->
+    <!-- Bar Navigasi Terapung -->
     <div class="fixed bottom-0 left-0 right-0 z-40 flex justify-center px-4 bottom-bar-safe pointer-events-none pb-4">
       <nav class="bottom-nav-surface rounded-full px-4 py-2 flex items-center gap-3 sm:gap-6 pointer-events-auto shadow-2xl">
-        <button onclick="openNavDrawer(event)" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
+        <button onclick="openNavDrawer(event)" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive" aria-label="Buka Topik">
           <i data-lucide="grid" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Topik</span>
         </button>
-        <button onclick="openSearchModal(event)" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
+        <button onclick="openSearchModal(event)" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive" aria-label="Cari Nota">
           <i data-lucide="search" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Cari</span>
         </button>
-        <button onclick="openQuizModal(event)" class="touch-target-h flex items-center gap-1.5 px-4 h-11 rounded-full bg-botanic-600 text-white shadow-md hover:bg-botanic-500 spring-interactive">
+        <button onclick="openQuizModal(event)" class="touch-target-h flex items-center gap-1.5 px-4 h-11 rounded-full bg-botanic-600 text-white shadow-md hover:bg-botanic-500 spring-interactive" aria-label="Mula Kuiz UMI">
           <i data-lucide="sparkles" class="w-4 h-4"></i>
           <span class="text-xs font-bold tracking-tight">Kuiz UMI</span>
         </button>
-        <button onclick="jumpRandomTopic()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
+        <button onclick="jumpRandomTopic()" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive" aria-label="Topik Rawak">
           <i data-lucide="shuffle" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Rawak</span>
         </button>
-        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive">
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="touch-target flex flex-col items-center justify-center w-12 h-12 text-slate-500 hover:text-botanic-600 spring-interactive" aria-label="Skrol Ke Atas">
           <i data-lucide="arrow-up" class="w-5 h-5 mb-0.5"></i>
           <span class="text-[10px] font-semibold tracking-tight">Atas</span>
         </button>
@@ -544,9 +544,9 @@
     </div>
   </div>
 
-  <!-- ==================== 4. MODALS (SPATIAL CONTINUITY EXPANSION) ==================== -->
+  <!-- ==================== 4. MODALS ==================== -->
   <!-- Modal Analisis & Prestasi -->
-  <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+  <div id="analyticsModal" role="dialog" aria-modal="true" aria-label="Analisis Kemajuan Audit" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="analyticsModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 max-h-[88vh] overflow-y-auto custom-scrollbar">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
         <div class="flex items-center gap-2">
@@ -556,7 +556,7 @@
             <p class="text-[11px] text-slate-400">Prestasi Pembacaan Nota & Penguasaan Kuiz</p>
           </div>
         </div>
-        <button onclick="closeAnalyticsModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <button onclick="closeAnalyticsModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive" aria-label="Tutup Analisis"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
 
       <div class="p-4 rounded-2xl app-card-nested space-y-2.5">
@@ -588,24 +588,30 @@
         </div>
       </div>
 
-      <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
+      <div class="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
         <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold spring-interactive">Tetapkan Semula (Reset)</button>
-        <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs spring-interactive">
-          <i data-lucide="play" class="w-3.5 h-3.5"></i> Buka Kuiz
-        </button>
+        <div class="flex items-center gap-2">
+          <!-- Butang Ciri Baharu: Ulang Soalan Salah -->
+          <button onclick="startMistakesOnlyQuiz()" id="btnReviewMistakes" class="hidden px-3.5 py-2 bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 rounded-xl text-xs font-bold hover:bg-rose-500/20 transition flex items-center gap-1.5 spring-interactive">
+            <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> Ulang Soalan Salah
+          </button>
+          <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs spring-interactive">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i> Buka Kuiz
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Modal Carian Pintar -->
-  <div id="searchModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+  <div id="searchModal" role="dialog" aria-modal="true" aria-label="Carian Nota Pintar" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="searchModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 mt-8 sm:mt-0">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
         <div class="flex items-center gap-2">
           <div class="w-7 h-7 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center"><i data-lucide="search" class="w-4 h-4"></i></div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Carian Nota UMI</h3>
         </div>
-        <button onclick="closeSearchModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <button onclick="closeSearchModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive" aria-label="Tutup Carian"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
       <div class="relative">
         <input type="text" id="searchInput" oninput="executeFuzzySearch(this.value)" placeholder="Cth: qunut, tayamum, sujud sahwi, nafkah..." class="w-full pl-10 pr-4 py-3 rounded-2xl text-base bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-botanic-500/30">
@@ -618,7 +624,7 @@
   </div>
 
   <!-- Modal Kuiz Interaktif Penuh (23 Soalan) -->
-  <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
+  <div id="quizModal" role="dialog" aria-modal="true" aria-label="Kuiz Latih Tubi UMI" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="quizModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
         <div class="flex items-center gap-2">
@@ -627,7 +633,7 @@
         </div>
         <div class="flex items-center gap-2">
           <span id="quizScoreDisplay" class="text-xs font-bold text-amberwarm-500 bg-amberwarm-500/10 px-2.5 py-1 rounded-full border border-amberwarm-500/20">0 / 0</span>
-          <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
+          <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive" aria-label="Tutup Kuiz"><i data-lucide="x" class="w-4 h-4"></i></button>
         </div>
       </div>
 
@@ -648,7 +654,7 @@
           <button onclick="revealQuizAnswer(this)" id="btnRevealAnswer" class="text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition spring-interactive">Jawapan</button>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
+          <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500 spring-interactive" aria-label="Soalan Rawak"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
           <button onclick="nextQuizQuestion()" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs spring-interactive">
             <span>Seterusnya</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
           </button>
@@ -657,9 +663,9 @@
     </div>
   </div>
 
-  <!-- ==================== 5. ENJIN SKRIP & DATA TEMPATAN ==================== -->
+  <!-- ==================== 5. ENJIN SKRIP & LOGIK APLIKASI ==================== -->
   <script>
-    // ==================== [A] DATA 17 TOPIK NOTA LENGKAP ====================
+    // ==================== [A] DATA 17 TOPIK AUDIT UMI ====================
     const auditTopicsData = [
       {
         id: "sec-sejarah",
@@ -711,7 +717,7 @@
               <strong class="block text-slate-900 dark:text-slate-100 uppercase app-sub-text mb-1">🤝 Budaya Kerja Islamik di MPKB-BRI:</strong>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
                 <li><strong>Konsep Syura:</strong> Mengutamakan perbincangan muafakat dalam membuat keputusan dasar perbandaran.</li>
-                <li><strong>Konsep Hisbah:</strong> Pengauditan kendiri (*self-accountability*), amar makruf nahi mungkar, dan ketegasan penguatkuasaan adil.</li>
+                <li><strong>Konsep Hisbah:</strong> Pengauditan kendiri (self-accountability), amar makruf nahi mungkar, dan ketegasan penguatkuasaan adil.</li>
                 <li><strong>Konsep Ihsan di Kaunter:</strong> Melayani pelanggan secara mesra, berlemah-lembut, mempermudahkan urusan rakyat, dan menyempurnakan kerja seolah-olah melihat Allah.</li>
               </ul>
             </div>
@@ -760,9 +766,7 @@
         bodyHtml: `
           <div class="space-y-2 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-botanic-500">
-              <span class="font-bold text-botanic-700 dark:text-emerald-300 flex items-center gap-1.5 mb-1">
-                Ubudiyyah di Pejabat:
-              </span>
+              <span class="font-bold text-botanic-700 dark:text-emerald-300 flex items-center gap-1.5 mb-1">Ubudiyyah di Pejabat:</span>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Mulakan tugas harian dengan niat ikhlas ibadah kerana Allah SWT.</li>
                 <li>Menjaga solat pada waktunya serta memelihara adab syariat.</li>
@@ -770,18 +774,14 @@
               </ul>
             </div>
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-amberwarm-500">
-              <span class="font-bold text-amberwarm-500 flex items-center gap-1.5 mb-1">
-                Mas'uliyyah di Pejabat:
-              </span>
+              <span class="font-bold text-amberwarm-500 flex items-center gap-1.5 mb-1">Mas'uliyyah di Pejabat:</span>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Menepati waktu masuk, rehat, dan amanah dalam mencatat pergerakan.</li>
                 <li>Menjaga kerahsiaan fail kerajaan dan tidak menyalahgunakan aset rasmi.</li>
               </ul>
             </div>
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-terracotta-500">
-              <span class="font-bold text-terracotta-500 flex items-center gap-1.5 mb-1">
-                Itqan di Pejabat:
-              </span>
+              <span class="font-bold text-terracotta-500 flex items-center gap-1.5 mb-1">Itqan di Pejabat:</span>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Menyiapkan tugasan dengan teliti, kemas, dan sifar ralat.</li>
                 <li>Menyusun fail meja, minit mesyuarat, dan rekod perbandaran dengan teratur.</li>
@@ -809,7 +809,7 @@
               </div>
               <div class="p-3 rounded-2xl app-card-nested">
                 <strong class="text-rose-500 block mb-1">🔴 Haram:</strong>
-                <p class="text-slate-600 dark:text-slate-300">Rasuah, membuat tuntutan elaun palsu (*false claims*), atau mencuri harta majlis.</p>
+                <p class="text-slate-600 dark:text-slate-300">Rasuah, membuat tuntutan elaun palsu (false claims), atau mencuri harta majlis.</p>
               </div>
             </div>
             <div class="p-3.5 rounded-2xl app-card-nested leading-relaxed">
@@ -1404,9 +1404,19 @@
       }
     ];
 
-    // ==================== [C] FIZIK ANIMASI, HAPTIK & PENANDA BACAAN ====================
+    // ==================== [C] PENGURUSAN STATE TUNGGAL (SINGLE SOURCE OF TRUTH) ====================
     let readProgressState = JSON.parse(localStorage.getItem('umi_read_progress') || '{}');
-    let quizProgressState = JSON.parse(localStorage.getItem('umi_quiz_progress') || '{}');
+    let starredTopicsState = JSON.parse(localStorage.getItem('umi_starred_topics') || '{}');
+    let answeredQuestions = JSON.parse(localStorage.getItem('umi_quiz_progress') || '{}');
+    
+    // Penapis aktif kuiz: senarai index soalan (seluruhnya atau soalan salah)
+    let activeQuizIndices = quizData.map((_, i) => i);
+    let currentQuizPointer = 0;
+    let tempSelectedOption = null;
+
+    function saveQuizProgress() {
+      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+    }
 
     function triggerHaptic(duration = 15) {
       if (typeof navigator !== 'undefined' && navigator.vibrate) {
@@ -1422,6 +1432,14 @@
       triggerHaptic(18);
     }
 
+    // Pembersihan entiti HTML untuk mengelakkan XSS
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[m]);
+    }
+
+    // Toggle Selesai Baca Topik
     function toggleTopicCompleted(id, btnElement) {
       readProgressState[id] = !readProgressState[id];
       localStorage.setItem('umi_read_progress', JSON.stringify(readProgressState));
@@ -1439,6 +1457,38 @@
 
       updateReadingUI();
       updateAnalyticsData();
+    }
+
+    // Ciri Baharu: Bookmark / Topik Tumpuan
+    function toggleStarTopic(id, btnElement) {
+      starredTopicsState[id] = !starredTopicsState[id];
+      localStorage.setItem('umi_starred_topics', JSON.stringify(starredTopicsState));
+
+      if (btnElement) triggerTactilePop(btnElement);
+      showToast(starredTopicsState[id] ? "Ditanda sebagai topik tumpuan ⭐" : "Dibuang daripada tumpuan");
+      
+      updateStarUI();
+
+      if (currentFilterCluster === 'starred') {
+        filterByCluster('starred');
+      }
+    }
+
+    function updateStarUI() {
+      auditTopicsData.forEach(topic => {
+        const isStarred = !!starredTopicsState[topic.id];
+        const btn = document.getElementById('btnStar-' + topic.id);
+        if (btn) {
+          if (isStarred) {
+            btn.className = "touch-target w-9 h-9 rounded-full bg-amberwarm-500/10 text-amberwarm-500 flex items-center justify-center spring-interactive";
+            btn.innerHTML = `<i data-lucide="star" class="w-4 h-4 fill-current"></i>`;
+          } else {
+            btn.className = "touch-target w-9 h-9 rounded-full bg-slate-100 dark:bg-white/5 text-slate-400 flex items-center justify-center spring-interactive";
+            btn.innerHTML = `<i data-lucide="star" class="w-4 h-4"></i>`;
+          }
+        }
+      });
+      if (window.lucide) lucide.createIcons();
     }
 
     function updateReadingUI() {
@@ -1472,12 +1522,12 @@
       if (progBar) progBar.style.width = `${readPercent}%`;
 
       const totalQuiz = quizData.length;
-      const answeredKeys = Object.keys(quizProgressState);
+      const answeredKeys = Object.keys(answeredQuestions);
       let correctCount = 0;
       let wrongCount = 0;
 
       answeredKeys.forEach(k => {
-        if (quizProgressState[k].isCorrect) correctCount++;
+        if (answeredQuestions[k].isCorrect) correctCount++;
         else wrongCount++;
       });
 
@@ -1516,20 +1566,27 @@
           badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-500 border border-rose-500/30";
         }
       }
+
+      // Paparkan butang 'Ulang Soalan Salah' jika terdapat soalan salah
+      const btnMistakes = document.getElementById('btnReviewMistakes');
+      if (btnMistakes) {
+        if (wrongCount > 0) btnMistakes.classList.remove('hidden');
+        else btnMistakes.classList.add('hidden');
+      }
     }
 
     function resetAllProgress() {
       if (confirm("Adakah anda pasti mahu menetapkan semula (reset) semua rekod pembacaan dan skor kuiz?")) {
         readProgressState = {};
-        quizProgressState = {};
         answeredQuestions = {};
-        quizScore = 0;
+        activeQuizIndices = quizData.map((_, i) => i);
+        currentQuizPointer = 0;
         localStorage.removeItem('umi_read_progress');
         localStorage.removeItem('umi_quiz_progress');
         updateReadingUI();
         updateAnalyticsData();
-        updateScoreDisplay();
         renderQuizQuestion();
+        showToast("Rekod telah diset semula.");
       }
     }
 
@@ -1557,9 +1614,16 @@
           </button>
         `;
 
-        const isHidden = (currentFilterCluster !== 'all' && topic.cluster !== currentFilterCluster) ? 'hidden' : '';
+        const isStarred = !!starredTopicsState[topic.id];
+        let isHidden = false;
+        if (currentFilterCluster === 'starred') {
+          isHidden = !isStarred;
+        } else if (currentFilterCluster !== 'all') {
+          isHidden = topic.cluster !== currentFilterCluster;
+        }
+
         contentHtml += `
-          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all duration-300 ${isHidden}">
+          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all duration-300 ${isHidden ? 'hidden' : ''}">
             <div class="flex items-center justify-between mb-3.5 border-b border-emerald-900/10 dark:border-white/10 pb-3">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
@@ -1567,10 +1631,15 @@
                 </div>
                 <h2 class="app-note-title font-bold tracking-tight text-slate-900 dark:text-slate-100 uppercase pr-2">${topic.title}</h2>
               </div>
-              <span class="shrink-0 app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button onclick="toggleStarTopic('${topic.id}', this)" id="btnStar-${topic.id}" title="Tandai Topik Tumpuan" aria-label="Tandai Topik Tumpuan" class="touch-target w-9 h-9 rounded-full ${isStarred ? 'bg-amberwarm-500/10 text-amberwarm-500' : 'bg-slate-100 dark:bg-white/5 text-slate-400'} flex items-center justify-center spring-interactive">
+                  <i data-lucide="star" class="w-4 h-4 ${isStarred ? 'fill-current' : ''}"></i>
+                </button>
+                <span class="app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
+              </div>
             </div>
             
-            <div>${topic.bodyHtml}</div>
+            <div class="note-body-content">${topic.bodyHtml}</div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
               <span class="app-sub-text text-slate-400">Status Semakan Topik:</span>
@@ -1588,6 +1657,7 @@
       if (window.lucide) lucide.createIcons();
       initFuzzySearch();
       updateReadingUI();
+      updateStarUI();
       updateAnalyticsData();
       
       setTimeout(() => {
@@ -1596,7 +1666,7 @@
       }, 100);
     }
 
-    // ==================== [E] SLIDING PILL & CONTEXTUAL EXPANSION ====================
+    // ==================== [E] SLIDING PILL & RESIZE LISTENER ====================
     function moveSlidingPill(targetElement) {
       const slider = document.getElementById('pillSlider');
       const track = document.getElementById('chipTrack');
@@ -1612,6 +1682,12 @@
       slider.style.width = `${width}px`;
       slider.classList.remove('opacity-0');
     }
+
+    // Memastikan sliding pill kekal di kedudukan betul apabila saiz skrin berubah
+    window.addEventListener('resize', () => {
+      const activeChip = document.getElementById('chip-' + currentFilterCluster) || document.getElementById('chip-all');
+      if (activeChip) moveSlidingPill(activeChip);
+    });
 
     function filterByCluster(clusterKey, triggerBtn) {
       currentFilterCluster = clusterKey;
@@ -1631,15 +1707,22 @@
       }
 
       document.querySelectorAll('.note-section').forEach(sec => {
+        const secId = sec.id;
         const secCluster = sec.getAttribute('data-cluster');
-        if (clusterKey === 'all' || secCluster === clusterKey) {
+        
+        if (clusterKey === 'all') {
           sec.classList.remove('hidden');
+        } else if (clusterKey === 'starred') {
+          if (starredTopicsState[secId]) sec.classList.remove('hidden');
+          else sec.classList.add('hidden');
         } else {
-          sec.classList.add('hidden');
+          if (secCluster === clusterKey) sec.classList.remove('hidden');
+          else sec.classList.add('hidden');
         }
       });
     }
 
+    // Contextual Modal Controls
     function openModalContextual(modalId, cardId, triggerEvent) {
       const modal = document.getElementById(modalId);
       const card = document.getElementById(cardId);
@@ -1686,6 +1769,16 @@
         card.style.transformOrigin = '50% 50%';
       }, 220);
     }
+
+    // Sokongan Kekunci Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeNavDrawer();
+        closeAnalyticsModal();
+        closeSearchModal();
+        closeQuizModal();
+      }
+    });
 
     function openNavDrawer() {
       const drawer = document.getElementById('navDrawer');
@@ -1743,7 +1836,6 @@
       closeModalContextual('quizModal', 'quizModalCard');
     }
 
-    // ==================== [F] VALIDASI SEMANTIK (HORIZONTAL SHAKE) ====================
     function triggerSemanticError(elementId) {
       const element = document.getElementById(elementId);
       if (!element) return;
@@ -1758,7 +1850,7 @@
       }, 350);
     }
 
-    // ==================== [G] CARIAN PINTAR FUSE.JS ====================
+    // ==================== [F] CARIAN PINTAR DENGAN HIGHLIGHT ====================
     function initFuzzySearch() {
       const searchableItems = auditTopicsData.map(topic => {
         const tempDiv = document.createElement('div');
@@ -1792,7 +1884,8 @@
 
       const results = fuseSearchEngine ? fuseSearchEngine.search(q) : [];
       if (results.length === 0) {
-        resultsContainer.innerHTML = `<div class="text-center py-8 text-slate-400">Tiada padanan untuk "${query}".</div>`;
+        // Pembaikan Keselamatan: escapeHtml untuk elak XSS
+        resultsContainer.innerHTML = `<div class="text-center py-8 text-slate-400">Tiada padanan untuk "${escapeHtml(q)}".</div>`;
         triggerSemanticError('searchInput');
         return;
       }
@@ -1800,10 +1893,28 @@
       let html = '';
       results.slice(0, 6).forEach(res => {
         const item = res.item;
+        
+        // Cari snippet ringkas yang mengandungi perkataan carian
+        let snippet = '';
+        const lowerText = item.text.toLowerCase();
+        const pos = lowerText.indexOf(q.toLowerCase());
+        if (pos !== -1) {
+          const start = Math.max(0, pos - 25);
+          const end = Math.min(item.text.length, pos + q.length + 35);
+          let rawSnippet = item.text.substring(start, end);
+          
+          // Sorot kata kunci
+          const regex = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+          snippet = escapeHtml(rawSnippet).replace(regex, '<mark class="search-highlight">$1</mark>');
+          snippet = `...${snippet}...`;
+        } else {
+          snippet = escapeHtml(item.text.slice(0, 75)) + '...';
+        }
+
         html += `
           <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] spring-interactive">
-            <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
-            <span class="app-sub-text text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
+            <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${escapeHtml(item.title)}</span>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">${snippet}</p>
           </button>
         `;
       });
@@ -1815,27 +1926,34 @@
       if (currentFilterCluster !== 'all') filterByCluster('all');
       setTimeout(() => {
         const sec = document.getElementById(sectionId);
-        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (sec) {
+          sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          triggerTactilePop(sec);
+        }
       }, 200);
     }
 
-    // ==================== [H] ENJIN KUIZ AUDIT ====================
-    let currentQuizIndex = 0;
-    let quizScore = 0;
-    let answeredQuestions = quizProgressState || {};
-    let tempSelectedOption = null;
-
-    Object.values(answeredQuestions).forEach(ans => {
-      if (ans.isCorrect) quizScore++;
-    });
-
+    // ==================== [G] ENJIN KUIZ AUDIT DENGAN MOD KAJIAN SEMULA ====================
     function renderQuizQuestion() {
-      const q = quizData[currentQuizIndex];
+      if (activeQuizIndices.length === 0) {
+        showNoQuestionsState();
+        return;
+      }
+
+      if (currentQuizPointer >= activeQuizIndices.length) {
+        currentQuizPointer = 0;
+      }
+
+      const qIndex = activeQuizIndices[currentQuizPointer];
+      const q = quizData[qIndex];
+
       const catBadge = document.getElementById('quizCategoryBadge');
       const idxBadge = document.getElementById('quizIndexBadge');
       const qText = document.getElementById('quizQuestionText');
-      if (catBadge) catBadge.textContent = q.category;
-      if (idxBadge) idxBadge.textContent = `Soalan ${currentQuizIndex + 1} / ${quizData.length}`;
+      
+      const isMistakesMode = activeQuizIndices.length < quizData.length;
+      if (catBadge) catBadge.innerHTML = `${escapeHtml(q.category)} ${isMistakesMode ? '<span class="text-rose-500 ml-1 font-bold">(Ulang Kaji Salah)</span>' : ''}`;
+      if (idxBadge) idxBadge.textContent = `Soalan ${currentQuizPointer + 1} / ${activeQuizIndices.length}`;
       if (qText) qText.textContent = q.question;
 
       const optionsContainer = document.getElementById('quizOptionsContainer');
@@ -1848,7 +1966,7 @@
         feedbackBox.innerHTML = '';
       }
 
-      const isAnswered = answeredQuestions[currentQuizIndex] !== undefined;
+      const isAnswered = answeredQuestions[qIndex] !== undefined;
       if (btnCheck) btnCheck.disabled = true;
       if (!isAnswered) tempSelectedOption = null;
 
@@ -1863,7 +1981,7 @@
           if (isAnswered) {
             if (idx === q.correct) {
               style += 'bg-botanic-500/20 border-botanic-500 text-botanic-800 dark:text-emerald-300 font-bold';
-            } else if (idx === answeredQuestions[currentQuizIndex].chosen) {
+            } else if (idx === answeredQuestions[qIndex].chosen) {
               style += 'bg-rose-500/20 border-rose-500 text-rose-500';
             } else {
               style += 'border-transparent text-slate-400 opacity-50';
@@ -1874,7 +1992,7 @@
 
           btn.className = style;
           const letter = String.fromCharCode(65 + idx);
-          btn.innerHTML = `<span class="font-bold text-slate-400">${letter}.</span> <span>${opt}</span>`;
+          btn.innerHTML = `<span class="font-bold text-slate-400">${letter}.</span> <span>${escapeHtml(opt)}</span>`;
 
           if (!isAnswered) {
             btn.onclick = () => selectTempOption(idx, btn);
@@ -1884,18 +2002,37 @@
       }
 
       if (isAnswered) {
-        showQuizFeedback(answeredQuestions[currentQuizIndex].isCorrect, q.rationale);
+        showQuizFeedback(answeredQuestions[qIndex].isCorrect, q.rationale);
       }
       updateScoreDisplay();
     }
 
+    function showNoQuestionsState() {
+      const qText = document.getElementById('quizQuestionText');
+      const optionsContainer = document.getElementById('quizOptionsContainer');
+      const catBadge = document.getElementById('quizCategoryBadge');
+      const idxBadge = document.getElementById('quizIndexBadge');
+
+      if (catBadge) catBadge.textContent = "Tahniah!";
+      if (idxBadge) idxBadge.textContent = "0 / 0";
+      if (qText) qText.textContent = "Tiada soalan salah dalam rekod! Anda telah menguasai soalan ini dengan cemerlang.";
+      if (optionsContainer) {
+        optionsContainer.innerHTML = `
+          <div class="text-center py-6">
+            <button onclick="resetQuizFilterToAll()" class="px-4 py-2.5 bg-botanic-600 text-white rounded-xl text-xs font-bold spring-interactive">Kembali ke Kuiz Penuh (23 Soalan)</button>
+          </div>
+        `;
+      }
+    }
+
     function selectTempOption(idx, btnElement) {
-      if (answeredQuestions[currentQuizIndex] !== undefined) return;
+      const qIndex = activeQuizIndices[currentQuizPointer];
+      if (answeredQuestions[qIndex] !== undefined) return;
       tempSelectedOption = idx;
 
       if (btnElement) triggerTactilePop(btnElement);
 
-      quizData[currentQuizIndex].options.forEach((_, i) => {
+      quizData[qIndex].options.forEach((_, i) => {
         const btn = document.getElementById('quiz-opt-' + i);
         if (btn) {
           if (i === idx) {
@@ -1911,14 +2048,14 @@
     }
 
     function checkQuizAnswer(btnElement) {
-      if (tempSelectedOption === null || answeredQuestions[currentQuizIndex] !== undefined) return;
-      const q = quizData[currentQuizIndex];
+      const qIndex = activeQuizIndices[currentQuizPointer];
+      if (tempSelectedOption === null || answeredQuestions[qIndex] !== undefined) return;
+      const q = quizData[qIndex];
       const isCorrect = tempSelectedOption === q.correct;
 
       if (btnElement) triggerTactilePop(btnElement);
 
       if (isCorrect) {
-        quizScore++;
         if (window.confetti) {
           confetti({ particleCount: 35, spread: 55, origin: { y: 0.7 } });
         }
@@ -1926,8 +2063,8 @@
         triggerSemanticError('quizOptionsContainer');
       }
 
-      answeredQuestions[currentQuizIndex] = { chosen: tempSelectedOption, isCorrect };
-      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+      answeredQuestions[qIndex] = { chosen: tempSelectedOption, isCorrect };
+      saveQuizProgress();
       
       updateScoreDisplay();
       updateAnalyticsData();
@@ -1935,12 +2072,12 @@
     }
 
     function revealQuizAnswer(btnElement) {
-      if (answeredQuestions[currentQuizIndex] !== undefined) return;
-      const q = quizData[currentQuizIndex];
+      const qIndex = activeQuizIndices[currentQuizPointer];
+      if (answeredQuestions[qIndex] !== undefined) return;
       if (btnElement) triggerTactilePop(btnElement);
 
-      answeredQuestions[currentQuizIndex] = { chosen: -1, isCorrect: false };
-      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+      answeredQuestions[qIndex] = { chosen: -1, isCorrect: false };
+      saveQuizProgress();
       
       updateScoreDisplay();
       updateAnalyticsData();
@@ -1953,28 +2090,71 @@
       box.classList.remove('hidden');
       if (isCorrect) {
         box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-botanic-500/10 border-botanic-500/30 text-botanic-800 dark:text-emerald-300 text-left';
-        box.innerHTML = `<strong>Tepat! ✅</strong> ${rationale}`;
+        box.innerHTML = `<strong>Tepat! ✅</strong> ${escapeHtml(rationale)}`;
       } else {
         box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-rose-500/10 border-rose-500/30 text-rose-500 text-left';
-        box.innerHTML = `<strong>Jawapan Sebenar:</strong> ${rationale}`;
+        box.innerHTML = `<strong>Jawapan Sebenar:</strong> ${escapeHtml(rationale)}`;
       }
     }
 
     function updateScoreDisplay() {
-      const answeredCount = Object.keys(answeredQuestions).length;
+      const answeredKeys = Object.keys(answeredQuestions);
+      let correct = 0;
+      answeredKeys.forEach(k => {
+        if (answeredQuestions[k].isCorrect) correct++;
+      });
       const scoreDisp = document.getElementById('quizScoreDisplay');
-      if (scoreDisp) scoreDisp.textContent = `${quizScore} / ${answeredCount}`;
+      if (scoreDisp) scoreDisp.textContent = `${correct} / ${answeredKeys.length}`;
     }
 
     function nextQuizQuestion() {
-      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      if (activeQuizIndices.length > 0) {
+        currentQuizPointer = (currentQuizPointer + 1) % activeQuizIndices.length;
+      }
       triggerHaptic(12);
       renderQuizQuestion();
     }
 
     function pickRandomQuizQuestion() {
-      currentQuizIndex = Math.floor(Math.random() * quizData.length);
+      if (activeQuizIndices.length > 0) {
+        currentQuizPointer = Math.floor(Math.random() * activeQuizIndices.length);
+      }
       triggerHaptic(15);
+      renderQuizQuestion();
+    }
+
+    // Ciri Baharu: Mod Ulang Soalan Salah Sahaja
+    function startMistakesOnlyQuiz() {
+      const wrongIndices = [];
+      Object.keys(answeredQuestions).forEach(k => {
+        if (!answeredQuestions[k].isCorrect) {
+          wrongIndices.push(parseInt(k, 10));
+        }
+      });
+
+      if (wrongIndices.length === 0) {
+        showToast("Tiada rekod soalan yang salah! 🎉");
+        return;
+      }
+
+      // Padam jawapan bagi soalan salah agar boleh dijawab semula
+      wrongIndices.forEach(idx => {
+        delete answeredQuestions[idx];
+      });
+      saveQuizProgress();
+
+      activeQuizIndices = wrongIndices;
+      currentQuizPointer = 0;
+
+      closeAnalyticsModal();
+      openQuizModal();
+      updateAnalyticsData();
+      showToast(`Mod Ulang Kaji: ${wrongIndices.length} soalan dimuatkan`);
+    }
+
+    function resetQuizFilterToAll() {
+      activeQuizIndices = quizData.map((_, i) => i);
+      currentQuizPointer = 0;
       renderQuizQuestion();
     }
 
@@ -1990,7 +2170,7 @@
       showToast(`Rawak: ${rand.title.split('(')[0].trim()}`);
     }
 
-    // ==================== [I] TETAPAN FON & TEMA LALAI ====================
+    // ==================== [H] TETAPAN FON & TEMA LALAI ====================
     function setFontSize(sizeKey) {
       const body = document.getElementById('appBody');
       if (body) {
@@ -2037,16 +2217,16 @@
       showToast(isDark ? "🌙 Tema Forest Night" : "☀️ Tema Warm Linen");
     }
 
+    // Pembaikan Pepijat Lucide: Mengemas kini innerHTML wrapper butang
     function updateThemeUI(isDark) {
-      const icon = document.getElementById('themeIcon');
-      if (icon) {
-        icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-        icon.className = isDark ? 'w-4 h-4 text-amberwarm-500' : 'w-4 h-4 text-slate-700';
+      const btn = document.getElementById('btnThemeToggle');
+      if (btn) {
+        btn.innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}" class="w-4 h-4 ${isDark ? 'text-amberwarm-500' : 'text-slate-700'}"></i>`;
         if (window.lucide) lucide.createIcons();
       }
     }
 
-    // ==================== [J] MOD STEALTH & UTILITI SALIN ====================
+    // ==================== [I] MOD SAMARAN & PAPAN KERATAN MODEN ====================
     function toggleStealth() {
       const sUI = document.getElementById('stealthUI');
       const mUI = document.getElementById('mainUI');
@@ -2100,7 +2280,8 @@
       }
     }
 
-    function salinSemuaNota(triggerBtn) {
+    // Pembaikan: Menggunakan navigator.clipboard dengan sandaran (fallback)
+    async function salinSemuaNota(triggerBtn) {
       if (triggerBtn) triggerTactilePop(triggerBtn);
 
       const text = auditTopicsData.map(d => {
@@ -2109,14 +2290,25 @@
         return `${d.title.toUpperCase()}\n${temp.innerText.trim()}`;
       }).join('\n\n====================\n\n');
 
-      const el = document.createElement('textarea');
-      el.value = "NOTA POKET UMI (MPKB-BRI)\n\n" + text;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
+      const fullContent = "NOTA POKET UMI (MPKB-BRI)\n\n" + text;
 
-      showToast("Semua nota disalin!");
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(fullContent);
+        } else {
+          const el = document.createElement('textarea');
+          el.value = fullContent;
+          el.style.position = 'fixed';
+          el.style.opacity = '0';
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+        }
+        showToast("Semua nota disalin!");
+      } catch (err) {
+        showToast("Gagal menyalin nota.");
+      }
     }
 
     function showToast(msg) {
@@ -2132,11 +2324,11 @@
 
         setTimeout(() => {
           t.classList.add('opacity-0', 'pointer-events-none');
-        }, 1600);
+        }, 1800);
       }
     }
 
-    // ==================== INISIALISASI ====================
+    // ==================== INISIALISASI APLIKASI ====================
     window.onload = function() {
       initTheme();
       renderDynamicApp();
